@@ -28,7 +28,7 @@ public class MoveCtrl : MonoBehaviour {
 		tr = GetComponent<Transform>();
 		camTr = Camera.main.GetComponent<Transform>();
 		cc = GetComponent<CharacterController>();
-		points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
+	//	points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
 	}
 	
 	// Update is called once per frame

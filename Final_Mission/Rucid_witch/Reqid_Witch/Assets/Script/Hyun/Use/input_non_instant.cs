@@ -39,7 +39,7 @@ public class input_non_instant : MonoBehaviour
     public void reset()
     {
         MainPoint.turnon();
-        count = -1;
+        count = 0;
         MyPoint = MainPoint;
         completeTimer = 0.0f;
         TimerOn = false;

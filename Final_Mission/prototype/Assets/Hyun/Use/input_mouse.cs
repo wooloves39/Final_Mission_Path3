@@ -17,9 +17,9 @@ public class input_mouse : MonoBehaviour
         skill_timer = 0;
         skillon = false;
         mySkills = Singletone.Instance.skill;
-        //mySkills[0]=3;
-        //mySkills[1]=2;
-        //mySkills[2]=4; test
+        mySkills[0]=3;
+        mySkills[1]=2;
+        mySkills[2]=4;// test
 
     }
 

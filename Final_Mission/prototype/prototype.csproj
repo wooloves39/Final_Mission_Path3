@@ -84,12 +84,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AIstatus.cs" />
+    <Compile Include="Assets\AITree.cs" />
     <Compile Include="Assets\Attack.cs" />
     <Compile Include="Assets\boxcheck.cs" />
     <Compile Include="Assets\CharacterStatus.cs" />
     <Compile Include="Assets\ChoiceSkill_index.cs" />
     <Compile Include="Assets\CorrectionSound.cs" />
-    <Compile Include="Assets\FollowCamera.cs" />
     <Compile Include="Assets\Hyun\Use\Dialog.cs" />
     <Compile Include="Assets\Hyun\Use\input_mouse.cs" />
     <Compile Include="Assets\Hyun\Use\input_non_instant.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets\MouseLook.cs" />
     <Compile Include="Assets\Move.cs" />
     <Compile Include="Assets\MyRandom.cs" />
+    <Compile Include="Assets\NextScene.cs" />
     <Compile Include="Assets\Ready.cs" />
     <Compile Include="Assets\RotationText.cs" />
     <Compile Include="Assets\Singletone.cs" />
