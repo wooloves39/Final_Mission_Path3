@@ -1,0 +1,41 @@
+﻿<Properties StartupItem="prototype.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AITree.cs">
+    <Files>
+      <File FileName="Assets\test\BuildTower.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\movetest.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\TileMapMouse.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\TileMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\Tower.cs" Line="1" Column="1" />
+      <File FileName="Assets\Skill1_1.cs" Line="1" Column="1" />
+      <File FileName="Assets\CharacterStatus.cs" Line="1" Column="1" />
+      <File FileName="Assets\CorrectionSound.cs" Line="1" Column="1" />
+      <File FileName="Assets\input.cs" Line="1" Column="1" />
+      <File FileName="Assets\Menu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Move.cs" Line="1" Column="1" />
+      <File FileName="Assets\Ready.cs" Line="1" Column="1" />
+      <File FileName="Assets\save1.txt" Line="1" Column="1" />
+      <File FileName="Assets\Singletone.cs" Line="3" Column="19" />
+      <File FileName="Assets\skilcontroller.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hyun\Use\input_mouse.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hyun\Use\input_non_instant.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hyun\Use\PointCheck.cs" Line="1" Column="1" />
+      <File FileName="Assets\Hyun\Use\Dialog.cs" Line="1" Column="1" />
+      <File FileName="Assets\Skill2_1.cs" Line="1" Column="1" />
+      <File FileName="Assets\MonsterAI.cs" Line="54" Column="2" />
+      <File FileName="Assets\MobAttack.cs" Line="1" Column="1" />
+      <File FileName="Assets\MobSearch.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\elecTowerCreate.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\elecshot.cs" Line="1" Column="1" />
+      <File FileName="Assets\TitleScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\NextScene.cs" Line="1" Column="1" />
+      <File FileName="Assets\test\ElecTower1.cs" Line="4" Column="1" />
+      <File FileName="Assets\AITree.cs" Line="62" Column="7" />
+      <File FileName="Assets\AIstatus.cs" Line="11" Column="11" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
