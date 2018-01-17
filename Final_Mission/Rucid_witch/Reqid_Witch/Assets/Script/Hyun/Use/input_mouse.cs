@@ -50,6 +50,7 @@ public class input_mouse : MonoBehaviour
 			//skill 오브젝트를 좌표에 맞게 생성한다.
 			Vector3 pos = transform.position;
 			Skills[mySkills[mytype]].transform.position = pos;
+
 			Skills[mySkills[mytype]].transform.rotation = transform.rotation;
 			Skills[mySkills[mytype]].gameObject.SetActive(true);
 			touchOn = true;
@@ -62,25 +63,28 @@ public class input_mouse : MonoBehaviour
 
 		}
 		//마우스의 움직임을 0.2초 당 한번씩 레이캐스트를 통해 체크한다.
-		if (touchOn && timer > 0.2f)
-		{
-		    timer = 0;
-		    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		    RaycastHit[] hit = Physics.SphereCastAll(ray, 0.01f);
-		    for (int i = 0; i < hit.Length; ++i)
-		    {
-		        if (hit[i].collider.gameObject.GetComponent<PointCheck>()) {
-		            if (!hit[i].collider.gameObject.GetComponent<PointCheck>().Getcheck())
-		            {
-		                hit[i].collider.gameObject.GetComponent<PointCheck>().touchon();
-		                Skills[mySkills[mytype]].UpCount();
-		                Skills[mySkills[mytype]].TouchPoint(hit[i].collider.gameObject.GetComponent<PointCheck>());
-		            }
-		        }
-		    }
-		}
-	}
+		//if (touchOn && timer > 0.2f)
+		//{
 
+		//    timer = 0;
+		//    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		//    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		//    RaycastHit[] hit = Physics.SphereCastAll(ray, 0.01f);
+		//    for (int i = 0; i < hit.Length; ++i)
+		//    {
+		//        if (hit[i].collider.gameObject.GetComponent<PointCheck>()) {
+		//            if (!hit[i].collider.gameObject.GetComponent<PointCheck>().Getcheck())
+		//            {
+		//                hit[i].collider.gameObject.GetComponent<PointCheck>().touchon();
+		//                }
+		//        }
+		//    }
+		//}
+	}
+	public void Upcount(PointCheck col)
+	{
+		Skills[mySkills[mytype]].UpCount();
+		Skills[mySkills[mytype]].TouchPoint(col);
+	}
 }
 
