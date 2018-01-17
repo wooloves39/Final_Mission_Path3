@@ -12,9 +12,7 @@ public class MainMenu : MonoBehaviour {
 	int index = 0;
 	float vertical = 0.0f;
 	float horizental = 0.0f;
-	// Use this for initialization
 
-	// Update is called once per frame
 	void OnEnable ()
 	{
 		cnt = 0;

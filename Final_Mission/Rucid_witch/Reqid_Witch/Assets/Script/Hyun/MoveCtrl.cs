@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCtrl : MonoBehaviour {
+public class MoveCtrl : MonoBehaviour
+{
 	public enum MoveType
 	{
 		WAY_POINT,
@@ -24,15 +25,17 @@ public class MoveCtrl : MonoBehaviour {
 	public static bool isStopped = false;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		tr = GetComponent<Transform>();
 		camTr = Camera.main.GetComponent<Transform>();
 		cc = GetComponent<CharacterController>();
-	//	points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
+		//	points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 		if (isStopped) return;
 		switch (moveType)
 		{
@@ -63,19 +66,15 @@ public class MoveCtrl : MonoBehaviour {
 	//우리 방식
 	void MoveTouchPad()
 	{
-		Vector3 touchDir = InputManager_JHW.MainJoystick();
-		//if ((touchDir.magnitude > 0.0f) && !move)
-			if (touchDir.magnitude>0.0f)
+		Vector3 touchDir = InputManager_JHW.MainJoystick()*2;
+		if (touchDir.magnitude > 0.0f)
 		{
 			Vector3 camdir = camTr.TransformDirection(Vector3.forward);
 			Vector3 dir = camdir + touchDir;
 			dir.Normalize();
 			Vector3 moveDir = camTr.TransformDirection(dir);
-			//transform.position += moveDir * 2;
-			//move = true;
 			cc.SimpleMove(moveDir * speed);
 		}
-		//else move = false;
 	}
 	private void OnTriggerEnter(Collider other)
 	{

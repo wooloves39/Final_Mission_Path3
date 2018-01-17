@@ -11,9 +11,11 @@ public class input_mouse : MonoBehaviour
 	private float skill_timer;
 	private int mytype;
 	private bool touchOn = false;
+	private LaserColl raser;
 	// Use this for initialization
 	void Start()
 	{
+		raser = GetComponentInChildren<LaserColl>();
 		mytype = 0;
 		skill_timer = 0;
 		skillon = false;
@@ -39,15 +41,12 @@ public class input_mouse : MonoBehaviour
 				skillon = false;
 			}
 		}
-		if (Input.GetKeyDown("1"))
-		{
-			++mytype;
-			if (mytype > 2) mytype = 0;
-		}
+		
 		//마우스 클릭시
 		if (touchOn == false && InputManager_JHW.RTriggerOn())
 		{
 			//skill 오브젝트를 좌표에 맞게 생성한다.
+			raser.gameObject.SetActive(true);
 			Vector3 pos = transform.position;
 			Skills[mySkills[mytype]].transform.position = pos;
 
@@ -58,33 +57,21 @@ public class input_mouse : MonoBehaviour
 		//마우스를 땟을때, 스킬이 발동했는지 확인한다.
 		if (!InputManager_JHW.RTriggerOn())
 		{
+			raser.gameObject.SetActive(false);
 			touchOn = false;
 		    Skills[mySkills[mytype]].SkillOn();
 
 		}
-		//마우스의 움직임을 0.2초 당 한번씩 레이캐스트를 통해 체크한다.
-		//if (touchOn && timer > 0.2f)
-		//{
-
-		//    timer = 0;
-		//    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		//    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		//    RaycastHit[] hit = Physics.SphereCastAll(ray, 0.01f);
-		//    for (int i = 0; i < hit.Length; ++i)
-		//    {
-		//        if (hit[i].collider.gameObject.GetComponent<PointCheck>()) {
-		//            if (!hit[i].collider.gameObject.GetComponent<PointCheck>().Getcheck())
-		//            {
-		//                hit[i].collider.gameObject.GetComponent<PointCheck>().touchon();
-		//                }
-		//        }
-		//    }
-		//}
 	}
 	public void Upcount(PointCheck col)
 	{
 		Skills[mySkills[mytype]].UpCount();
 		Skills[mySkills[mytype]].TouchPoint(col);
+	}
+	public void myType()
+	{
+		++mytype;
+		if (mytype > 2) mytype = 0;
 	}
 }
 
