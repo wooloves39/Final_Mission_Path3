@@ -7,49 +7,67 @@ public class LoadMenu : MonoBehaviour {
 	public GameObject[] Select;
 	public GameObject Main;
 	int index = 0;
+	int cnt;
+	float vertical = 0.0f;
+	float horizental = 0.0f;
 	// Use this for initialization
 
 	// Update is called once per frame
-	void OnEnable () {
+	void OnEnable ()
+	{
+		cnt = 0;
 		index = 0;
 		StartCoroutine ("KeyPad");
 	}
 	IEnumerator KeyPad(){
 		while(this.gameObject.activeInHierarchy == true)
 		{
-			//KeyBoard
-			if (Input.GetKey ("d"))
-			if (index != 2&&index != 3)
-				index++;
+			//KeyBoard	
+			vertical = 0.0f;
+			horizental = 0.0f;
+			vertical += Input.GetAxis("LThumbstickY");
+			horizental += Input.GetAxis("RThumbstickX");
+			if(horizental > 0)
+				if (index != 2&&index != 3)
+					index++;
 
-			if (Input.GetKey ("a"))
-			if (index != 0&&index != 3)
+			if (horizental < 0)
+				if (index != 0&&index != 3)
 				index--;
 
-			if (Input.GetKey ("s"))
+
+			if (vertical < 0)
 				index = 3;
 
-			if (Input.GetKey ("w"))
+			if (vertical > 0)
 				index = 2;
-			yield return new WaitForSeconds (0.1f);
 
 			for (int i = 0; i < Select.Length; ++i) {
 				Select [i].SetActive (false);
 			}
 			Select [index].SetActive (true);
 			//KeyBoard - Enter
-			if (Input.GetKey (KeyCode.Return) || Input.GetKey (KeyCode.KeypadEnter)) {
-				this.gameObject.SetActive (false);
-				if(index == 0)
-					SceneManager.LoadScene("Ready Scene");
-				if(index == 1)
-					SceneManager.LoadScene("Ready Scene");
-				if(index == 2)
-					SceneManager.LoadScene("Ready Scene");
-				if(index == 3)
-					Main.SetActive(true);
-				yield return new WaitForSeconds (0.1f);
+			if ((Input.GetAxis("LTrigger") == 1) || (Input.GetAxis("RTrigger") == 1))
+			{
+
+				Debug.Log("touch");
+				if (cnt>0)
+				{
+					this.gameObject.SetActive(false);
+					if (index == 0)
+						SceneManager.LoadScene("Ready Scene");
+					if (index == 1)
+						SceneManager.LoadScene("Ready Scene");
+					if (index == 2)
+						SceneManager.LoadScene("Ready Scene");
+					if (index == 3)
+						Main.SetActive(true);
+
+					yield return new WaitForSeconds(0.250f);
+				}
+				cnt++;
 			}
+			yield return new WaitForSeconds(0.125f);
 		}
 	}
 }

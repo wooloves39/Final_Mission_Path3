@@ -10,32 +10,40 @@ public class OptionMenu : MonoBehaviour {
 	public GameObject Main;
 	int index = 0;
 	int sound = 11;
+	int cnt;
+	float vertical = 0.0f;
+	float horizental = 0.0f;
 	// Use this for initialization
 
 	// Update is called once per frame
 	void OnEnable () {
 		index = 0;
+		cnt = 0;
 		StartCoroutine ("KeyPad");
-		Debug.Log ("Option");
 	}
 	IEnumerator KeyPad()
 	{
 		while(this.gameObject.activeInHierarchy == true)
 		{
+
 			//KeyBoard
-			if (Input.GetKey ("d"))
+			vertical = 0.0f;
+			horizental = 0.0f;
+			vertical += Input.GetAxis("LThumbstickY");
+			horizental += Input.GetAxis("RThumbstickX");
+			if (horizental>0)
 			if (index != 12 && index >= 10)
 				index++;
+				
+			if(horizental<0)
+				if (index != 10 && index >= 10)
+					index--;
 
-			if (Input.GetKey ("a"))
-			if (index != 10 && index >= 10)
-				index--;
+			if (vertical > 0)
+				index = 0;
 
-			if (Input.GetKey ("w"))
-				index =  0;
-
-			if (Input.GetKey ("s"))
-				index =  1;
+			if (vertical < 0)
+				index = 1;
 
 			for (int i = 0; i < Select.Length; ++i) {
 				Select [i].SetActive (false);
@@ -62,45 +70,54 @@ public class OptionMenu : MonoBehaviour {
 				Box[1].SetActive (false);
 			}
 
-			yield return new WaitForSeconds (0.1f);
-
 			//KeyBoard - Enter
-			if (Input.GetKey (KeyCode.Return) || Input.GetKey (KeyCode.KeypadEnter)) {
-				if (index == 10) {
-					sound = index;
-					Sound [index - 10].SetActive (true);
-					Sound [1].SetActive (false);
-					Sound [2].SetActive (false);
-					Box[0].SetActive (false);
-					Box[1].SetActive (false);
-					Box[2].SetActive (false);
+			if ((Input.GetAxis("LTrigger") == 1) || (Input.GetAxis("RTrigger") == 1))
+			{
+				if (cnt > 0)
+				{
+					cnt = 0;
+					if (index == 10)
+					{
+						sound = index;
+						Sound[index - 10].SetActive(true);
+						Sound[1].SetActive(false);
+						Sound[2].SetActive(false);
+						Box[0].SetActive(false);
+						Box[1].SetActive(false);
+						Box[2].SetActive(false);
+					}
+					if (index == 11)
+					{
+						sound = index;
+						Sound[index - 10].SetActive(true);
+						Sound[0].SetActive(false);
+						Sound[2].SetActive(false);
+						Box[0].SetActive(false);
+						Box[1].SetActive(false);
+						Box[2].SetActive(false);
+					}
+					if (index == 12)
+					{
+						sound = index;
+						Sound[index - 10].SetActive(true);
+						Sound[1].SetActive(false);
+						Sound[0].SetActive(false);
+						Box[0].SetActive(false);
+						Box[1].SetActive(false);
+						Box[2].SetActive(false);
+					}
+					if (index == 0)
+						index = sound;
+					if (index == 1)
+					{
+						this.gameObject.SetActive(false);
+						Main.SetActive(true);
+					}
+					yield return new WaitForSeconds(0.250f);
 				}
-				if (index == 11) {
-					sound = index;
-					Sound [index - 10].SetActive (true);
-					Sound [0].SetActive (false);
-					Sound [2].SetActive (false);
-					Box[0].SetActive (false);
-					Box[1].SetActive (false);
-					Box[2].SetActive (false);
-				}
-				if (index == 12) {
-					sound = index;
-					Sound [index - 10].SetActive (true);
-					Sound [1].SetActive (false);
-					Sound [0].SetActive (false);
-					Box[0].SetActive (false);
-					Box[1].SetActive (false);
-					Box[2].SetActive (false);
-				}
-				if (index == 0)
-					index = sound;
-				if (index == 1) {
-					this.gameObject.SetActive (false);
-					Main.SetActive (true);
-				}
-				yield return new WaitForSeconds (0.1f);
+				cnt++;
 			}
+			yield return new WaitForSeconds(0.125f);
 		}
 	}
 }
