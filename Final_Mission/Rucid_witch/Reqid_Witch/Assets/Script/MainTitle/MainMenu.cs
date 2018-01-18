@@ -19,20 +19,21 @@ public class MainMenu : MonoBehaviour {
 		StartCoroutine ("KeyPad");
 	}
 	IEnumerator KeyPad(){
+		Vector3 Stick;
 		while(this.gameObject.activeInHierarchy == true)
 		{
-
-			vertical = 0.0f;
-			horizental = 0.0f;
-			vertical += Input.GetAxis("LThumbstickY");
-			horizental += Input.GetAxis("RThumbstickX");
+			Stick = InputManager_JHW.MainJoystick();
+			//vertical = 0.0f;
+			//horizental = 0.0f;
+			//vertical += Stick.z;
+			//horizental += Stick.x;
 			//KeyBoard
 
-			if (vertical < 0)
+			if (Stick.z < 0)
 				if (index != 3)
 					index++;
 
-			if (vertical > 0)
+			if (Stick.z > 0)
 				if (index != 0)
 				index--;
 			
@@ -40,8 +41,8 @@ public class MainMenu : MonoBehaviour {
 				Select [i].SetActive (false);
 			}
 			Select [index].SetActive (true);
-			
-			if ((Input.GetAxis("LTrigger") == 1)|| (Input.GetAxis("RTrigger") == 1))
+
+			if (InputManager_JHW.AButton() || InputManager_JHW.XButton())
 			{
 				if (cnt > 0)
 				{
