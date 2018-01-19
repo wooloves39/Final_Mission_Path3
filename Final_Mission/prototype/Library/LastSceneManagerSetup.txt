@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/stage1.unity
+- path: C:/Users/cdcd8/Documents/Final_Mission/GitHub/Final_Mission_Path3/Final_Mission/Rucid_witch/Reqid_Witch/Assets/Scene/Ready.unity
   isLoaded: 1
   isActive: 1
