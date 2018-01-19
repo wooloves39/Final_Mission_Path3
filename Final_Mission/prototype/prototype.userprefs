@@ -28,10 +28,10 @@
       <File FileName="Assets\test\elecTowerCreate.cs" Line="1" Column="1" />
       <File FileName="Assets\test\elecshot.cs" Line="1" Column="1" />
       <File FileName="Assets\TitleScene.cs" Line="1" Column="1" />
-      <File FileName="Assets\test\ElecTower1.cs" Line="54" Column="3" />
-      <File FileName="Assets\AITree.cs" Line="13" Column="1" />
+      <File FileName="Assets\test\ElecTower1.cs" Line="1" Column="1" />
+      <File FileName="Assets\AITree.cs" Line="1" Column="1" />
       <File FileName="Assets\AIstatus.cs" Line="1" Column="1" />
-      <File FileName="Assets\AISearch.cs" Line="112" Column="20" />
+      <File FileName="Assets\AISearch.cs" Line="112" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
