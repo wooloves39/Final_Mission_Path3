@@ -22,12 +22,16 @@ public class AISearch: MonoBehaviour
 	public float Time_Cure1;
 	public float Time_Cure2;
 	public float Time_Cure3;
+	public float Time_Cure4;
+	public float Time_Cure5;
+	public float Time_Cure6;
 	public float Time_Buff1;
 	public float Time_Buff2;
 	public float Time_Buff3;
+	public float Time_Buff4;
 
 	bool Delay = false;
-	bool Fight = false;
+	bool Fight = true;//false;
 
 	Queue Battle = null;
 	Queue Peace = null;
@@ -104,6 +108,62 @@ public class AISearch: MonoBehaviour
 				break;
 			case 2:
 				time = Time_Nomal_Motion;
+				break;
+
+			case 12:
+				time = Time_Move;
+				break;
+			case 20:
+				time = Time_Normal_Skill1;
+				break;
+			case 21:
+				time = Time_Normal_Skill2;
+				break;
+			case 22:
+				time = Time_Normal_Skill3;
+				break;
+			case 23:
+				time = Time_Normal_Skill4;
+				break;
+			case 30:
+				time = Time_Special_Skill1;
+				break;
+			case 31:
+				time =  Time_Special_Skill2;
+				break;
+			case 32:
+				time =  Time_Special_Skill3;
+				break;
+
+			case 40:
+				time = Time_Cure1;
+				break;
+			case 41:
+				time = Time_Cure2;
+				break;
+			case 42:
+				time = Time_Cure3;
+				break;
+			case 43:
+				time = Time_Cure4;
+				break;
+			case 44:
+				time = Time_Cure5;
+				break;
+			case 45:
+				time = Time_Cure6;
+				break;
+			case 50:
+				time = Time_Buff1;
+				break;
+			case 51:
+				time = Time_Buff2;
+				break;
+			case 52:
+				time = Time_Buff3;
+				break;
+			case 53:
+				time = Time_Buff4;
 				break;
 			default:
 				time = 1.0f;
