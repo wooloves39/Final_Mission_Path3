@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AISearch.cs" />
     <Compile Include="Assets\AIstatus.cs" />
     <Compile Include="Assets\AITree.cs" />
     <Compile Include="Assets\Attack.cs" />
