@@ -7,60 +7,58 @@ public class MainMenu : MonoBehaviour {
 	public GameObject[] Select;
 	public GameObject Load;
 	public GameObject Option;
-	public bool VR = true;
+	public GameObject Confirm;
+	public bool confirm = false;
 	int cnt;
 	int index = 0;
-	float vertical = 0.0f;
-	float horizental = 0.0f;
 
 	void OnEnable ()
 	{
+		confirm = false;
 		cnt = 0;
 		StartCoroutine ("KeyPad");
 	}
 	IEnumerator KeyPad(){
-		Vector3 Stick;
-		while(this.gameObject.activeInHierarchy == true)
-		{
-			Stick = InputManager_JHW.MainJoystick();
-			//vertical = 0.0f;
-			//horizental = 0.0f;
-			//vertical += Stick.z;
-			//horizental += Stick.x;
-			//KeyBoard
+		if (!confirm) {
+			Vector3 Stick;
+			while (this.gameObject.activeInHierarchy == true) {
+				Stick = InputManager_JHW.MainJoystick ();
 
-			if (Stick.z < 0)
+				if (Stick.z < 0)
 				if (index != 3)
 					index++;
 
-			if (Stick.z > 0)
+				if (Stick.z > 0)
 				if (index != 0)
-				index--;
+					index--;
 			
-			for (int i = 0; i < Select.Length; ++i) {
-				Select [i].SetActive (false);
-			}
-			Select [index].SetActive (true);
-
-			if (InputManager_JHW.AButton() || InputManager_JHW.XButton())
-			{
-				if (cnt > 0)
-				{
-					this.gameObject.SetActive(false);
-					if (index == 0)
-						SceneManager.LoadScene("Ready Scene");
-					if (index == 1)
-						Load.SetActive(true);
-					if (index == 2)
-					{
-					}//멀티플레이
-					if (index == 3)
-						Option.SetActive(true);
-					yield return new WaitForSeconds(0.250f);
+				for (int i = 0; i < Select.Length; ++i) {
+					Select [i].SetActive (false);
 				}
-				cnt++;
+				Select [index].SetActive (true);
+
+				if (InputManager_JHW.AButton () || InputManager_JHW.XButton ()) {
+					if (cnt > 0) {
+						if (index == 0) {
+							confirm = true;
+							Confirm.SetActive (true);
+						}
+						if (index == 1) {
+							this.gameObject.SetActive (false);
+							Load.SetActive (true);
+						}
+						if (index == 2) {
+						}//멀티플레이
+						if (index == 3) {
+							this.gameObject.SetActive (false);
+							Option.SetActive (true);
+						}
+						yield return new WaitForSeconds (0.250f);
+					}
+					cnt++;
+				}
+				yield return new WaitForSeconds (0.125f);
 			}
-			yield return new WaitForSeconds(0.125f);
 		}
 	}
 }

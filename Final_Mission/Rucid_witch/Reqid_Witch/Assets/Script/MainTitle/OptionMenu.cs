@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class OptionMenu : MonoBehaviour {
 	public GameObject[] Select;
@@ -11,8 +10,6 @@ public class OptionMenu : MonoBehaviour {
 	int index = 0;
 	int sound = 11;
 	int cnt;
-	float vertical = 0.0f;
-	float horizental = 0.0f;
 	// Use this for initialization
 
 	// Update is called once per frame
