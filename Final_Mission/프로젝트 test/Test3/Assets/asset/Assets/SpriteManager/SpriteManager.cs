@@ -263,13 +263,13 @@ public class SpriteManager : MonoBehaviour
 
 	void Awake()
 	{
-		gameObject.AddComponent("MeshFilter");
-		gameObject.AddComponent("MeshRenderer");
+		gameObject.AddComponent<MeshFilter>();
+		gameObject.AddComponent<MeshRenderer>();
 
 		meshFilter = (MeshFilter)GetComponent(typeof(MeshFilter));
 		meshRenderer = (MeshRenderer)GetComponent(typeof(MeshRenderer));
 
-		meshRenderer.renderer.material = material;
+		meshRenderer.material = material;
 		mesh = meshFilter.mesh;
 
 		// Create our first batch of sprites:
