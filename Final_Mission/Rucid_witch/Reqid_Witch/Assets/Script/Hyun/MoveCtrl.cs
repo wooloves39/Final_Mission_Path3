@@ -49,6 +49,10 @@ public class MoveCtrl : MonoBehaviour
 				MoveTouchPad();
 				break;
 		}
+		if (InputManager_JHW.BButton())
+		{
+			turnBack();
+		}
 	}
 	void MoveWayPoint()
 	{
@@ -82,5 +86,18 @@ public class MoveCtrl : MonoBehaviour
 		{
 			nextIdx = (++nextIdx >= points.Length) ? 1 : nextIdx;
 		}
+	}
+	private void turnBack()
+	{
+		Vector3 pos=Vector3.zero;
+		if (gameObject.transform.rotation.y == 0)
+		{
+			pos.y= 180;
+		}
+		else if(gameObject.transform.rotation.y == 180)
+		{
+			pos.y=0;
+		}
+		gameObject.transform.rotation = Quaternion.Euler(pos);
 	}
 }

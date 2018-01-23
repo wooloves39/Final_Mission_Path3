@@ -48,11 +48,11 @@ public class input_mouse : MonoBehaviour
 			//skill 오브젝트를 좌표에 맞게 생성한다.
 			raser.gameObject.SetActive(true);
 
-			Vector3 pos = transform.position;
+			Vector3 pos = raser.transform.position;
 			Skills[mySkills[mytype]].transform.position = pos;
 
-			Skills[mySkills[mytype]].transform.rotation = transform.rotation;
-			//Skills[mySkills[mytype]].transform.rotation = Camera.main.transform.rotation;
+			//Skills[mySkills[mytype]].transform.rotation = transform.rotation;
+			Skills[mySkills[mytype]].transform.rotation = Camera.main.transform.rotation;
 			Skills[mySkills[mytype]].gameObject.SetActive(true);
 			touchOn = true;
 		}

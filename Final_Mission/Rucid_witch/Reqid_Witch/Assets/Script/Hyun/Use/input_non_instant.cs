@@ -20,6 +20,7 @@ public class input_non_instant : MonoBehaviour
 	private bool TimerOn;
 	private float completeTimer;
 	public GameObject Complete;
+	public LineRenderer line;
 	// Use this for initialization
 	void Start()
 	{
@@ -30,6 +31,8 @@ public class input_non_instant : MonoBehaviour
 	{
 		MainPoint = Points[0];
 		touchPoints = new int[skill5.Length];
+		line.positionCount = 1;
+		line.SetPosition(0, gameObject.transform.position);
 	}
 	public bool getTimerOn() { return TimerOn; }
 	public int UpCount()
@@ -60,6 +63,8 @@ public class input_non_instant : MonoBehaviour
 	public void TouchPoint(PointCheck touchPoint)
 	{
 		MyPoint = touchPoint;
+		line.positionCount = count + 1;
+		line.SetPosition(count, MyPoint.transform.position);
 		if (count >= 0)
 		{
 			for (int i = 0; i < Points.Length; ++i)
@@ -99,6 +104,10 @@ public class input_non_instant : MonoBehaviour
 		{
 			Points[i].turnoff();
 		}
+	}
+	private void lineReset()
+	{
+		line.positionCount = 1;
 	}
 	private void PointCheck(int[] skill)
 	{
@@ -159,6 +168,7 @@ public class input_non_instant : MonoBehaviour
 	}
 	public void SkillOn()
 	{
+		lineReset();
 		if (SkillCheck(skill1))
 		{
 			Debug.Log(1);
