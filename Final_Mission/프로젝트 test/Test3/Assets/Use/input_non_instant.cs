@@ -20,8 +20,9 @@ public class input_non_instant : MonoBehaviour
     private bool TimerOn;
     private float completeTimer;
     public GameObject Complete;
-    // Use this for initialization
-    void Start()
+	public LineRenderer line;
+	// Use this for initialization
+	void Start()
     {
         reset();
     }
@@ -29,8 +30,17 @@ public class input_non_instant : MonoBehaviour
     {
         MainPoint = Points[0];
         touchPoints = new int[skill5.Length];
+		line.positionCount = 1;
+		line.gameObject.transform.position = gameObject.transform.position;
+		line.SetPosition(0, gameObject.transform.position);
+		
     }
-    public bool getTimerOn() { return TimerOn; }
+	private void OnEnable()
+	{
+		line.gameObject.transform.position = gameObject.transform.position;
+		Debug.Log("dd");
+	}
+	public bool getTimerOn() { return TimerOn; }
     public int UpCount()
     {
         ++count;
@@ -58,7 +68,9 @@ public class input_non_instant : MonoBehaviour
     public void TouchPoint(PointCheck touchPoint)
     {
         MyPoint = touchPoint;
-        if (count >= 0)
+		line.positionCount=count+1;
+		line.SetPosition(count, MyPoint.transform.position);
+		if (count >= 0)
         {
             for (int i = 0; i < Points.Length; ++i)
             {
@@ -156,7 +168,8 @@ public class input_non_instant : MonoBehaviour
     }
     public void SkillOn()
     {
-        if (SkillCheck(skill1))
+		lineReset();
+		if (SkillCheck(skill1))
         {
             Debug.Log(1);
             Debug.Log("마법 발동!!"); TimerOn = true;
@@ -193,15 +206,24 @@ public class input_non_instant : MonoBehaviour
             Debug.Log("마법 발동!!"); TimerOn = true;
             Complete.SetActive(true);
             return;
-        }
-
-        PointRestart();
+		}
+		
+		PointRestart();
         TimerOn = false;
         reset();
         gameObject.SetActive(false);
     }
-    // Update is called once per frame
-    void Update()
+	private void lineReset()
+	{
+		line.positionCount = 1;
+		//Vector3 resetpos = Vector3.zero;
+		//for(int i = 0; i < line.positionCount; ++i)
+		//{
+		//	line.SetPosition(i, resetpos);
+		//}
+	}
+	// Update is called once per frame
+	void Update()
     {
         SkillTime();
         PointChecks();
