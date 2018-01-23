@@ -38,21 +38,14 @@ public class LoadMenu : MonoBehaviour {
 				if (index != 0 && index != 3)
 					index--;
 
-
-				if (Stick.z < 0)
-					index = 3;
-
-				if (Stick.z > 0)
-					index = 2;
-
 				for (int i = 0; i < Select.Length; ++i) {
 					Select [i].SetActive (false);
 				}
 				Select [index].SetActive (true);
 				//KeyBoard - Enter
-				if (InputManager_JHW.AButton () || InputManager_JHW.XButton ()) {
-
-					if (cnt > 0) {
+				if (InputManager_JHW.AButton ())
+				{
+					{
 						if (index == 0) {
 							confirm = true;
 							Confirm.SetActive (true);
@@ -72,7 +65,25 @@ public class LoadMenu : MonoBehaviour {
 
 						yield return new WaitForSeconds (0.250f);
 					}
-					cnt++;
+				}
+				if (InputManager_JHW.BButton ())
+				{
+					{
+						if (index == 0) {
+							index = 3;
+						}
+						if (index == 1) {
+							index = 3;
+						}
+						if (index == 2) {
+							index = 3;
+						}
+						if (index == 3) {
+							index = 0;
+						}
+
+						yield return new WaitForSeconds (0.250f);
+					}
 				}
 				yield return new WaitForSeconds (0.125f);
 			}
