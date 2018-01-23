@@ -25,5 +25,10 @@ public class Move : MonoBehaviour {
 			this.transform.Translate (Vector3.right * movespeed * Time.deltaTime,Space.Self);
 
 		}
+		if (Input.GetKey(KeyCode.B))
+		{
+			Vector3 rotate = new Vector3(0, 90, 0);
+			this.transform.Rotate(rotate);
+		}
 	}
 }
