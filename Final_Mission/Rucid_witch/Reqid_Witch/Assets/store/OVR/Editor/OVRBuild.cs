@@ -27,17 +27,28 @@ using UnityEditor;
 /// </summary>
 partial class OculusBuildApp
 {
-    static void SetAndroidTarget()
-    {
-#if UNITY_5
-		EditorUserBuildSettings.androidBuildSubtarget = MobileTextureSubtarget.ASTC;
-#else
-		EditorUserBuildSettings.androidBuildSubtarget = MobileTextureSubtarget.ETC2;
-#endif
-	if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
-        {
-            EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTarget.Android);
-        }
-    }
-}
+	static void SetPCTarget()
+	{
+		if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.StandaloneWindows)
+		{
+			EditorUserBuildSettings.SwitchActiveBuildTarget (BuildTargetGroup.Standalone, BuildTarget.StandaloneWindows);
+		}
+		UnityEditorInternal.VR.VREditor.SetVREnabledOnTargetGroup(BuildTargetGroup.Standalone, true);
+		PlayerSettings.virtualRealitySupported = true;
+		AssetDatabase.SaveAssets();
+	}
 
+	static void SetAndroidTarget()
+	{
+		EditorUserBuildSettings.androidBuildSubtarget = MobileTextureSubtarget.ASTC;
+
+		if (EditorUserBuildSettings.activeBuildTarget != BuildTarget.Android)
+		{
+			EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
+		}
+
+		UnityEditorInternal.VR.VREditor.SetVREnabledOnTargetGroup(BuildTargetGroup.Standalone, true);
+		PlayerSettings.virtualRealitySupported = true;
+		AssetDatabase.SaveAssets();
+	}
+}

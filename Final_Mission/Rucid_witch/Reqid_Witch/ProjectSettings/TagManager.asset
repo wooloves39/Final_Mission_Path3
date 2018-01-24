@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - WAY_POINT
+  - dontmove
+  - listlast
+  - Complete_Skill
+  - Ground
   layers:
   - Default
   - TransparentFX
