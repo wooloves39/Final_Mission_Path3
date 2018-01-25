@@ -41,28 +41,30 @@ public class input_mouse : MonoBehaviour
 				skillon = false;
 			}
 		}
-		
-		//마우스 클릭시
-		if (touchOn == false && InputManager_JHW.RTriggerOn())
+		else
 		{
-			//skill 오브젝트를 좌표에 맞게 생성한다.
-			raser.gameObject.SetActive(true);
+			//마우스 클릭시
+			if (touchOn == false && InputManager_JHW.AButton())
+			{
+				//skill 오브젝트를 좌표에 맞게 생성한다.
+				raser.gameObject.SetActive(true);
 
-			Vector3 pos = raser.transform.position;
-			Skills[mySkills[mytype]].transform.position = pos;
+				Vector3 pos = raser.transform.position;
+				Skills[mySkills[mytype]].transform.position = pos;
 
-			//Skills[mySkills[mytype]].transform.rotation = transform.rotation;
-			Skills[mySkills[mytype]].transform.rotation = Camera.main.transform.rotation;
-			Skills[mySkills[mytype]].gameObject.SetActive(true);
-			touchOn = true;
-		}
-		//마우스를 땟을때, 스킬이 발동했는지 확인한다.
-		if (!InputManager_JHW.RTriggerOn())
-		{
-			raser.gameObject.SetActive(false);
-			touchOn = false;
-		    Skills[mySkills[mytype]].SkillOn();
+				//Skills[mySkills[mytype]].transform.rotation = transform.rotation;
+				Skills[mySkills[mytype]].transform.rotation = Camera.main.transform.rotation;
+				Skills[mySkills[mytype]].gameObject.SetActive(true);
+				touchOn = true;
+			}
+			//마우스를 땟을때, 스킬이 발동했는지 확인한다.
+			if (touchOn == true && InputManager_JHW.AButton())
+			{
+				raser.gameObject.SetActive(false);
+				touchOn = false;
+				Skills[mySkills[mytype]].SkillOn();
 
+			}
 		}
 	}
 	public void Upcount(PointCheck col)

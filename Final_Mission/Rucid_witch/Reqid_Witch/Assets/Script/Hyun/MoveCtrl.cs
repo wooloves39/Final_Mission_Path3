@@ -23,7 +23,7 @@ public class MoveCtrl : MonoBehaviour
 	//public bool move = false;
 	//바꿔야 할 여지가 있음
 	public static bool isStopped = false;
-
+	private Coroutine moveCoroutine;
 	// Use this for initialization
 	void Start()
 	{
@@ -31,29 +31,57 @@ public class MoveCtrl : MonoBehaviour
 		camTr = Camera.main.GetComponent<Transform>();
 		cc = GetComponent<CharacterController>();
 		//	points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
+		moveCoroutine=StartCoroutine(MoveControll());
+
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (isStopped) return;
-		switch (moveType)
-		{
-			case MoveType.WAY_POINT:
-				MoveWayPoint();
-				break;
-			case MoveType.LOOK_AT:
-				MoveLookAt();
-				break;
-			case MoveType.DAYDREAM:
-				MoveTouchPad();
-				break;
+		if (isStopped) {
+			StopCoroutine(moveCoroutine);
+			return;
 		}
+		else
+		{
+			moveCoroutine=StartCoroutine(MoveControll());
+		}
+		//switch (moveType)
+		//{
+		//	case MoveType.WAY_POINT:
+		//		MoveWayPoint();
+		//		break;
+		//	case MoveType.LOOK_AT:
+		//		MoveLookAt();
+		//		break;
+		//	case MoveType.DAYDREAM:
+		//		MoveTouchPad();
+		//		break;
+		//}
 		if (InputManager_JHW.BButton())
 		{
 			turnBack();
 		}
 	}
+	private IEnumerator MoveControll()
+	{
+		Vector3 touchDir = InputManager_JHW.MainJoystick() * 2;
+		if (touchDir.magnitude > 0.0f)
+		{
+			Vector3 camdir = camTr.TransformDirection(Vector3.forward);
+			Vector3 dir = camdir + touchDir;
+			dir.Normalize();
+			Vector3 moveDir = camTr.TransformDirection(dir);
+			cc.SimpleMove(moveDir * 50.0f);
+			yield return new WaitForSeconds(0.5f);
+		}
+		else
+		{
+			yield return 0;
+		}
+	}
+
+
 	void MoveWayPoint()
 	{
 		Vector3 direction = points[nextIdx].position - tr.position;
@@ -70,7 +98,7 @@ public class MoveCtrl : MonoBehaviour
 	//우리 방식
 	void MoveTouchPad()
 	{
-		Vector3 touchDir = InputManager_JHW.MainJoystick()*2;
+		Vector3 touchDir = InputManager_JHW.MainJoystick() * 2;
 		if (touchDir.magnitude > 0.0f)
 		{
 			Vector3 camdir = camTr.TransformDirection(Vector3.forward);
@@ -89,14 +117,14 @@ public class MoveCtrl : MonoBehaviour
 	}
 	private void turnBack()
 	{
-		Vector3 pos=Vector3.zero;
+		Vector3 pos = Vector3.zero;
 		if (gameObject.transform.rotation.y == 0)
 		{
-			pos.y= 180;
+			pos.y = 180;
 		}
-		else if(gameObject.transform.rotation.y == 180)
+		else if (gameObject.transform.rotation.y == 180)
 		{
-			pos.y=0;
+			pos.y = 0;
 		}
 		gameObject.transform.rotation = Quaternion.Euler(pos);
 	}
