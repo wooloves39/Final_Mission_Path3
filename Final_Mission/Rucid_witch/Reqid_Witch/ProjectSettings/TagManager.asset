@@ -9,6 +9,7 @@ TagManager:
   - listlast
   - Complete_Skill
   - Ground
+  - Point
   layers:
   - Default
   - TransparentFX

@@ -24,7 +24,7 @@ public class input_mouse : MonoBehaviour
 		mySkills[0] = 3;
 		mySkills[1] = 2;
 		mySkills[2] = 4; //test
-
+		raser.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -58,7 +58,7 @@ public class input_mouse : MonoBehaviour
 				touchOn = true;
 			}
 			//마우스를 땟을때, 스킬이 발동했는지 확인한다.
-			if (touchOn == true && InputManager_JHW.AButton())
+			else if (touchOn == true && InputManager_JHW.AButton())
 			{
 				raser.gameObject.SetActive(false);
 				touchOn = false;

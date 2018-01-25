@@ -23,7 +23,7 @@ public class MoveCtrl : MonoBehaviour
 	//public bool move = false;
 	//바꿔야 할 여지가 있음
 	public static bool isStopped = false;
-	private Coroutine moveCoroutine;
+	//private Coroutine moveCoroutine;
 	// Use this for initialization
 	void Start()
 	{
@@ -31,7 +31,7 @@ public class MoveCtrl : MonoBehaviour
 		camTr = Camera.main.GetComponent<Transform>();
 		cc = GetComponent<CharacterController>();
 		//	points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
-		moveCoroutine=StartCoroutine(MoveControll());
+		//moveCoroutine=StartCoroutine(MoveControll());
 
 	}
 
@@ -39,25 +39,21 @@ public class MoveCtrl : MonoBehaviour
 	void Update()
 	{
 		if (isStopped) {
-			StopCoroutine(moveCoroutine);
+			//StopCoroutine(moveCoroutine);
 			return;
 		}
-		else
+		switch (moveType)
 		{
-			moveCoroutine=StartCoroutine(MoveControll());
+			case MoveType.WAY_POINT:
+				MoveWayPoint();
+				break;
+			case MoveType.LOOK_AT:
+				MoveLookAt();
+				break;
+			case MoveType.DAYDREAM:
+				MoveTouchPad();
+				break;
 		}
-		//switch (moveType)
-		//{
-		//	case MoveType.WAY_POINT:
-		//		MoveWayPoint();
-		//		break;
-		//	case MoveType.LOOK_AT:
-		//		MoveLookAt();
-		//		break;
-		//	case MoveType.DAYDREAM:
-		//		MoveTouchPad();
-		//		break;
-		//}
 		if (InputManager_JHW.BButton())
 		{
 			turnBack();

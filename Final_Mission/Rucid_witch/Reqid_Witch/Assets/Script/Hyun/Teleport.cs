@@ -39,15 +39,11 @@ public class Teleport : MonoBehaviour
 					TeleportMarker.SetActive(true);
 				}
 				Vector3 point = hit.point;
-				point.y += 0.1f;
+				point.y += 0.2f;
 				TeleportMarker.transform.position = point;
 				yield return new WaitForSeconds(0.5f);
 			}
-			else
-			{
-				TeleportMarker.SetActive(false);
-				yield return 0;
-			}
+			
 		}
 	}
 }
