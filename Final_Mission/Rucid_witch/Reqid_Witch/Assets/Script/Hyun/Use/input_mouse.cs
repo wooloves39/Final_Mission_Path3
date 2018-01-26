@@ -9,7 +9,7 @@ public class input_mouse : MonoBehaviour
 	private float timer = 0;
 	private bool skillon;
 	private float skill_timer;
-	private int mytype;
+	public static int mytype;
 	private bool touchOn = false;
 	private LaserColl raser;
 	// Use this for initialization

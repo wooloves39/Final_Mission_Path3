@@ -32,16 +32,48 @@ public class SkillAttack1 : MonoBehaviour
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.CompareTag("Point"))
+		switch (input_mouse.mytype)
 		{
-			isTouch = true;
+			case 1:
+				{
+					if (other.gameObject.CompareTag("Monster"))
+					{
+						isTouch = true;
+					}
+				}
+				break;
+			case 3:
+				{
+					if (other.gameObject.CompareTag("Point"))
+					{
+						isTouch = true;
+					}
+				}
+				break;
 		}
+		
 	}
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.gameObject.CompareTag("Point"))
+		switch (input_mouse.mytype)
 		{
-			isTouch = false;
+			case 1:
+				{
+					if (other.gameObject.CompareTag("Monster"))
+					{
+						isTouch = false;
+					}
+				}
+				break;
+			case 3:
+				{
+					if (other.gameObject.CompareTag("Point"))
+					{
+						isTouch = false;
+					}
+				}
+				break;
 		}
+		
 	}
 }

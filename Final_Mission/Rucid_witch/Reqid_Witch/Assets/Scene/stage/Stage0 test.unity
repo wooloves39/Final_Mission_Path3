@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -667,6 +667,7 @@ GameObject:
   - component: {fileID: 323650284}
   - component: {fileID: 323650288}
   - component: {fileID: 323650285}
+  - component: {fileID: 323650286}
   m_Layer: 0
   m_Name: Ltouch
   m_TagString: Untagged
@@ -700,7 +701,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 1
---- !u!114 &323650285
+--- !u!65 &323650285
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323650282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.111932, y: 1, z: 1.965311}
+  m_Center: {x: -0.09, y: 0, z: 0.35}
+--- !u!114 &323650286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -708,11 +721,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 323650282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3475e321953cfbd4fad11b66fdf8aa5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 908e7af4bf6363a4990ef5c995fb537e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeleportMarker: {fileID: 388336470}
-  RayLength: 50
 --- !u!114 &323650288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +920,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 407095379}
+--- !u!1001 &460206362
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221751474543150, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9186d645852f1f44dba760b4b64d9a89, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &520797984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1542,7 @@ GameObject:
   - component: {fileID: 822306319}
   - component: {fileID: 822306318}
   - component: {fileID: 822306320}
+  - component: {fileID: 822306321}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1544,6 +1598,22 @@ MonoBehaviour:
   moveType: 2
   speed: 5
   damping: 5
+--- !u!114 &822306321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 822306317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3475e321953cfbd4fad11b66fdf8aa5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hands: []
+  TeleportMarker:
+  - {fileID: 388336470}
+  - {fileID: 1409717389}
+  RayLength: 50
 --- !u!1 &839618913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2798,48 +2868,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1329850372}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1340736311
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4793668977000420, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7b524c4bfaff4974db62905cad3b1352, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1409717389
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,6 +3020,7 @@ GameObject:
   - component: {fileID: 1532262657}
   - component: {fileID: 1532262658}
   - component: {fileID: 1532262654}
+  - component: {fileID: 1532262655}
   m_Layer: 0
   m_Name: Rtouch
   m_TagString: Untagged
@@ -3026,7 +3055,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 2
---- !u!114 &1532262654
+--- !u!65 &1532262654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532262651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1119318, y: 1, z: 1.9653109}
+  m_Center: {x: -0.16356823, y: 0, z: 0.3269196}
+--- !u!114 &1532262655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -3034,11 +3075,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1532262651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3475e321953cfbd4fad11b66fdf8aa5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 908e7af4bf6363a4990ef5c995fb537e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeleportMarker: {fileID: 1409717389}
-  RayLength: 50
 --- !u!114 &1532262657
 MonoBehaviour:
   m_ObjectHideFlags: 0
