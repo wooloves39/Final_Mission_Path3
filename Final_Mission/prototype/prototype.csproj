@@ -93,6 +93,7 @@
     <Compile Include="Assets\ChoiceSkill_index.cs" />
     <Compile Include="Assets\CorrectionSound.cs" />
     <Compile Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\SkyboxPanoramicBetaShaderGUI.cs" />
+    <Compile Include="Assets\Hyun\test_Script\Billboards.cs" />
     <Compile Include="Assets\Hyun\Use\Dialog.cs" />
     <Compile Include="Assets\Hyun\Use\input_mouse.cs" />
     <Compile Include="Assets\Hyun\Use\input_non_instant.cs" />
