@@ -193,12 +193,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5646faca7e9d0fe4083686aa32a163c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerType: 0
+  range: 0
+  dmg: 0
+  dmgStack: 0
+  kill: 0
   LinePrefab: {fileID: 1599479275555930, guid: d86b455534f5e344c836a4aa4466a46a, type: 2}
   elecPrefab: {fileID: 1273677088787652, guid: 46994de99b1417e489044895c57e4777, type: 2}
-  elecRange: 10
   myarr: []
   distanse: []
-  elecCount: 4
+  ElecRange: 10
+  elecCount: 2
+  ElecHigh: 2
 --- !u!123 &123564034391779058
 LensFlare:
   m_ObjectHideFlags: 1

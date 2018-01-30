@@ -60,6 +60,7 @@
      <Compile Include="Assets\ChoiceSkill_index.cs" />
      <Compile Include="Assets\CorrectionSound.cs" />
      <Compile Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\SkyboxPanoramicBetaShaderGUI.cs" />
+     <Compile Include="Assets\Hyun\test_Script\Billboards.cs" />
      <Compile Include="Assets\Hyun\Use\Dialog.cs" />
      <Compile Include="Assets\Hyun\Use\input_mouse.cs" />
      <Compile Include="Assets\Hyun\Use\input_non_instant.cs" />
@@ -89,11 +90,13 @@
      <Compile Include="Assets\test\elecshot.cs" />
      <Compile Include="Assets\test\ElecTower1.cs" />
      <Compile Include="Assets\test\elecTowerCreate.cs" />
+     <Compile Include="Assets\test\Global_parameter.cs" />
      <Compile Include="Assets\test\movetest.cs" />
      <Compile Include="Assets\test\shot.cs" />
      <Compile Include="Assets\test\TileMap.cs" />
      <Compile Include="Assets\test\TileMapMouse.cs" />
      <Compile Include="Assets\test\Tower.cs" />
+     <Compile Include="Assets\test\towerSC.cs" />
      <Compile Include="Assets\TitleScene.cs" />
      <None Include="Assets\save1.txt" />
      <None Include="Assets\360 model\Insideout.shader" />
