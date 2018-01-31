@@ -9,9 +9,10 @@ public class input_mouse : MonoBehaviour
 	private float timer = 0;
 	private bool skillon;
 	private float skill_timer;
-	public static int mytype;
+	private int mytype;
 	private bool touchOn = false;
 	private LaserColl raser;
+	public static int curType;
 	// Use this for initialization
 	void Start()
 	{
@@ -23,7 +24,8 @@ public class input_mouse : MonoBehaviour
 		mySkills = new int[3];
 		mySkills[0] = 3;
 		mySkills[1] = 2;
-		mySkills[2] = 4; //test
+		mySkills[2] = 0; //test
+		curType = mySkills[mytype];
 		raser.gameObject.SetActive(false);
 	}
 
@@ -76,6 +78,8 @@ public class input_mouse : MonoBehaviour
 	{
 		++mytype;
 		if (mytype > 2) mytype = 0;
+		curType = mySkills[mytype];
 	}
+	
 }
 

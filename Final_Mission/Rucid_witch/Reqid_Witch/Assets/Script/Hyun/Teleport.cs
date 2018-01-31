@@ -23,6 +23,7 @@ public class Teleport : MonoBehaviour
 	// Use this for initialization
 	private void Awake()
 	{
+		AzuraHands = new TouchCollision[2];
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
 	}
@@ -34,7 +35,8 @@ public class Teleport : MonoBehaviour
 		{
 			if (currentCorutine == null)
 			{
-				switch (input_mouse.mytype)
+				flug = true;
+				switch (input_mouse.curType)
 				{
 					case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
 						{
@@ -70,7 +72,7 @@ public class Teleport : MonoBehaviour
 			flug = false;
 			if (currentCorutine != null)
 				StopCoroutine(currentCorutine);
-			switch (input_mouse.mytype)
+			switch (input_mouse.curType)
 			{
 				case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
 					{
@@ -107,57 +109,65 @@ public class Teleport : MonoBehaviour
 	private IEnumerator PointControll()
 	{
 		//왼손
-		Ray ray = new Ray(Hands[0].transform.position, Hands[0].transform.forward);
-		RaycastHit hit;
-		if (Physics.Raycast(ray, out hit, RayLength))
+		while (flug)
 		{
-			if (hit.collider.CompareTag("Ground"))
+			Ray ray = new Ray(Hands[0].transform.position, Hands[0].transform.forward);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!TeleportMarker[0].activeSelf)
+				if (hit.collider.CompareTag("Ground"))
 				{
-					TeleportMarker[0].SetActive(true);
+					if (!TeleportMarker[0].activeSelf)
+					{
+						TeleportMarker[0].SetActive(true);
+					}
+					Vector3 point = hit.point;
+					point.y += 0.2f;
+					TeleportMarker[0].transform.position = point;
 				}
-				Vector3 point = hit.point;
-				point.y += 0.2f;
-				TeleportMarker[0].transform.position = point;
 			}
-		}
-		//오른손
-		ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
-		if (Physics.Raycast(ray, out hit, RayLength))
-		{
-			if (hit.collider.CompareTag("Ground"))
+			//오른손
+			ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
+			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!TeleportMarker[1].activeSelf)
+				if (hit.collider.CompareTag("Ground"))
 				{
-					TeleportMarker[1].SetActive(true);
+					if (!TeleportMarker[1].activeSelf)
+					{
+						TeleportMarker[1].SetActive(true);
+					}
+					Vector3 point = hit.point;
+					point.y += 0.2f;
+					TeleportMarker[1].transform.position = point;
 				}
-				Vector3 point = hit.point;
-				point.y += 0.2f;
-				TeleportMarker[1].transform.position = point;
 			}
+			yield return new WaitForSeconds(0.01f);
 		}
-		yield return new WaitForSeconds(0.5f);
 	}
 	private IEnumerator AzuraControll()
 	{
-		bool instance=false;
+		bool instance = false;
 		float distance = 0.0f;
-		if (!instance&&(AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
+		while (true)
 		{
-			instance = true;
-			Debug.Log("스킬 생성");
-		}
-		if (instance)
-		{
-			float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
-			if (handDis < distance) {
-				distance = handDis;
-				Debug.Log("차징!");
+			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
+			{
+				instance = true;
+				Debug.Log("스킬 생성");
 			}
+			if (instance)
+			{
+				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+				if (handDis < distance)
+				{
+					distance = handDis;
+					Debug.Log("차징!");
+				}
 
+			}
+			yield return null;
+			//yield return new WaitForSeconds(0.5f);
 		}
-		yield return new WaitForSeconds(0.5f);
 	}
 	private IEnumerator BeeJaeControll()
 	{

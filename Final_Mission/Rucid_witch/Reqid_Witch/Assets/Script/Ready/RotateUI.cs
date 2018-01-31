@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateUI : MonoBehaviour {
+public class RotateUI : MonoBehaviour
+{
 
-	public List <GameObject> Skill;
+	public List<GameObject> Skill;
 
-	
+
 	// Update is called once per frame
-	void Start ()
+	void Start()
 	{
-		StartCoroutine ("SkillSet");
+		StartCoroutine("SkillSet");
 	}
 	IEnumerator SkillSet()
 	{
@@ -22,22 +23,22 @@ public class RotateUI : MonoBehaviour {
 			Stick = InputManager_JHW.MainJoystick();
 			if (true)
 			{
-				this.transform.Rotate(new Vector3(0, (float)72/10, 0), Space.Self);
+				this.transform.Rotate(new Vector3(0, (float)72 / 10, 0), Space.Self);
 				Debug.Log("SkillA");
 			}
 			if (Stick.x > 0 || Input.GetKey(KeyCode.S))
 			{
-				this.transform.Rotate(new Vector3(0, (float)-72/10, 0), Space.Self);
+				this.transform.Rotate(new Vector3(0, (float)-72 / 10, 0), Space.Self);
 				Debug.Log("SkillS");
 			}
 			for (int i = 0; i < 5; ++i)
 			{
-				if (Skill[i].transform.rotation.y == (360 || -360))
-					Skill[i].transform.rotation.y = 0.0;
-				if(-36.0f<= Skill[i].transform.rotation.y && Skill[i].transform.rotation.y <= 36.0f)
-					
-				if (Skill[i].transform.rotation.y == 0)
-					check = true;
+				//if (Skill[i].transform.rotation.y == (360 || -360))
+				//	Skill[i].transform.rotation.y = 0.0;
+				if (-36.0f <= Skill[i].transform.rotation.y && Skill[i].transform.rotation.y <= 36.0f)
+
+					if (Skill[i].transform.rotation.y == 0)
+						check = true;
 			}
 			if (check)
 				break;

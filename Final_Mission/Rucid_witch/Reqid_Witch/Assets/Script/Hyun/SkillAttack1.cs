@@ -32,7 +32,7 @@ public class SkillAttack1 : MonoBehaviour
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		switch (input_mouse.mytype)
+		switch (input_mouse.curType)
 		{
 			case 1:
 				{
@@ -55,7 +55,7 @@ public class SkillAttack1 : MonoBehaviour
 	}
 	private void OnTriggerExit(Collider other)
 	{
-		switch (input_mouse.mytype)
+		switch (input_mouse.curType)
 		{
 			case 1:
 				{
