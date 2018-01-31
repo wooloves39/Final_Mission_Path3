@@ -203,8 +203,8 @@ MonoBehaviour:
   myarr: []
   distanse: []
   ElecRange: 10
-  elecCount: 2
-  ElecHigh: 2
+  elecCount: 1
+  ElecHigh: 10
 --- !u!123 &123564034391779058
 LensFlare:
   m_ObjectHideFlags: 1

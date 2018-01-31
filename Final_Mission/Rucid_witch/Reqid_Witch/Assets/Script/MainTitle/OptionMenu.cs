@@ -15,13 +15,11 @@ public class OptionMenu : MonoBehaviour {
 	int sound = 12;
 	int sound2 = 22;
 	int grapic = 31;
-	int cnt;
 	// Use this for initialization
 
 	// Update is called once per frame
 	void OnEnable () {
 		index = 0;
-		cnt = 0;
 		StartCoroutine ("KeyPad");
 	}
 	IEnumerator KeyPad()

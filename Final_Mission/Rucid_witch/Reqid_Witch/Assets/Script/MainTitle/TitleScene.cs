@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class TitleScene : MonoBehaviour
 {
-    public SpriteRenderer Title;
+	public SpriteRenderer Title;
+	public GameObject Menu;
 	Color object_Color;
 	float opening_time = 0.0f;
 	float Alpha_color = 0.0f;
 	float Screen_width;
 	float Screen_height;
+	bool Loading = false;
 
 	private IEnumerator opening;
 	// Use this for initialization
@@ -47,6 +49,13 @@ public class TitleScene : MonoBehaviour
 			Debug.Log(Alpha_color);
 			StopCoroutine(opening);
 		}
+		if (Loading) 
+		{
+			if (Input.anyKey) 
+			{
+				Menu.SetActive (true);
+			}
+		}
     }
 	public IEnumerator OpeningCourutine(SpriteRenderer target)
 	{
@@ -60,6 +69,7 @@ public class TitleScene : MonoBehaviour
 			{
 				Alpha_color = 1.0f;
 				Debug.Log("dd");
+				Loading = true;
 				yield break;
 			}
 			yield return new WaitForSeconds(0.2f);

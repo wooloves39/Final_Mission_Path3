@@ -9,14 +9,12 @@ public class LoadMenu : MonoBehaviour {
 	public GameObject Confirm;
 	public bool confirm = false;
 	int index = 0;
-	int cnt;
 	// Use this for initialization
 
 	// Update is called once per frame
 	void OnEnable ()
 	{
 		confirm = false;
-		cnt = 0;
 		index = 0;
 		StartCoroutine ("KeyPad");
 	}
