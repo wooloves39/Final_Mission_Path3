@@ -10,7 +10,7 @@ public class Teleport : MonoBehaviour
 
 	//#1번 공격
 	private TouchCollision[] AzuraHands;
-
+	public GameObject AzuraBall;
 
 
 	//#3번 공격
@@ -53,7 +53,7 @@ public class Teleport : MonoBehaviour
 
 						}
 						break;
-					case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
+					case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출 베르베시
 						{
 							currentCorutine = StartCoroutine(PointControll());
 						}
@@ -146,14 +146,17 @@ public class Teleport : MonoBehaviour
 	}
 	private IEnumerator AzuraControll()
 	{
+		Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position)/2;
 		bool instance = false;
 		float distance = 0.0f;
-		while (true)
+		while (flug)
 		{
 			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
 			{
 				instance = true;
 				Debug.Log("스킬 생성");
+				AzuraBall.SetActive(true);
+				AzuraBall.transform.position = AttackPoint;
 			}
 			if (instance)
 			{
@@ -161,47 +164,50 @@ public class Teleport : MonoBehaviour
 				if (handDis < distance)
 				{
 					distance = handDis;
-					Debug.Log("차징!");
+					Debug.Log(distance);
 				}
 
 			}
-			yield return null;
-			//yield return new WaitForSeconds(0.5f);
+			//yield return null;
+			yield return new WaitForSeconds(0.5f);
 		}
 	}
 	private IEnumerator BeeJaeControll()
 	{
 		//왼손
-		Ray ray = new Ray(Hands[0].transform.position, Hands[0].transform.forward);
-		RaycastHit hit;
-		if (Physics.Raycast(ray, out hit, RayLength))
+		while (flug)
 		{
-			if (hit.collider.CompareTag("Monster"))
+			Ray ray = new Ray(Hands[0].transform.position, Hands[0].transform.forward);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!TeleportMarker[0].activeSelf)
+				if (hit.collider.CompareTag("Ground"))
 				{
-					TeleportMarker[0].SetActive(true);
+					if (!TeleportMarker[0].activeSelf)
+					{
+						TeleportMarker[0].SetActive(true);
+					}
+					Vector3 point = hit.point;
+					point.y += 0.2f;
+					TeleportMarker[0].transform.position = point;
 				}
-				Vector3 point = hit.point;
-				point.y += 0.2f;
-				TeleportMarker[0].transform.position = point;
 			}
-		}
-		//오른손
-		ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
-		if (Physics.Raycast(ray, out hit, RayLength))
-		{
-			if (hit.collider.CompareTag("Monster"))
+			//오른손
+			ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
+			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!TeleportMarker[1].activeSelf)
+				if (hit.collider.CompareTag("Ground"))
 				{
-					TeleportMarker[1].SetActive(true);
+					if (!TeleportMarker[1].activeSelf)
+					{
+						TeleportMarker[1].SetActive(true);
+					}
+					Vector3 point = hit.point;
+					point.y += 0.2f;
+					TeleportMarker[1].transform.position = point;
 				}
-				Vector3 point = hit.point;
-				point.y += 0.2f;
-				TeleportMarker[1].transform.position = point;
 			}
+			yield return new WaitForSeconds(0.01f);
 		}
-		yield return new WaitForSeconds(0.5f);
 	}
 }
