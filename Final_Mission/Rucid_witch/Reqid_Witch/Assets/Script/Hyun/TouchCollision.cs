@@ -10,14 +10,17 @@ public class TouchCollision : MonoBehaviour {
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject==gameObject.GetComponent<TouchCollision>())
+		if(other.gameObject.GetComponent<TouchCollision>())
 		{
 			touch = true;
 		}
 	}
 	private void OnTriggerExit(Collider other)
 	{
-		touch = false;
+		if (other.gameObject.GetComponent<TouchCollision>())
+		{
+			touch = false;
+		}
 	}
 	public bool GetTouch() { return touch; }
 }

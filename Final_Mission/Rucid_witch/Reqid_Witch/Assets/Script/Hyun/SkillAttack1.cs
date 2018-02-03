@@ -11,7 +11,7 @@ public class SkillAttack1 : MonoBehaviour
 	// Use this for initialization
 	private void Awake()
 	{
-		PointImage =gameObject.transform.GetComponentInChildren<Image>();
+		PointImage = gameObject.transform.GetComponentInChildren<Image>();
 		cur_Color = PointImage.color;
 		touch_Color = new Color(0, 0, 0);
 	}
@@ -51,7 +51,7 @@ public class SkillAttack1 : MonoBehaviour
 				}
 				break;
 		}
-		
+
 	}
 	private void OnTriggerExit(Collider other)
 	{
@@ -74,6 +74,6 @@ public class SkillAttack1 : MonoBehaviour
 				}
 				break;
 		}
-		
+
 	}
 }

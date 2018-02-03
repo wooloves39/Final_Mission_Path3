@@ -16,16 +16,23 @@ public class Teleport : MonoBehaviour
 	//#3번 공격
 	public GameObject[] TeleportMarker;
 
+	//#4번 공격
+	public GameObject Arrow;
 
 	public float RayLength = 50f;
 	private Coroutine currentCorutine;
 	private bool flug = false;
+	private Transform camTr;
+	private Quaternion MarkerRotate;
 	// Use this for initialization
 	private void Awake()
 	{
+		camTr = Camera.main.transform;
+		MarkerRotate = TeleportMarker[0].transform.rotation;
 		AzuraHands = new TouchCollision[2];
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
+		Arrow.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -45,7 +52,7 @@ public class Teleport : MonoBehaviour
 						break;
 					case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
 						{
-
+							currentCorutine = StartCoroutine(BeejaeControll());
 						}
 						break;
 					case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
@@ -55,12 +62,12 @@ public class Teleport : MonoBehaviour
 						break;
 					case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출 베르베시
 						{
-							currentCorutine = StartCoroutine(PointControll());
+							currentCorutine = StartCoroutine(VerbaseControll());
 						}
 						break;
 					case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
 						{
-
+							currentCorutine = StartCoroutine(SeikwanControll());
 						}
 						break;
 
@@ -69,44 +76,49 @@ public class Teleport : MonoBehaviour
 		}
 		else
 		{
-			flug = false;
-			if (currentCorutine != null)
-				StopCoroutine(currentCorutine);
-			switch (input_mouse.curType)
+			if (flug)
 			{
-				case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
-					{
+				flug = false;
+				if (currentCorutine != null)
+					StopCoroutine(currentCorutine);
+				switch (input_mouse.curType)
+				{
+					case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
+						{
+							AzuraBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+							AzuraBall.SetActive(false);
+						}
+						break;
+					case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
+						{
+							TeleportMarker[0].transform.rotation = MarkerRotate;
+							TeleportMarker[1].transform.rotation = MarkerRotate;
+							TeleportMarker[0].SetActive(false);
+							TeleportMarker[1].SetActive(false);
+						}
+						break;
+					case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
+						{
 
-					}
-					break;
-				case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
-					{
-						TeleportMarker[0].SetActive(false);
-						TeleportMarker[1].SetActive(false);
-					}
-					break;
-				case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
-					{
-
-					}
-					break;
-				case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
-					{
-						TeleportMarker[0].SetActive(false);
-						TeleportMarker[1].SetActive(false);
-					}
-					break;
-				case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
-					{
-
-					}
-					break;
+						}
+						break;
+					case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
+						{
+							TeleportMarker[0].SetActive(false);
+							TeleportMarker[1].SetActive(false);
+						}
+						break;
+					case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
+						{
+							Arrow.SetActive(false);
+						}
+						break;
+				}
+				currentCorutine = null;
 			}
-
-			currentCorutine = null;
 		}
 	}
-	private IEnumerator PointControll()
+	private IEnumerator BeejaeControll()
 	{
 		//왼손
 		while (flug)
@@ -115,38 +127,37 @@ public class Teleport : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (hit.collider.CompareTag("Ground"))
+				if (!TeleportMarker[0].activeSelf)
 				{
-					if (!TeleportMarker[0].activeSelf)
-					{
-						TeleportMarker[0].SetActive(true);
-					}
-					Vector3 point = hit.point;
-					point.y += 0.2f;
-					TeleportMarker[0].transform.position = point;
+					TeleportMarker[0].SetActive(true);
 				}
+				Vector3 point = hit.point;
+				point.y += 0.2f;
+				TeleportMarker[0].transform.LookAt(camTr.position);
+				TeleportMarker[0].transform.Rotate(90, 0, 0);
+				TeleportMarker[0].transform.position = point;
+
 			}
 			//오른손
 			ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
 			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (hit.collider.CompareTag("Ground"))
+				if (!TeleportMarker[1].activeSelf)
 				{
-					if (!TeleportMarker[1].activeSelf)
-					{
-						TeleportMarker[1].SetActive(true);
-					}
-					Vector3 point = hit.point;
-					point.y += 0.2f;
-					TeleportMarker[1].transform.position = point;
+					TeleportMarker[1].SetActive(true);
 				}
+				Vector3 point = hit.point;
+				point.y += 0.2f;
+				TeleportMarker[1].transform.LookAt(camTr.position);
+				TeleportMarker[1].transform.Rotate(90, 0, 0);
+				TeleportMarker[1].transform.position = point;
 			}
-			yield return new WaitForSeconds(0.01f);
+			yield return new WaitForSeconds(0.03f);
 		}
 	}
 	private IEnumerator AzuraControll()
 	{
-		Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position)/2;
+		Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position) / 2;
 		bool instance = false;
 		float distance = 0.0f;
 		while (flug)
@@ -156,23 +167,26 @@ public class Teleport : MonoBehaviour
 				instance = true;
 				Debug.Log("스킬 생성");
 				AzuraBall.SetActive(true);
+				AttackPoint += Camera.main.transform.forward * 0.1f;
 				AzuraBall.transform.position = AttackPoint;
 			}
 			if (instance)
 			{
 				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
-				if (handDis < distance)
+				if (handDis > distance)
 				{
 					distance = handDis;
+					Vector3 Azura = new Vector3(distance * 3.0f, distance * 3.0f, distance * 3.0f);
+					AzuraBall.transform.localScale = Azura;
 					Debug.Log(distance);
 				}
 
 			}
 			//yield return null;
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.03f);
 		}
 	}
-	private IEnumerator BeeJaeControll()
+	private IEnumerator VerbaseControll()
 	{
 		//왼손
 		while (flug)
@@ -207,7 +221,42 @@ public class Teleport : MonoBehaviour
 					TeleportMarker[1].transform.position = point;
 				}
 			}
-			yield return new WaitForSeconds(0.01f);
+			yield return new WaitForSeconds(0.03f);
+		}
+	}
+	private IEnumerator SeikwanControll()
+	{
+		bool instance = false;
+		float distance=0.0f;
+		Vector3 Seikwan = Arrow.transform.localScale;
+		//왼손
+		while (flug)
+		{
+			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
+			{
+				instance = true;
+				Debug.Log("스킬 생성");
+				Arrow.SetActive(true);
+				Arrow.transform.position = Hands[0].transform.position;
+			}
+			if (instance)
+			{
+				Vector3 ArrowPos = (Hands[0].transform.position+ Hands[1].transform.position) / 2;
+				//ArrowPos += Camera.main.transform.forward * 0.1f;
+				Arrow.transform.LookAt(Hands[0].transform.position);
+				Arrow.transform.Rotate(-90, 0, 0);
+				Arrow.transform.position = ArrowPos;
+				
+				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+				if (handDis > distance)
+				{
+					distance = handDis;
+					 Seikwan.y =distance * 4.0f;
+					Arrow.transform.localScale = Seikwan;
+				}
+
+			}
+			yield return new WaitForSeconds(0.03f);
 		}
 	}
 }

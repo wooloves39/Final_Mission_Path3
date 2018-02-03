@@ -10,6 +10,7 @@ TagManager:
   - Complete_Skill
   - Ground
   - Point
+  - Monster
   layers:
   - Default
   - TransparentFX

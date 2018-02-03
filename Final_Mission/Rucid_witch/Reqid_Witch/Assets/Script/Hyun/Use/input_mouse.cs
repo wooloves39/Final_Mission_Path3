@@ -23,7 +23,7 @@ public class input_mouse : MonoBehaviour
 		//mySkills = Singletone.Instance.skill;
 		mySkills = new int[3];
 		mySkills[0] = 3;
-		mySkills[1] = 2;
+		mySkills[1] = 4;
 		mySkills[2] = 0; //test
 		curType = mySkills[mytype];
 		raser.gameObject.SetActive(false);

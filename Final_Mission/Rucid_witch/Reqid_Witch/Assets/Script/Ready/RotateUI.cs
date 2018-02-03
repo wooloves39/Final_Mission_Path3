@@ -33,8 +33,6 @@ public class RotateUI : MonoBehaviour
 			}
 			for (int i = 0; i < 5; ++i)
 			{
-				//if (Skill[i].transform.rotation.y == (360 || -360))
-				//	Skill[i].transform.rotation.y = 0.0;
 				if (-36.0f <= Skill[i].transform.rotation.y && Skill[i].transform.rotation.y <= 36.0f)
 
 					if (Skill[i].transform.rotation.y == 0)
