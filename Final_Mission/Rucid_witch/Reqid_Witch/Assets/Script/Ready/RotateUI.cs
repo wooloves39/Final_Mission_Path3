@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RotateUI : MonoBehaviour
 {
-
+	public bool check2 = false;
+	public bool check = false;
+	public int num = 0;
 	public List<GameObject> Skill;
-
 
 	// Update is called once per frame
 	void Start()
@@ -16,30 +17,42 @@ public class RotateUI : MonoBehaviour
 	IEnumerator SkillSet()
 	{
 		Debug.Log("Skill");
-		bool check = false;
 		while (true)
 		{
 			Vector3 Stick;
 			Stick = InputManager_JHW.MainJoystick();
-			if (true)
+			if (check == false && check2 == false)
 			{
-				this.transform.Rotate(new Vector3(0, (float)72 / 10, 0), Space.Self);
-				Debug.Log("SkillA");
+				if (Stick.x < 0)
+				{
+					num = 0;
+					check = true;
+					check2 = false;
+				}
+				if (Stick.x > 0)
+				{
+					num = 0;
+					check = false;
+					check2 = true;
+				}
 			}
-			if (Stick.x > 0 || Input.GetKey(KeyCode.S))
-			{
-				this.transform.Rotate(new Vector3(0, (float)-72 / 10, 0), Space.Self);
-				Debug.Log("SkillS");
-			}
-			for (int i = 0; i < 5; ++i)
-			{
-				if (-36.0f <= Skill[i].transform.rotation.y && Skill[i].transform.rotation.y <= 36.0f)
-
-					if (Skill[i].transform.rotation.y == 0)
-						check = true;
-			}
+			
 			if (check)
-				break;
+			{
+				num++;
+				this.transform.Rotate(new Vector3(0, -7.2f, 0), Space.Self);
+				Debug.Log("SkillA");
+				if(num == 10)
+					check = false;
+			}
+			if (check2)
+			{
+				num++;
+				this.transform.Rotate(new Vector3(0, 7.2f, 0), Space.Self);
+				Debug.Log("SkillS");
+				if(num == 10)
+					check2 = false;
+			}
 			yield return new WaitForSeconds(0.05f);
 		}
 	}
