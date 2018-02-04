@@ -8,16 +8,19 @@ public class Teleport : MonoBehaviour
 	public GameObject[] Hands;
 
 
-	//#1번 공격
+	//#0번 공격
 	private TouchCollision[] AzuraHands;
 	public GameObject AzuraBall;
 
 
-	//#3번 공격
+	//#1,3번 공격
 	public GameObject[] TeleportMarker;
 
-	//#4번 공격
-	public GameObject Arrow;
+	//#4번 공격 다른 공격방식과 다르게 메모리 풀을 활용한다 최대 5발!
+	public GameObject ArrowPrefab;
+	MemoryPool pool = new MemoryPool();
+	GameObject[] Arrow;
+
 
 	public float RayLength = 50f;
 	private Coroutine currentCorutine;
@@ -32,9 +35,16 @@ public class Teleport : MonoBehaviour
 		AzuraHands = new TouchCollision[2];
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
-		Arrow.SetActive(false);
+		int poolCount = 5;
+		pool.Create(ArrowPrefab, poolCount);
+		Arrow = new GameObject[poolCount];
+		for (int i = 0; i < Arrow.Length; ++i)
+			Arrow[i] = null;
 	}
-
+	private void OnApplicationQuit()
+	{
+		pool.Dispose();
+	}
 	// Update is called once per frame
 	void Update()
 	{
@@ -74,47 +84,61 @@ public class Teleport : MonoBehaviour
 				}
 			}
 		}
-		else
-		{
-			if (flug)
-			{
-				flug = false;
-				if (currentCorutine != null)
-					StopCoroutine(currentCorutine);
-				switch (input_mouse.curType)
-				{
-					case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
-						{
-							AzuraBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-							AzuraBall.SetActive(false);
-						}
-						break;
-					case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
-						{
-							TeleportMarker[0].transform.rotation = MarkerRotate;
-							TeleportMarker[1].transform.rotation = MarkerRotate;
-							TeleportMarker[0].SetActive(false);
-							TeleportMarker[1].SetActive(false);
-						}
-						break;
-					case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
-						{
 
-						}
-						break;
-					case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
-						{
-							TeleportMarker[0].SetActive(false);
-							TeleportMarker[1].SetActive(false);
-						}
-						break;
-					case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
-						{
-							Arrow.SetActive(false);
-						}
-						break;
+		else if ((!InputManager_JHW.RTriggerOn() && !InputManager_JHW.LTriggerOn()) && flug)
+		{
+			flug = false;
+			if (currentCorutine != null)
+				StopCoroutine(currentCorutine);
+			switch (input_mouse.curType)
+			{
+				case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
+					{
+						AzuraBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+						AzuraBall.SetActive(false);
+					}
+					break;
+				case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
+					{
+						TeleportMarker[0].transform.rotation = MarkerRotate;
+						TeleportMarker[1].transform.rotation = MarkerRotate;
+						TeleportMarker[0].SetActive(false);
+						TeleportMarker[1].SetActive(false);
+					}
+					break;
+				case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
+					{
+
+					}
+					break;
+				case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
+					{
+						TeleportMarker[0].SetActive(false);
+						TeleportMarker[1].SetActive(false);
+					}
+					break;
+				case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
+					{
+						//	Arrow.SetActive(false);
+					}
+					break;
+			}
+			currentCorutine = null;
+		}
+		for (int i = 0; i < Arrow.Length; ++i)
+		{
+			if (Arrow[i])
+			{
+				if (Arrow[i].GetComponent<Arrow>())
+				{
+					if (Arrow[i].GetComponent<Arrow>().IsDelete())
+					{
+					//	Debug.Log("aa");
+						pool.RemoveItem(Arrow[i]);
+						Arrow[i] = null;
+					}
+					//어떤 조건에 의거 Arrow삭제
 				}
-				currentCorutine = null;
 			}
 		}
 	}
@@ -227,8 +251,9 @@ public class Teleport : MonoBehaviour
 	private IEnumerator SeikwanControll()
 	{
 		bool instance = false;
-		float distance=0.0f;
-		Vector3 Seikwan = Arrow.transform.localScale;
+		float distance = 0.0f;
+		Vector3 Seikwan = ArrowPrefab.transform.localScale;
+		int ArrowNum = new int();
 		//왼손
 		while (flug)
 		{
@@ -236,25 +261,54 @@ public class Teleport : MonoBehaviour
 			{
 				instance = true;
 				Debug.Log("스킬 생성");
-				Arrow.SetActive(true);
-				Arrow.transform.position = Hands[0].transform.position;
-			}
-			if (instance)
-			{
-				Vector3 ArrowPos = (Hands[0].transform.position+ Hands[1].transform.position) / 2;
-				//ArrowPos += Camera.main.transform.forward * 0.1f;
-				Arrow.transform.LookAt(Hands[0].transform.position);
-				Arrow.transform.Rotate(-90, 0, 0);
-				Arrow.transform.position = ArrowPos;
-				
-				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
-				if (handDis > distance)
+				for (int i = 0; i < Arrow.Length; ++i)
 				{
-					distance = handDis;
-					 Seikwan.y =distance * 4.0f;
-					Arrow.transform.localScale = Seikwan;
+					if (Arrow[i] == null)
+					{
+						ArrowNum = i;
+						Arrow[i] = pool.NewItem();
+						Arrow[i].transform.position = Hands[0].transform.position;
+						Rigidbody r = Arrow[i].GetComponent<Rigidbody>();
+						r.useGravity = false;
+						r.velocity = new Vector3(0, 0, 0);
+						break;
+					}
+					//5발 다쏘고 난다음도 생각해야함
 				}
+			}
+			else if (instance)
+			{
+				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+				if ((!InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn()))
+				{
+					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
+					{
+						Debug.Log(ArrowNum);
+						//float dist = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
+						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+						Debug.Log(Arrowforward);
+						//Arrowforward.x += -1;
+						r.velocity = Arrowforward * 15f * handDis;
+						//r.useGravity = true;
+						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
+						//Arrow.GetComponent<Collider>().isTrigger = false;
+					}
+				}
+				else
+				{
+					Vector3 ArrowPos = (Hands[0].transform.position + Hands[1].transform.position) / 2;
+					//ArrowPos += Camera.main.transform.forward * 0.1f;
+					Arrow[ArrowNum].transform.LookAt(Hands[0].transform.position);
+					Arrow[ArrowNum].transform.position = ArrowPos;
 
+					if (handDis > distance)
+					{
+						distance = handDis;
+						Seikwan.z = distance * 2.0f;
+						Arrow[ArrowNum].transform.localScale = Seikwan;
+					}
+				}
 			}
 			yield return new WaitForSeconds(0.03f);
 		}
