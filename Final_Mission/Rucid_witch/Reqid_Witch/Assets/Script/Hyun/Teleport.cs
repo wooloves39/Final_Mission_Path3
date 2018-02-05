@@ -133,7 +133,7 @@ public class Teleport : MonoBehaviour
 				{
 					if (Arrow[i].GetComponent<Arrow>().IsDelete())
 					{
-					//	Debug.Log("aa");
+							Arrow[i].GetComponent<Arrow>().Reset();
 						pool.RemoveItem(Arrow[i]);
 						Arrow[i] = null;
 					}
@@ -257,7 +257,9 @@ public class Teleport : MonoBehaviour
 		//왼손
 		while (flug)
 		{
-			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
+			if ((!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))&&
+				(InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
+				)
 			{
 				instance = true;
 				Debug.Log("스킬 생성");
@@ -283,7 +285,7 @@ public class Teleport : MonoBehaviour
 				{
 					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
 					{
-						Debug.Log(ArrowNum);
+						Debug.Log(distance);
 						//float dist = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
 						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
@@ -293,19 +295,25 @@ public class Teleport : MonoBehaviour
 						//r.useGravity = true;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						//Arrow.GetComponent<Collider>().isTrigger = false;
+						instance = false;
+						distance = 0.0f;
 					}
 				}
 				else
 				{
 					Vector3 ArrowPos = (Hands[0].transform.position + Hands[1].transform.position) / 2;
+					Vector3 LookAtpos = Hands[0].transform.position;
+					LookAtpos.z += 0.055f;
+					ArrowPos.z += 0.07f;
+					ArrowPos.x -= 0.035f;
 					//ArrowPos += Camera.main.transform.forward * 0.1f;
-					Arrow[ArrowNum].transform.LookAt(Hands[0].transform.position);
+					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;
 
 					if (handDis > distance)
 					{
 						distance = handDis;
-						Seikwan.z = distance * 2.0f;
+						Seikwan.z = distance * 10 ;
 						Arrow[ArrowNum].transform.localScale = Seikwan;
 					}
 				}

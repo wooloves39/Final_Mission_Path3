@@ -6,9 +6,12 @@ public class Arrow : MonoBehaviour {
 	private bool shot = false;
 	private bool del_timer = false;
 	private float timer;
+	private Vector3 curScale;
 	// Use this for initialization
 	void Awake () {
 		timer = new int();
+		timer = 0.0f;
+		curScale = gameObject.transform.localScale;
 	}
 
 	// Update is called once per frame
@@ -16,7 +19,7 @@ public class Arrow : MonoBehaviour {
 		if (shot == true)
 		{
 			timer += Time.deltaTime;
-			if (timer >= 5.0f)
+			if (timer >= 2.0f)
 				del_timer = true;
 		}
 	}
@@ -28,5 +31,12 @@ public class Arrow : MonoBehaviour {
 	public bool IsDelete()
 	{
 		return del_timer;
+	}
+	public void Reset()
+	{
+		shot = false;
+		 del_timer = false;
+		timer = 0.0f;
+		gameObject.transform.localScale = curScale;
 	}
 }
