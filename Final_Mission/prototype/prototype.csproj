@@ -95,6 +95,7 @@
     <Compile Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\SkyboxPanoramicBetaShaderGUI.cs" />
     <Compile Include="Assets\Hyun\test_Script\Billboards.cs" />
     <Compile Include="Assets\Hyun\Use\Dialog.cs" />
+    <Compile Include="Assets\Hyun\Use\File_parser.cs" />
     <Compile Include="Assets\Hyun\Use\input_mouse.cs" />
     <Compile Include="Assets\Hyun\Use\input_non_instant.cs" />
     <Compile Include="Assets\Hyun\Use\moveBy.cs" />
@@ -137,6 +138,7 @@
     <None Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\Skybox-PanoramicBeta.shader" />
     <None Include="Assets\Hyun\The_Texture_Lab\TL_Prototype_Textures_Pack\Documentation.txt" />
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+    <None Include="Assets\Text\del_story.txt" />
     <None Include="Assets\save1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

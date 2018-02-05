@@ -88,6 +88,7 @@
     <None Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\Skybox-PanoramicBeta.shader" />
     <None Include="Assets\Hyun\The_Texture_Lab\TL_Prototype_Textures_Pack\Documentation.txt" />
     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+    <None Include="Assets\Text\del_story.txt" />
     <None Include="Assets\save1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

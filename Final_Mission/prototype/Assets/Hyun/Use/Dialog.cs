@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 [RequireComponent(typeof(Text))]
 public class Dialog : MonoBehaviour
 {
     // Use this for initialization
     private Text _textComponent;
 
-    public string[] DialogueStrings;
-
+    private string[] DialogueStrings;
+	public int[] chatChar;
     public float SecondsBetweenCharacters = 0.15f;
     public float CharacterRateMultuplier = 0.5f;
 
     public KeyCode DialogueInput = KeyCode.Return;
     private bool _isStringBeingRevealed = false;
-    private bool _isDialoguePlaying = false;
     private bool _isEndofDialogue = false;
 
     public GameObject ContinueIcon;
@@ -24,20 +24,22 @@ public class Dialog : MonoBehaviour
 
     public GameObject Me;
     public GameObject Boss;
-    void Start()
-    {
-        DialogueStrings = new string[5];
-        DialogueStrings[0] = "야 임마";
-        DialogueStrings[1] = "잘해라!";
-        DialogueStrings[2] = "바빠도 열심히 하고!";
-        DialogueStrings[3] = "안 바쁘면 더 열심히하고!";
-        DialogueStrings[4] = "졸업하고 취업하자!";
+	private File_parser file_parser;
+	public string fileName;
+
+	void Start()
+    { file_parser = new File_parser();
+		
+		file_parser.FileOpen(fileName);
+		file_parser.Parse();
+		DialogueStrings = file_parser.GetText();
+		chatChar = file_parser.GetTextChar();
         _textComponent = GetComponent<Text>();
         _textComponent.text = "";
         moveSetting();
         HideIcons();
-        _isDialoguePlaying = true;
-        StartCoroutine(StartDialogue());
+		
+		StartCoroutine(StartDialogue());
     }
 
     // Update is called once per frame
@@ -76,7 +78,6 @@ public class Dialog : MonoBehaviour
         }
         HideIcons();
         _isEndofDialogue = false;
-        _isDialoguePlaying = false;
     }
     private IEnumerator DisplatStrings(string stringToDisplay)
     {
@@ -92,8 +93,7 @@ public class Dialog : MonoBehaviour
             {
                 if (Input.GetKey(DialogueInput))
                 {
-
-                    yield return new WaitForSeconds(SecondsBetweenCharacters * CharacterRateMultuplier);
+					yield return new WaitForSeconds(SecondsBetweenCharacters * CharacterRateMultuplier);
                 }
                 else
                 {
@@ -129,18 +129,19 @@ public class Dialog : MonoBehaviour
     }
     private void moveSetting()
     {
-        iTween.MoveFrom(Me, iTween.Hash("x", Me.transform.position.x - 10.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
-        iTween.MoveFrom(Boss, iTween.Hash("x", Boss.transform.position.x + 10.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
+        iTween.MoveFrom(Me, iTween.Hash("x", Me.transform.position.x - 2.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
+        iTween.MoveFrom(Boss, iTween.Hash("x", Boss.transform.position.x + 2.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
     }
     private void moveImage(int currentDialogueIndex)
     {
         if (currentDialogueIndex == 0) return;
-        if (currentDialogueIndex % 2 == 0) 
+        if (chatChar[currentDialogueIndex]==0) 
         iTween.ShakePosition(Me, iTween.Hash("amount",new Vector3( 0.2f,0.1f,0.1f), "time", 1.0f));
-        else
+        else if(chatChar[currentDialogueIndex] == 1)
         {
             iTween.ShakePosition(Boss, iTween.Hash("amount", new Vector3(0.2f, 0.1f, 0.1f), "time", 1.0f));
 
         }
     }
+	
 }
