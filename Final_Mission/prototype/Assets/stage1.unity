@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 173259864}
   - component: {fileID: 173259863}
   - component: {fileID: 173259862}
+  - component: {fileID: 173259865}
   m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
@@ -202,6 +203,28 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &173259865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 173259860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeb7de180beb824bbfb1f42b9eb0e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textComponent: {fileID: 827843936}
+  chatChar: 
+  SecondsBetweenCharacters: 0.15
+  CharacterRateMultuplier: 0.5
+  DialogueInput: 13
+  ContinueIcon: {fileID: 447656863}
+  StopIcon: {fileID: 951364845}
+  Me: {fileID: 1843375900}
+  Boss: {fileID: 1916403780}
+  dia_Play: {fileID: 2100242284}
+  fileName: /Text/del_story.txt
 --- !u!1 &180096193
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &302728263
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5179,7 +5202,6 @@ GameObject:
   - component: {fileID: 827843934}
   - component: {fileID: 827843937}
   - component: {fileID: 827843936}
-  - component: {fileID: 827843935}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -5205,26 +5227,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0000020125149, y: -0.03000012}
   m_SizeDelta: {x: 1.6, y: 0.4}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &827843935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 827843933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdeb7de180beb824bbfb1f42b9eb0e46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatChar: 
-  SecondsBetweenCharacters: 0.15
-  CharacterRateMultuplier: 0.5
-  DialogueInput: 13
-  ContinueIcon: {fileID: 447656863}
-  StopIcon: {fileID: 951364845}
-  Me: {fileID: 1843375900}
-  Boss: {fileID: 1916403780}
-  fileName: /Text/del_story.txt
 --- !u!114 &827843936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31093,6 +31095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2100242283}
   - component: {fileID: 2100242282}
+  - component: {fileID: 2100242284}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -31126,3 +31129,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 192.918, z: 0}
+--- !u!114 &2100242284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2100242281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240f660ed1dc5b445ad7e23b28af5f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseLook: {fileID: 1223339548}
+  TalkCanvas: {fileID: 302728262}

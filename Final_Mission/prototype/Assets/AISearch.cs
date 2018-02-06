@@ -169,7 +169,6 @@ public class AISearch: MonoBehaviour
 				time = 1.0f;
 				break;
 			}
-			Debug.Log (num);
 			yield return new WaitForSeconds (time);
 		}
 	}

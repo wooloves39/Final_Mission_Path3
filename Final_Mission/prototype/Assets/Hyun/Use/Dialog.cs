@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[RequireComponent(typeof(Text))]
 public class Dialog : MonoBehaviour
 {
     // Use this for initialization
-    private Text _textComponent;
+    public Text _textComponent;
 
     private string[] DialogueStrings;
 	public int[] chatChar;
@@ -24,17 +23,17 @@ public class Dialog : MonoBehaviour
 
     public GameObject Me;
     public GameObject Boss;
+	public Dia_Play dia_Play;
 	private File_parser file_parser;
 	public string fileName;
 
 	void Start()
-    { file_parser = new File_parser();
-		
+    {
+		file_parser = new File_parser();
 		file_parser.FileOpen(fileName);
 		file_parser.Parse();
 		DialogueStrings = file_parser.GetText();
 		chatChar = file_parser.GetTextChar();
-        _textComponent = GetComponent<Text>();
         _textComponent.text = "";
         moveSetting();
         HideIcons();
@@ -56,7 +55,8 @@ public class Dialog : MonoBehaviour
     }
     private IEnumerator StartDialogue()
     {
-        int dialogueLengh = DialogueStrings.Length;
+		yield return new WaitWhile(() => dia_Play.getPlay());
+		int dialogueLengh = DialogueStrings.Length;
         int currentDialogueIndex = 0;
         while (currentDialogueIndex < dialogueLengh || !_isStringBeingRevealed)
         {
@@ -69,13 +69,13 @@ public class Dialog : MonoBehaviour
                 if (currentDialogueIndex >= dialogueLengh)
                     _isEndofDialogue = true;
             }
-            yield return 0;
+            yield return new WaitWhile(()=>dia_Play.getPlay());
         }
-        while (true)
-        {
-            if (Input.GetKeyDown(DialogueInput)) break;
-            yield return 0;
-        }
+  //      while (true)
+  //      {
+  //          if (Input.GetKeyDown(DialogueInput)) break;
+			
+		//}
         HideIcons();
         _isEndofDialogue = false;
     }
@@ -129,8 +129,8 @@ public class Dialog : MonoBehaviour
     }
     private void moveSetting()
     {
-        iTween.MoveFrom(Me, iTween.Hash("x", Me.transform.position.x - 2.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
-        iTween.MoveFrom(Boss, iTween.Hash("x", Boss.transform.position.x + 2.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
+        //iTween.MoveFrom(Me, iTween.Hash("x", Me.transform.position.x - 2.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
+        //iTween.MoveFrom(Boss, iTween.Hash("x", Boss.transform.position.x + 2.0f, "time", 1.0f, "easetype", iTween.EaseType.easeOutBounce));
     }
     private void moveImage(int currentDialogueIndex)
     {
