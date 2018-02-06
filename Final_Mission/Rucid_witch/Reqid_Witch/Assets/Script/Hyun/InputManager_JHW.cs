@@ -72,24 +72,23 @@ public static class InputManager_JHW
 	//--Buttons
 	public static bool AButton()
     {
-		Debug.Log("Abutton");
-		Debug.Log(Input.GetButtonDown("AButton"));
-		return Input.GetButtonDown("AButton");
+		//Debug.Log("Abutton");
+		return Input.GetButton("AButton");
     }
     public static bool BButton()
     {
-		Debug.Log("BButton");
-        return Input.GetButtonDown("BButton");
+		//Debug.Log("BButton");
+        return Input.GetButton("BButton");
     }
     public static bool XButton()
     {
-		Debug.Log("XButton");
-        return Input.GetButtonDown("XButton");
+		//Debug.Log("XButton");
+        return Input.GetButton("XButton");
     }
     public static bool YButton()
     {
-        Debug.Log("YButton");
-        return Input.GetButtonDown("YButton");
+       // Debug.Log("YButton");
+        return Input.GetButton("YButton");
     }
     public static bool MenuButton()
     {

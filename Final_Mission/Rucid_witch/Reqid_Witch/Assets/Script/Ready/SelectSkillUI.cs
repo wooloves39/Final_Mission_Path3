@@ -66,6 +66,11 @@ public class SelectSkillUI : MonoBehaviour
 						if (skillnum == 3)
 							skillnum = 0;
 					}
+					for(int i = 0; i< 3; ++i)
+					{
+						Debug.Log(Singletone.Instance.Myskill[i]);
+					}
+					yield return new WaitForSeconds(0.5f);
 				}
 			}
 			
@@ -73,7 +78,7 @@ public class SelectSkillUI : MonoBehaviour
 			{
 				num++;
 				this.transform.Rotate(new Vector3(0, 7.2f, 0), Space.Self);
-				Debug.Log("SkillA");
+				
 				if (num == 5)
 				{
 					RotationSkill--;
@@ -94,7 +99,7 @@ public class SelectSkillUI : MonoBehaviour
 			{
 				num++;
 				this.transform.Rotate(new Vector3(0, -7.2f, 0), Space.Self);
-				Debug.Log("SkillS");
+				
 				if (num == 5)
 				{
 					RotationSkill++;
