@@ -37,21 +37,21 @@ public class MainMenu : MonoBehaviour {
 				}
 				Select [index].SetActive (true);
 
-				if (InputManager_JHW.AButton () || InputManager_JHW.XButton ()) {
+				if (InputManager_JHW.AButton ()|| InputManager_JHW.XButton ()) {
 					if (cnt > 0) {
 						if (index == 0) {
 							confirm = true;
 							Confirm.SetActive (true);
 						}
 						if (index == 1) {
-							this.gameObject.SetActive (false);
 							Load.SetActive (true);
+							this.gameObject.SetActive (false);
 						}
 						if (index == 2) {
 						}//멀티플레이
 						if (index == 3) {
-							this.gameObject.SetActive (false);
 							Option.SetActive (true);
+							this.gameObject.SetActive (false);
 						}
 						yield return new WaitForSeconds (0.250f);
 					}

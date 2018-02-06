@@ -7,6 +7,7 @@ public class SelectSkillUI : MonoBehaviour
 	public bool check2 = false;
 	public bool check = false;
 	public int num = 0;
+	public int skillnum = 0;
 	public int RotationSkill = 0;
 	public List<GameObject> Skill;
 
@@ -35,6 +36,36 @@ public class SelectSkillUI : MonoBehaviour
 					num = 0;
 					check = true;
 					check2 = false;
+				}
+				if (InputManager_JHW.AButton())
+				{
+					bool Button = false;
+					int j = 0;
+					for(int i = 0 ; i < 3 ; ++i)
+					{
+						if (Singletone.Instance.Myskill[i] == RotationSkill)
+						{
+							Button = true;
+							j = i;
+						}
+						if (Button)
+						{
+							for (int k = j; k < 2; k++)
+							{
+								if (Singletone.Instance.Myskill[j + 1] != -1)
+									Singletone.Instance.Myskill[j] = Singletone.Instance.Myskill[j + 1];
+								else
+									Singletone.Instance.Myskill[j + 1] = RotationSkill;
+							}
+						}
+					}
+					if (Button == false)
+					{
+						Singletone.Instance.Myskill[skillnum] = RotationSkill;
+						skillnum++;
+						if (skillnum == 3)
+							skillnum = 0;
+					}
 				}
 			}
 			
