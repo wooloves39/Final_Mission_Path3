@@ -11,7 +11,7 @@ public class SkillChange : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (InputManager_JHW.XButton())
+		if (InputManager_JHW.XButtonDown())
 		{
 			Draw_Rtouch.myType();
 		}

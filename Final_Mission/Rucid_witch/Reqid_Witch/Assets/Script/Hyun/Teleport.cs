@@ -27,9 +27,11 @@ public class Teleport : MonoBehaviour
 	private bool flug = false;
 	private Transform camTr;
 	private Quaternion MarkerRotate;
+	private PlayerState MyState;
 	// Use this for initialization
 	private void Awake()
 	{
+		MyState = GetComponent<PlayerState>();
 		camTr = Camera.main.transform;
 		MarkerRotate = TeleportMarker[0].transform.rotation;
 		AzuraHands = new TouchCollision[2];
@@ -48,48 +50,56 @@ public class Teleport : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		
 		if (InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 		{
-			if (currentCorutine == null)
+			if (MyState.GetMyState() == PlayerState.State.Nomal)
 			{
-				flug = true;
-				switch (input_mouse.curType)
+				MyState.SetMyState(PlayerState.State.Attack);
+				if (currentCorutine == null)
 				{
-					case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
-						{
-							currentCorutine = StartCoroutine(AzuraControll());
-						}
-						break;
-					case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
-						{
-							currentCorutine = StartCoroutine(BeejaeControll());
-						}
-						break;
-					case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
-						{
+					flug = true;
+					switch (input_mouse.curType)
+					{
+						case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
+							{
+								currentCorutine = StartCoroutine(AzuraControll());
+							}
+							break;
+						case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
+							{
+								currentCorutine = StartCoroutine(BeejaeControll());
+							}
+							break;
+						case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
+							{
 
-						}
-						break;
-					case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출 베르베시
-						{
-							currentCorutine = StartCoroutine(VerbaseControll());
-						}
-						break;
-					case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
-						{
-							currentCorutine = StartCoroutine(SeikwanControll());
-						}
-						break;
+							}
+							break;
+						case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출 베르베시
+							{
+								currentCorutine = StartCoroutine(VerbaseControll());
+							}
+							break;
+						case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
+							{
+								currentCorutine = StartCoroutine(SeikwanControll());
+							}
+							break;
 
+					}
 				}
 			}
 		}
 
 		else if ((!InputManager_JHW.RTriggerOn() && !InputManager_JHW.LTriggerOn()) && flug)
 		{
-			flug = false;
 			if (currentCorutine != null)
+			{
+				flug = false;
+				MyState.SetMyState(PlayerState.State.Nomal);
 				StopCoroutine(currentCorutine);
+			}
 			switch (input_mouse.curType)
 			{
 				case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
@@ -119,7 +129,22 @@ public class Teleport : MonoBehaviour
 					break;
 				case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
 					{
-						//	Arrow.SetActive(false);
+						for (int i = 0; i < Arrow.Length; ++i)
+						{
+							if (Arrow[i])
+							{
+								if (Arrow[i].GetComponent<Arrow>())
+								{
+									if (!Arrow[i].GetComponent<Arrow>().IsShooting())
+									{
+										Arrow[i].GetComponent<Arrow>().Reset();
+										pool.RemoveItem(Arrow[i]);
+										Arrow[i] = null;
+									}
+									//어떤 조건에 의거 Arrow삭제
+								}
+							}
+						}
 					}
 					break;
 			}
@@ -189,10 +214,10 @@ public class Teleport : MonoBehaviour
 			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
 			{
 				instance = true;
-				Debug.Log("스킬 생성");
 				AzuraBall.SetActive(true);
 				AttackPoint += Camera.main.transform.forward * 0.1f;
 				AzuraBall.transform.position = AttackPoint;
+				MyState.SetMyState(PlayerState.State.Charging);
 			}
 			if (instance)
 			{
@@ -202,7 +227,6 @@ public class Teleport : MonoBehaviour
 					distance = handDis;
 					Vector3 Azura = new Vector3(distance * 3.0f, distance * 3.0f, distance * 3.0f);
 					AzuraBall.transform.localScale = Azura;
-					Debug.Log(distance);
 				}
 
 			}
@@ -262,7 +286,6 @@ public class Teleport : MonoBehaviour
 				)
 			{
 				instance = true;
-				Debug.Log("스킬 생성");
 				for (int i = 0; i < Arrow.Length; ++i)
 				{
 					if (Arrow[i] == null)
@@ -277,6 +300,7 @@ public class Teleport : MonoBehaviour
 					}
 					//5발 다쏘고 난다음도 생각해야함
 				}
+				MyState.SetMyState(PlayerState.State.Charging);
 			}
 			else if (instance)
 			{
@@ -285,16 +309,11 @@ public class Teleport : MonoBehaviour
 				{
 					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
 					{
-						Debug.Log(distance);
-						//float dist = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
 						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
-						Debug.Log(Arrowforward);
-						//Arrowforward.x += -1;
+					
 						r.velocity = Arrowforward * 15f * handDis;
-						//r.useGravity = true;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
-						//Arrow.GetComponent<Collider>().isTrigger = false;
 						instance = false;
 						distance = 0.0f;
 					}
@@ -303,10 +322,15 @@ public class Teleport : MonoBehaviour
 				{
 					Vector3 ArrowPos = (Hands[0].transform.position + Hands[1].transform.position) / 2;
 					Vector3 LookAtpos = Hands[0].transform.position;
-					LookAtpos.z += 0.055f;
+					if(!MyState.IsBack()){
+						LookAtpos.z += 0.055f; }
+					else
+					{
+						LookAtpos.z -= 0.055f;
+					}
 					//ArrowPos.z += 0.07f;
 					//ArrowPos.x -= 0.035f;
-					ArrowPos += Hands[0].transform.forward*0.01f;
+					ArrowPos += Hands[0].transform.forward*0.05f;
 					//ArrowPos += Camera.main.transform.forward * 0.1f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;
