@@ -41,9 +41,12 @@ public class PhysicsSound : MonoBehaviour
 
 		if (source != cachedSource)
 		{
-			hapticsClip = new OVRHapticsClip(source.clip);
-			hapticsClipLength = source.clip.length;
-			cachedSource = source;
+			//hapticsClip = new OVRHapticsClip(source.clip);
+			//hapticsClipLength = source.clip.length;
+			//cachedSource = source;
+			hapticsClip = new OVRHapticsClip();
+			hapticsClip.Samples.Initialize();
+			hapticsClipLength = 10;
 		}
 
 		if (Time.time < hapticsTimeout)
