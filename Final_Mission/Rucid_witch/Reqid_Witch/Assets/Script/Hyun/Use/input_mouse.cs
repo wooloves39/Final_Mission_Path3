@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class input_mouse : MonoBehaviour
 {
+	PlayerState.State state;
 	public input_non_instant[] Skills;
 	private int[] mySkills;
 	private float timer = 0;
@@ -46,7 +47,8 @@ public class input_mouse : MonoBehaviour
 		else
 		{
 			//마우스 클릭시
-			if (touchOn == false && InputManager_JHW.AButton())
+			//if (touchOn == false && InputManager_JHW.AButton())
+			if(InputManager_JHW.RTriggerOn()&&touchOn==false)
 			{
 				//skill 오브젝트를 좌표에 맞게 생성한다.
 				raser.gameObject.SetActive(true);
@@ -60,7 +62,8 @@ public class input_mouse : MonoBehaviour
 				touchOn = true;
 			}
 			//마우스를 땟을때, 스킬이 발동했는지 확인한다.
-			else if (touchOn == true && InputManager_JHW.AButton())
+			//else if (touchOn == true && InputManager_JHW.AButton())
+			else if(touchOn==true&&!InputManager_JHW.RTriggerOn())
 			{
 				raser.gameObject.SetActive(false);
 				touchOn = false;

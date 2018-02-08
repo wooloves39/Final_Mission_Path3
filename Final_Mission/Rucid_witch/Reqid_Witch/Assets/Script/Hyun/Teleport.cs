@@ -304,8 +304,9 @@ public class Teleport : MonoBehaviour
 					Vector3 ArrowPos = (Hands[0].transform.position + Hands[1].transform.position) / 2;
 					Vector3 LookAtpos = Hands[0].transform.position;
 					LookAtpos.z += 0.055f;
-					ArrowPos.z += 0.07f;
-					ArrowPos.x -= 0.035f;
+					//ArrowPos.z += 0.07f;
+					//ArrowPos.x -= 0.035f;
+					ArrowPos += Hands[0].transform.forward*0.01f;
 					//ArrowPos += Camera.main.transform.forward * 0.1f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;

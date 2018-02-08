@@ -58,6 +58,11 @@ public class MoveCtrl : MonoBehaviour
 		{
 			turnBack();
 		}
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			OVRPlugin.rotation = false;
+			//OVRPlugin.
+		}
 	}
 	private IEnumerator MoveControll()
 	{
