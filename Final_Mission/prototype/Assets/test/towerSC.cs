@@ -16,9 +16,11 @@ public class towerSC : MonoBehaviour
         basic,
         canon,
         iron,
-		electric
+		electric,
+		Frame
     }
-
+	//public MoveMob[] enemies;
+	public Transform target;
 
     public Type towerType;
     public int range = 0;
