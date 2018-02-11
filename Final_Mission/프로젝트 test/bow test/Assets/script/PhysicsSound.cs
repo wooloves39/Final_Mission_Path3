@@ -13,7 +13,18 @@ public class PhysicsSound : MonoBehaviour
 	private OVRHapticsClip hapticsClip;
 	private float hapticsClipLength;
 	private float hapticsTimeout;
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			OVRInput.SetControllerVibration(0.01f, 0.3f, controller);
+		}
+		if (Input.GetKeyDown(KeyCode.O))
+		{
+			OVRInput.SetControllerVibration(0.01f, 0.0f, controller);
+		}
 
+	}
 	void OnTriggerEnter(Collider c)
 	{
 		if (useHaptics)

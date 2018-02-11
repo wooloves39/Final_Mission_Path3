@@ -5,16 +5,20 @@ using UnityEngine;
 public class PointCheck : MonoBehaviour {
     private bool Skill;
     private bool check;
+	//사운드왜안나오지..
+	private AudioSource PointSound;
 	// Use this for initialization
 	void Start () {
         check = false;
         gameObject.SetActive(false);
+		PointSound = GetComponent<AudioSource>();
 	}
     public void touchon()
     {
-        check = true;
+		PointSound.Play();
+		check = true;
         this.transform.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
-      
+		
     }
     public void reset()
     {
