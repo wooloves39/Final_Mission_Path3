@@ -61,7 +61,9 @@
      <Compile Include="Assets\CorrectionSound.cs" />
      <Compile Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\SkyboxPanoramicBetaShaderGUI.cs" />
      <Compile Include="Assets\Hyun\test_Script\Billboards.cs" />
+     <Compile Include="Assets\Hyun\Use\Dia_Play.cs" />
      <Compile Include="Assets\Hyun\Use\Dialog.cs" />
+     <Compile Include="Assets\Hyun\Use\File_parser.cs" />
      <Compile Include="Assets\Hyun\Use\input_mouse.cs" />
      <Compile Include="Assets\Hyun\Use\input_non_instant.cs" />
      <Compile Include="Assets\Hyun\Use\moveBy.cs" />
@@ -103,6 +105,7 @@
      <None Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\Skybox-PanoramicBeta.shader" />
      <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Hyun\The_Texture_Lab\TL_Prototype_Textures_Pack\Documentation.txt" />
+     <None Include="Assets\Text\del_story.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
