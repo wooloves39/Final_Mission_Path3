@@ -20,6 +20,7 @@ public class MoveCtrl : MonoBehaviour
 	private CharacterController cc;
 	private Transform[] points;
 	private int nextIdx = 1;
+	private PlayerState MyState;
 	//public bool move = false;
 	//바꿔야 할 여지가 있음
 	public static bool isStopped = false;
@@ -27,6 +28,7 @@ public class MoveCtrl : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		MyState = GetComponent<PlayerState>();
 		tr = GetComponent<Transform>();
 		camTr = Camera.main.GetComponent<Transform>();
 		cc = GetComponent<CharacterController>();
@@ -54,9 +56,13 @@ public class MoveCtrl : MonoBehaviour
 				MoveTouchPad();
 				break;
 		}
-		if (InputManager_JHW.BButton())
+		if (InputManager_JHW.BButtonDown())
 		{
 			turnBack();
+		}
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			Debug.Log("P눌림");
 		}
 	}
 	private IEnumerator MoveControll()
@@ -114,6 +120,7 @@ public class MoveCtrl : MonoBehaviour
 	private void turnBack()
 	{
 		Vector3 pos = Vector3.zero;
+		MyState.Back();
 		if (gameObject.transform.rotation.y == 0)
 		{
 			pos.y = 180;

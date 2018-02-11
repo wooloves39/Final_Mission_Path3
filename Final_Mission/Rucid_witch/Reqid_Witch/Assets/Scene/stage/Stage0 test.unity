@@ -1642,6 +1642,8 @@ GameObject:
   - component: {fileID: 822306318}
   - component: {fileID: 822306320}
   - component: {fileID: 822306321}
+  - component: {fileID: 822306322}
+  - component: {fileID: 822306323}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1718,6 +1720,29 @@ MonoBehaviour:
   ArrowPrefab: {fileID: 1284576812339594, guid: 7004230d1c0f62a46a6c22c09c99676c,
     type: 2}
   RayLength: 50
+--- !u!135 &822306322
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 822306317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &822306323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 822306317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0048b857592804e9016aaade4fa3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &839618913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,7 +3150,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1532262652}
   - component: {fileID: 1532262653}
-  - component: {fileID: 1532262657}
   - component: {fileID: 1532262658}
   - component: {fileID: 1532262654}
   - component: {fileID: 1532262655}
@@ -3202,17 +3226,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1532262657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1532262651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4447847b9384e140a835adb4f3749ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1532262658
 MonoBehaviour:
   m_ObjectHideFlags: 0
