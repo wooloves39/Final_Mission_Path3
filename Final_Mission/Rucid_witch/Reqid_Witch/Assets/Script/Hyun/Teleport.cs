@@ -12,9 +12,6 @@ public class Teleport : MonoBehaviour
 	private TouchCollision[] AzuraHands;
 	public GameObject AzuraBall;
 
-	//#2번 공격
-	public DellHeadTracker HeadTracker;
-
 
 	//#1,3번 공격
 	public GameObject[] TeleportMarker;
@@ -53,10 +50,7 @@ public class Teleport : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q))
-		{
-			DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
-		}
+		
 		if (InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 		{
 			if (MyState.GetMyState() == PlayerState.State.Nomal)
@@ -79,7 +73,7 @@ public class Teleport : MonoBehaviour
 							break;
 						case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
 							{
-								currentCorutine = StartCoroutine(DellControll());
+
 							}
 							break;
 						case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출 베르베시
@@ -284,6 +278,7 @@ public class Teleport : MonoBehaviour
 		float distance = 0.0f;
 		Vector3 Seikwan = ArrowPrefab.transform.localScale;
 		int ArrowNum = new int();
+		//왼손
 		while (flug)
 		{
 			if ((!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))&&
@@ -350,26 +345,5 @@ public class Teleport : MonoBehaviour
 			}
 			yield return new WaitForSeconds(0.03f);
 		}
-	}
-	private IEnumerator DellControll()
-	{
-		int DellCount = 0 ;
-		bool leftTouch = false;
-		if (HeadTracker.getHeadOn())
-		{
-			//if (leftTouch)
-			//{
-			//	if (Hands[1].transform.position)
-			//}
-		}
-		yield return new WaitForSeconds(0.03f);
-	}
-	//이거로 테스트해야함
-	private void DellPointCheck(Vector3 HeadPos,Vector3 LPos,Vector3 RPos)
-	{
-		Vector3 v1=LPos-HeadPos;
-		Vector3 v2=RPos-HeadPos;
-		float w = Vector3.Cross(v1, v2).magnitude;
-		Debug.Log(w);
 	}
 }

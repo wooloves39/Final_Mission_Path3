@@ -125,10 +125,7 @@
     <Compile Include="Assets\test\elecshot.cs" />
     <Compile Include="Assets\test\ElecTower1.cs" />
     <Compile Include="Assets\test\elecTowerCreate.cs" />
-    <Compile Include="Assets\test\FrameDmg.cs" />
-    <Compile Include="Assets\test\FrameTower.cs" />
     <Compile Include="Assets\test\Global_parameter.cs" />
-    <Compile Include="Assets\test\LookAtTest.cs" />
     <Compile Include="Assets\test\movetest.cs" />
     <Compile Include="Assets\test\shot.cs" />
     <Compile Include="Assets\test\TileMap.cs" />

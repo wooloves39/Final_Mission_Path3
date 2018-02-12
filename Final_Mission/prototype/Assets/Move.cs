@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class Move : MonoBehaviour {
 	public float movespeed = 6.0f;
-	private AudioSource test;
 	// Use this for initialization
 	void Start () {
-		test = GetComponent<AudioSource>();
 	}
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			test.Play();
-		}
+
 		if (Input.GetKey (KeyCode.A)) {	
 			this.transform.Translate (Vector3.left* movespeed* Time.deltaTime,Space.Self);
 		}
