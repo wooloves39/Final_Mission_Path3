@@ -31250,6 +31250,7 @@ MonoBehaviour:
   TalkCanvas: {fileID: 302728262}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &2132438313
 Prefab:
   m_ObjectHideFlags: 0
@@ -31378,5 +31379,7 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 0
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire

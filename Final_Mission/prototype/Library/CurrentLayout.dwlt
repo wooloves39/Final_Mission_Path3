@@ -47,10 +47,14 @@ MonoBehaviour:
   vertical: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 102
 =======
   controlID: 42
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
+=======
+  controlID: 110
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
   controlID: 110
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
@@ -219,10 +223,14 @@ MonoBehaviour:
   vertical: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 103
 =======
   controlID: 43
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
+=======
+  controlID: 10
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
   controlID: 10
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
@@ -251,10 +259,14 @@ MonoBehaviour:
   vertical: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 104
 =======
   controlID: 44
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
+=======
+  controlID: 53
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
   controlID: 53
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
@@ -351,6 +363,7 @@ MonoBehaviour:
     m_Folders:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/prefab
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -370,10 +383,18 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/test
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
+=======
+    - Assets/test
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/test
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\LM\Final_Mission\Final_Mission_Path3\Final_Mission\prototype
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     scrollPos: {x: 0, y: 95}
@@ -387,10 +408,15 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000102d00004e2e00007a2e0000da2e0000082f0000702f0000a02f0000c22f0000f62f000000300000023100000831000026310000e83200005c35000000ca9a3bffffff7f
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
 =======
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     scrollPos: {x: 0, y: 112}
     m_SelectedIDs: e62b0000
     m_LastClickedID: 11238
     m_ExpandedIDs: 00000000fc2600004628000078280000e02800001629000088290000c2290000202a0000302a00003e2b0000442b0000622b0000e42e000000ca9a3bffffff7f
+<<<<<<< HEAD
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
+=======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -421,10 +447,14 @@ MonoBehaviour:
     m_LastClickedID: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000022700005228000084280000ee2800002429000096290000d02900002e2a00003e2a00004c2b0000522b0000702b00003a2e0000
 =======
     m_ExpandedIDs: 00000000102d00004e2e00007a2e0000da2e0000082f0000702f0000a02f0000f62f000000300000023100000831000026310000e8320000
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
+=======
+    m_ExpandedIDs: 00000000fc2600004628000078280000e02800001629000088290000c2290000ea290000202a0000302a00003e2b0000442b0000622b0000e42e0000
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
     m_ExpandedIDs: 00000000fc2600004628000078280000e02800001629000088290000c2290000ea290000202a0000302a00003e2b0000442b0000622b0000e42e0000
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
@@ -544,6 +574,7 @@ MonoBehaviour:
   m_TreeViewState:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 230}
     m_SelectedIDs: 3cefffff
     m_LastClickedID: -4292
@@ -555,10 +586,15 @@ MonoBehaviour:
     m_ExpandedIDs: a8f0ffff1cf8ffff00000000
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
 =======
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f03b0000
     m_LastClickedID: 0
     m_ExpandedIDs: fc81f8ff0682f8ff6a7cffff68ccffffb6f5ffff1afcffff00000000
+<<<<<<< HEAD
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
+=======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -643,10 +679,14 @@ MonoBehaviour:
     speed: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Value: {x: 0.0045167585, y: 0.85426116, z: 0.0074235704, w: -0.5197715}
 =======
     m_Value: {x: 0.34225085, y: 0.6569054, z: -0.45406705, w: 0.49513927}
 >>>>>>> ec6a271c862f543a682cc95ad67c625f9408a7ce
+=======
+    m_Value: {x: -0.34225082, y: -0.65690535, z: 0.45406702, w: -0.49513924}
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
     m_Value: {x: -0.34225082, y: -0.65690535, z: 0.45406702, w: -0.49513924}
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
