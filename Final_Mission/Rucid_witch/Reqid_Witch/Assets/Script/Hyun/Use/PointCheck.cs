@@ -8,13 +8,17 @@ public class PointCheck : MonoBehaviour {
 	//사운드왜안나오지..
 	private AudioSource PointSound;
 	// Use this for initialization
+	private void Awake()
+	{
+		PointSound = GetComponent<AudioSource>();
+	}
 	void Start () {
         check = false;
         gameObject.SetActive(false);
-		PointSound = GetComponent<AudioSource>();
 	}
     public void touchon()
     {
+		StartCoroutine(Viberation.ViberationCoroutine(.1f, .2f, OVRInput.Controller.RTouch));
 		PointSound.Play();
 		check = true;
         this.transform.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
@@ -48,8 +52,4 @@ public class PointCheck : MonoBehaviour {
     {
         return Skill;
     }
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
