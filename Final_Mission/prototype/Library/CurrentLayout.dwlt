@@ -49,6 +49,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 102
 =======
   controlID: 42
@@ -62,6 +63,9 @@ MonoBehaviour:
 =======
   controlID: 102
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+  controlID: 110
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -229,6 +233,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 103
 =======
   controlID: 43
@@ -242,6 +247,9 @@ MonoBehaviour:
 =======
   controlID: 103
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+  controlID: 10
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,6 +277,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 104
 =======
   controlID: 44
@@ -282,6 +291,9 @@ MonoBehaviour:
 =======
   controlID: 104
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+  controlID: 53
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -377,6 +389,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
     - Assets/prefab
@@ -408,10 +421,18 @@ MonoBehaviour:
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+    - Assets/test
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/test
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -432,16 +453,21 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     scrollPos: {x: 0, y: 112}
     m_SelectedIDs: e62b0000
     m_LastClickedID: 11238
     m_ExpandedIDs: 00000000fc2600004628000078280000e02800001629000088290000c2290000202a0000302a00003e2b0000442b0000622b0000e42e000000ca9a3bffffff7f
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -473,6 +499,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000022700005228000084280000ee2800002429000096290000d02900002e2a00003e2a00004c2b0000522b0000702b00003a2e0000
 =======
     m_ExpandedIDs: 00000000102d00004e2e00007a2e0000da2e0000082f0000702f0000a02f0000f62f000000300000023100000831000026310000e8320000
@@ -486,6 +513,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 00000000022700005228000084280000ee2800002429000096290000d02900002e2a00003e2a00004c2b0000522b0000702b00003a2e0000
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+    m_ExpandedIDs: 00000000fc2600004628000078280000e02800001629000088290000c2290000ea290000202a0000302a00003e2b0000442b0000622b0000e42e0000
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -604,6 +634,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
     scrollPos: {x: 0, y: 230}
@@ -620,16 +651,21 @@ MonoBehaviour:
 =======
 =======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: f03b0000
     m_LastClickedID: 0
     m_ExpandedIDs: fc81f8ff0682f8ff6a7cffff68ccffffb6f5ffff1afcffff00000000
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
 >>>>>>> parent of 2a026c3... Effect MagicBall&Fire
 =======
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Effect
@@ -715,6 +751,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Value: {x: 0.0045167585, y: 0.85426116, z: 0.0074235704, w: -0.5197715}
 =======
     m_Value: {x: 0.34225085, y: 0.6569054, z: -0.45406705, w: 0.49513927}
@@ -728,6 +765,9 @@ MonoBehaviour:
 =======
     m_Value: {x: 0.0045167585, y: 0.85426116, z: 0.0074235704, w: -0.5197715}
 >>>>>>> parent of 7296ffc... Merge branch 'master' of https://github.com/wooloves39/Final_Mission_Path3
+=======
+    m_Value: {x: -0.34225082, y: -0.65690535, z: 0.45406702, w: -0.49513924}
+>>>>>>> parent of 2a026c3... Effect MagicBall&Fire
   m_Size:
     m_Target: 10.539026
     speed: 2
