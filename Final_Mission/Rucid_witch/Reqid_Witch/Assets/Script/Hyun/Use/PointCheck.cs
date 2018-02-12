@@ -16,8 +16,11 @@ public class PointCheck : MonoBehaviour {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         check = true;
 =======
+=======
+>>>>>>> parent of 5e93d84... 진동, 사운드, 델공격 준비
 =======
 >>>>>>> parent of 5e93d84... 진동, 사운드, 델공격 준비
 =======
