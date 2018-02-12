@@ -9,10 +9,16 @@ public class PointCheck : MonoBehaviour {
 	void Start () {
         check = false;
         gameObject.SetActive(false);
+		PointSound = GetComponent<AudioSource>();
 	}
     public void touchon()
     {
+<<<<<<< HEAD
         check = true;
+=======
+		PointSound.Play();
+		check = true;
+>>>>>>> parent of 5e93d84... 진동, 사운드, 델공격 준비
         this.transform.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
       
     }
