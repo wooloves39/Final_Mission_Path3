@@ -75,6 +75,13 @@ public class input_mouse : MonoBehaviour
 				Skills[mySkills[mytype]].SkillOn();
 				Mystate.SetMyState(PlayerState.State.Nomal);
 			}
+			if (InputManager_JHW.LTriggerOn()&&Mystate.GetMyState()==PlayerState.State.Drawing)
+			{
+				raser.gameObject.SetActive(false);
+				touchOn = false;
+				Skills[mySkills[mytype]].SkillOn();
+				Mystate.SetMyState(PlayerState.State.Nomal);
+			}
 		}
 	}
 	public void Upcount(PointCheck col)
