@@ -24,6 +24,10 @@ public class MoveCtrl : MonoBehaviour
 	//public bool move = false;
 	//바꿔야 할 여지가 있음
 	public static bool isStopped = false;
+
+
+	//대화 스크립트 종속
+	public Dia_Play myDia;
 	//private Coroutine moveCoroutine;
 	// Use this for initialization
 	void Start()
@@ -114,7 +118,9 @@ public class MoveCtrl : MonoBehaviour
 	{
 		if (other.CompareTag("WAY_POINT"))
 		{
-			nextIdx = (++nextIdx >= points.Length) ? 1 : nextIdx;
+			Debug.Log("대화 스크립트 동작!");
+			gameObject.transform.position = other.transform.position;
+			myDia.setPlay(false);
 		}
 	}
 	private void turnBack()

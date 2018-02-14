@@ -11,8 +11,8 @@ public class Dialog : MonoBehaviour
 
 	private string[] DialogueStrings;
 	public int[] chatChar;
-	public float SecondsBetweenCharacters = 0.15f;
-	public float CharacterRateMultuplier = 0.5f;
+	private float SecondsBetweenCharacters = 0.1f;
+	private float CharacterRateMultuplier = 0.01f;
 
 	public KeyCode DialogueInput = KeyCode.Return;
 	private bool _isStringBeingRevealed = false;
@@ -64,10 +64,10 @@ public class Dialog : MonoBehaviour
 			{
 				_isStringBeingRevealed = true;
 				moveImage(currentDialogueIndex);
+				if (currentDialogueIndex >= dialogueLengh-1)
+					_isEndofDialogue = true;
 				StartCoroutine(DisplatStrings(DialogueStrings[currentDialogueIndex++]));
 
-				if (currentDialogueIndex >= dialogueLengh)
-					_isEndofDialogue = true;
 			}
 			yield return new WaitWhile(() => dia_Play.getPlay());
 		}
@@ -77,7 +77,7 @@ public class Dialog : MonoBehaviour
 
 		//}
 		HideIcons();
-		_isEndofDialogue = false;
+	//	_isEndofDialogue = false;
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)
 	{
@@ -93,7 +93,7 @@ public class Dialog : MonoBehaviour
 			{
 				if (Input.GetKey(DialogueInput))
 				{
-					yield return new WaitForSeconds(SecondsBetweenCharacters * CharacterRateMultuplier);
+					yield return new WaitForSeconds(CharacterRateMultuplier);
 				}
 				else
 				{

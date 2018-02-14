@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - Point
   - Monster
+  - Portal
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ public class Targetting : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Monster"))
 		{
+			Debug.Log("Add Mon");
 			TargetMonster.Add(other.gameObject);
 		}			
 	}
@@ -26,6 +27,7 @@ public class Targetting : MonoBehaviour {
 
 		if (other.gameObject.CompareTag("Monster"))
 		{
+			Debug.Log("Del Mon");
 			TargetMonster.Remove(other.gameObject);
 		}
 	}
