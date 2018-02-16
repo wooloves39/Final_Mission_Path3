@@ -12,7 +12,7 @@ public class Dia_Play : MonoBehaviour
 	{
 		//mouseLook.enabled = false;
 		TalkCanvas.SetActive(false);
-		StartCoroutine(BeejaeControll());
+		StartCoroutine(TalkCoroutine());
 	}
 	public bool getPlay() { return Play; }
 	public void setPlay(bool val) { Play = val; }
@@ -29,7 +29,7 @@ public class Dia_Play : MonoBehaviour
 			//	mouseLook.enabled = false;
 		}
 	}
-	private IEnumerator BeejaeControll()
+	private IEnumerator TalkCoroutine()
 	{
 		while (true)
 		{
@@ -37,7 +37,6 @@ public class Dia_Play : MonoBehaviour
 			yield return new WaitUntil(() =>!Play);
 			TalkCanvas.SetActive(true);
 			yield return new WaitUntil(() => Play);
-
 		}
 	}
 }
