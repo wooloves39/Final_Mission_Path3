@@ -81,6 +81,7 @@
      <Compile Include="Assets\MyRandom.cs" />
      <Compile Include="Assets\NextScene.cs" />
      <Compile Include="Assets\Ready.cs" />
+     <Compile Include="Assets\Rotate.cs" />
      <Compile Include="Assets\RotationText.cs" />
      <Compile Include="Assets\Singletone.cs" />
      <Compile Include="Assets\skilcontroller.cs" />
