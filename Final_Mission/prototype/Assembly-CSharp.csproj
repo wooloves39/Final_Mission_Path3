@@ -72,6 +72,7 @@
      <Compile Include="Assets\Hyun\Use\PointCheck.cs" />
      <Compile Include="Assets\Hyun\Use\TweenCtrl.cs" />
      <Compile Include="Assets\input.cs" />
+     <Compile Include="Assets\MagicBallScale.cs" />
      <Compile Include="Assets\Menu.cs" />
      <Compile Include="Assets\MobAttack.cs" />
      <Compile Include="Assets\MobSearch.cs" />
