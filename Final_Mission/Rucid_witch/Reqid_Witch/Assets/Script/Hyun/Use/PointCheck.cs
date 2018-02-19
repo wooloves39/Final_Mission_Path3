@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class PointCheck : MonoBehaviour
 {
-	private bool Skill;
 	private bool check;
-	private AudioSource PointSound;
+	private Viberation PlayerViberation;
 	// Use this for initialization
 	private void Awake()
 	{
-		PointSound = GetComponent<AudioSource>();
+		PlayerViberation = gameObject.transform.parent.parent.parent.GetComponent<Viberation>();
 	}
 	void Start()
 	{
 		check = false;
 		gameObject.SetActive(false);
-		//PointSound = GetComponent<AudioSource>();
 	}
 	public void touchon()
 	{
-		StartCoroutine(Viberation.ViberationCoroutine(.1f, .2f, OVRInput.Controller.RTouch));
-		PointSound.Play();
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.1f, OVRInput.Controller.RTouch));
 		check = true;
 		this.transform.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
 	}
@@ -44,13 +41,5 @@ public class PointCheck : MonoBehaviour
 	{
 		if (gameObject.activeSelf == true)
 			gameObject.SetActive(false);
-	}
-	public void SetSkill(bool value)
-	{
-		Skill = value;
-	}
-	public bool GetSkill()
-	{
-		return Skill;
 	}
 }

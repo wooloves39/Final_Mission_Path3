@@ -17,21 +17,23 @@ public class input_non_instant : MonoBehaviour
 	public int[] skill5;
 	private int[] touchPoints;
 	//완료 타이머
-	private bool TimerOn=false;
+	private bool TimerOn = false;
 	private float completeTimer;
 	public GameObject Complete;
 	public LineRenderer line;
 	private Coroutine SkillCorutine;
 	private AudioSource CompleteSound;
+	private Viberation PlayerViberation;
 	// Use this for initialization
 	void Start()
 	{
 		CompleteSound = GetComponent<AudioSource>();
-			reset();
+		reset();
 		gameObject.SetActive(false);
 	}
 	private void Awake()
 	{
+		PlayerViberation = gameObject.transform.parent.parent.GetComponent<Viberation>();
 		MainPoint = Points[0];
 		touchPoints = new int[skill5.Length];
 		line.positionCount = 1;
@@ -149,7 +151,6 @@ public class input_non_instant : MonoBehaviour
 		if (!CompleteSound.isPlaying)
 		{
 			CompleteSound.Play();
-			StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.3f, OVRInput.Controller.All));
 		}
 	}
 	private void PointChecks()
@@ -189,6 +190,7 @@ public class input_non_instant : MonoBehaviour
 			Debug.Log("마법 발동!!");
 			TimerOn = true;
 			Complete.SetActive(true);
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.2f, .3f, OVRInput.Controller.All));
 			return;
 		}
 		else if (SkillCheck(skill2))
@@ -197,6 +199,7 @@ public class input_non_instant : MonoBehaviour
 			Debug.Log("마법 발동!!");
 			TimerOn = true;
 			Complete.SetActive(true);
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.2f, .3f, OVRInput.Controller.All));
 			return;
 		}
 		else if (SkillCheck(skill3))
@@ -205,6 +208,7 @@ public class input_non_instant : MonoBehaviour
 			Debug.Log("마법 발동!!");
 			TimerOn = true;
 			Complete.SetActive(true);
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.2f, .3f, OVRInput.Controller.All));
 			return;
 		}
 		else if (SkillCheck(skill4))
@@ -213,13 +217,16 @@ public class input_non_instant : MonoBehaviour
 			Debug.Log("마법 발동!!");
 			TimerOn = true;
 			Complete.SetActive(true);
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.2f, .3f, OVRInput.Controller.All));
 			return;
 		}
 		else if (SkillCheck(skill5))
 		{
 			Debug.Log(5);
-			Debug.Log("마법 발동!!"); TimerOn = true;
+			Debug.Log("마법 발동!!");
+			TimerOn = true;
 			Complete.SetActive(true);
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.2f, .3f, OVRInput.Controller.All));
 			return;
 		}
 
