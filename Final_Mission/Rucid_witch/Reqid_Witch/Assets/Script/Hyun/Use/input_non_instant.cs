@@ -17,13 +17,16 @@ public class input_non_instant : MonoBehaviour
 	public int[] skill5;
 	private int[] touchPoints;
 	//완료 타이머
-	private bool TimerOn;
+	private bool TimerOn=false;
 	private float completeTimer;
 	public GameObject Complete;
 	public LineRenderer line;
+	private Coroutine SkillCorutine;
+	private AudioSource CompleteSound;
 	// Use this for initialization
 	void Start()
 	{
+		CompleteSound = GetComponent<AudioSource>();
 			reset();
 		gameObject.SetActive(false);
 	}
@@ -74,8 +77,6 @@ public class input_non_instant : MonoBehaviour
 					if (touchPoints != null)
 					{
 						touchPoints[count] = i;
-						Debug.Log("터치포인트");
-						Debug.Log(touchPoints[count]);
 					}
 					break;
 				}
@@ -94,7 +95,11 @@ public class input_non_instant : MonoBehaviour
 				Complete.SetActive(false);
 				reset();
 				gameObject.SetActive(false);
-
+				if (SkillCorutine != null)
+				{
+					StopCoroutine(SkillCorutine);
+					SkillCorutine = null;
+				}
 			}
 		}
 	}
@@ -127,6 +132,7 @@ public class input_non_instant : MonoBehaviour
 					{
 						Points[skill[i]].turnon();
 					}
+					PlayingSound();
 				}
 				else
 				{
@@ -138,9 +144,16 @@ public class input_non_instant : MonoBehaviour
 			}
 		}
 	}
+	private void PlayingSound()
+	{
+		if (!CompleteSound.isPlaying)
+		{
+			CompleteSound.Play();
+			StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.3f, OVRInput.Controller.All));
+		}
+	}
 	private void PointChecks()
 	{
-		Debug.Log(count);
 		if (count >= 0)
 		{
 			PointReset();
@@ -161,6 +174,7 @@ public class input_non_instant : MonoBehaviour
 				if (skill[i] != touchPoints[i])
 					return false;
 			}
+			SkillCorutine = StartCoroutine(SkillComplete());
 			return true;
 		}
 		return false;
@@ -172,7 +186,8 @@ public class input_non_instant : MonoBehaviour
 		if (SkillCheck(skill1))
 		{
 			Debug.Log(1);
-			Debug.Log("마법 발동!!"); TimerOn = true;
+			Debug.Log("마법 발동!!");
+			TimerOn = true;
 			Complete.SetActive(true);
 			return;
 		}
@@ -216,7 +231,18 @@ public class input_non_instant : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		SkillTime();
+		//SkillTime();
 		PointChecks();
+	}
+	private IEnumerator SkillComplete()
+	{
+		yield return new WaitUntil(() => TimerOn);
+		//yield return new WaitWhile(() => TimerOn);
+		while (TimerOn)
+		{
+			SkillTime();
+			yield return null;
+		}
+
 	}
 }

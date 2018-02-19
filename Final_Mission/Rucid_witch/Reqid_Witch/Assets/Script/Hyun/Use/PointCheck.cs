@@ -20,12 +20,10 @@ public class PointCheck : MonoBehaviour
 	}
 	public void touchon()
 	{
-
 		StartCoroutine(Viberation.ViberationCoroutine(.1f, .2f, OVRInput.Controller.RTouch));
 		PointSound.Play();
 		check = true;
 		this.transform.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 0);
-
 	}
 	public void reset()
 	{
