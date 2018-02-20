@@ -282,6 +282,7 @@ public class Teleport : MonoBehaviour
 		float distance = 0.0f;
 		Vector3 Seikwan = ArrowPrefab.transform.localScale;
 		int ArrowNum = new int();
+		GameObject[] ArrowBody = new GameObject[3];//애로우 스케일 조정에서 활용될여지있음
 		//왼손
 		while (flug)
 		{

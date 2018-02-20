@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour {
-	public enum State{ Nomal, Drawing, Charging, Attack,Damage }
+	public enum State{ Nomal, Drawing, Charging, Attack,Damage,Talk}
 
 	private State MyState;
 	private float ChargingTime;

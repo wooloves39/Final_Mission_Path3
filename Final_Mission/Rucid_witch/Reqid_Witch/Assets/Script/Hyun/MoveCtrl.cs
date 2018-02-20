@@ -21,10 +21,6 @@ public class MoveCtrl : MonoBehaviour
 	private Transform[] points;
 	private int nextIdx = 1;
 	private PlayerState MyState;
-	//public bool move = false;
-	//바꿔야 할 여지가 있음
-	public static bool isStopped = false;
-
 
 	//대화 스크립트 종속
 	public Dia_Play myDia;
@@ -44,8 +40,7 @@ public class MoveCtrl : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (isStopped) {
-			//StopCoroutine(moveCoroutine);
+		if (MyState.GetMyState()==PlayerState.State.Talk) {
 			return;
 		}
 		switch (moveType)
@@ -63,10 +58,6 @@ public class MoveCtrl : MonoBehaviour
 		if (InputManager_JHW.BButtonDown())
 		{
 			turnBack();
-		}
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			Debug.Log("P눌림");
 		}
 	}
 	private IEnumerator MoveControll()

@@ -26,7 +26,6 @@ public class Dialog : MonoBehaviour
 	public Dia_Play dia_Play;
 	private File_parser file_parser;
 	public string fileName;
-
 	void Start()
     {
 		file_parser = new File_parser();
@@ -66,8 +65,11 @@ public class Dialog : MonoBehaviour
                 moveImage(currentDialogueIndex);
                 StartCoroutine(DisplatStrings(DialogueStrings[currentDialogueIndex++]));
 
-                if (currentDialogueIndex >= dialogueLengh)
-                    _isEndofDialogue = true;
+				if (currentDialogueIndex >= dialogueLengh || chatChar[currentDialogueIndex] == 99)
+				{
+					if (chatChar[currentDialogueIndex] == 99) currentDialogueIndex++;
+					_isEndofDialogue = true;
+				}
             }
             yield return new WaitWhile(()=>dia_Play.getPlay());
         }
@@ -106,12 +108,15 @@ public class Dialog : MonoBehaviour
         while (true)
         {
             if (Input.GetKeyDown(DialogueInput)) break;
-
             yield return 0;
         }
         HideIcons();
         _isStringBeingRevealed = false;
         _textComponent.text = "";
+		if (_isEndofDialogue) {
+			_isEndofDialogue = false;
+			dia_Play.setPlay(true); }
+
     }
     private void HideIcons()
     {

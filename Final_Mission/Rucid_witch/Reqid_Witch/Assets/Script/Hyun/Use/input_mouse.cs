@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class input_mouse : MonoBehaviour
 {
-	PlayerState.State state;
 	public input_non_instant[] Skills;
 	private int[] mySkills;
 	private float timer = 0;

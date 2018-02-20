@@ -18,6 +18,7 @@ public class NextStage : MonoBehaviour {
 			//스테이지 정보, 속성 추가등 부가 요소 정리
 
 			//ReadyScene으로!
+			Debug.Log("다음 씬");
 			SceneManager.LoadScene(1);
 		}
 	}

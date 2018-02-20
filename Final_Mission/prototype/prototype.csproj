@@ -105,6 +105,7 @@
     <Compile Include="Assets\Hyun\Use\PointCheck.cs" />
     <Compile Include="Assets\Hyun\Use\TweenCtrl.cs" />
     <Compile Include="Assets\input.cs" />
+    <Compile Include="Assets\MagicBallScale.cs" />
     <Compile Include="Assets\Menu.cs" />
     <Compile Include="Assets\MobAttack.cs" />
     <Compile Include="Assets\MobSearch.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Assets\MyRandom.cs" />
     <Compile Include="Assets\NextScene.cs" />
     <Compile Include="Assets\Ready.cs" />
+    <Compile Include="Assets\Rotate.cs" />
     <Compile Include="Assets\RotationText.cs" />
     <Compile Include="Assets\Singletone.cs" />
     <Compile Include="Assets\skilcontroller.cs" />

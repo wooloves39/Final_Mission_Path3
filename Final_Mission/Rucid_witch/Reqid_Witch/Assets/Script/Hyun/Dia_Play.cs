@@ -20,14 +20,6 @@ public class Dia_Play : MonoBehaviour
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.P)) Play = !Play;
-		if (Play)
-		{
-			//	mouseLook.enabled = true;
-		}
-		else
-		{
-			//	mouseLook.enabled = false;
-		}
 	}
 	private IEnumerator TalkCoroutine()
 	{
