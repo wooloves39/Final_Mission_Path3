@@ -36,6 +36,7 @@ public class Arrow : MonoBehaviour {
 	{
 		shot = false;
 		 del_timer = false;
+
 		timer = 0.0f;
 		gameObject.transform.localScale = curScale;
 	}
