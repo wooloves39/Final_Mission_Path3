@@ -7,13 +7,14 @@ public class Rotate : MonoBehaviour {
 	public Vector3 Var = Vector3.zero;
 	public float Speed = 5.0f;
 	public int cnt = 0;
-	
+	public int limit = 1000;
+
 	// Update is called once per frame
 	void Update () {
 		
 		this.transform.Rotate (Var*Time.deltaTime * Speed);
 		cnt++;
-		if (cnt > 90) {
+		if (cnt > limit) {
 			Var = new Vector3 (getRandom (-90, 90), getRandom (-90, 90), getRandom (-90, 90));
 			cnt = 0;
 		}
