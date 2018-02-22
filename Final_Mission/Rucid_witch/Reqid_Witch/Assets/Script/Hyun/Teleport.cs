@@ -141,7 +141,7 @@ public class Teleport : MonoBehaviour
 								{
 									if (!Arrow[i].GetComponent<Arrow>().IsShooting())
 									{
-										Arrow[i].GetComponent<Arrow>().Reset();
+										Arrow[i].GetComponent<Arrow>().resetArrow();
 										pool.RemoveItem(Arrow[i]);
 										Arrow[i] = null;
 									}
@@ -162,7 +162,7 @@ public class Teleport : MonoBehaviour
 				{
 					if (Arrow[i].GetComponent<Arrow>().IsDelete())
 					{
-							Arrow[i].GetComponent<Arrow>().Reset();
+							Arrow[i].GetComponent<Arrow>().resetArrow();
 						pool.RemoveItem(Arrow[i]);
 						Arrow[i] = null;
 					}
@@ -370,6 +370,5 @@ public class Teleport : MonoBehaviour
 		Vector3 v1 = LPos - HeadPos;
 		Vector3 v2 = RPos - HeadPos;
 		float w = Vector3.Cross(v1, v2).magnitude;
-		Debug.Log(w);
 	}
 }

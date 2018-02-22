@@ -32,7 +32,7 @@ public class Arrow : MonoBehaviour {
 	{
 		return del_timer;
 	}
-	public void Reset()
+	public void resetArrow()
 	{
 		shot = false;
 		 del_timer = false;
