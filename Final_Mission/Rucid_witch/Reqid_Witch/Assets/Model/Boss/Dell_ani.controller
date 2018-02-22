@@ -31,7 +31,7 @@ AnimatorStateTransition:
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102532392849188116}
   m_Solo: 0
-  m_Mute: 0
+  m_Mute: 1
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.22568083
@@ -157,7 +157,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 12, y: 96, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102532392849188116}
+  m_DefaultState: {fileID: 1102330739823839506}
 --- !u!1107 &1107763675828718922
 AnimatorStateMachine:
   serializedVersion: 5
