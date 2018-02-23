@@ -9,6 +9,7 @@ public class DellHeadTracker : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("DellAttack"))
 		{
+			Debug.Log("바이올린 준비on");
 			HeadOn = true;
 		}
 	}
@@ -16,6 +17,7 @@ public class DellHeadTracker : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("DellAttack"))
 		{
+			Debug.Log("바이올린 준비off");
 			HeadOn = false;
 		}
 	}

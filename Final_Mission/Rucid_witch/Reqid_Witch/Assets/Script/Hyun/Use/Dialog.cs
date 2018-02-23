@@ -13,8 +13,7 @@ public class Dialog : MonoBehaviour
 	public int[] chatChar;
 	private float SecondsBetweenCharacters = 0.1f;
 	private float CharacterRateMultuplier = 0.01f;
-
-	public KeyCode DialogueInput = KeyCode.Return;
+	
 	private bool _isStringBeingRevealed = false;
 	private bool _isEndofDialogue = false;
 
@@ -64,10 +63,14 @@ public class Dialog : MonoBehaviour
 			{
 				_isStringBeingRevealed = true;
 				moveImage(currentDialogueIndex);
-				if (currentDialogueIndex >= dialogueLengh-1)
-					_isEndofDialogue = true;
 				StartCoroutine(DisplatStrings(DialogueStrings[currentDialogueIndex++]));
 
+				if (currentDialogueIndex >= dialogueLengh || chatChar[currentDialogueIndex] == 99)
+				{
+					if (chatChar[currentDialogueIndex] == 99) currentDialogueIndex++;
+					if (currentDialogueIndex >= dialogueLengh) dia_Play.setEnd(true);
+					_isEndofDialogue = true;
+				}
 			}
 			yield return new WaitWhile(() => dia_Play.getPlay());
 		}
@@ -91,7 +94,7 @@ public class Dialog : MonoBehaviour
 			currentCaracterIndex++;
 			if (currentCaracterIndex < stringLength)
 			{
-				if (Input.GetKey(DialogueInput))
+				if (InputManager_JHW.BButton())
 				{
 					yield return new WaitForSeconds(CharacterRateMultuplier);
 				}
@@ -105,13 +108,18 @@ public class Dialog : MonoBehaviour
 		ShowIcon();
 		while (true)
 		{
-			if (Input.GetKeyDown(DialogueInput)) break;
+			if (InputManager_JHW.BButtonDown()) break;
 
 			yield return 0;
 		}
 		HideIcons();
 		_isStringBeingRevealed = false;
 		_textComponent.text = "";
+		if (_isEndofDialogue)
+		{
+			_isEndofDialogue = false;
+			dia_Play.setPlay(true);
+		}
 	}
 	private void HideIcons()
 	{

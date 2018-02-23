@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dia_Play : MonoBehaviour
 {
 	private bool Play = true;
+	private bool TalkEnd = false;
 	//public MouseLook mouseLook;
 	public GameObject TalkCanvas;
 	// Use this for initialization
@@ -16,6 +17,8 @@ public class Dia_Play : MonoBehaviour
 	}
 	public bool getPlay() { return Play; }
 	public void setPlay(bool val) { Play = val; }
+	public bool getEnd() { return TalkEnd; }
+	public void setEnd(bool val) { TalkEnd = val; }
 	// Update is called once per frame
 	void Update()
 	{

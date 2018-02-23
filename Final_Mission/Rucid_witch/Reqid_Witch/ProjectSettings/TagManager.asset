@@ -12,6 +12,7 @@ TagManager:
   - Point
   - Monster
   - Portal
+  - DellAttack
   layers:
   - Default
   - TransparentFX

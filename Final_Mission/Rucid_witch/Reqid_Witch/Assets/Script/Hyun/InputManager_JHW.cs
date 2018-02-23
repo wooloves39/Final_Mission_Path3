@@ -104,17 +104,14 @@ public static class InputManager_JHW
 	}
 	public static bool MenuButton()
     {
-        Debug.Log("MenuButton");
         return Input.GetButtonDown("Menu");
     }
 	public static bool LTouchButton()
 	{
-		Debug.Log("LTouchButton");
 		return Input.GetButtonDown("LTouchButton");
 	}
 	public static bool RTouchButton()
 	{
-		Debug.Log("RTouchButton");
 		return Input.GetButtonDown("RTouchButton");
 	}
 	private static bool mainLeftInUse = false;

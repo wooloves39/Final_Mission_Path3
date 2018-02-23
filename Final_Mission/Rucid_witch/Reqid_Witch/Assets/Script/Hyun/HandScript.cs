@@ -11,31 +11,31 @@ public class HandScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKey(KeyCode.U))
 		{
 			HandAni.Play("Fist");
 		}
-		else if (Input.GetKey(KeyCode.Q))
+		else if (Input.GetKey(KeyCode.I))
 		{
 			HandAni.Play("IndexFingerDown");
 		}
-		else if (Input.GetKey(KeyCode.W))
+		else if (Input.GetKey(KeyCode.O))
 		{
 			HandAni.Play("IndexFingerUp");
 		}
-		else if (Input.GetKey(KeyCode.E))
+		else if (Input.GetKey(KeyCode.P))
 		{
 			HandAni.Play("restDown");
 		}
-		else if (Input.GetKey(KeyCode.R))
+		else if (Input.GetKey(KeyCode.H))
 		{
 			HandAni.Play("restUp");
 		}
-		else if (Input.GetKey(KeyCode.A))
+		else if (Input.GetKey(KeyCode.J))
 		{
 			HandAni.Play("ThumbDown");
 		}
-		else if (Input.GetKey(KeyCode.S))
+		else if (Input.GetKey(KeyCode.K))
 		{
 			HandAni.Play("ThumbUp");
 		}

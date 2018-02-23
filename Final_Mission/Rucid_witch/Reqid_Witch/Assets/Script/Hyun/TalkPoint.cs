@@ -18,6 +18,18 @@ public class TalkPoint : MonoBehaviour
 			if (!player.getPlay())
 			{
 				MyState.SetMyState(PlayerState.State.Talk);
+				player.setPlay(false);
+
+			}
+		}
+	}
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.gameObject.CompareTag("Player"))
+		{
+			if (player.getEnd())
+			{
+				MyState.SetMyState(PlayerState.State.Nomal);
 				player.setPlay(true);
 
 			}

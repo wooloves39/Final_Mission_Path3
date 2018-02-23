@@ -189,8 +189,7 @@ public class input_non_instant : MonoBehaviour
 		lineReset();
 		if (SkillCheck(skill1))
 		{
-			Debug.Log(1);
-			Debug.Log("마법 발동!!");
+			Debug.Log("마법1");
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -199,8 +198,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill2))
 		{
-			Debug.Log(2);
-			Debug.Log("마법 발동!!");
+			Debug.Log("마법2");
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -209,8 +207,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill3))
 		{
-			Debug.Log(3);
-			Debug.Log("마법 발동!!");
+			Debug.Log("마법3");
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -219,8 +216,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill4))
 		{
-			Debug.Log(4);
-			Debug.Log("마법 발동!!");
+			Debug.Log("마법4");
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -229,8 +225,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill5))
 		{
-			Debug.Log(5);
-			Debug.Log("마법 발동!!");
+			Debug.Log("마법5");
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
