@@ -50,30 +50,35 @@ public class SelectSkillUI : MonoBehaviour
 						{
 							if (Singletone.Instance.Myskill[i] == RotationSkill)
 							{
-								Button = true;
 								j = i;
+								if(j != skillnum)
+									Button = true;
 							}
 							if (Button)
 							{
-								while (j < 2)
+									
+								for (int k = j; k < 2; ++k)
 								{
-									if (Singletone.Instance.Myskill[j + 1] != -1)
-										Singletone.Instance.Myskill[j] = Singletone.Instance.Myskill[j + 1];
-									else
-									{
-										Singletone.Instance.Myskill[j + 1] = RotationSkill;
+									Singletone.Instance.Myskill[k] = Singletone.Instance.Myskill[k + 1]; 
+									if (Singletone.Instance.Myskill[k] == -1)
 										break;
-									}
-									j++;
 								}
 							}
 						}
 						if (Button == false)
 						{
-							Singletone.Instance.Myskill[skillnum] = RotationSkill;
-							skillnum++;
-							if (skillnum == 3)
-								skillnum = 0;
+							if (skillnum >= 2)
+							{
+								Singletone.Instance.Myskill[0] = Singletone.Instance.Myskill[1];
+								Singletone.Instance.Myskill[1] = Singletone.Instance.Myskill[2];
+								Singletone.Instance.Myskill[2] = RotationSkill;
+							}
+							else
+							{
+								Singletone.Instance.Myskill[skillnum] = RotationSkill;
+								skillnum++;
+							}
+
 						}
 						for (int i = 0; i < 3; ++i)
 						{
