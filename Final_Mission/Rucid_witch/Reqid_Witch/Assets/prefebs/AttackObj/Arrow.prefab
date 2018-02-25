@@ -103,8 +103,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1399152040969476}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -0.000000036334992, z: 7.191071}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.000024368721, z: 3.9341996}
+  m_LocalScale: {x: 1.7250024, y: 0.9999998, z: 6.9750023}
   m_Children: []
   m_Father: {fileID: 4688408070599862}
   m_RootOrder: 1
@@ -116,8 +116,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1915954164937626}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: -4.036512}
-  m_LocalScale: {x: 1.4613494, y: 1.9328946, z: 1}
+  m_LocalPosition: {x: 0, y: -0.00000014646349, z: -5.1769004}
+  m_LocalScale: {x: 1.7250016, y: 0.9999998, z: 6.9750023}
   m_Children: []
   m_Father: {fileID: 4688408070599862}
   m_RootOrder: 2
@@ -142,16 +142,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195537860169114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.30000013, z: 0.30000013}
+  m_LocalScale: {x: 0.013, y: 0.013, z: 0.013}
   m_Children:
   - {fileID: 4887249865419612}
   - {fileID: 4013681532509324}
   - {fileID: 4430435789190952}
   m_Father: {fileID: 4631446917289568}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!4 &4887249865419612
 Transform:
   m_ObjectHideFlags: 1
@@ -159,8 +159,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1563135294343648}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -2.85311}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -4.88}
+  m_LocalScale: {x: 4.05375, y: 6.9750013, z: 0.87499964}
   m_Children: []
   m_Father: {fileID: 4688408070599862}
   m_RootOrder: 0
@@ -332,9 +332,9 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1902216250298378}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.16
-  m_Height: 4.6801944
+  m_Radius: 0.01
+  m_Height: 0.08
   m_Direction: 2
-  m_Center: {x: 0, y: -6.5137765e-16, z: 0.20416331}
+  m_Center: {x: 0, y: -6.5137765e-16, z: 0}

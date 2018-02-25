@@ -51,7 +51,7 @@ public class Teleport : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q))
+		if (Input.GetKeyDown(KeyCode.Q)||InputManager_JHW.LTouchHandleOn())
 		{
 			DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
 		}
@@ -328,10 +328,10 @@ public class Teleport : MonoBehaviour
 					Vector3 ArrowPos = (Hands[0].transform.position + Hands[1].transform.position) / 2;
 					Vector3 LookAtpos = Hands[0].transform.position;
 					if(!MyState.IsBack()){
-						LookAtpos.z += 0.055f; }
+						LookAtpos.z -= 0.055f; }
 					else
 					{
-						LookAtpos.z -= 0.055f;
+						LookAtpos.z += 0.055f;
 					}
 					//ArrowPos.z += 0.07f;
 					//ArrowPos.x -= 0.035f;
@@ -369,6 +369,7 @@ public class Teleport : MonoBehaviour
 	{
 		Vector3 v1 = LPos - HeadPos;
 		Vector3 v2 = RPos - HeadPos;
-		float w = Vector3.Cross(v1, v2).magnitude;
+		Vector3 pos = Vector3.Cross(v1, v2);
+		Debug.Log(pos);
 	}
 }

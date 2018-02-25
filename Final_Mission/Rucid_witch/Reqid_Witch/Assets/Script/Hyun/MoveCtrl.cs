@@ -110,8 +110,11 @@ public class MoveCtrl : MonoBehaviour
 		if (other.CompareTag("WAY_POINT"))
 		{
 			Debug.Log("대화 스크립트 동작!");
-			gameObject.transform.position = other.transform.position;
+			Vector3 TalkPos = other.transform.position;
+			TalkPos.y = gameObject.transform.position.y;
+			gameObject.transform.position = TalkPos;
 			myDia.setPlay(false);
+			MyState.SetMyState(PlayerState.State.Talk);
 		}
 	}
 	private void turnBack()
