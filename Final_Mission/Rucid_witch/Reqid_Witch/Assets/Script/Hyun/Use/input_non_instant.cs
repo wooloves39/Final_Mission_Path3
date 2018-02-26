@@ -29,6 +29,7 @@ public class input_non_instant : MonoBehaviour
 	void Start()
 	{
 		CompleteSound = GetComponent<AudioSource>();
+		CompleteSound.volume = Singletone.Instance.Sound;
 		reset();
 		gameObject.SetActive(false);
 	}

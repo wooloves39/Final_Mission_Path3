@@ -24,7 +24,7 @@ public class Singletone
     //처음에 -1로 초기화 디파인이 안됨. 
     public int Mapnumber = -1;
     public int Charnumber = -1;
-	public float Sound = -1;
+	public float Sound = 1.0f;
     public string name;
     public int stage=-1;
     public string saveTime;
