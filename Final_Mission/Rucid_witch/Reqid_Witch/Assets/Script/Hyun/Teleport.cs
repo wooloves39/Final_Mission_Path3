@@ -51,10 +51,10 @@ public class Teleport : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Q)||InputManager_JHW.LTouchHandleOn())
-		{
-			DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
-		}
+		//if (Input.GetKeyDown(KeyCode.Q)||InputManager_JHW.LTouchHandleOn())
+		//{
+		//	DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
+		//}
 		if (InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 		{
 			if (MyState.GetMyState() == PlayerState.State.Nomal)

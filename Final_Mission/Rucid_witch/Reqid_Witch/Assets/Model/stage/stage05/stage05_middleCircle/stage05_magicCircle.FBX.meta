@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 04613ed6b4606454bb1ca2e699a6eae5
-timeCreated: 1519287861
+timeCreated: 1519638903
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -12,7 +12,9 @@ ModelImporter:
     400002: //RootNode
     400004: Tube040
     2300000: Cylinder001
+    2300002: //RootNode
     3300000: Cylinder001
+    3300002: //RootNode
     4300000: Cylinder001
     7400000: Take 001
     9500000: //RootNode
