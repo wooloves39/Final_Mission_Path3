@@ -331,6 +331,11 @@ Prefab:
       propertyPath: HeadTracker
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 135695137480962632, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
   m_IsPrefabParent: 0

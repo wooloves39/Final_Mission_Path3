@@ -125,6 +125,7 @@ public class Dialog : MonoBehaviour
 	{
 		ContinueIcon.SetActive(false);
 		StopIcon.SetActive(false);
+		
 	}
 	private void ShowIcon()
 	{
