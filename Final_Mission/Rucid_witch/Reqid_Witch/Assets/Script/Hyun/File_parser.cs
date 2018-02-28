@@ -9,7 +9,11 @@ public class File_parser : MonoBehaviour
 	private StreamReader strRead;
 	private string[] textValue;//실제 대화
 	private int[] textCharacter;//대화를 내뱉는 캐릭터
-	int count = 0;
+	int count;
+	private void Awake()
+	{
+		count = 0;
+	}
 	public void FileOpen(string FileName)
 	{
 		strPath = Application.dataPath + FileName;
