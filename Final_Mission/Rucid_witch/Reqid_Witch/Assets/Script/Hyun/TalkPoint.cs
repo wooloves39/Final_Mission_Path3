@@ -15,7 +15,7 @@ public class TalkPoint : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			if (!player.getPlay())
+			if (player.getPlay())
 			{
 				MyState.SetMyState(PlayerState.State.Talk);
 				player.setPlay(false);

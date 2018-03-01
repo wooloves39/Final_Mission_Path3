@@ -11,9 +11,13 @@ public class Teleport : MonoBehaviour
 	//#0번 공격
 	private TouchCollision[] AzuraHands;
 	public GameObject AzuraBall;
-	//#2번 공격
-	public DellHeadTracker HeadTracker;
 
+	//#2번 공격
+	public GameObject Violin;
+	public GameObject Fiddle_Bow;
+	public DellHeadTracker HeadTracker;
+	private int Dellcount = 0;
+	private bool DellTouch = false;
 	//#1,3번 공격
 	public GameObject[] TeleportMarker;
 
@@ -51,10 +55,10 @@ public class Teleport : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//if (Input.GetKeyDown(KeyCode.Q)||InputManager_JHW.LTouchHandleOn())
-		//{
-		//	DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
-		//}
+		if (Input.GetKeyDown(KeyCode.Q) || InputManager_JHW.LTouchHandleOn())
+		{
+			DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
+		}
 		if (InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 		{
 			if (MyState.GetMyState() == PlayerState.State.Nomal)
@@ -122,7 +126,10 @@ public class Teleport : MonoBehaviour
 					break;
 				case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
 					{
-
+						DellTouch = false;
+						Dellcount = 0;
+						Violin.SetActive(false);
+						Fiddle_Bow.SetActive(false);
 					}
 					break;
 				case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
@@ -154,19 +161,22 @@ public class Teleport : MonoBehaviour
 			}
 			currentCorutine = null;
 		}
-		for (int i = 0; i < Arrow.Length; ++i)
+		if (input_mouse.curType == 4)
 		{
-			if (Arrow[i])
+			for (int i = 0; i < Arrow.Length; ++i)
 			{
-				if (Arrow[i].GetComponent<Arrow>())
+				if (Arrow[i])
 				{
-					if (Arrow[i].GetComponent<Arrow>().IsDelete())
+					if (Arrow[i].GetComponent<Arrow>())
 					{
+						if (Arrow[i].GetComponent<Arrow>().IsDelete())
+						{
 							Arrow[i].GetComponent<Arrow>().resetArrow();
-						pool.RemoveItem(Arrow[i]);
-						Arrow[i] = null;
+							pool.RemoveItem(Arrow[i]);
+							Arrow[i] = null;
+						}
+						//어떤 조건에 의거 Arrow삭제
 					}
-					//어떤 조건에 의거 Arrow삭제
 				}
 			}
 		}
@@ -283,10 +293,10 @@ public class Teleport : MonoBehaviour
 		Vector3 Seikwan = ArrowPrefab.transform.localScale;
 		int ArrowNum = new int();
 		GameObject[] ArrowBody = new GameObject[3];//애로우 스케일 조정에서 활용될여지있음
-		//왼손
+												   //왼손
 		while (flug)
 		{
-			if ((!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))&&
+			if ((!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch())) &&
 				(InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 				)
 			{
@@ -316,7 +326,7 @@ public class Teleport : MonoBehaviour
 					{
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
 						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
-					
+
 						r.velocity = Arrowforward * 15f * handDis;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
@@ -327,15 +337,17 @@ public class Teleport : MonoBehaviour
 				{
 					Vector3 ArrowPos = (Hands[0].transform.position + Hands[1].transform.position) / 2;
 					Vector3 LookAtpos = Hands[0].transform.position;
-					if(!MyState.IsBack()){
-						LookAtpos.z -= 0.055f; }
+					if (!MyState.IsBack())
+					{
+						LookAtpos.z -= 0.055f;
+					}
 					else
 					{
 						LookAtpos.z += 0.055f;
 					}
 					//ArrowPos.z += 0.07f;
 					//ArrowPos.x -= 0.035f;
-					ArrowPos += Hands[0].transform.forward*0.05f;
+					ArrowPos += Hands[0].transform.forward * 0.05f;
 					//ArrowPos += Camera.main.transform.forward * 0.1f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;
@@ -343,7 +355,7 @@ public class Teleport : MonoBehaviour
 					if (handDis > distance)
 					{
 						distance = handDis;
-						Seikwan.z = distance * 10 ;
+						Seikwan.z = distance * 10;
 						Arrow[ArrowNum].transform.localScale = Seikwan;
 					}
 				}
@@ -353,17 +365,60 @@ public class Teleport : MonoBehaviour
 	}
 	private IEnumerator DellControll()
 	{
-		int DellCount = 0;
-		bool leftTouch = false;
-		if (HeadTracker.getHeadOn())
+		bool instance = false;
+		while (flug)
 		{
-			//if (leftTouch)
-			//{
-			//	if (Hands[1].transform.position)
-			//}
+			if (!instance)
+			{
+				Violin.SetActive(true);
+				Fiddle_Bow.SetActive(true);
+				MyState.SetMyState(PlayerState.State.Attack);
+				instance = true;
+			}
+			else
+			{
+				if (HeadTracker.getHeadOn())
+				{
+					Debug.Log(Dellcount);
+				}
+			}
+
+			yield return new WaitForSeconds(0.03f);
+
+
+			Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position) / 2;
+
+			float distance = 0.0f;
+
+			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
+			{
+				instance = true;
+				AzuraBall.SetActive(true);
+				AttackPoint += Camera.main.transform.forward * 0.1f;
+				AzuraBall.transform.position = AttackPoint;
+				MyState.SetMyState(PlayerState.State.Charging);
+			}
+			else if (instance)
+			{
+				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+				if (handDis > distance)
+				{
+					distance = handDis;
+					Vector3 Azura = new Vector3(distance * 3.0f, distance * 3.0f, distance * 3.0f);
+					AzuraBall.transform.localScale = Azura;
+				}
+
+			}
+			//yield return null;
+			yield return new WaitForSeconds(0.03f);
 		}
-		yield return new WaitForSeconds(0.03f);
+
 	}
+	public int getDellcount() { return Dellcount; }
+	public bool getDelltouch() { return DellTouch; }
+	public void setDellcount(int count) { Dellcount += count; }
+	public void setDellcount() { ++Dellcount; }
+	public void setDelltouch(bool val) { DellTouch = val; }
 	//이거로 테스트해야함
 	private void DellPointCheck(Vector3 HeadPos, Vector3 LPos, Vector3 RPos)
 	{

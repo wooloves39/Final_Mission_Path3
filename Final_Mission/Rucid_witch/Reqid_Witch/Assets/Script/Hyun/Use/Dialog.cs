@@ -13,7 +13,7 @@ public class Dialog : MonoBehaviour
 	public int[] chatChar;
 	private float SecondsBetweenCharacters = 0.1f;
 	private float CharacterRateMultuplier = 0.01f;
-	
+
 	private bool _isStringBeingRevealed = false;
 	private bool _isEndofDialogue = false;
 
@@ -67,9 +67,14 @@ public class Dialog : MonoBehaviour
 
 				if (currentDialogueIndex >= dialogueLengh || chatChar[currentDialogueIndex] == 99)
 				{
-					if (chatChar[currentDialogueIndex] == 99) currentDialogueIndex++;
-					if (currentDialogueIndex >= dialogueLengh) dia_Play.setEnd(true);
 					_isEndofDialogue = true;
+					if (currentDialogueIndex >= dialogueLengh)
+						dia_Play.setEnd(true);
+					else if (chatChar[currentDialogueIndex] == 99)
+						currentDialogueIndex++;
+
+
+
 				}
 			}
 			yield return new WaitWhile(() => dia_Play.getPlay());
@@ -80,7 +85,7 @@ public class Dialog : MonoBehaviour
 
 		//}
 		HideIcons();
-	//	_isEndofDialogue = false;
+		//	_isEndofDialogue = false;
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)
 	{
@@ -125,7 +130,7 @@ public class Dialog : MonoBehaviour
 	{
 		ContinueIcon.SetActive(false);
 		StopIcon.SetActive(false);
-		
+
 	}
 	private void ShowIcon()
 	{
