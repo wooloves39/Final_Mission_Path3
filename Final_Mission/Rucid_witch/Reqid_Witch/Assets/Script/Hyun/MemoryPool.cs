@@ -57,6 +57,25 @@ public class MemoryPool : IEnumerable, System.IDisposable {
 		}
 		return null; 
 	}
+	// (오버라이딩)아이템 셋시 포지션를 할당해 줌
+	public GameObject NewItem(Vector3 P)
+	{
+		if (table == null) return null;
+
+		int count = table.Length;
+		for(int i = 0; i < count; ++i)
+		{
+			Item item = table[i];
+			if (item.active == false)
+			{
+				item.gameObject.transform.position = P; 
+				item.active = true;
+				item.gameObject.SetActive(true);
+				return item.gameObject;
+			}
+		}
+		return null; 
+	}
 	//아이템 종료- 쉬게한다.
 	//gameObject- NewItem으로 얻었던 객체
 
