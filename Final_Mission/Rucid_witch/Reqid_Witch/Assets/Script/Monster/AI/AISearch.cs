@@ -43,9 +43,7 @@ public class AISearch: MonoBehaviour
 			Peace.Enqueue (BasicPeace [i]);
 		for (int i = 0; i<BasicBattle.Length ; ++i)
 			Battle.Enqueue (BasicBattle [i]);
-		//while (Peace.Count > 0) {
-		//	Debug.Log (Peace.Dequeue ());
-		//}
+		
 		StartCoroutine("AISearching");
 	}
 	IEnumerator AISearching(){

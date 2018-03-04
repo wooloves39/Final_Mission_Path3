@@ -33,7 +33,7 @@ public class Singletone
     {
         string stage_str;
         name = sr.ReadLine();
-        stage_str = sr.ReadLine();
+        stage_str = sr.ReadLine(); 
        int.TryParse(stage_str,out stage);
         saveTime = sr.ReadLine();
         Debug.Log(name);
