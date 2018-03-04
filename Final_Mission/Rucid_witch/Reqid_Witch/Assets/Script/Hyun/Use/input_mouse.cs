@@ -15,7 +15,7 @@ public class input_mouse : MonoBehaviour
 	private PlayerState Mystate;
 	public static int curType;
 	// Use this for initialization
-	void Start()
+	void Awake()
 	{
 		raser = GetComponentInChildren<LaserColl>();
 		mytype = 0;
@@ -49,10 +49,10 @@ public class input_mouse : MonoBehaviour
 		{
 			//마우스 클릭시
 			//if (touchOn == false && InputManager_JHW.AButton())
-			
-			if(InputManager_JHW.RTriggerOn()&&touchOn==false)
+
+			if (InputManager_JHW.RTriggerOn() && touchOn == false)
 			{
-				if (Mystate.GetMyState() == PlayerState.State.Nomal|| Mystate.GetMyState() == PlayerState.State.Drawing)
+				if (Mystate.GetMyState() == PlayerState.State.Nomal || Mystate.GetMyState() == PlayerState.State.Drawing)
 				{
 					Mystate.SetMyState(PlayerState.State.Drawing);
 					//skill 오브젝트를 좌표에 맞게 생성한다.
@@ -67,14 +67,14 @@ public class input_mouse : MonoBehaviour
 					touchOn = true;
 				}
 			}
-			else if(touchOn==true&&!InputManager_JHW.RTriggerOn())
+			else if (touchOn == true && !InputManager_JHW.RTriggerOn())
 			{
 				raser.gameObject.SetActive(false);
 				touchOn = false;
 				Skills[mySkills[mytype]].SkillOn();
 				Mystate.SetMyState(PlayerState.State.Nomal);
 			}
-			if (InputManager_JHW.LTriggerOn()&&Mystate.GetMyState()==PlayerState.State.Drawing)
+			if (InputManager_JHW.LTriggerOn() && Mystate.GetMyState() == PlayerState.State.Drawing)
 			{
 				raser.gameObject.SetActive(false);
 				touchOn = false;
@@ -90,11 +90,19 @@ public class input_mouse : MonoBehaviour
 	}
 	public void myType()
 	{
-	
+
 		++mytype;
 		if (mytype > 2) mytype = 0;
 		curType = mySkills[mytype];
 	}
-	
+	public bool IsHaveSkill(int type)
+	{
+		for (int i = 0; i < mySkills.Length; ++i)
+		{
+			if (type == mySkills[i]) return true;
+		}
+		return false;
+
+	}
 }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-	public enum State { Nomal, Drawing, Charging, Attack, Damage, Talk, Die }
+	public enum State { Nomal, Drawing, Charging, Attack, Damage, Talk, Die ,ChargingOver}
 
 	private State MyState;
 	private float ChargingTime;
@@ -15,7 +15,8 @@ public class PlayerState : MonoBehaviour
 	private Color HpColor;
 	public Material[] MpMaterial;
 	private Color MpColor;
-	
+	private Viberation PlayerViberation;
+	private float MaxChargingTime;
 	//이게 최선일까...
 	public SkillChange skillChange;
 	// Use this for initialization
@@ -26,6 +27,7 @@ public class PlayerState : MonoBehaviour
 		ChargingTime = 0.0f;
 		StartCoroutine(HpRecovery());
 		StartCoroutine(MpRecovery());
+		PlayerViberation = gameObject.transform.GetComponent<Viberation>();
 	}
 	private void Update()
 	{
@@ -35,10 +37,13 @@ public class PlayerState : MonoBehaviour
 		{
 			ChargingTime += Time.deltaTime;
 		}
-		if (ChargingTime > 5.0f)
+		if (ChargingTime >MaxChargingTime)
 		{
+			Debug.Log("챠징오버");
 			//스킬 실패 기초안
-			Debug.Log("스킬 실패");
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(0.5f, 1.0f, OVRInput.Controller.RTouch));
+			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(0.5f, 1.0f, OVRInput.Controller.LTouch));
+			SetMyState(State.ChargingOver);
 		}
 		CheckHp();
 		CheckMp();
@@ -56,8 +61,16 @@ public class PlayerState : MonoBehaviour
 	}
 	public void SetMyState(State state)
 	{
-		if (state != State.Charging) ChargingTime = 0.0f;
 		MyState = state;
+		if (state != State.Charging) ChargingTime = 0.0f;
+
+	}
+	public void SetMyState(State state,float time)
+	{
+		MyState = state;
+		MaxChargingTime = time;
+		if (state != State.Charging) ChargingTime = 0.0f;
+
 	}
 	public void SetMyState(int state)
 	{
@@ -74,13 +87,13 @@ public class PlayerState : MonoBehaviour
 	private void CheckHp()
 	{
 		int checkHpFull = (int)(Hp / 10);
-		checkHpFull =(int)Mathf.Floor(checkHpFull / 2);
-		for (int i = 4; i >= 5-checkHpFull; --i)
+		checkHpFull = (int)Mathf.Floor(checkHpFull / 2);
+		for (int i = 4; i >= 5 - checkHpFull; --i)
 		{
 			HpMaterial[i].SetColor("_EmissionColor", HpColor);
 		}
-		int checkHpSub = (int)Hp - checkHpFull*20;
-	
+		int checkHpSub = (int)Hp - checkHpFull * 20;
+
 		if (Hp < 100)
 		{
 			if (checkHpSub < 15 && checkHpSub > 5)

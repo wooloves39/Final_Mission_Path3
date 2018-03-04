@@ -33,20 +33,26 @@ public class Teleport : MonoBehaviour
 	private Transform camTr;
 	private Quaternion MarkerRotate;
 	private PlayerState MyState;
+	private Viberation PlayerViberation;
 	// Use this for initialization
 	private void Awake()
 	{
 		MyState = GetComponent<PlayerState>();
+		PlayerViberation = GetComponent<Viberation>();
 		camTr = Camera.main.transform;
 		MarkerRotate = TeleportMarker[0].transform.rotation;
 		AzuraHands = new TouchCollision[2];
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
-		int poolCount = 5;
-		pool.Create(ArrowPrefab, poolCount);
-		Arrow = new GameObject[poolCount];
-		for (int i = 0; i < Arrow.Length; ++i)
-			Arrow[i] = null;
+		input_mouse typecheck = GetComponentInChildren<input_mouse>();
+		if (typecheck.IsHaveSkill(4))
+		{
+			int poolCount = 5;
+			pool.Create(ArrowPrefab, poolCount);
+			Arrow = new GameObject[poolCount];
+			for (int i = 0; i < Arrow.Length; ++i)
+				Arrow[i] = null;
+		}
 	}
 	private void OnApplicationQuit()
 	{
@@ -54,11 +60,7 @@ public class Teleport : MonoBehaviour
 	}
 	// Update is called once per frame
 	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Q) || InputManager_JHW.LTouchHandleOn())
-		{
-			DellPointCheck(HeadTracker.transform.position, Hands[0].transform.position, Hands[1].transform.position);
-		}
+	{ 
 		if (InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 		{
 			if (MyState.GetMyState() == PlayerState.State.Nomal)
@@ -99,67 +101,17 @@ public class Teleport : MonoBehaviour
 				}
 			}
 		}
-
-		else if ((!InputManager_JHW.RTriggerOn() && !InputManager_JHW.LTriggerOn()) && flug)
+		else if ((!InputManager_JHW.RTriggerOn() && !InputManager_JHW.LTriggerOn()) && flug) 
 		{
-			if (currentCorutine != null)
-			{
-				flug = false;
-				MyState.SetMyState(PlayerState.State.Nomal);
-				StopCoroutine(currentCorutine);
-			}
-			switch (input_mouse.curType)
-			{
-				case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
-					{
-						AzuraBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-						AzuraBall.SetActive(false);
-					}
-					break;
-				case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
-					{
-						TeleportMarker[0].transform.rotation = MarkerRotate;
-						TeleportMarker[1].transform.rotation = MarkerRotate;
-						TeleportMarker[0].SetActive(false);
-						TeleportMarker[1].SetActive(false);
-					}
-					break;
-				case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
-					{
-						DellTouch = false;
-						Dellcount = 0;
-						Violin.SetActive(false);
-						Fiddle_Bow.SetActive(false);
-					}
-					break;
-				case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
-					{
-						TeleportMarker[0].SetActive(false);
-						TeleportMarker[1].SetActive(false);
-					}
-					break;
-				case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
-					{
-						for (int i = 0; i < Arrow.Length; ++i)
-						{
-							if (Arrow[i])
-							{
-								if (Arrow[i].GetComponent<Arrow>())
-								{
-									if (!Arrow[i].GetComponent<Arrow>().IsShooting())
-									{
-										Arrow[i].GetComponent<Arrow>().resetArrow();
-										pool.RemoveItem(Arrow[i]);
-										Arrow[i] = null;
-									}
-									//어떤 조건에 의거 Arrow삭제
-								}
-							}
-						}
-					}
-					break;
-			}
-			currentCorutine = null;
+			
+			flug = false;
+			MyState.SetMyState(PlayerState.State.Nomal);
+			SettingOff();
+			
+		}
+		if(MyState.GetMyState() == PlayerState.State.ChargingOver)
+		{
+			SettingOff();
 		}
 		if (input_mouse.curType == 4)
 		{
@@ -231,7 +183,7 @@ public class Teleport : MonoBehaviour
 				AzuraBall.SetActive(true);
 				AttackPoint += Camera.main.transform.forward * 0.1f;
 				AzuraBall.transform.position = AttackPoint;
-				MyState.SetMyState(PlayerState.State.Charging);
+				MyState.SetMyState(PlayerState.State.Charging,5.0f);
 			}
 			if (instance)
 			{
@@ -315,7 +267,7 @@ public class Teleport : MonoBehaviour
 					}
 					//5발 다쏘고 난다음도 생각해야함
 				}
-				MyState.SetMyState(PlayerState.State.Charging);
+				MyState.SetMyState(PlayerState.State.Charging,5.0f);
 			}
 			else if (instance)
 			{
@@ -345,10 +297,7 @@ public class Teleport : MonoBehaviour
 					{
 						LookAtpos.z += 0.055f;
 					}
-					//ArrowPos.z += 0.07f;
-					//ArrowPos.x -= 0.035f;
 					ArrowPos += Hands[0].transform.forward * 0.05f;
-					//ArrowPos += Camera.main.transform.forward * 0.1f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;
 
@@ -372,7 +321,6 @@ public class Teleport : MonoBehaviour
 			{
 				Violin.SetActive(true);
 				Fiddle_Bow.SetActive(true);
-				MyState.SetMyState(PlayerState.State.Attack);
 				instance = true;
 			}
 			else
@@ -419,12 +367,67 @@ public class Teleport : MonoBehaviour
 	public void setDellcount(int count) { Dellcount += count; }
 	public void setDellcount() { ++Dellcount; }
 	public void setDelltouch(bool val) { DellTouch = val; }
-	//이거로 테스트해야함
-	private void DellPointCheck(Vector3 HeadPos, Vector3 LPos, Vector3 RPos)
+	public void DellCharging()
 	{
-		Vector3 v1 = LPos - HeadPos;
-		Vector3 v2 = RPos - HeadPos;
-		Vector3 pos = Vector3.Cross(v1, v2);
-		Debug.Log(pos);
+		MyState.SetMyState(PlayerState.State.Charging, 9.0f);
+	}
+	private void SettingOff()
+	{
+		if (currentCorutine != null)
+		{
+			StopCoroutine(currentCorutine);
+		}
+		switch (input_mouse.curType)
+		{
+			case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
+				{
+					AzuraBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+					AzuraBall.SetActive(false);
+				}
+				break;
+			case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
+				{
+					TeleportMarker[0].transform.rotation = MarkerRotate;
+					TeleportMarker[1].transform.rotation = MarkerRotate;
+					TeleportMarker[0].SetActive(false);
+					TeleportMarker[1].SetActive(false);
+				}
+				break;
+			case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
+				{
+					DellTouch = false;
+					Dellcount = 0;
+					Violin.SetActive(false);
+					Fiddle_Bow.SetActive(false);
+				}
+				break;
+			case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
+				{
+					TeleportMarker[0].SetActive(false);
+					TeleportMarker[1].SetActive(false);
+				}
+				break;
+			case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
+				{
+					for (int i = 0; i < Arrow.Length; ++i)
+					{
+						if (Arrow[i])
+						{
+							if (Arrow[i].GetComponent<Arrow>())
+							{
+								if (!Arrow[i].GetComponent<Arrow>().IsShooting())
+								{
+									Arrow[i].GetComponent<Arrow>().resetArrow();
+									pool.RemoveItem(Arrow[i]);
+									Arrow[i] = null;
+								}
+								//어떤 조건에 의거 Arrow삭제
+							}
+						}
+					}
+				}
+				break;
+		}
+		currentCorutine = null;
 	}
 }

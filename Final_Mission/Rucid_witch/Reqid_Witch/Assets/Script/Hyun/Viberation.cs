@@ -12,15 +12,15 @@ public class Viberation : MonoBehaviour
 	}
 	public static IEnumerator ViberationCoroutine(float time, float startPower, float EndPower, OVRInput.Controller controller)
 	{
-		float Vi_Time = 0.0f;
+		int count = 0;
 		float power = startPower;
-		while (Vi_Time <= time)
+		while (count!=(int)time)
 		{
-			Vi_Time += Time.deltaTime;
+			++count;
 			if (power > EndPower) power -= 0.1f;
 			else if (power < EndPower) power += 0.1f;
-			OVRInput.SetControllerVibration(.2f, power, controller);
-			yield return null;
+			OVRInput.SetControllerVibration(.1f, power, controller);
+			yield return new WaitForSeconds(1.0f);
 		}
 		OVRInput.SetControllerVibration(.2f, 0, controller);
 		yield return null;
