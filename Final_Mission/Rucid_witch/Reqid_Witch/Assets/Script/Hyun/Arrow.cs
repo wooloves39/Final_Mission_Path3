@@ -11,11 +11,9 @@ public class Arrow : MonoBehaviour
 	private Vector3 curScale;
 	public GameObject particle;
 	public GameObject arrow;
-	private ParticleSystem particleSystem;
 	// Use this for initialization
 	void Awake()
 	{
-		particleSystem = GetComponentInChildren<ParticleSystem>();
 		timer = new int();
 		timer = 0.0f;
 		curScale = gameObject.transform.localScale;
@@ -31,9 +29,10 @@ public class Arrow : MonoBehaviour
 				seikwan_timer = true;
 			if (touch)
 			{
-				if (!particleSystem.isPlaying)
+				if (timer>=4.0f)
 				{
 					touch = false;
+					
 				}
 			}
 		}
@@ -52,15 +51,19 @@ public class Arrow : MonoBehaviour
 		shot = false;
 		seikwan_timer = false;
 		timer = 0.0f;
+		arrow.SetActive(true);
+		particle.SetActive(false);
 		gameObject.transform.localScale = curScale;
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("monster"))
+		if (other.gameObject.CompareTag("Monster"))
 		{
+			timer = 0.0f;
 			touch = true;
 			arrow.SetActive(false);
 			particle.SetActive(true);
+			GetComponent<Rigidbody>().velocity = Vector3.zero;
 		}
 	}
 }
