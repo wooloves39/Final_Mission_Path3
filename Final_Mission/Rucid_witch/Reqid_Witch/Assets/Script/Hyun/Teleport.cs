@@ -279,10 +279,8 @@ public class Teleport : MonoBehaviour
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
 						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
 
-						r.velocity = Arrowforward * 40f * handDis;
+						r.velocity = Arrowforward * 15f * handDis;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
-						//임시 코드
-						Arrow[ArrowNum].GetComponent<attacker>().SetDamege(10);
 						instance = false;
 						distance = 0.0f;
 					}
@@ -333,6 +331,33 @@ public class Teleport : MonoBehaviour
 				}
 			}
 
+			yield return new WaitForSeconds(0.03f);
+
+
+			Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position) / 2;
+
+			float distance = 0.0f;
+
+			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
+			{
+				instance = true;
+				AzuraBall.SetActive(true);
+				AttackPoint += Camera.main.transform.forward * 0.1f;
+				AzuraBall.transform.position = AttackPoint;
+				MyState.SetMyState(PlayerState.State.Charging);
+			}
+			else if (instance)
+			{
+				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+				if (handDis > distance)
+				{
+					distance = handDis;
+					Vector3 Azura = new Vector3(distance * 3.0f, distance * 3.0f, distance * 3.0f);
+					AzuraBall.transform.localScale = Azura;
+				}
+
+			}
+			//yield return null;
 			yield return new WaitForSeconds(0.03f);
 		}
 
