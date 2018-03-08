@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Stage5MobAI: MonoBehaviour {
+	MoveMsg msg;
 	public int[] BasicPeace;
 	public int[] BasicBattle;
+	NatureCommand NCommand;
+	Animator ani;
 
 	public float Time_Nature_Stop;		//0
 	public float Time_Nature_Move;		//1
-	public float Time_Nomal_StopMotion;	//2
-	public float Time_Nomal_MoveWay;	//3
+	public float Time_Nomal_StopMotion;	//2(Idle)
+	public float Time_Nomal_MoveWay;	//3 사용자 지정위치로 이동(미구현)
 
 	public float Time_Taget_Search;		//10
 	public float Time_Battle_Move;		//11
@@ -22,6 +25,15 @@ public class Stage5MobAI: MonoBehaviour {
 	Queue Peace = null;
 	void Start()
 	{
+		ani = GetComponent<Animator>();
+		NCommand = GetComponent<NatureCommand>();
+
+		msg = new MoveMsg();
+		msg.obj = this.gameObject;
+		msg.destination = new Vector3(0,0,0);
+		msg.Speed = 4.0f;
+
+
 		Battle = new Queue();
 		Peace = new Queue();
 		for (int i = 0; i<BasicPeace.Length ; ++i)
@@ -31,6 +43,7 @@ public class Stage5MobAI: MonoBehaviour {
 		//while (Peace.Count > 0) {
 		//	Debug.Log (Peace.Dequeue ());
 		//}
+
 		StartCoroutine("AISearching");
 	}
 	IEnumerator AISearching(){
@@ -43,7 +56,7 @@ public class Stage5MobAI: MonoBehaviour {
 			{
 				while (Peace.Count < 2) 
 				{
-					num = getRandom (0, 4);
+					num = getRandom (0, 3);
 					Peace.Enqueue (num);
 				}
 			}
@@ -69,29 +82,52 @@ public class Stage5MobAI: MonoBehaviour {
 			Debug.Log(temp);
 			switch (num) 
 			{
-
-			case 0:
-				time = Time_Nature_Stop;
-				break;
-			case 1:
-				time = Time_Nature_Move;
-				break;
-			case 2:
-				time = Time_Nomal_StopMotion;
-				break;
-			case 3:
-				time = Time_Nomal_MoveWay;
-				break;
-
-			case 10:
-				time = Time_Taget_Search;
-				break;
-			case 11:
-				time = Time_Battle_Move;
-				break;
-			case 12:
-				time = Time_Normal_Attack;
-				break;
+				case 0:
+					{
+						ani.SetBool("Stop", true);
+						ani.SetBool("IsMove", false);
+						ani.SetBool("IsAttack", false);
+						time = Time_Nature_Stop;
+						break;
+					}
+				case 1:
+					{
+						ani.SetBool("Stop", false);
+						ani.SetBool("IsMove", true);
+						ani.SetBool("IsAttack", false);
+						time = Time_Nature_Move;
+						msg.time = time;
+						NCommand.NatureMove(msg);	
+						break;
+					}
+				case 2:
+					{
+						ani.SetBool("Stop", false);
+						ani.SetBool("IsMove", false);
+						ani.SetBool("IsAttack", false);
+						time = Time_Nomal_StopMotion;
+						break;
+					}
+				case 3:
+					{
+						time = Time_Nomal_MoveWay;
+						break;
+					}
+				case 10:
+					{
+					time = Time_Taget_Search;
+					break;
+					}
+				case 11:
+					{
+						time = Time_Battle_Move;
+						break;
+					}
+				case 12:
+					{
+						time = Time_Normal_Attack;
+						break;
+					}
 			default:
 				time = 1.0f;
 				break;

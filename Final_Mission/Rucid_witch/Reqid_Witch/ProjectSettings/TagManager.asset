@@ -22,11 +22,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerHit
+  - PlayerAtt
+  - MonsterHit
+  - MonsterAtt
+  - MonsterSearch
   - 
   - 
   - 
