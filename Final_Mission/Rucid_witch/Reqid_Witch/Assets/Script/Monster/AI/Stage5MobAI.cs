@@ -19,7 +19,7 @@ public class Stage5MobAI: MonoBehaviour {
 	public float Time_Normal_Attack;	//12
 
 	public bool Delay = false;
-	public bool Fight = true;//false;
+	public bool Fight = false;//false;
 
 	Queue Battle = null;
 	Queue Peace = null;
@@ -55,9 +55,14 @@ public class Stage5MobAI: MonoBehaviour {
 		//평화
 		while (true) 
 		{
+			if (Fight)
+				NCommand.StateChange(true);
+			else
+				NCommand.StateChange(false);
+			
 			if (Fight != prevFight)
 			{
-				Limit = 0.1f;
+				Limit = float.MaxValue;
 			}
 			if (Fight == false)
 			{
