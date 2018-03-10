@@ -11,14 +11,16 @@ public class SelectSkillUI : MonoBehaviour
 	public int RotationSkill = 0;
 	public List<GameObject> Skill;
 	public GameObject menu;
-	SelectMenu_Ready selectMenu_Ready; 
+	SelectMenu_Ready selectMenu_Ready;
 	public int Select = 4;
-
+	private int stage;
+	private int have_skill = 5;
 	// Update is called once per frame
 	void Start()
 	{
+		stage = Singletone.Instance.stage;
 		selectMenu_Ready = menu.GetComponent<SelectMenu_Ready>();
-		StartCoroutine("SkillSet");
+		StartCoroutine(SkillSet());
 	}
 	IEnumerator SkillSet()
 	{
@@ -51,21 +53,21 @@ public class SelectSkillUI : MonoBehaviour
 							if (Singletone.Instance.Myskill[i] == RotationSkill)
 							{
 								j = i;
-								if(j != skillnum)
+								if (j != skillnum)
 									Button = true;
 							}
 							if (Button)
 							{
-									
+
 								for (int k = j; k < 2; ++k)
 								{
-									Singletone.Instance.Myskill[k] = Singletone.Instance.Myskill[k + 1]; 
+									Singletone.Instance.Myskill[k] = Singletone.Instance.Myskill[k + 1];
 									if (Singletone.Instance.Myskill[k] == -1)
 										break;
 								}
 							}
 						}
-						if (Button == false)
+						if (!Button)
 						{
 							if (skillnum >= 2)
 							{
@@ -93,21 +95,25 @@ public class SelectSkillUI : MonoBehaviour
 						yield return new WaitForSeconds(0.5f);
 					}
 				}
-			
+
 				if (check)
 				{
 					num++;
 					this.transform.Rotate(new Vector3(0, 7.2f, 0), Space.Self);
-				
+
 					if (num == 5)
 					{
 						RotationSkill--;
 						if (RotationSkill == -1)
 							RotationSkill = 4;
-						for (int i = 0; i < 5; ++i)
+
+						if (stage < 5) have_skill = stage;
+
+						for (int i = 0; i < have_skill; ++i)
 						{
 							Skill[i].SetActive(false);
 						}
+
 						Skill[RotationSkill].SetActive(true);
 					}
 					if (num == 10)
@@ -119,13 +125,15 @@ public class SelectSkillUI : MonoBehaviour
 				{
 					num++;
 					this.transform.Rotate(new Vector3(0, -7.2f, 0), Space.Self);
-				
+
 					if (num == 5)
 					{
 						RotationSkill++;
 						if (RotationSkill == 5)
 							RotationSkill = 0;
-						for (int i = 0; i < 5; ++i)
+						if (stage < 5) have_skill = stage;
+
+						for (int i = 0; i < have_skill; ++i)
 						{
 							Skill[i].SetActive(false);
 						}

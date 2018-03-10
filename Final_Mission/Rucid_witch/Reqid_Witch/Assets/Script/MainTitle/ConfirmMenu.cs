@@ -12,7 +12,7 @@ public class ConfirmMenu : MonoBehaviour {
 	void OnEnable ()
 	{
 		index = 1;
-		StartCoroutine ("KeyPad");
+		StartCoroutine (KeyPad());
 		timer = 0.0f;
 	}
 	IEnumerator KeyPad(){

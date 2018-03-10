@@ -68,7 +68,6 @@ public class TitleScene : MonoBehaviour
 			if (Alpha_color >= 1.0f)
 			{
 				Alpha_color = 1.0f;
-				Debug.Log("dd");
 				Loading = true;
 				yield break;
 			}

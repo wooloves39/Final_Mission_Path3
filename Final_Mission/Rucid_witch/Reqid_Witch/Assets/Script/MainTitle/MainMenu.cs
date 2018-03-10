@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
 	{
 		confirm = false;
 		timer = 0.0f;
-		StartCoroutine ("KeyPad");
+		StartCoroutine (KeyPad());
 	}
 	IEnumerator KeyPad(){
 		if (!confirm)

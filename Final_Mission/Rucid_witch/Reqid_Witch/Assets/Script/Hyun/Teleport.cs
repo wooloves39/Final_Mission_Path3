@@ -19,7 +19,8 @@ public class Teleport : MonoBehaviour
 	private int Dellcount = 0;
 	private bool DellTouch = false;
 	//#1,3번 공격
-	public GameObject[] TeleportMarker;
+	public GameObject[] Beejae_Marker;
+	public GameObject[] Verbase_Marker;
 
 	//#4번 공격 다른 공격방식과 다르게 메모리 풀을 활용한다 최대 5발!
 	public GameObject ArrowPrefab;
@@ -40,7 +41,7 @@ public class Teleport : MonoBehaviour
 		MyState = GetComponent<PlayerState>();
 		PlayerViberation = GetComponent<Viberation>();
 		camTr = Camera.main.transform;
-		MarkerRotate = TeleportMarker[0].transform.rotation;
+		MarkerRotate = Beejae_Marker[0].transform.rotation;
 		AzuraHands = new TouchCollision[2];
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
@@ -142,30 +143,30 @@ public class Teleport : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!TeleportMarker[0].activeSelf)
+				if (!Beejae_Marker[0].activeSelf)
 				{
-					TeleportMarker[0].SetActive(true);
+					Beejae_Marker[0].SetActive(true);
 				}
 				Vector3 point = hit.point;
 				point.y += 0.2f;
-				TeleportMarker[0].transform.LookAt(camTr.position);
-				TeleportMarker[0].transform.Rotate(90, 0, 0);
-				TeleportMarker[0].transform.position = point;
+				Beejae_Marker[0].transform.LookAt(camTr.position);
+				Beejae_Marker[0].transform.Rotate(90, 0, 0);
+				Beejae_Marker[0].transform.position = point;
 
 			}
 			//오른손
 			ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
 			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!TeleportMarker[1].activeSelf)
+				if (!Beejae_Marker[1].activeSelf)
 				{
-					TeleportMarker[1].SetActive(true);
+					Beejae_Marker[1].SetActive(true);
 				}
 				Vector3 point = hit.point;
 				point.y += 0.2f;
-				TeleportMarker[1].transform.LookAt(camTr.position);
-				TeleportMarker[1].transform.Rotate(90, 0, 0);
-				TeleportMarker[1].transform.position = point;
+				Beejae_Marker[1].transform.LookAt(camTr.position);
+				Beejae_Marker[1].transform.Rotate(90, 0, 0);
+				Beejae_Marker[1].transform.position = point;
 			}
 			yield return new WaitForSeconds(0.03f);
 		}
@@ -211,13 +212,13 @@ public class Teleport : MonoBehaviour
 			{
 				if (hit.collider.CompareTag("Ground"))
 				{
-					if (!TeleportMarker[0].activeSelf)
+					if (!Verbase_Marker[0].activeSelf)
 					{
-						TeleportMarker[0].SetActive(true);
+						Verbase_Marker[0].SetActive(true);
 					}
 					Vector3 point = hit.point;
 					point.y += 0.2f;
-					TeleportMarker[0].transform.position = point;
+					Verbase_Marker[0].transform.position = point;
 				}
 			}
 			//오른손
@@ -226,13 +227,13 @@ public class Teleport : MonoBehaviour
 			{
 				if (hit.collider.CompareTag("Ground"))
 				{
-					if (!TeleportMarker[1].activeSelf)
+					if (!Verbase_Marker[1].activeSelf)
 					{
-						TeleportMarker[1].SetActive(true);
+						Verbase_Marker[1].SetActive(true);
 					}
 					Vector3 point = hit.point;
 					point.y += 0.2f;
-					TeleportMarker[1].transform.position = point;
+					Verbase_Marker[1].transform.position = point;
 				}
 			}
 			yield return new WaitForSeconds(0.03f);
@@ -387,10 +388,10 @@ public class Teleport : MonoBehaviour
 				break;
 			case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
 				{
-					TeleportMarker[0].transform.rotation = MarkerRotate;
-					TeleportMarker[1].transform.rotation = MarkerRotate;
-					TeleportMarker[0].SetActive(false);
-					TeleportMarker[1].SetActive(false);
+					Beejae_Marker[0].transform.rotation = MarkerRotate;
+					Beejae_Marker[1].transform.rotation = MarkerRotate;
+					Beejae_Marker[0].SetActive(false);
+					Beejae_Marker[1].SetActive(false);
 				}
 				break;
 			case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
@@ -403,8 +404,8 @@ public class Teleport : MonoBehaviour
 				break;
 			case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
 				{
-					TeleportMarker[0].SetActive(false);
-					TeleportMarker[1].SetActive(false);
+					Verbase_Marker[0].SetActive(false);
+					Verbase_Marker[1].SetActive(false);
 				}
 				break;
 			case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출

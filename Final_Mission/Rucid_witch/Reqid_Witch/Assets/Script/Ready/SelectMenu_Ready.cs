@@ -12,10 +12,13 @@ public class SelectMenu_Ready : MonoBehaviour {
 	public bool move = true;
 	public int SelectMenu = -1;
 	float timer = 0.0f;
-
+	private int stage;
 
 	void Start(){
-		StartCoroutine("KeyPad");
+		stage = Singletone.Instance.stage;
+		//test 
+		stage = 1;
+		StartCoroutine(KeyPad());
 	}
 
 	IEnumerator KeyPad()
@@ -85,7 +88,11 @@ public class SelectMenu_Ready : MonoBehaviour {
 					confirm = true;
 					yield return new WaitForSeconds(0.75f);
 				}
-
+				if (InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn())
+				{
+					//준비 완료되었냐고 물어보는 거 확인후!!
+					
+				}
 				yield return new WaitForSeconds(0.25f);
 			}
 			yield return new WaitForSeconds(0.25f);

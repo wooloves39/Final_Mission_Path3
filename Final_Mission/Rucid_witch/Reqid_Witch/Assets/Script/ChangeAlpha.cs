@@ -27,7 +27,7 @@ public class ChangeAlpha : MonoBehaviour
 			Mesh.material.color = new Color(Mesh.material.color.r, Mesh.material.color.g, Mesh.material.color.b, StartAlpha);
 		}
 
-		StartCoroutine ("Alpha");
+		StartCoroutine (Alpha());
 
 	}
 
