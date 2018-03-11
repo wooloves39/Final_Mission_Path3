@@ -19,4 +19,11 @@ public class CorrectionSound : MonoBehaviour {
 	{
 		DontDestroyOnLoad (this);
 	}
+	private void Update()
+	{
+		if (Application.loadedLevel>=2)
+		{
+			Destroy(gameObject);
+		}
+	}
 }

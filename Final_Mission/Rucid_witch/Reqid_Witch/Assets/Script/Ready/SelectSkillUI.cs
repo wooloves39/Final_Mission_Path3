@@ -4,149 +4,124 @@ using UnityEngine;
 
 public class SelectSkillUI : MonoBehaviour
 {
-	public bool check2 = false;
-	public bool check = false;
-	public int num = 0;
-	public int skillnum = 0;
-	public int RotationSkill = 0;
+	private bool left = false;
+	private bool right = false;
+	private int RotationSkill = 0;
 	public List<GameObject> Skill;
-	public GameObject menu;
-	SelectMenu_Ready selectMenu_Ready;
-	public int Select = 4;
+	public SelectMenu_Ready menu;
+	private int Select = 3;
 	private int stage;
-	private int have_skill = 5;
+
+	private int lastChange = 0;
 	// Update is called once per frame
 	void Start()
 	{
 		stage = Singletone.Instance.stage;
-		selectMenu_Ready = menu.GetComponent<SelectMenu_Ready>();
 		StartCoroutine(SkillSet());
 	}
+	private void Update()
+	{
+		if (InputManager_JHW.AButtonDown())
+		{
+			skillChoice(RotationSkill);
+		}
+		if (InputManager_JHW.BButtonDown())
+		{
+			menu.SelectMenu = -1;
+			menu.confirm = false;
+		}
+	}
+	//스테이지 별로 나눠서 설정이 들어가도록 고치기 (월요일의 현우가)
 	IEnumerator SkillSet()
 	{
+		bool flug = false ;
 		while (true)
 		{
-			if (Select == selectMenu_Ready.SelectMenu)
+			if (Select == menu.SelectMenu)
 			{
+
 				Vector3 Stick;
 				Stick = InputManager_JHW.MainJoystick();
-				if (check == false && check2 == false)
+				if (left == false && right == false)
 				{
 					if (Stick.x < 0)
 					{
-						num = 0;
-						check = false;
-						check2 = true;
-					}
-					if (Stick.x > 0)
-					{
-						num = 0;
-						check = true;
-						check2 = false;
-					}
-					if (InputManager_JHW.AButton())
-					{
-						bool Button = false;
-						int j = 0;
-						for (int i = 0; i < 3; ++i)
-						{
-							if (Singletone.Instance.Myskill[i] == RotationSkill)
-							{
-								j = i;
-								if (j != skillnum)
-									Button = true;
-							}
-							if (Button)
-							{
-
-								for (int k = j; k < 2; ++k)
-								{
-									Singletone.Instance.Myskill[k] = Singletone.Instance.Myskill[k + 1];
-									if (Singletone.Instance.Myskill[k] == -1)
-										break;
-								}
-							}
-						}
-						if (!Button)
-						{
-							if (skillnum >= 2)
-							{
-								Singletone.Instance.Myskill[0] = Singletone.Instance.Myskill[1];
-								Singletone.Instance.Myskill[1] = Singletone.Instance.Myskill[2];
-								Singletone.Instance.Myskill[2] = RotationSkill;
-							}
-							else
-							{
-								Singletone.Instance.Myskill[skillnum] = RotationSkill;
-								skillnum++;
-							}
-
-						}
-						for (int i = 0; i < 3; ++i)
-						{
-							Debug.Log(Singletone.Instance.Myskill[i]);
-						}
-						yield return new WaitForSeconds(0.5f);
-					}
-					if (InputManager_JHW.BButton())
-					{
-						selectMenu_Ready.SelectMenu = -1;
-						selectMenu_Ready.confirm = false;
-						yield return new WaitForSeconds(0.5f);
-					}
-				}
-
-				if (check)
-				{
-					num++;
-					this.transform.Rotate(new Vector3(0, 7.2f, 0), Space.Self);
-
-					if (num == 5)
-					{
-						RotationSkill--;
-						if (RotationSkill == -1)
-							RotationSkill = 4;
-
-						if (stage < 5) have_skill = stage;
-
-						for (int i = 0; i < have_skill; ++i)
-						{
-							Skill[i].SetActive(false);
-						}
-
-						Skill[RotationSkill].SetActive(true);
-					}
-					if (num == 10)
-					{
-						check = false;
-					}
-				}
-				if (check2)
-				{
-					num++;
-					this.transform.Rotate(new Vector3(0, -7.2f, 0), Space.Self);
-
-					if (num == 5)
-					{
+						flug = true;
+						left = true;
 						RotationSkill++;
 						if (RotationSkill == 5)
 							RotationSkill = 0;
-						if (stage < 5) have_skill = stage;
-
-						for (int i = 0; i < have_skill; ++i)
+						for (int i = 0; i < Skill.Capacity; ++i)
 						{
 							Skill[i].SetActive(false);
 						}
-						Skill[RotationSkill].SetActive(true);
 					}
-					if (num == 10)
+					if (Stick.x > 0)
 					{
-						check2 = false;
+						flug = true;
+						right = true;
+						RotationSkill--;
+						if (RotationSkill == -1)
+						{
+							RotationSkill = 4;
+						}
+					
+						for (int i = 0; i < Skill.Capacity; ++i)
+						{
+							Skill[i].SetActive(false);
+						}
 					}
 				}
-				yield return new WaitForSeconds(0.05f);
+				else
+				{
+					if (flug)
+					{
+						flug = false;
+						StartCoroutine(RotateSkill());
+						Skill[RotationSkill].SetActive(true);
+					}
+				}
+
+			}
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+	IEnumerator RotateSkill()
+	{
+		int count = 0;
+		while (count<10)
+		{
+			count++;
+			if (right)
+			{
+				this.transform.Rotate(new Vector3(0, 7.2f, 0), Space.Self);
+			}
+			else if (left)
+			{
+				this.transform.Rotate(new Vector3(0, -7.2f, 0), Space.Self);
 			}
 			yield return new WaitForSeconds(0.05f);
 		}
+		right = left = false;
+	}
+	void skillChoice(int choiceSkill)
+	{
+
+		for (int i = 0; i < 3; ++i)
+		{
+			if (Singletone.Instance.Myskill[i] == choiceSkill)
+				return;
+		}
+		for (int i = 0; i < 3; ++i)
+		{
+			if (Singletone.Instance.Myskill[i] == -1)
+			{
+				Singletone.Instance.Myskill[i] = choiceSkill;
+				return;
+			}
+		}
+		Singletone.Instance.Myskill[lastChange] = choiceSkill;
+		++lastChange;
+		if (lastChange == 3) lastChange = 0;
 	}
 }

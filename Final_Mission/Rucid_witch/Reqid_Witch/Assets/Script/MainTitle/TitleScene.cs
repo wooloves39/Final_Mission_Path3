@@ -46,7 +46,6 @@ public class TitleScene : MonoBehaviour
 		}
 		if (Alpha_color == 1.0f)
 		{
-			Debug.Log(Alpha_color);
 			StopCoroutine(opening);
 		}
 		if (Loading) 

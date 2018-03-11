@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class SelectMenu_Ready : MonoBehaviour {
 
 	public GameObject[] ui_arr;
@@ -13,14 +14,43 @@ public class SelectMenu_Ready : MonoBehaviour {
 	public int SelectMenu = -1;
 	float timer = 0.0f;
 	private int stage;
-
+	public Viberation player;
 	void Start(){
 		stage = Singletone.Instance.stage;
 		//test 
 		stage = 1;
 		StartCoroutine(KeyPad());
 	}
-
+	private void Update()
+	{
+		if (InputManager_JHW.AButtonDown())
+		{
+			if (!confirm)
+			{
+				SelectMenu = index;
+				confirm = true;
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.3f, 0.5f, OVRInput.Controller.RTouch));
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.3f, 0.5f, OVRInput.Controller.LTouch));
+				ui_arr[SelectMenu].GetComponent<Image>().color = new Color(1, 0, 1) ;
+			}
+		}
+		if (InputManager_JHW.BButtonDown())
+		{
+			if (confirm)
+			{
+				ui_arr[SelectMenu].GetComponent<Image>().color = new Color(1, 1,1);
+				SelectMenu = -1;
+				confirm = false;
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.3f, OVRInput.Controller.RTouch));
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.3f, OVRInput.Controller.LTouch));
+			}
+		}
+		if (InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn())
+		{
+			//준비 완료되었냐고 물어보는 거 확인후!!
+			SceneManager.LoadScene("Stage0");
+		}
+	}
 	IEnumerator KeyPad()
 	{
 		
@@ -82,20 +112,10 @@ public class SelectMenu_Ready : MonoBehaviour {
 						continue;
 					}
 				}
-				if (InputManager_JHW.AButton())
-				{
-					SelectMenu = index;
-					confirm = true;
-					yield return new WaitForSeconds(0.75f);
-				}
-				if (InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn())
-				{
-					//준비 완료되었냐고 물어보는 거 확인후!!
-					
-				}
-				yield return new WaitForSeconds(0.25f);
+				yield return new WaitForSeconds(0.05f);
 			}
-			yield return new WaitForSeconds(0.25f);
+			
+			yield return new WaitForSeconds(0.05f);
 		}
 	}
 }
