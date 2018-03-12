@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Viberation : MonoBehaviour
 {
-	private void Update()
-	{
-		Debug.Log(Application.loadedLevel);
-	}
+	
 	public static IEnumerator ViberationCoroutine(float time, float power, OVRInput.Controller controller)
 	{ 
 		OVRInput.SetControllerVibration(.2f, power, controller);

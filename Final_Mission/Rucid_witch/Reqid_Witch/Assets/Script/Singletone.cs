@@ -26,9 +26,9 @@ public class Singletone
     public int Charnumber = -1;
 	public float Sound = 1.0f;
     public string name;
-	public int stage = 1;
+	public int stage = 3;
     public string saveTime;
-	public int[] Myskill = {-1,-1,-1};
+	public int[] Myskill = {0,-1,-1};
     public void Load(StreamReader sr)
     {
         string stage_str;

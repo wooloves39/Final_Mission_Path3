@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SelectMenu_Ready : MonoBehaviour {
 
 	public GameObject[] ui_arr;
+	public GameObject[] Menus;
 	public Vector2[] posit_arr;
 	public int index = 0;
 	public Vector2 myposit = new Vector2(0,1);
@@ -29,20 +30,28 @@ public class SelectMenu_Ready : MonoBehaviour {
 			{
 				SelectMenu = index;
 				confirm = true;
-				player.StartCoroutine(Viberation.ViberationCoroutine(0.3f, 0.5f, OVRInput.Controller.RTouch));
-				player.StartCoroutine(Viberation.ViberationCoroutine(0.3f, 0.5f, OVRInput.Controller.LTouch));
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.2f, 0.3f, OVRInput.Controller.RTouch));
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.2f, 0.3f, OVRInput.Controller.LTouch));
 				ui_arr[SelectMenu].GetComponent<Image>().color = new Color(1, 0, 1) ;
+				Menus[SelectMenu].transform.Translate(0, 0, -10);
+				Menus[SelectMenu].transform.LookAt(Camera.main.transform);
+				Menus[SelectMenu].transform.Rotate(0,180,0);
+
+
 			}
 		}
 		if (InputManager_JHW.BButtonDown())
 		{
 			if (confirm)
 			{
+				Menus[SelectMenu].transform.rotation = Quaternion.identity;
+				Menus[SelectMenu].transform.Translate(0, 0,10);
+				
 				ui_arr[SelectMenu].GetComponent<Image>().color = new Color(1, 1,1);
 				SelectMenu = -1;
 				confirm = false;
-				player.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.3f, OVRInput.Controller.RTouch));
-				player.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.3f, OVRInput.Controller.LTouch));
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.1f, OVRInput.Controller.RTouch));
+				player.StartCoroutine(Viberation.ViberationCoroutine(0.1f, 0.1f, OVRInput.Controller.LTouch));
 			}
 		}
 		if (InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn())

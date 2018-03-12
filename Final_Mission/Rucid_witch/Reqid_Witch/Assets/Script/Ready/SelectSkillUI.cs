@@ -44,7 +44,7 @@ public class SelectSkillUI : MonoBehaviour
 				Stick = InputManager_JHW.MainJoystick();
 				if (left == false && right == false)
 				{
-					if (Stick.x < 0)
+					if (Stick.x > 0 )
 					{
 						if (stage >= 5)
 						{
@@ -60,8 +60,9 @@ public class SelectSkillUI : MonoBehaviour
 						}
 						else
 						{
+
 							++RotationSkill;
-							if (RotationSkill < stage)
+							if (RotationSkill >= stage)
 							{
 								--RotationSkill;
 							}
@@ -69,7 +70,6 @@ public class SelectSkillUI : MonoBehaviour
 							{
 								flug = true;
 								left = true;
-								RotationSkill++;
 								if (RotationSkill == 5)
 									RotationSkill = 0;
 								for (int i = 0; i < Skill.Capacity; ++i)
@@ -79,20 +79,42 @@ public class SelectSkillUI : MonoBehaviour
 							}
 						}
 					}
-					if (Stick.x > 0&&stage>=5)
+					if (Stick.x < 0)
 					{
-						flug = true;
-						right = true;
-						RotationSkill--;
-						if (RotationSkill == -1)
+						if (stage >= 5)
 						{
-							RotationSkill = 4;
+							flug = true;
+							right = true;
+							RotationSkill--;
+							if (RotationSkill == -1)
+							{
+								RotationSkill = 4;
+							}
+
+							for (int i = 0; i < Skill.Capacity; ++i)
+							{
+								Skill[i].SetActive(false);
+							}
 						}
+						else
+						{
+							--RotationSkill;
+							if (RotationSkill < 0)
+							{
+								RotationSkill = 0;
+							}
+							else
+							{
+								flug = true;
+								right = true;
+								for (int i = 0; i < Skill.Capacity; ++i)
+								{
+									Skill[i].SetActive(false);
+								}
+							}
+						}
+						
 					
-						for (int i = 0; i < Skill.Capacity; ++i)
-						{
-							Skill[i].SetActive(false);
-						}
 					}
 				}
 				else
