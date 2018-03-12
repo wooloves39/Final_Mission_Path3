@@ -873,7 +873,7 @@ MonoBehaviour:
   - {fileID: 1526122619}
   - {fileID: 1579612765}
   - {fileID: 58258665}
-  Skill_index: 2
+  Skill_index: 0
 --- !u!1 &453347555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   - {fileID: 190187291}
   - {fileID: 1359373628}
   - {fileID: 1038075884}
-  Skill_index: 1
+  Skill_index: 0
 --- !u!1 &745818828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   confirm: 0
   move: 1
   SelectMenu: -1
-  player: {fileID: 572062586}
+  player: {fileID: 0}
 --- !u!1 &806562072
 GameObject:
   m_ObjectHideFlags: 0

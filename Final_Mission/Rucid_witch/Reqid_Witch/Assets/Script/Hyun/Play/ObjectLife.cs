@@ -8,9 +8,9 @@ public class ObjectLife : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Attacker"))
 		{
-			Debug.Log("윽 맞음 ㅠㅠㅠ");
-			attacker attacker = other.gameObject.GetComponent<attacker>();
-			Hp=attacker.attack(Hp);
+			//Debug.Log("윽 맞음 ㅠㅠㅠ");
+			//attacker attacker = other.gameObject.GetComponent<attacker>();
+			//Hp=attacker.attack(Hp);
 		}
 	}
 }

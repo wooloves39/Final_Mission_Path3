@@ -109,7 +109,7 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &419747865
+--- !u!1001 &663874196
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -334,7 +334,7 @@ MonoBehaviour:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114884443809680100, guid: cd4184ba12fefda4ebe20adef91f5ab8,
     type: 2}
-  m_PrefabInternal: {fileID: 419747865}
+  m_PrefabInternal: {fileID: 663874196}
   m_Script: {fileID: 11500000, guid: 34a9476b46f325b4886932a827c7111c, type: 3}
 --- !u!1001 &1871446281
 Prefab:

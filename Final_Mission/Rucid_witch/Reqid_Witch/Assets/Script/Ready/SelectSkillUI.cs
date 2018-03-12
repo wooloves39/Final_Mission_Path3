@@ -46,17 +46,40 @@ public class SelectSkillUI : MonoBehaviour
 				{
 					if (Stick.x < 0)
 					{
-						flug = true;
-						left = true;
-						RotationSkill++;
-						if (RotationSkill == 5)
-							RotationSkill = 0;
-						for (int i = 0; i < Skill.Capacity; ++i)
+						if (stage >= 5)
 						{
-							Skill[i].SetActive(false);
+							flug = true;
+							left = true;
+							RotationSkill++;
+							if (RotationSkill == 5)
+								RotationSkill = 0;
+							for (int i = 0; i < Skill.Capacity; ++i)
+							{
+								Skill[i].SetActive(false);
+							}
+						}
+						else
+						{
+							++RotationSkill;
+							if (RotationSkill < stage)
+							{
+								--RotationSkill;
+							}
+							else
+							{
+								flug = true;
+								left = true;
+								RotationSkill++;
+								if (RotationSkill == 5)
+									RotationSkill = 0;
+								for (int i = 0; i < Skill.Capacity; ++i)
+								{
+									Skill[i].SetActive(false);
+								}
+							}
 						}
 					}
-					if (Stick.x > 0)
+					if (Stick.x > 0&&stage>=5)
 					{
 						flug = true;
 						right = true;
