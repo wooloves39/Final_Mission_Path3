@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -239,8 +239,6 @@ MonoBehaviour:
   StagePos: []
   index: 
   PlayerHere: 
-  isEmpty: 
-  NearPos: []
 --- !u!4 &471666373
 Transform:
   m_ObjectHideFlags: 0
@@ -574,6 +572,119 @@ Prefab:
     - target: {fileID: 4020402356190544, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307276133992284, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871620128256384, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358755274339864, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697628246001756, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840511509516272, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261860506024000, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641388213258706, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018369206969636, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552408039394898, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345447222735890, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840935708503694, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 65754208026891202, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65936775790532214, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65480885622752944, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64524896313048606, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64524896313048606, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64605657429240032, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64605657429240032, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64884231577259770, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64884231577259770, guid: 06bf315678a22cf499cb2d3107b1eeb5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173141631494778, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105684580320472, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838076457717460, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245192867242524, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821517800876732, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238458540810008, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 06bf315678a22cf499cb2d3107b1eeb5, type: 2}
