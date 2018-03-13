@@ -8,62 +8,46 @@ public class StagePosition : MonoBehaviour {
 
 	public GameObject positVec;
 
-	public List<Vector3> StagePos;
-	private List<int> index;
-	public int PlayerHere;
+	public int index = 0;
+	private Vector3[] StagePos;
 	private WayPoint[] Way;
 	// Use this for initialization
-	void Start () {
-		int temp = 0;
-		Way = new WayPoint[576];
+	void Start ()
+	{
+		int temp = (int)(((Horizental.y - Horizental.x) / 5) * ((Vertical.y - Vertical.x) / 5));
+		Way = new WayPoint[temp];
+		StagePos = new Vector3[temp];
 		for (int i = (int)Horizental.x; i < Horizental.y; i += 5)
 		{
 			for (int j = (int)Vertical.x; j < Vertical.y; j += 5)
 			{
-				StagePos.Add(new Vector3(i, 0, j));
-				positVec.transform.position = StagePos[temp];
+				StagePos.SetValue(new Vector3(i, 0, j),index);
+				positVec.transform.position = StagePos[index];
 				GameObject wp = (GameObject)(Instantiate(positVec));
 				wp.transform.SetParent(this.transform);
-				Way.SetValue(wp.GetComponent<WayPoint>(),temp);
+				Way.SetValue(wp.GetComponent<WayPoint>(),index);
 					
-				temp++;
-			}
-		}
-		StartCoroutine("init");
-	}
-	void Update()
-	{
-		for (int i = 0; i < StagePos.Count; ++i)
-		{
-			if(index[i] == 1)
-			{
-				if (Way[i].PlayerIN)
-				{
-					PlayerHere = i;
-					break;
-				}
+				index++;
 			}
 		}
 	}
-	IEnumerator init()
+	public Vector3 GetRandomPos()
 	{
+		int temp = 0;
+		int i;
 		int cnt = 0;
 		while (true)
 		{
-			for (int i = 0; i < StagePos.Count; ++i)
+			i = Random.Range(0, index);
+			if (Way[i].check == true)
 			{
-				if(cnt == 0)
-					index.Add(0);
-				if (Way[i].check == true)
-				{
-					index[i] = 1;
-				}
+				temp = i;
+				break;
 			}
-			cnt++;	
-			if(cnt < 3)
-				yield return new WaitForSeconds(10.0f);
-			else
+			cnt++;
+			if (cnt > 100)
 				break;
 		}
+		return StagePos[temp];
 	}
 }

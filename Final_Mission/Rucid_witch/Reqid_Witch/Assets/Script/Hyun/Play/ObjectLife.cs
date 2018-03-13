@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectLife : MonoBehaviour {
 	public int Hp;
+	public int MaxHp;
+	public float Speed;
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Attacker"))

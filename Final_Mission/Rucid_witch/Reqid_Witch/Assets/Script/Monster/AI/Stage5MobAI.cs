@@ -6,6 +6,9 @@ public class Stage5MobAI: MonoBehaviour {
 	MoveMsg msg;
 	public int[] BasicPeace;
 	public int[] BasicBattle;
+
+	StagePosition Stage5Pos;
+	ObjectLife ObjLife;
 	NatureCommand NCommand;
 	Animator ani;
 
@@ -25,14 +28,15 @@ public class Stage5MobAI: MonoBehaviour {
 	Queue Peace = null;
 	void Start()
 	{
+		Stage5Pos = FindObjectOfType<StagePosition>().GetComponent<StagePosition>();
+		ObjLife = GetComponent<ObjectLife>();
 		ani = GetComponent<Animator>();
 		NCommand = GetComponent<NatureCommand>();
 
 		//가져와서 적용해야 할 부분
 		msg = new MoveMsg();
-		msg.obj = this.gameObject;
-		msg.destination = new Vector3(0,0,0);
-		msg.Speed = 4.0f;
+		msg.destination = Stage5Pos.GetRandomPos();
+		msg.Speed = ObjLife.Speed;
 		//가져와서 적용해야 할 부분
 
 
