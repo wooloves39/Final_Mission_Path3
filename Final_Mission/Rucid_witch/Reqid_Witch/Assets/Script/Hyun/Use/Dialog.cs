@@ -38,6 +38,7 @@ public class Dialog : MonoBehaviour
 		HideIcons();
 
 		StartCoroutine(StartDialogue());
+		file_parser.FileClose();
 	}
 
 	// Update is called once per frame

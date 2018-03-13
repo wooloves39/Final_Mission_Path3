@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 public class SelectMenu_Ready : MonoBehaviour {
-
+	private Confirm GameStart;
 	public GameObject[] ui_arr;
 	public GameObject[] Menus;
 	public Vector2[] posit_arr;
 	public int index = 0;
 	public Vector2 myposit = new Vector2(0,1);
 	public bool confirm = false;
-	public bool move = true;
 	public int SelectMenu = -1;
-	float timer = 0.0f;
 	private int stage;
 	public Viberation player;
 	void Start(){
+		GameStart = GetComponentInChildren<Confirm>();
 		stage = Singletone.Instance.stage;
 		//test 
 		stage = 1;
@@ -57,7 +55,9 @@ public class SelectMenu_Ready : MonoBehaviour {
 		if (InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn())
 		{
 			//준비 완료되었냐고 물어보는 거 확인후!!
-			SceneManager.LoadScene("Stage0");
+			confirm = true;
+			GameStart.gameObject.SetActive(true);
+			//
 		}
 	}
 	IEnumerator KeyPad()
@@ -68,10 +68,6 @@ public class SelectMenu_Ready : MonoBehaviour {
 			if (!confirm)
 			{
 				Vector3 Stick;
-				if (move)
-				{
-					if (timer < 1.0f)
-						timer += Time.deltaTime * 25;
 					Stick = InputManager_JHW.MainJoystick();
 
 					if (Stick.x > 0)
@@ -93,7 +89,6 @@ public class SelectMenu_Ready : MonoBehaviour {
 					{
 						myposit.y = -1;
 					}
-				}
 
 				if (Vector2.Distance(myposit,new Vector2(-1,1))<0.1f)
 					index = 0;

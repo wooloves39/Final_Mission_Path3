@@ -37,6 +37,15 @@ public class File_parser : MonoBehaviour
 			source = strRead.ReadLine();
 		}
 	}
+	public void Reading()
+	{
+		string source = strRead.ReadLine();
+		while (source != null)
+		{
+			textValue[count++] = source;
+			source = strRead.ReadLine();
+		}
+	}
 	public string[] GetText()
 	{
 		return textValue;
