@@ -81,3 +81,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: 0
+  PlayerIN: 0

@@ -13,6 +13,7 @@ TagManager:
   - Monster
   - Portal
   - DellAttack
+  - PlayerHit
   layers:
   - Default
   - TransparentFX

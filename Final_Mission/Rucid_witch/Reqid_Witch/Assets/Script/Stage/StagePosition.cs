@@ -9,9 +9,9 @@ public class StagePosition : MonoBehaviour {
 	public GameObject positVec;
 
 	public List<Vector3> StagePos;
-	public List<int> index;
-	public List<bool> PlayerHere;
-	WayPoint[] Way;
+	private List<int> index;
+	public int PlayerHere;
+	private WayPoint[] Way;
 	// Use this for initialization
 	void Start () {
 		int temp = 0;
@@ -30,6 +30,20 @@ public class StagePosition : MonoBehaviour {
 			}
 		}
 		StartCoroutine("init");
+	}
+	void Update()
+	{
+		for (int i = 0; i < StagePos.Count; ++i)
+		{
+			if(index[i] == 1)
+			{
+				if (Way[i].PlayerIN)
+				{
+					PlayerHere = i;
+					break;
+				}
+			}
+		}
 	}
 	IEnumerator init()
 	{

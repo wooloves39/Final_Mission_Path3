@@ -5,6 +5,8 @@ using UnityEngine;
 public class WayPoint : MonoBehaviour {
 
 	public bool check = false;
+	public bool PlayerIN = false;
+
 
 	void OnTriggerStay(Collider col)
 	{
@@ -12,5 +14,17 @@ public class WayPoint : MonoBehaviour {
 		{
 			check = true;
 		}
+		if (col.tag == "PlayerHit")
+		{
+			PlayerIN = true;
+		}
 	}
+	void OnTriggerExit(Collider col)
+	{
+		if (col.tag == "PlayerHit")
+		{
+			PlayerIN = false;
+		}
+	}
+
 }
