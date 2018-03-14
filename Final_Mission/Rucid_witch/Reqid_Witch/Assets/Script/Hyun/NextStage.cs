@@ -19,7 +19,7 @@ public class NextStage : MonoBehaviour {
 
 			//ReadyScene으로!
 			Debug.Log("다음 씬");
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene("Ready");
 		}
 	}
 

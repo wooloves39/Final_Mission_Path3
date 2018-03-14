@@ -61,7 +61,7 @@ public class Teleport : MonoBehaviour
 	}
 	// Update is called once per frame
 	void Update()
-	{ 
+	{
 		if (InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
 		{
 			if (MyState.GetMyState() == PlayerState.State.Nomal)
@@ -77,14 +77,14 @@ public class Teleport : MonoBehaviour
 								currentCorutine = StartCoroutine(AzuraControll());
 							}
 							break;
-						case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
+						case 1:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
 							{
-								currentCorutine = StartCoroutine(BeejaeControll());
+								currentCorutine = StartCoroutine(SeikwanControll());
 							}
 							break;
-						case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
+						case 2://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
 							{
-								currentCorutine = StartCoroutine(DellControll());
+								currentCorutine = StartCoroutine(BeejaeControll());
 							}
 							break;
 						case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출 베르베시
@@ -92,9 +92,9 @@ public class Teleport : MonoBehaviour
 								currentCorutine = StartCoroutine(VerbaseControll());
 							}
 							break;
-						case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
+						case 4://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
 							{
-								currentCorutine = StartCoroutine(SeikwanControll());
+								currentCorutine = StartCoroutine(DellControll());
 							}
 							break;
 
@@ -102,15 +102,15 @@ public class Teleport : MonoBehaviour
 				}
 			}
 		}
-		else if ((!InputManager_JHW.RTriggerOn() && !InputManager_JHW.LTriggerOn()) && flug) 
+		else if ((!InputManager_JHW.RTriggerOn() && !InputManager_JHW.LTriggerOn()) && flug)
 		{
-			
+
 			flug = false;
 			MyState.SetMyState(PlayerState.State.Nomal);
 			SettingOff();
-			
+
 		}
-		if(MyState.GetMyState() == PlayerState.State.ChargingOver)
+		if (MyState.GetMyState() == PlayerState.State.ChargingOver)
 		{
 			SettingOff();
 		}
@@ -143,30 +143,36 @@ public class Teleport : MonoBehaviour
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!Beejae_Marker[0].activeSelf)
+				if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Monster"))
 				{
-					Beejae_Marker[0].SetActive(true);
+					if (!Beejae_Marker[0].activeSelf)
+					{
+						Beejae_Marker[0].SetActive(true);
+					}
+					Vector3 point = hit.point;
+					point.y += 0.4f;
+					Beejae_Marker[0].transform.LookAt(camTr.position);
+					Beejae_Marker[0].transform.Rotate(90, 0, 0);
+					Beejae_Marker[0].transform.position = point;
 				}
-				Vector3 point = hit.point;
-				point.y += 0.2f;
-				Beejae_Marker[0].transform.LookAt(camTr.position);
-				Beejae_Marker[0].transform.Rotate(90, 0, 0);
-				Beejae_Marker[0].transform.position = point;
 
 			}
 			//오른손
 			ray = new Ray(Hands[1].transform.position, Hands[1].transform.forward);
 			if (Physics.Raycast(ray, out hit, RayLength))
 			{
-				if (!Beejae_Marker[1].activeSelf)
+				if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Monster"))
 				{
-					Beejae_Marker[1].SetActive(true);
+					if (!Beejae_Marker[1].activeSelf)
+					{
+						Beejae_Marker[1].SetActive(true);
+					}
+					Vector3 point = hit.point;
+					point.y += 0.4f;
+					Beejae_Marker[1].transform.LookAt(camTr.position);
+					Beejae_Marker[1].transform.Rotate(90, 0, 0);
+					Beejae_Marker[1].transform.position = point;
 				}
-				Vector3 point = hit.point;
-				point.y += 0.2f;
-				Beejae_Marker[1].transform.LookAt(camTr.position);
-				Beejae_Marker[1].transform.Rotate(90, 0, 0);
-				Beejae_Marker[1].transform.position = point;
 			}
 			yield return new WaitForSeconds(0.03f);
 		}
@@ -184,7 +190,7 @@ public class Teleport : MonoBehaviour
 				AzuraBall.SetActive(true);
 				AttackPoint += Camera.main.transform.forward * 0.1f;
 				AzuraBall.transform.position = AttackPoint;
-				MyState.SetMyState(PlayerState.State.Charging,5.0f);
+				MyState.SetMyState(PlayerState.State.Charging, 5.0f);
 			}
 			if (instance)
 			{
@@ -268,7 +274,7 @@ public class Teleport : MonoBehaviour
 					}
 					//5발 다쏘고 난다음도 생각해야함
 				}
-				MyState.SetMyState(PlayerState.State.Charging,5.0f);
+				MyState.SetMyState(PlayerState.State.Charging, 5.0f);
 			}
 			else if (instance)
 			{
@@ -386,29 +392,7 @@ public class Teleport : MonoBehaviour
 					AzuraBall.SetActive(false);
 				}
 				break;
-			case 1://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
-				{
-					Beejae_Marker[0].transform.rotation = MarkerRotate;
-					Beejae_Marker[1].transform.rotation = MarkerRotate;
-					Beejae_Marker[0].SetActive(false);
-					Beejae_Marker[1].SetActive(false);
-				}
-				break;
-			case 2://바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
-				{
-					DellTouch = false;
-					Dellcount = 0;
-					Violin.SetActive(false);
-					Fiddle_Bow.SetActive(false);
-				}
-				break;
-			case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
-				{
-					Verbase_Marker[0].SetActive(false);
-					Verbase_Marker[1].SetActive(false);
-				}
-				break;
-			case 4:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
+			case 1:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
 				{
 					for (int i = 0; i < Arrow.Length; ++i)
 					{
@@ -426,6 +410,28 @@ public class Teleport : MonoBehaviour
 							}
 						}
 					}
+				}
+				break;
+			case 2://전격 공격, 총알 발사 형태, 몬스터를 타겟하여 전격을 발사 형태, 저격 된 상태에서 기를 모아 방출
+				{
+					Beejae_Marker[0].transform.rotation = MarkerRotate;
+					Beejae_Marker[1].transform.rotation = MarkerRotate;
+					Beejae_Marker[0].SetActive(false);
+					Beejae_Marker[1].SetActive(false);
+				}
+				break;
+			case 3:// 양 컨트롤러의 포인터가 맞춰졌을대 발동, 트리거를 계속 on하면 기를 모아 방출
+				{
+					Verbase_Marker[0].SetActive(false);
+					Verbase_Marker[1].SetActive(false);
+				}
+				break;
+			case 4: //바이올린 상태 전체 공격 위주, 한정된 시간에 여러번 좌우 이동을 통해 차징 공격
+				{
+					DellTouch = false;
+					Dellcount = 0;
+					Violin.SetActive(false);
+					Fiddle_Bow.SetActive(false);
 				}
 				break;
 		}

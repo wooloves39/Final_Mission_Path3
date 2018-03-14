@@ -43,17 +43,17 @@ public class SkillChange : MonoBehaviour {
 				case 0://아즈라
 					Color = new Color(1, 0, 1);
 					break;
-				case 1://비제
-					Color = new Color(0, 1, 0);
+				case 1://세이콴
+					Color = new Color(1, 1, 0);
 					break;
-				case 2://델
-					Color = new Color(0, 1, 1);
+				case 2://비제
+					Color = new Color(0, 1, 0);
 					break;
 				case 3://베르베시
 					Color = new Color(1, 0, 0);
 					break;
-				case 4://세이콴
-					Color = new Color(1, 1, 0);
+				case 4://델
+					Color = new Color(0, 1, 1);
 					break;
 			}
 			for (int i = 0; i < MpMaterial.Length; ++i)

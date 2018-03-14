@@ -12,7 +12,7 @@ public class Dialog : MonoBehaviour
 	private string[] DialogueStrings;
 	public int[] chatChar;
 	private float SecondsBetweenCharacters = 0.1f;
-	private float CharacterRateMultuplier = 0.01f;
+	private float CharacterRateMultuplier = 0.001f;
 
 	private bool _isStringBeingRevealed = false;
 	private bool _isEndofDialogue = false;
@@ -23,6 +23,7 @@ public class Dialog : MonoBehaviour
 	public GameObject Me;
 	public GameObject Boss;
 	public Dia_Play dia_Play;
+
 	private File_parser file_parser;
 	public string fileName;
 
@@ -69,24 +70,23 @@ public class Dialog : MonoBehaviour
 				if (currentDialogueIndex >= dialogueLengh || chatChar[currentDialogueIndex] == 99)
 				{
 					_isEndofDialogue = true;
-					if (currentDialogueIndex >= dialogueLengh)
+					if (currentDialogueIndex >= dialogueLengh )
 						dia_Play.setEnd(true);
-					else if (chatChar[currentDialogueIndex] == 99)
-						currentDialogueIndex++;
-
+					else
+					{
+						if (chatChar.Length > currentDialogueIndex)
+						{
+							if (chatChar[currentDialogueIndex] == 99)
+								currentDialogueIndex++;
+						}
+					}
 
 
 				}
 			}
 			yield return new WaitWhile(() => dia_Play.getPlay());
 		}
-		//      while (true)
-		//      {
-		//          if (Input.GetKeyDown(DialogueInput)) break;
-
-		//}
 		HideIcons();
-		//	_isEndofDialogue = false;
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)
 	{
@@ -115,7 +115,6 @@ public class Dialog : MonoBehaviour
 		while (true)
 		{
 			if (InputManager_JHW.BButtonDown()) break;
-
 			yield return 0;
 		}
 		HideIcons();

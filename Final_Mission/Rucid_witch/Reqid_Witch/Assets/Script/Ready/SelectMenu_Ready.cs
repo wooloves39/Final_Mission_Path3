@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class SelectMenu_Ready : MonoBehaviour {
-	private Confirm GameStart;
+	public GameObject GameStart;
 	public GameObject[] ui_arr;
 	public GameObject[] Menus;
 	public Vector2[] posit_arr;
@@ -14,7 +14,6 @@ public class SelectMenu_Ready : MonoBehaviour {
 	private int stage;
 	public Viberation player;
 	void Start(){
-		GameStart = GetComponentInChildren<Confirm>();
 		stage = Singletone.Instance.stage;
 		//test 
 		stage = 1;

@@ -72,6 +72,5 @@ public class StageInfo : MonoBehaviour {
 			textArea.text = DialogueStrings[stringIndex].Substring(0, characterIndex);
 			++characterIndex;
 		}
-		Debug.Log("끝");
 	}
 }

@@ -34,7 +34,7 @@ public class SkillAttack1 : MonoBehaviour
 	{
 		switch (input_mouse.curType)
 		{
-			case 1:
+			case 2:
 				{
 					if (other.gameObject.CompareTag("Monster"))
 					{
@@ -57,7 +57,7 @@ public class SkillAttack1 : MonoBehaviour
 	{
 		switch (input_mouse.curType)
 		{
-			case 1:
+			case 2:
 				{
 					if (other.gameObject.CompareTag("Monster"))
 					{

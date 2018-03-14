@@ -7,12 +7,10 @@ public class Confirm : MonoBehaviour
 {
 	public GameObject[] ui_arr;
 	private bool choice = false;
-	// Use this for initialization
-	void Start()
+	private void OnEnable()
 	{
 		StartCoroutine(KeyPad());
 	}
-
 	// Update is called once per frame
 	void Update()
 	{
@@ -67,8 +65,8 @@ public class Confirm : MonoBehaviour
 				ui_arr[0].gameObject.SetActive(false);
 
 			}
+			yield return new WaitForSeconds(0.05f);
 		}
-		yield return new WaitForSeconds(0.05f);
 
 	}
 }
