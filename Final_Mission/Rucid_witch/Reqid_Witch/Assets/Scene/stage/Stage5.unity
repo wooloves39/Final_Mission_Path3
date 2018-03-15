@@ -376,7 +376,7 @@ MonoBehaviour:
   - {fileID: 93966592}
   Prefab:
   - {fileID: 1177604715762056, guid: d409736c4f9aff54ebdbcae33fb76612, type: 2}
-  Prefab_Count: 03000000
+  Prefab_Count: 01000000
   GenTime: 01000000
 --- !u!1 &1553544056
 GameObject:
