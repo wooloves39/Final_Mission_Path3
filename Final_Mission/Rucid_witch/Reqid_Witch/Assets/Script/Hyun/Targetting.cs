@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Targetting : MonoBehaviour {
-	private List<GameObject> TargetMonster;
+	private List<GameObject> TargetMonster=new List<GameObject>();
 	private int TargetCount;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +20,7 @@ public class Targetting : MonoBehaviour {
 		{
 			Debug.Log("Add Mon");
 			TargetMonster.Add(other.gameObject);
+			TargetCount++;
 		}			
 	}
 	private void OnTriggerExit(Collider other)
@@ -29,6 +30,7 @@ public class Targetting : MonoBehaviour {
 		{
 			Debug.Log("Del Mon");
 			TargetMonster.Remove(other.gameObject);
+			TargetCount--;
 		}
 	}
 }

@@ -39,7 +39,7 @@ public class SelectMenu_Ready : MonoBehaviour {
 		}
 		if (InputManager_JHW.BButtonDown())
 		{
-			if (confirm)
+			if (confirm&&SelectMenu>=0)
 			{
 				Menus[SelectMenu].transform.rotation = Quaternion.identity;
 				Menus[SelectMenu].transform.Translate(0, 0,10);

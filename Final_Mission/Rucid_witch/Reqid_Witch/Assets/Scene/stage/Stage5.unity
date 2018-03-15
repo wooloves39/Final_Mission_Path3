@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -108,6 +108,22 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 23800000, guid: 63660416b9973eb449fd3b7eb95f9fdc, type: 2}
+--- !u!1 &20574063 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1147484443579816, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+    type: 2}
+  m_PrefabInternal: {fileID: 384288653}
+--- !u!114 &20574072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20574063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a766dd430974cc4e8fd488df04ea6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &93966592
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +218,16 @@ Prefab:
     - target: {fileID: 4751355359674346, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135695137480962632, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 135695137480962632, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: m_Radius
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
