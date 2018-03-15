@@ -46,7 +46,6 @@ public class ConfirmMenu : MonoBehaviour {
 						main.GetComponent<MainMenu>().confirm = false;
 						load.GetComponent<LoadMenu>().confirm = false;
 						main.GetComponent<MainMenu>().timer = 0;
-						load.GetComponent<LoadMenu>().timer = 0;
 						this.gameObject.SetActive (false);
 					}
 				}

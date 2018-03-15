@@ -5988,7 +5988,6 @@ MonoBehaviour:
   Main: {fileID: 36688111}
   Confirm: {fileID: 2045474264}
   confirm: 0
-  timer: 0
 --- !u!1 &1872288201
 GameObject:
   m_ObjectHideFlags: 0
