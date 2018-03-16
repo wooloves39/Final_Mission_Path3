@@ -13,7 +13,7 @@ public class BodyTracking : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		pos = tracker.transform.position;
-		pos.y = 0;
-		gameObject.transform.position = pos;
+		transform.position = pos;
+		transform.localPosition = new Vector3(transform.localPosition.x, 0.0f, transform.localPosition.z);
 	}
 }
