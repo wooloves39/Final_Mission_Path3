@@ -6,6 +6,8 @@ public class ObjectLife : MonoBehaviour {
 	public int Hp;
 	public int MaxHp;
 	public float Speed;
+	public float BattleSpeed;
+	public float Range;
 	private void OnTriggerEnter(Collider other)
 	{
 		//if (other.gameObject.CompareTag("Attacker"))

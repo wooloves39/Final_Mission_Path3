@@ -10,6 +10,7 @@ public class Stage5MobAI: MonoBehaviour {
 	StagePosition Stage5Pos;
 	ObjectLife ObjLife;
 	NatureCommand NCommand;
+	BattleCommand BCommand;
 	Animator ani;
 
 	public float Time_Nature_Stop;		//0
@@ -26,17 +27,18 @@ public class Stage5MobAI: MonoBehaviour {
 
 	Queue Battle = null;
 	Queue Peace = null;
+	private Transform Player;
 	void Start()
 	{
 		Stage5Pos = FindObjectOfType<StagePosition>().GetComponent<StagePosition>();
 		ObjLife = GetComponent<ObjectLife>();
 		ani = GetComponent<Animator>();
 		NCommand = GetComponent<NatureCommand>();
+		BCommand = GetComponent<BattleCommand>();
+		Player = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
 		//가져와서 적용해야 할 부분
 		msg = new MoveMsg();
-		msg.destination = Stage5Pos.GetRandomPos();
-		msg.Speed = ObjLife.Speed;
 		//가져와서 적용해야 할 부분
 
 
@@ -79,9 +81,13 @@ public class Stage5MobAI: MonoBehaviour {
 			//전투
 			else
 			{
+				//전투중 AI 조건
 				while (Battle.Count < 2)
 				{
-					num = getRandom(11, 13);
+					if (Vector3.Distance(Player.position, this.gameObject.transform.position) <= ObjLife.Range)
+						num = 12;
+					else
+						num = 11;
 					Battle.Enqueue(num);
 				}
 			}
@@ -92,7 +98,14 @@ public class Stage5MobAI: MonoBehaviour {
 				if (!Fight)
 					num = (int)Peace.Dequeue();//동작 처리시에 큐서 빠져나감
 				else
-					num = (int)Battle.Dequeue();//동작 처리시에 큐서 빠져나감
+				{
+					//num = (int)Battle.Dequeue();//동작 처리시에 큐서 빠져나감
+
+					if (Vector3.Distance(Player.position, this.gameObject.transform.position) <= ObjLife.Range)
+						num = 12;
+					else
+						num = 11;
+				}
 			
 
 				//실행할 동작 - 삭제할 부분
@@ -117,6 +130,8 @@ public class Stage5MobAI: MonoBehaviour {
 							ani.SetBool("IsMove", true);
 							time = Time_Nature_Move;
 							msg.time = time;
+							msg.destination = Stage5Pos.GetRandomPos();
+							msg.Speed = ObjLife.Speed;
 							NCommand.NatureMove(msg);	
 							break;
 						}
@@ -134,17 +149,29 @@ public class Stage5MobAI: MonoBehaviour {
 						}
 					case 10:
 						{
+							
 							time = Time_Taget_Search;
 							break;
 						}
 					case 11:
 						{
+							ani.SetBool("Stop", false);
+							ani.SetBool("IsMove", true);
+							ani.SetBool("IsAttack", false);
 							time = Time_Battle_Move;
+							msg.time = time;
+							msg.destination = Player.position;
+							msg.Speed = ObjLife.BattleSpeed;
+							BCommand.BattleMove(msg);
 							break;
 						}
 					case 12:
 						{
+							ani.SetBool("Stop", false);
+							ani.SetBool("IsMove", false);
+							ani.SetBool("IsAttack", true);
 							time = Time_Normal_Attack;
+							BCommand.Attack(time);
 							break;
 						}
 					default:

@@ -17,7 +17,6 @@ public class HPBar : MonoBehaviour {
 		this.transform.LookAt(Camera.main.transform);
 		here = (float)life.Hp / (float)life.MaxHp;
 		here *= (Level.Length-1);
-		Debug.Log(here);
 		for (int i = 0; i < Level.Length; ++i)
 		{
 			if (i == (int)here)
