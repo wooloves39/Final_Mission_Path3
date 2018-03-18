@@ -24,6 +24,7 @@ public class MoveCtrl : MonoBehaviour
 
 	//대화 스크립트 종속
 	public Dia_Play myDia;
+	public Animator body;
 	//private Coroutine moveCoroutine;
 	// Use this for initialization
 	void Start()
@@ -60,24 +61,6 @@ public class MoveCtrl : MonoBehaviour
 			turnBack();
 		}
 	}
-	private IEnumerator MoveControll()
-	{
-		Vector3 touchDir = InputManager_JHW.MainJoystick() * 2;
-		if (touchDir.magnitude > 0.0f)
-		{
-			Vector3 camdir = camTr.TransformDirection(Vector3.forward);
-			Vector3 dir = camdir + touchDir;
-			dir.Normalize();
-			Vector3 moveDir = camTr.TransformDirection(dir);
-			cc.SimpleMove(moveDir * 50.0f);
-			yield return new WaitForSeconds(0.5f);
-		}
-		else
-		{
-			yield return 0;
-		}
-	}
-
 
 	void MoveWayPoint()
 	{
@@ -103,19 +86,8 @@ public class MoveCtrl : MonoBehaviour
 			dir.Normalize();
 			Vector3 moveDir = camTr.TransformDirection(dir);
 			cc.SimpleMove(moveDir * speed);
+			body.Play("Fastmove");
 		}
-	}
-	private void OnTriggerEnter(Collider other)
-	{
-		//if (other.CompareTag("WAY_POINT"))
-		//{
-		//	Debug.Log("대화 스크립트 동작!");
-		//	Vector3 TalkPos = other.transform.position;
-		//	TalkPos.y = gameObject.transform.position.y;
-		//	gameObject.transform.position = TalkPos;
-		//	myDia.setPlay(false);
-		//	MyState.SetMyState(PlayerState.State.Talk);
-		//}
 	}
 	private void turnBack()
 	{
@@ -130,5 +102,6 @@ public class MoveCtrl : MonoBehaviour
 			pos.y = 0;
 		}
 		gameObject.transform.rotation = Quaternion.Euler(pos);
+		body.Play("turn");
 	}
 }
