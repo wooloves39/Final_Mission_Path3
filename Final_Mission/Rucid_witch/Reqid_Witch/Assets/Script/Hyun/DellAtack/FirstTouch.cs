@@ -26,7 +26,7 @@ public class FirstTouch : MonoBehaviour {
 				teleport.setDelltouch(true);
 				if (!firstTouch)
 				{
-					teleport.DellCharging();
+					teleport.DellCharging(9.0f);
 					dellsound.Play();
 					firstTouch = true;
 				}

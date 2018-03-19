@@ -374,9 +374,9 @@ public class Teleport : MonoBehaviour
 	public void setDellcount(int count) { Dellcount += count; }
 	public void setDellcount() { ++Dellcount; }
 	public void setDelltouch(bool val) { DellTouch = val; }
-	public void DellCharging()
+	public void DellCharging(float time)
 	{
-		MyState.SetMyState(PlayerState.State.Charging, 9.0f);
+		MyState.SetMyState(PlayerState.State.Charging, time);
 	}
 	private void SettingOff()
 	{

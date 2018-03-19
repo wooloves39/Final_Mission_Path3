@@ -31,7 +31,6 @@ public class SelectSkillUI : MonoBehaviour
 			menu.confirm = false;
 		}
 	}
-	//스테이지 별로 나눠서 설정이 들어가도록 고치기 (월요일의 현우가)
 	IEnumerator SkillSet()
 	{
 		bool flug = false ;

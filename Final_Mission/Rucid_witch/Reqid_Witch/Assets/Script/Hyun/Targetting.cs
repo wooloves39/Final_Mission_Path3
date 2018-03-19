@@ -8,16 +8,23 @@ public class Targetting : MonoBehaviour
 	private int TargetCount;
 	private GameObject Mytarget;
 	private bool firstCheck = false;
+	public GameObject targetPoint;
 	// Use this for initialization
 	void Start()
 	{
 		TargetCount = 0;
+		StartCoroutine(targetChange());
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
+		if (Mytarget)
+		{
+			Vector3 pos = Mytarget.transform.position;
+			pos.y += 4;
+			targetPoint.transform.position = pos;
+		}
 	}
 	private void OnTriggerEnter(Collider other)
 	{
@@ -41,19 +48,29 @@ public class Targetting : MonoBehaviour
 			Debug.Log("Del Mon");
 			if (Mytarget == other.gameObject)
 			{
-				firstCheck = false;
 				Mytarget = null;
+				TargetMonster.Remove(other.gameObject);
+				TargetCount--;
 				checkTarget();
 			}
-			TargetMonster.Remove(other.gameObject);
-			TargetCount--;
+			else
+			{
+				TargetMonster.Remove(other.gameObject);
+				TargetCount--;
+			}
+
 		}
 	}
 	private void checkTarget()
 	{
 		GameObject target = null;
 		Vector3 mypos = transform.position;
-		for (int i = 0; i < TargetMonster.Capacity; ++i)
+		if (TargetCount == 0)
+		{
+			firstCheck = false;
+			return;
+		}
+		for (int i = 0; i < TargetCount; ++i)
 		{
 			if (target == null)
 			{
@@ -72,24 +89,53 @@ public class Targetting : MonoBehaviour
 	private IEnumerator targetChange()
 	{
 		Vector3 Stick;
-		int index=5;
+		int index = 5;
 		while (true)
 		{
 			Stick = InputManager_JHW.SubJoystick();
 			if (Stick.x < 0)
 				index = 0;
-
-			if (Stick.x > 0)
+			else if (Stick.x > 0)
 				index = 1;
-			if (index == 0)
+			Vector3 RorL=Vector3.zero;
+			if (index != 5)
 			{
-
-			}
-			else
-			{
+				SortTargetList();
+				for (int i = 0; i < TargetCount; ++i)
+				{
+					if (TargetMonster[i].gameObject != Mytarget.gameObject)
+						RorL = transform.InverseTransformPoint(TargetMonster[i].transform.position);
+					if (index == 0)
+					{
+						if (RorL.x < 0f)
+						{
+							Mytarget = TargetMonster[i];
+							break;
+						}
+					}
+					else if (index == 1)
+					{
+						if (RorL.x > 0f)
+						{
+							Mytarget = TargetMonster[i];
+							break;
+						}
+					}
+				}
 
 			}
 			yield return new WaitForSeconds(0.5f);
+			index = 5;
 		}
 	}
+	private void SortTargetList()
+	{
+		TargetMonster.Sort(delegate (GameObject A, GameObject B)
+		{
+			if (Vector3.Distance(transform.position, A.transform.position) > Vector3.Distance(transform.position, B.transform.position)) return 1;
+			else if (Vector3.Distance(transform.position, A.transform.position) > Vector3.Distance(transform.position, B.transform.position)) return -1;
+			return 0;
+		});
+	}
+
 }
