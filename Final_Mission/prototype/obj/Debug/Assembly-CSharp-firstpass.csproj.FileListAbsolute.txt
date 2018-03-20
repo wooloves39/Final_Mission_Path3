@@ -59,6 +59,6 @@ C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\
 C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\Temp\bin\Debug\UnityEngine.Timeline.xml
 C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\Temp\bin\Debug\UnityEngine.Analytics.xml
 C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\obj\Debug\Assembly-CSharp-firstpass.pdb
-C:\Users\cdcd8\Documents\Final_Mission\GitHub\Final_Mission_Path3\Final_Mission\prototype\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
