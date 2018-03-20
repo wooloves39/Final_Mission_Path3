@@ -60,11 +60,11 @@ public class BattleCommand : MonoBehaviour {
 					break;
 				case 3:
 					if (time >= SkillFrame[2])
-						ani.SetBool("Skill1", false);
+						ani.SetBool("Skill3", false);
 					break;
 				case 4:
 					if (time >= SkillFrame[3])
-						ani.SetBool("Skill3", false);
+						ani.SetBool("Skill4", false);
 					break;
 					
 			}
