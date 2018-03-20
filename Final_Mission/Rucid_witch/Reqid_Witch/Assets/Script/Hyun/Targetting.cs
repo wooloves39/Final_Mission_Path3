@@ -137,5 +137,5 @@ public class Targetting : MonoBehaviour
 			return 0;
 		});
 	}
-
+	public GameObject getMytarget() { return Mytarget; }
 }

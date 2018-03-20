@@ -1,0 +1,259 @@
+fileFormatVersion: 2
+guid: a42539fb2b83d9d4eb33e02d69b42dbf
+timeCreated: 1521511466
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: ' 1'
+    100002: 001
+    100004: Dummy001
+    100006: nurbsSphere2
+    100008: Object002
+    100010: Object004
+    100012: Object018
+    100014: Object026
+    100016: Object027
+    100018: Object028
+    100020: Object029
+    100022: Object030
+    100024: Object031
+    100026: Object036
+    100028: Object044
+    100030: Object045
+    100032: Object046
+    100034: Object048
+    100036: Object053
+    100038: Object054
+    100040: Object055
+    100042: Object056
+    100044: Object057
+    100046: Object066
+    100048: Object067
+    100050: Object068
+    100052: Object069
+    100054: Object072
+    100056: Object073
+    100058: Object074
+    100060: Object075
+    100062: Object076
+    100064: Object077
+    100066: Skeleton_lowPoly004
+    100068: //RootNode
+    100070: Temple_Base
+    100072: WoodBase_Branches001
+    400000: ' 1'
+    400002: 001
+    400004: Dummy001
+    400006: nurbsSphere2
+    400008: Object002
+    400010: Object004
+    400012: Object018
+    400014: Object026
+    400016: Object027
+    400018: Object028
+    400020: Object029
+    400022: Object030
+    400024: Object031
+    400026: Object036
+    400028: Object044
+    400030: Object045
+    400032: Object046
+    400034: Object048
+    400036: Object053
+    400038: Object054
+    400040: Object055
+    400042: Object056
+    400044: Object057
+    400046: Object066
+    400048: Object067
+    400050: Object068
+    400052: Object069
+    400054: Object072
+    400056: Object073
+    400058: Object074
+    400060: Object075
+    400062: Object076
+    400064: Object077
+    400066: Skeleton_lowPoly004
+    400068: //RootNode
+    400070: Temple_Base
+    400072: WoodBase_Branches001
+    2300000: ' 1'
+    2300002: 001
+    2300004: Object002
+    2300006: Object004
+    2300008: Object018
+    2300010: Object026
+    2300012: Object027
+    2300014: Object028
+    2300016: Object029
+    2300018: Object030
+    2300020: Object031
+    2300022: Object036
+    2300024: Object044
+    2300026: Object045
+    2300028: Object046
+    2300030: Object048
+    2300032: Object053
+    2300034: Object054
+    2300036: Object055
+    2300038: Object056
+    2300040: Object057
+    2300042: Object066
+    2300044: Object067
+    2300046: Object068
+    2300048: Object069
+    2300050: Object072
+    2300052: Object073
+    2300054: Object074
+    2300056: Object075
+    2300058: Object076
+    2300060: Object077
+    2300062: Skeleton_lowPoly004
+    2300064: Temple_Base
+    2300066: WoodBase_Branches001
+    3300000: ' 1'
+    3300002: 001
+    3300004: Object002
+    3300006: Object004
+    3300008: Object018
+    3300010: Object026
+    3300012: Object027
+    3300014: Object028
+    3300016: Object029
+    3300018: Object030
+    3300020: Object031
+    3300022: Object036
+    3300024: Object044
+    3300026: Object045
+    3300028: Object046
+    3300030: Object048
+    3300032: Object053
+    3300034: Object054
+    3300036: Object055
+    3300038: Object056
+    3300040: Object057
+    3300042: Object066
+    3300044: Object067
+    3300046: Object068
+    3300048: Object069
+    3300050: Object072
+    3300052: Object073
+    3300054: Object074
+    3300056: Object075
+    3300058: Object076
+    3300060: Object077
+    3300062: Skeleton_lowPoly004
+    3300064: Temple_Base
+    3300066: WoodBase_Branches001
+    4300000: Object002
+    4300002: Object004
+    4300004: Temple_Base
+    4300006: Object018
+    4300008: Object026
+    4300010: Object027
+    4300012: Object030
+    4300014: Object029
+    4300016: Object031
+    4300018: WoodBase_Branches001
+    4300020: Object028
+    4300022: Object036
+    4300024: Object044
+    4300026: Object045
+    4300028: Object046
+    4300030: Object048
+    4300032: Object053
+    4300034: Object054
+    4300036: Object055
+    4300038: Object056
+    4300040: Object057
+    4300042: Object066
+    4300044: Object067
+    4300046: Object068
+    4300048: Object069
+    4300050: Skeleton_lowPoly004
+    4300052: Object072
+    4300054: Object073
+    4300058: 001
+    4300060: Object074
+    4300062: Object075
+    4300064: Object076
+    4300066: Object077
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

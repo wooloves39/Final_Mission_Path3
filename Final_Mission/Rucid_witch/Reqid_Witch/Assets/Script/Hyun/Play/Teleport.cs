@@ -35,9 +35,11 @@ public class Teleport : MonoBehaviour
 	private Quaternion MarkerRotate;
 	private PlayerState MyState;
 	private Viberation PlayerViberation;
+	private Targetting PlayerTarget;
 	// Use this for initialization
 	private void Awake()
 	{
+		PlayerTarget = GetComponent<Targetting>();
 		MyState = GetComponent<PlayerState>();
 		PlayerViberation = GetComponent<Viberation>();
 		camTr = Camera.main.transform;
@@ -284,9 +286,10 @@ public class Teleport : MonoBehaviour
 					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
 					{
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
-						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
-
-						r.velocity = Arrowforward * 15f * handDis;
+					//	Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+						GameObject myTarget = PlayerTarget.getMytarget();
+						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position);//Arrow[ArrowNum].transform.position;
+						r.velocity = TargettingDir * 15f * handDis;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
 						distance = 0.0f;
