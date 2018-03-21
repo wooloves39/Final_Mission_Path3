@@ -12,9 +12,9 @@
       <File FileName="Assets\test\FrameDmg.cs" Line="1" Column="1" />
       <File FileName="Assets\Rotate.cs" Line="1" Column="1" />
       <File FileName="Assets\MagicBallScale.cs" Line="1" Column="1" />
-      <File FileName="Assets\Tree.cs" Line="26" Column="5" />
-      <File FileName="Assets\GrowerTree.cs" Line="9" Column="49" />
-      <File FileName="Assets\RotationTree.cs" Line="10" Column="78" />
+      <File FileName="Assets\Tree.cs" Line="21" Column="69" />
+      <File FileName="Assets\GrowerTree.cs" Line="1" Column="1" />
+      <File FileName="Assets\RotationTree.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

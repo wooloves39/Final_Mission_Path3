@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tree : MonoBehaviour {
+	public GameObject particle;
 	public int NumBranch = 5;
 	public int Max= 5;
 	public int Split = 2;
@@ -16,6 +17,10 @@ public class Tree : MonoBehaviour {
 		{
 			StartCoroutine ("PrectalTree");
 		}
+		if (NumBranch == 0) {
+			particle.gameObject.transform.position = this.transform.position;
+			Instantiate (particle);
+		}
 	}
 	IEnumerator PrectalTree()
 	{
@@ -27,6 +32,7 @@ public class Tree : MonoBehaviour {
 			var reBranch = copy.GetComponent<Tree> ();
 			reBranch.SendMessage ("ChildBranch", i);
 		}
+
 	//if(NumBranch == Max-1)
 	//{
 	//	yield return new WaitForSeconds ((float)Max+0.5f);
