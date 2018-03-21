@@ -8,10 +8,6 @@ public class Teleport : MonoBehaviour
 	public GameObject[] Hands;
 
 
-	//#0번 공격
-	private TouchCollision[] AzuraHands;
-	public GameObject AzuraBall;
-
 	//#2번 공격
 	public GameObject Violin;
 	public GameObject Fiddle_Bow;
@@ -22,9 +18,14 @@ public class Teleport : MonoBehaviour
 	public GameObject[] Beejae_Marker;
 	public GameObject[] Verbase_Marker;
 
+	//#0번 공격
+	private TouchCollision[] AzuraHands;
+	public GameObject AzuraBallPrefab;
+	MemoryPool Azurapool = new MemoryPool();
+	GameObject[] AzuraBall;
 	//#4번 공격 다른 공격방식과 다르게 메모리 풀을 활용한다 최대 5발!
 	public GameObject ArrowPrefab;
-	MemoryPool pool = new MemoryPool();
+	MemoryPool Arrowpool = new MemoryPool();
 	GameObject[] Arrow;
 
 
@@ -35,11 +36,10 @@ public class Teleport : MonoBehaviour
 	private Quaternion MarkerRotate;
 	private PlayerState MyState;
 	private Viberation PlayerViberation;
-	private Targetting PlayerTarget;
+	public Targetting PlayerTarget;
 	// Use this for initialization
 	private void Awake()
 	{
-		PlayerTarget = GetComponent<Targetting>();
 		MyState = GetComponent<PlayerState>();
 		PlayerViberation = GetComponent<Viberation>();
 		camTr = Camera.main.transform;
@@ -48,10 +48,18 @@ public class Teleport : MonoBehaviour
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
 		input_mouse typecheck = GetComponentInChildren<input_mouse>();
-		if (typecheck.IsHaveSkill(4))
+		if (typecheck.IsHaveSkill(0))
 		{
 			int poolCount = 5;
-			pool.Create(ArrowPrefab, poolCount);
+			Azurapool.Create(AzuraBallPrefab, poolCount);
+			AzuraBall = new GameObject[poolCount];
+			for (int i = 0; i < AzuraBall.Length; ++i)
+				AzuraBall[i] = null;
+		}
+		if (typecheck.IsHaveSkill(1))
+		{
+			int poolCount = 5;
+			Arrowpool.Create(ArrowPrefab, poolCount);
 			Arrow = new GameObject[poolCount];
 			for (int i = 0; i < Arrow.Length; ++i)
 				Arrow[i] = null;
@@ -59,7 +67,8 @@ public class Teleport : MonoBehaviour
 	}
 	private void OnApplicationQuit()
 	{
-		pool.Dispose();
+		Azurapool.Dispose();
+		Arrowpool.Dispose();
 	}
 	// Update is called once per frame
 	void Update()
@@ -116,7 +125,7 @@ public class Teleport : MonoBehaviour
 		{
 			SettingOff();
 		}
-		if (input_mouse.curType == 4)
+		if (input_mouse.curType == 1)
 		{
 			for (int i = 0; i < Arrow.Length; ++i)
 			{
@@ -127,10 +136,29 @@ public class Teleport : MonoBehaviour
 						if (Arrow[i].GetComponent<Arrow>().IsDelete())
 						{
 							Arrow[i].GetComponent<Arrow>().resetArrow();
-							pool.RemoveItem(Arrow[i]);
+							Arrowpool.RemoveItem(Arrow[i]);
 							Arrow[i] = null;
 						}
 						//어떤 조건에 의거 Arrow삭제
+					}
+				}
+			}
+		}
+		else if (input_mouse.curType == 0)
+		{
+			for (int i = 0; i < AzuraBall.Length; ++i)
+			{
+				if (AzuraBall[i])
+				{
+					if (AzuraBall[i].GetComponent<Arrow>())
+					{
+						if (AzuraBall[i].GetComponent<Arrow>().IsDelete())
+						{
+							AzuraBall[i].GetComponent<Arrow>().resetArrow();
+							Azurapool.RemoveItem(AzuraBall[i]);
+							AzuraBall[i] = null;
+						}
+						//어떤 조건에 의거 AzuraBall삭제
 					}
 				}
 			}
@@ -182,26 +210,41 @@ public class Teleport : MonoBehaviour
 	private IEnumerator AzuraControll()
 	{
 		Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position) / 2;
+		AttackPoint += Camera.main.transform.forward * 0.1f;
 		bool instance = false;
 		float distance = 0.0f;
+		Vector3 AzuraScale = AzuraBallPrefab.transform.localScale;
+		int AzuraBallNum = new int();
 		while (flug)
 		{
 			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
 			{
 				instance = true;
-				AzuraBall.SetActive(true);
-				AttackPoint += Camera.main.transform.forward * 0.1f;
-				AzuraBall.transform.position = AttackPoint;
+				for (int i = 0; i < AzuraBall.Length; ++i)
+				{
+					if (AzuraBall[i] == null)
+					{
+						AzuraBallNum = i;
+						AzuraBall[i] = Azurapool.NewItem();
+						Debug.Log(AzuraBall[AzuraBallNum]);
+						AzuraBall[i].transform.position = AttackPoint;
+						Rigidbody r = AzuraBall[i].GetComponent<Rigidbody>();
+						r.useGravity = false;
+						r.velocity = new Vector3(0, 0, 0);
+						break;
+					}
+					//5발 다쏘고 난다음도 생각해야함
+				}
 				MyState.SetMyState(PlayerState.State.Charging, 5.0f);
 			}
-			if (instance)
+			else if (instance)
 			{
 				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
 				if (handDis > distance)
 				{
 					distance = handDis;
-					Vector3 Azura = new Vector3(distance * 3.0f, distance * 3.0f, distance * 3.0f);
-					AzuraBall.transform.localScale = Azura;
+					Vector3 Azura = new Vector3(distance * 4.0f, distance * 4.0f, distance * 4.0f);
+					AzuraBall[AzuraBallNum].transform.localScale = Azura;
 				}
 
 			}
@@ -253,13 +296,10 @@ public class Teleport : MonoBehaviour
 		float distance = 0.0f;
 		Vector3 Seikwan = ArrowPrefab.transform.localScale;
 		int ArrowNum = new int();
-		GameObject[] ArrowBody = new GameObject[3];//애로우 스케일 조정에서 활용될여지있음
-												   //왼손
 		while (flug)
 		{
-			if ((!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch())) &&
-				(InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn())
-				)
+			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()) &&
+				(InputManager_JHW.LTriggerOn() && InputManager_JHW.RTriggerOn()))
 			{
 				instance = true;
 				for (int i = 0; i < Arrow.Length; ++i)
@@ -267,7 +307,7 @@ public class Teleport : MonoBehaviour
 					if (Arrow[i] == null)
 					{
 						ArrowNum = i;
-						Arrow[i] = pool.NewItem();
+						Arrow[i] = Arrowpool.NewItem();
 						Arrow[i].transform.position = Hands[0].transform.position;
 						Rigidbody r = Arrow[i].GetComponent<Rigidbody>();
 						r.useGravity = false;
@@ -286,9 +326,10 @@ public class Teleport : MonoBehaviour
 					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
 					{
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
-					//	Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+						//	Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
 						GameObject myTarget = PlayerTarget.getMytarget();
-						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position);//Arrow[ArrowNum].transform.position;
+
+						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
 						r.velocity = TargettingDir * 15f * handDis;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
@@ -301,11 +342,11 @@ public class Teleport : MonoBehaviour
 					Vector3 LookAtpos = Hands[0].transform.position;
 					if (!MyState.IsBack())
 					{
-						LookAtpos.z -= 0.055f;
+						LookAtpos.z -= 0.06f;
 					}
 					else
 					{
-						LookAtpos.z += 0.055f;
+						LookAtpos.z += 0.06f;
 					}
 					ArrowPos += Hands[0].transform.forward * 0.05f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
@@ -342,33 +383,6 @@ public class Teleport : MonoBehaviour
 			}
 
 			yield return new WaitForSeconds(0.03f);
-
-
-			Vector3 AttackPoint = (AzuraHands[0].transform.position + AzuraHands[1].transform.position) / 2;
-
-			float distance = 0.0f;
-
-			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
-			{
-				instance = true;
-				AzuraBall.SetActive(true);
-				AttackPoint += Camera.main.transform.forward * 0.1f;
-				AzuraBall.transform.position = AttackPoint;
-				MyState.SetMyState(PlayerState.State.Charging);
-			}
-			else if (instance)
-			{
-				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
-				if (handDis > distance)
-				{
-					distance = handDis;
-					Vector3 Azura = new Vector3(distance * 3.0f, distance * 3.0f, distance * 3.0f);
-					AzuraBall.transform.localScale = Azura;
-				}
-
-			}
-			//yield return null;
-			yield return new WaitForSeconds(0.03f);
 		}
 
 	}
@@ -391,8 +405,22 @@ public class Teleport : MonoBehaviour
 		{
 			case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
 				{
-					AzuraBall.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-					AzuraBall.SetActive(false);
+					for (int i = 0; i < AzuraBall.Length; ++i)
+					{
+						if (AzuraBall[i])
+						{
+							if (AzuraBall[i].GetComponent<Arrow>())
+							{
+								if (!AzuraBall[i].GetComponent<Arrow>().IsShooting())
+								{
+									AzuraBall[i].GetComponent<Arrow>().resetArrow();
+									Azurapool.RemoveItem(AzuraBall[i]);
+									AzuraBall[i] = null;
+								}
+								//어떤 조건에 의거 Arrow삭제
+							}
+						}
+					}
 				}
 				break;
 			case 1:// 화살의 형태 화살을 장전한채로 트리거를 누르고 있을 시 기를 모아 방출
@@ -406,7 +434,7 @@ public class Teleport : MonoBehaviour
 								if (!Arrow[i].GetComponent<Arrow>().IsShooting())
 								{
 									Arrow[i].GetComponent<Arrow>().resetArrow();
-									pool.RemoveItem(Arrow[i]);
+									Arrowpool.RemoveItem(Arrow[i]);
 									Arrow[i] = null;
 								}
 								//어떤 조건에 의거 Arrow삭제

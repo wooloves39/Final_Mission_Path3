@@ -21,9 +21,15 @@ public class Targetting : MonoBehaviour
 	{
 		if (Mytarget)
 		{
+			if (!targetPoint.activeSelf)
+				targetPoint.SetActive(true);
 			Vector3 pos = Mytarget.transform.position;
 			pos.y += 4;
 			targetPoint.transform.position = pos;
+		}
+		else
+		{
+			targetPoint.SetActive(false);
 		}
 	}
 	private void OnTriggerEnter(Collider other)
@@ -137,5 +143,7 @@ public class Targetting : MonoBehaviour
 			return 0;
 		});
 	}
-	public GameObject getMytarget() { return Mytarget; }
+	public GameObject getMytarget() {
+		Debug.Log(Mytarget);
+		return Mytarget.gameObject; }
 }
