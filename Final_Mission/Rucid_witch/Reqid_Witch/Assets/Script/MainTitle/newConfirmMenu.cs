@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ConfirmMenu : MonoBehaviour {
+public class newConfirmMenu : MonoBehaviour {
 	int index = 1;
 	public GameObject[] Select;
-	public GameObject load;
-	void OnEnable ()
+	public GameObject main;
+	void OnEnable()
 	{
 		index = 1;
-		StartCoroutine (KeyPad());
+		StartCoroutine(KeyPad());
 	}
 	private void Update()
 	{
 		if (InputManager_JHW.AButtonDown())
 		{
 			if (index == 1)
-				SceneManager.LoadScene("Ready");
+				SceneManager.LoadScene("Stage0");
 			if (index == 0)
 			{
-				load.GetComponent<LoadMenu>().confirm = false;
+				main.GetComponent<MainMenu>().confirm = false;
 				this.gameObject.SetActive(false);
 			}
 		}
 	}
-	IEnumerator KeyPad(){
+	IEnumerator KeyPad()
+	{
 
 		Vector3 Stick;
-		while(this.gameObject.activeInHierarchy == true)
+		while (this.gameObject.activeInHierarchy == true)
 		{
 			Stick = InputManager_JHW.MainJoystick();
 
@@ -38,12 +39,11 @@ public class ConfirmMenu : MonoBehaviour {
 			if (Stick.x > 0)
 				index = 1;
 
-			for (int i = 0; i < Select.Length; ++i) {
-				Select [i].SetActive (false);
+			for (int i = 0; i < Select.Length; ++i)
+			{
+				Select[i].SetActive(false);
 			}
-			Select [index].SetActive (true);
-
-		
+			Select[index].SetActive(true);
 			yield return new WaitForSeconds(0.125f);
 		}
 	}

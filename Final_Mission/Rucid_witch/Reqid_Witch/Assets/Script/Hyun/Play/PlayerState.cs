@@ -189,4 +189,5 @@ public class PlayerState : MonoBehaviour
 			yield return new WaitForSeconds(3.0f);
 		}
 	}
+	public void CharginTimeReset() { ChargingTime = 0.0f; }
 }

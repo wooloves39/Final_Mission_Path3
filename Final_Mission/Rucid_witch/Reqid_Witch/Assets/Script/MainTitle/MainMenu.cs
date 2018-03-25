@@ -8,15 +8,13 @@ public class MainMenu : MonoBehaviour
 	public GameObject[] Select;
 	public GameObject Load;
 	public GameObject Option;
-	public GameObject Confirm;
+	public GameObject newConfirm;
 	public bool confirm = false;
-	public float timer = 0.0f;
 	int index = 0;
 
 	void OnEnable()
 	{
 		confirm = false;
-		timer = 0.0f;
 		StartCoroutine(KeyPad());
 	}
 	private void Update()
@@ -26,8 +24,8 @@ public class MainMenu : MonoBehaviour
 			if (index == 0)
 			{
 				confirm = true;
-				//Confirm.SetActive(true); 새로 시작하냐는 메세지를 써야지..
-				SceneManager.LoadScene("Stage0");
+				newConfirm.SetActive(true);
+				//SceneManager.LoadScene("Stage0");
 			}
 			if (index == 1)
 			{
@@ -46,13 +44,12 @@ public class MainMenu : MonoBehaviour
 	}
 	IEnumerator KeyPad()
 	{
-		if (!confirm)
+
+		Vector3 Stick;
+		while (this.gameObject.activeInHierarchy == true)
 		{
-			Vector3 Stick;
-			while (this.gameObject.activeInHierarchy == true)
+			if (!confirm)
 			{
-				if (timer < 1.0f)
-					timer += Time.deltaTime * 25;
 				Stick = InputManager_JHW.MainJoystick();
 
 				if (Stick.z < 0)
@@ -68,9 +65,9 @@ public class MainMenu : MonoBehaviour
 					Select[i].SetActive(false);
 				}
 				Select[index].SetActive(true);
-
-				yield return new WaitForSeconds(0.125f);
+				
 			}
+			yield return new WaitForSeconds(0.125f);
 		}
 	}
 }

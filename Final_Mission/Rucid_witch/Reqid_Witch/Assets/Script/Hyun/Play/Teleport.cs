@@ -215,7 +215,7 @@ public class Teleport : MonoBehaviour
 		bool instance = false;
 		float distance = 0.0f;
 		Vector3 AzuraScale = AzuraBallPrefab.transform.localScale;
-		
+
 		while (flug)
 		{
 			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
@@ -329,16 +329,28 @@ public class Teleport : MonoBehaviour
 					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
 					{
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
-							Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
 						GameObject myTarget = PlayerTarget.getMytarget();
-
-						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
-						TargettingDir += Arrowforward;
-						r.velocity = TargettingDir * 15f * handDis;
+						Vector3 TargettingDir = Vector3.zero;
+						if (myTarget != null)
+							TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
+																																		//Debug.Log(Vector3.Dot(TargettingDir, Arrowforward));
+						if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f||TargettingDir==Vector3.zero)
+						{
+							r.velocity = Arrowforward * 15f * handDis;
+						}
+						else
+						{
+							TargettingDir += Arrowforward;
+							r.velocity = TargettingDir * 15f * handDis;
+							
+						}
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
 						distance = 0.0f;
+						MyState.CharginTimeReset();
 					}
+					Debug.Log(Hands[0].transform.position);
 				}
 				else
 				{
@@ -410,17 +422,22 @@ public class Teleport : MonoBehaviour
 			case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
 				{
 					float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
-					if (!AzuraBall[AzuraBallNum].GetComponent<Arrow>().IsShooting())
+					if (AzuraBall[AzuraBallNum])
 					{
-						Rigidbody r = AzuraBall[AzuraBallNum].GetComponent<Rigidbody>();
-						//Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
-						GameObject myTarget = PlayerTarget.getMytarget();
-
-						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - AzuraBall[AzuraBallNum].transform.position);//;
-						r.velocity = TargettingDir * 15f * handDis;
-						AzuraBall[AzuraBallNum].GetComponent<Arrow>().Shooting(true);
+						if (!AzuraBall[AzuraBallNum].GetComponent<Arrow>().IsShooting())
+						{
+							Rigidbody r = AzuraBall[AzuraBallNum].GetComponent<Rigidbody>();
+							//Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+							GameObject myTarget = PlayerTarget.getMytarget();
+							if (myTarget != null)
+							{
+								Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - AzuraBall[AzuraBallNum].transform.position);//;
+								r.velocity = TargettingDir * 15f * handDis;
+								AzuraBall[AzuraBallNum].GetComponent<Arrow>().Shooting(true);
+							}
+						}
 					}
-						for (int i = 0; i < AzuraBall.Length; ++i)
+					for (int i = 0; i < AzuraBall.Length; ++i)
 					{
 						if (AzuraBall[i])
 						{

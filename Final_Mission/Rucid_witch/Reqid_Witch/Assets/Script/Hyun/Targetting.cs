@@ -26,11 +26,11 @@ public class Targetting : MonoBehaviour
 			Vector3 pos = Mytarget.transform.position;
 			pos.y += 4;
 			targetPoint.transform.position = pos;
-			for (int i = 0; i < TargetCount; ++i)
-			{
-				TargetMonster[i].GetComponent<HPBar>().check = false;
-			}
-			Mytarget.GetComponent<HPBar>().check = true;
+			//for (int i = 0; i < TargetCount; ++i)
+			//{
+			//	TargetMonster[i].GetComponent<HPBar>().check = false;
+			//}
+			//Mytarget.GetComponent<HPBar>().check = true;
 		}
 		else
 		{
@@ -150,5 +150,7 @@ public class Targetting : MonoBehaviour
 	}
 	public GameObject getMytarget() {
 		Debug.Log(Mytarget);
-		return Mytarget.gameObject; }
+		if (Mytarget == null) return null;
+		return Mytarget.gameObject;
+	}
 }
