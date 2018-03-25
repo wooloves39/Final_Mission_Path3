@@ -6,6 +6,7 @@ public class Arrow : MonoBehaviour {
 	private bool shot = false;
 	private bool del_timer = false;
 	private float timer;
+	private float delTime;
 	private Vector3 curScale;
 	// Use this for initialization
 	void Awake () {
@@ -19,10 +20,11 @@ public class Arrow : MonoBehaviour {
 		if (shot == true)
 		{
 			timer += Time.deltaTime;
-			if (timer >= 2.0f)
+			if (timer >= delTime)
 				del_timer = true;
 		}
 	}
+	public void setDelTime(float time) { delTime = time; }
 	public void Shooting(bool val)
 	{
 		shot = val;

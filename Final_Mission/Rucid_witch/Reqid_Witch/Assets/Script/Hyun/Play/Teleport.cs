@@ -23,6 +23,7 @@ public class Teleport : MonoBehaviour
 	public GameObject AzuraBallPrefab;
 	MemoryPool Azurapool = new MemoryPool();
 	GameObject[] AzuraBall;
+	int AzuraBallNum = new int();
 	//#4번 공격 다른 공격방식과 다르게 메모리 풀을 활용한다 최대 5발!
 	public GameObject ArrowPrefab;
 	MemoryPool Arrowpool = new MemoryPool();
@@ -214,7 +215,7 @@ public class Teleport : MonoBehaviour
 		bool instance = false;
 		float distance = 0.0f;
 		Vector3 AzuraScale = AzuraBallPrefab.transform.localScale;
-		int AzuraBallNum = new int();
+		
 		while (flug)
 		{
 			if (!instance && (AzuraHands[0].GetTouch() || AzuraHands[1].GetTouch()))
@@ -228,6 +229,7 @@ public class Teleport : MonoBehaviour
 						AzuraBall[i] = Azurapool.NewItem();
 						Debug.Log(AzuraBall[AzuraBallNum]);
 						AzuraBall[i].transform.position = AttackPoint;
+						AzuraBall[i].GetComponent<Arrow>().setDelTime(5.0f);
 						Rigidbody r = AzuraBall[i].GetComponent<Rigidbody>();
 						r.useGravity = false;
 						r.velocity = new Vector3(0, 0, 0);
@@ -310,6 +312,7 @@ public class Teleport : MonoBehaviour
 						Arrow[i] = Arrowpool.NewItem();
 						Arrow[i].transform.position = Hands[0].transform.position;
 						Rigidbody r = Arrow[i].GetComponent<Rigidbody>();
+						Arrow[i].GetComponent<Arrow>().setDelTime(2.0f);
 						r.useGravity = false;
 						r.velocity = new Vector3(0, 0, 0);
 						break;
@@ -326,10 +329,11 @@ public class Teleport : MonoBehaviour
 					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
 					{
 						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
-						//	Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+							Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
 						GameObject myTarget = PlayerTarget.getMytarget();
 
 						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
+						TargettingDir += Arrowforward;
 						r.velocity = TargettingDir * 15f * handDis;
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
@@ -405,7 +409,18 @@ public class Teleport : MonoBehaviour
 		{
 			case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
 				{
-					for (int i = 0; i < AzuraBall.Length; ++i)
+					float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
+					if (!AzuraBall[AzuraBallNum].GetComponent<Arrow>().IsShooting())
+					{
+						Rigidbody r = AzuraBall[AzuraBallNum].GetComponent<Rigidbody>();
+						//Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+						GameObject myTarget = PlayerTarget.getMytarget();
+
+						Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - AzuraBall[AzuraBallNum].transform.position);//;
+						r.velocity = TargettingDir * 15f * handDis;
+						AzuraBall[AzuraBallNum].GetComponent<Arrow>().Shooting(true);
+					}
+						for (int i = 0; i < AzuraBall.Length; ++i)
 					{
 						if (AzuraBall[i])
 						{
