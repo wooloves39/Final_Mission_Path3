@@ -26,6 +26,11 @@ public class Targetting : MonoBehaviour
 			Vector3 pos = Mytarget.transform.position;
 			pos.y += 4;
 			targetPoint.transform.position = pos;
+			for (int i = 0; i < TargetCount; ++i)
+			{
+				TargetMonster[i].GetComponent<HPBar>().check = false;
+			}
+			Mytarget.GetComponent<HPBar>().check = true;
 		}
 		else
 		{
