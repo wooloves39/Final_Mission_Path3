@@ -8,7 +8,7 @@ public class Targetting : MonoBehaviour
 	private int TargetCount;
 	private GameObject Mytarget;
 	private bool firstCheck = false;
-	public GameObject targetPoint;
+	//public GameObject targetPoint;
 	// Use this for initialization
 	void Start()
 	{
@@ -19,23 +19,23 @@ public class Targetting : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Mytarget)
-		{
-			if (!targetPoint.activeSelf)
-				targetPoint.SetActive(true);
-			Vector3 pos = Mytarget.transform.position;
-			pos.y += 4;
-			targetPoint.transform.position = pos;
-			//for (int i = 0; i < TargetCount; ++i)
-			//{
-			//	TargetMonster[i].GetComponent<HPBar>().check = false;
-			//}
-			//Mytarget.GetComponent<HPBar>().check = true;
-		}
-		else
-		{
-			targetPoint.SetActive(false);
-		}
+		//if (Mytarget)
+		//{
+		//	if (!targetPoint.activeSelf)
+		//		targetPoint.SetActive(true);
+		//	Vector3 pos = Mytarget.transform.position;
+		//	pos.y += 4;
+		//	targetPoint.transform.position = pos;
+		//	//for (int i = 0; i < TargetCount; ++i)
+		//	//{
+		//	//	TargetMonster[i].GetComponent<HPBar>().check = false;
+		//	//}
+		//	//Mytarget.GetComponent<HPBar>().check = true;
+		//}
+		//else
+		//{
+		//	targetPoint.SetActive(false);
+		//}
 	}
 	private void OnTriggerEnter(Collider other)
 	{

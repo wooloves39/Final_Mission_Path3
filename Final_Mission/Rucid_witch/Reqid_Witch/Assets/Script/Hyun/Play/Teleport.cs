@@ -358,12 +358,37 @@ public class Teleport : MonoBehaviour
 					Vector3 LookAtpos = Hands[0].transform.position;
 					if (!MyState.IsBack())
 					{
-						LookAtpos.z -= 0.06f;
+						if (Hands[0].transform.position.x < 0)
+						{
+							LookAtpos.z += 0.06f;
+						}
+						else
+						{
+							LookAtpos.z -= 0.06f;
+						}
 					}
 					else
 					{
-						LookAtpos.z += 0.06f;
+						Debug.Log(Hands[0].transform.localPosition.x);
+						if (Hands[0].transform.localPosition.x < 0)
+						{
+							LookAtpos.z += 0.06f;
+						}
+						else
+						{
+							LookAtpos.z -= 0.06f;
+						}
+						//if (Hands[0].transform.position.x < 0)
+						//{
+						//	LookAtpos.z -= 0.06f;
+						//}
+						//else
+						//{
+						//	LookAtpos.z += 0.06f;
+						//}
+					
 					}
+					
 					ArrowPos += Hands[0].transform.forward * 0.05f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;

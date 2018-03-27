@@ -5957,7 +5957,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147484443579816}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.2837814, y: 4.762, z: 22.31}
+  m_LocalPosition: {x: 0, y: 4.79, z: 55.93}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
   - {fileID: 4693475038177952}
@@ -12828,7 +12828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a766dd430974cc4e8fd488df04ea6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPoint: {fileID: 0}
 --- !u!114 &114140154567246276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13542,8 +13541,6 @@ MonoBehaviour:
   Hands:
   - {fileID: 1463344759898758}
   - {fileID: 1791477801388858}
-  AzuraBallPrefab: {fileID: 1402182951922002, guid: d06c184cebac8c0449f1bc393a77aa18,
-    type: 2}
   Violin: {fileID: 1870151649412570}
   Fiddle_Bow: {fileID: 1829232758103328}
   HeadTracker: {fileID: 114303405151076664}
@@ -13553,6 +13550,8 @@ MonoBehaviour:
   Verbase_Marker:
   - {fileID: 1096747378429658}
   - {fileID: 1484478718415966}
+  AzuraBallPrefab: {fileID: 1402182951922002, guid: d06c184cebac8c0449f1bc393a77aa18,
+    type: 2}
   ArrowPrefab: {fileID: 1902216250298378, guid: 7032b9c40bc7e7d48953518710c780f3,
     type: 2}
   RayLength: 50
@@ -15185,7 +15184,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 30
-  m_Center: {x: 0, y: 0, z: 22}
+  m_Center: {x: 0, y: 0, z: 25}
 --- !u!135 &135484970826481016
 SphereCollider:
   m_ObjectHideFlags: 1
