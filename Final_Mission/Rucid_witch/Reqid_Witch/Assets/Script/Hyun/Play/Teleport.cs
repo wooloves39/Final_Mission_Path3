@@ -456,7 +456,7 @@ public class Teleport : MonoBehaviour
 							GameObject myTarget = PlayerTarget.getMytarget();
 							if (myTarget != null)
 							{
-								Vector3 TargettingDir = Vector3.Normalize(myTarget.transform.position - AzuraBall[AzuraBallNum].transform.position);//;
+								Vector3 TargettingDir = Vector3.Normalize((myTarget.transform.position) - AzuraBall[AzuraBallNum].transform.position);//;
 								r.velocity = TargettingDir * 15f * handDis;
 								AzuraBall[AzuraBallNum].GetComponent<Arrow>().Shooting(true);
 							}

@@ -53,7 +53,6 @@ public class Targetting : MonoBehaviour
 	}
 	private void OnTriggerExit(Collider other)
 	{
-
 		if (other.gameObject.CompareTag("Monster"))
 		{
 			Debug.Log("Del Mon");
