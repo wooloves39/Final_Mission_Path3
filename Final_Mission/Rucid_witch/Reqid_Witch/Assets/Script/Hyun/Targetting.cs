@@ -8,7 +8,7 @@ public class Targetting : MonoBehaviour
 	private int TargetCount;
 	private GameObject Mytarget;
 	private bool firstCheck = false;
-	//public GameObject targetPoint;
+	public GameObject targetPoint;
 	// Use this for initialization
 	void Start()
 	{
@@ -19,23 +19,23 @@ public class Targetting : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		//if (Mytarget)
-		//{
-		//	if (!targetPoint.activeSelf)
-		//		targetPoint.SetActive(true);
-		//	Vector3 pos = Mytarget.transform.position;
-		//	pos.y += 4;
-		//	targetPoint.transform.position = pos;
-		//	//for (int i = 0; i < TargetCount; ++i)
-		//	//{
-		//	//	TargetMonster[i].GetComponent<HPBar>().check = false;
-		//	//}
-		//	//Mytarget.GetComponent<HPBar>().check = true;
-		//}
-		//else
-		//{
-		//	targetPoint.SetActive(false);
-		//}
+		if (Mytarget)
+		{
+			if (!targetPoint.activeSelf)
+				targetPoint.SetActive(true);
+			Vector3 pos = Mytarget.transform.position;
+			pos.y += 4;
+			targetPoint.transform.position = pos;
+			for (int i = 0; i < TargetCount; ++i)
+			{
+				TargetMonster[i].GetComponentInChildren<HPBar>().taget= false;
+			}
+			Mytarget.GetComponentInChildren<HPBar>().taget = true;
+		}
+		else
+		{
+			targetPoint.SetActive(false);
+		}
 	}
 	private void OnTriggerEnter(Collider other)
 	{
@@ -55,6 +55,7 @@ public class Targetting : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Monster"))
 		{
+			other.GetComponentInChildren<HPBar>().taget= false;
 			Debug.Log("Del Mon");
 			if (Mytarget == other.gameObject)
 			{
@@ -70,6 +71,7 @@ public class Targetting : MonoBehaviour
 			}
 
 		}
+
 	}
 	private void checkTarget()
 	{

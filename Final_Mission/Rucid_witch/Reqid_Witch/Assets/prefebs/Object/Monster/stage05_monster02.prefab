@@ -1456,6 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798f9206bf2169e46bdd79d6d197326e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BarFrame: {fileID: 1990552050328466}
   Level:
   - {fileID: 1217672451529384}
   - {fileID: 1333112632092760}
