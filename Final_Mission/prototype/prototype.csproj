@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
@@ -92,8 +93,11 @@
     <Compile Include="Assets\CharacterStatus.cs" />
     <Compile Include="Assets\ChoiceSkill_index.cs" />
     <Compile Include="Assets\CorrectionSound.cs" />
+    <Compile Include="Assets\GrowerTree.cs" />
     <Compile Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\SkyboxPanoramicBetaShaderGUI.cs" />
     <Compile Include="Assets\Hyun\test_Script\Billboards.cs" />
+    <Compile Include="Assets\Hyun\test_Script\CameraFade.cs" />
+    <Compile Include="Assets\Hyun\test_Script\CameraTest.cs" />
     <Compile Include="Assets\Hyun\Use\Dia_Play.cs" />
     <Compile Include="Assets\Hyun\Use\Dialog.cs" />
     <Compile Include="Assets\Hyun\Use\File_parser.cs" />
@@ -117,6 +121,7 @@
     <Compile Include="Assets\Ready.cs" />
     <Compile Include="Assets\Rotate.cs" />
     <Compile Include="Assets\RotationText.cs" />
+    <Compile Include="Assets\RotationTree.cs" />
     <Compile Include="Assets\Singletone.cs" />
     <Compile Include="Assets\skilcontroller.cs" />
     <Compile Include="Assets\Skill1_1.cs" />
@@ -138,6 +143,7 @@
     <Compile Include="Assets\test\Tower.cs" />
     <Compile Include="Assets\test\towerSC.cs" />
     <Compile Include="Assets\TitleScene.cs" />
+    <Compile Include="Assets\Tree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\360 model\Insideout.shader" />
