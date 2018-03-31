@@ -32,10 +32,10 @@ public class Targetting : MonoBehaviour
 			}
 			Mytarget.GetComponentInChildren<HPBar>().taget = true;
 		}
-		else
-		{
-			targetPoint.SetActive(false);
-		}
+		//else
+		//{
+		//	targetPoint.SetActive(false);
+		//}
 	}
 	private void OnTriggerEnter(Collider other)
 	{

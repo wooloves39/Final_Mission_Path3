@@ -21,10 +21,10 @@ public class MoveCtrl : MonoBehaviour
 	private Transform[] points;
 	private int nextIdx = 1;
 	private PlayerState MyState;
-
 	//대화 스크립트 종속
 	public Dia_Play myDia;
 	public Animator body;
+	private OVRScreenFade test;
 	//private Coroutine moveCoroutine;
 	// Use this for initialization
 	void Start()
@@ -35,12 +35,17 @@ public class MoveCtrl : MonoBehaviour
 		cc = GetComponent<CharacterController>();
 		//	points = GameObject.Find("WayPointGroup").GetComponentsInChildren<Transform>();
 		//moveCoroutine=StartCoroutine(MoveControll());
-
+		test = FindObjectOfType<OVRScreenFade>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			//test.fade(Color.white,0,.5f,1.0f);
+			test.blinking(Color.red, 1.0f, .1f);
+		}
 		if (MyState.GetMyState()==PlayerState.State.Talk) {
 			return;
 		}

@@ -21,14 +21,15 @@ limitations under the License.
 
 using UnityEngine;
 using System.Collections; // required for Coroutines
+using System.Collections.Generic;
 
 /// <summary>
 /// Fades the screen from black after a new scene is loaded. Fade can also be controlled mid-scene using SetUIFade and SetFadeLevel
 /// </summary>
 public class OVRScreenFade : MonoBehaviour
 {
-    [Tooltip("Fade duration")]
-	public float fadeTime = 2.0f;
+ //   [Tooltip("Fade duration")]
+	//public float fadeTime = 2.0f;
 
     [Tooltip("Screen color at maximum fade")]
 	public Color fadeColor = new Color(0.01f, 0.01f, 0.01f, 1.0f);
@@ -100,13 +101,7 @@ public class OVRScreenFade : MonoBehaviour
 		fadeRenderer.material = fadeMaterial;
 	}
 
-    /// <summary>
-    /// Start a fade out
-    /// </summary>
-    public void FadeOut()
-    {
-        StartCoroutine(Fade(0,1));
-    }
+
 
 
 	/// <summary>
@@ -168,27 +163,124 @@ public class OVRScreenFade : MonoBehaviour
         currentAlpha = level;
         SetMaterialAlpha();
     }
-
 	/// <summary>
-	/// Fades alpha from 1.0 to 0.0
+	/// Start a fade out
 	/// </summary>
+	public void FadeOut()
+	{
+		StartCoroutine(Fade(0, 1));
+	}
+	public void fade(float startAlpha, float endAlpha)
+	{
+		StartCoroutine(Fade(startAlpha, endAlpha));
+	}
+	public void fade(float startAlpha, float endAlpha, float fadeTime)
+	{
+		StartCoroutine(Fade(startAlpha, endAlpha, fadeTime));
+	}
+	public void fade(Color newScreenOverlayColor, float startAlpha, float endAlpha, float fadeTime)
+	{
+		StartCoroutine(Fade(newScreenOverlayColor, startAlpha, endAlpha, fadeTime));
+	}
+	public void fade(Color newScreenOverlayColor, float startAlpha, float endAlpha, float fadeTime, float fadeDelay)
+	{
+		StartCoroutine(Fade(newScreenOverlayColor, startAlpha, endAlpha, fadeTime, fadeDelay));
+	}
+	public void blinking(Color newScreenOverlayColor, float fadeDuration, float delay)
+	{
+		StartCoroutine(Blinking(newScreenOverlayColor, fadeDuration, delay));
+	}
 	IEnumerator Fade(float startAlpha, float endAlpha)
 	{
+		fadeColor = new Color(0, 0, 0, 0);
 		float elapsedTime = 0.0f;
-		while (elapsedTime < fadeTime)
+		while (elapsedTime < 2.0f)
 		{
 			elapsedTime += Time.deltaTime;
-            currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
+            currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / 2.0f));
             SetMaterialAlpha();
 			yield return new WaitForEndOfFrame();
 		}
 	}
+	IEnumerator Fade(float startAlpha, float endAlpha,float fadeTime)
+	{
+		fadeColor = new Color(0, 0, 0, 0);
+		float elapsedTime = 0.0f;
+		while (elapsedTime < fadeTime)
+		{
+			elapsedTime += Time.deltaTime;
+			currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
+			SetMaterialAlpha();
+			yield return new WaitForEndOfFrame();
+		}
+	}
+	IEnumerator Fade(Color newScreenOverlayColor, float startAlpha, float endAlpha, float fadeTime)
+	{
+		Color currentColor = fadeColor;
+		fadeColor = newScreenOverlayColor;
+		float elapsedTime = 0.0f;
+		while (elapsedTime < fadeTime)
+		{
+			elapsedTime += Time.deltaTime;
+			currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
+			SetMaterialAlpha();
+			yield return new WaitForEndOfFrame();
+		}
+		SetMaterialAlpha(currentColor);
+	}
+	IEnumerator Fade(Color newScreenOverlayColor, float startAlpha, float endAlpha, float fadeTime, float fadeDelay)
+	{
+		Color currentColor = fadeColor;
+		fadeColor = newScreenOverlayColor;
+		float elapsedTime = 0.0f;
+		float delay = 0.0f;
+		while (delay< fadeDelay)
+		{
+			delay += Time.deltaTime;
+			yield return new WaitForEndOfFrame();
+		}
+		while (elapsedTime < fadeTime)
+		{
+			elapsedTime += Time.deltaTime;
+			currentAlpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsedTime / fadeTime));
+			SetMaterialAlpha();
+			yield return new WaitForEndOfFrame();
+		}
+		SetMaterialAlpha(currentColor);
+	}
+	IEnumerator Blinking(Color newScreenOverlayColor, float fadeDuration, float delay)
+	{
+		float timer = 0.0f;
+		float Alltimer = 0.0f;
+		bool flug = false;
+		Color currentColor = fadeColor;
+		while (Alltimer < fadeDuration)
+		{
+			timer += Time.deltaTime;
+			if (delay < timer)
+			{
+				Alltimer += timer;
+				timer = 0;
+				flug = !flug;
+				if (!flug)
+				{
+					SetMaterialAlpha(newScreenOverlayColor);
+				}
+				else
+				{
+					SetMaterialAlpha(currentColor);
+				}
+			}
 
-    /// <summary>
-    /// Update material alpha. UI fade and the current fade due to fade in/out animations (or explicit control)
-    /// both affect the fade. (The max is taken) 
-    /// </summary>
-    private void SetMaterialAlpha()
+			yield return null;
+		}
+		SetMaterialAlpha(currentColor);
+	}
+	/// <summary>
+	/// Update material alpha. UI fade and the current fade due to fade in/out animations (or explicit control)
+	/// both affect the fade. (The max is taken) 
+	/// </summary>
+	private void SetMaterialAlpha()
     {
 		Color color = fadeColor;
         color.a = Mathf.Max(currentAlpha, uiFadeAlpha);
@@ -200,4 +292,16 @@ public class OVRScreenFade : MonoBehaviour
 			fadeRenderer.enabled = isFading;
         }
     }
+	private void SetMaterialAlpha(Color newScreenOverlayColor)
+	{
+		fadeColor = newScreenOverlayColor;
+		Color color = fadeColor;
+		isFading = true;
+		if (fadeMaterial != null)
+		{
+			fadeMaterial.color = color;
+			fadeRenderer.material = fadeMaterial;
+			fadeRenderer.enabled = isFading;
+		}
+	}
 }

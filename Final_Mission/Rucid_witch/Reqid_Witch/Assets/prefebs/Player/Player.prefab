@@ -1398,6 +1398,7 @@ GameObject:
   - component: {fileID: 114364276161505326}
   - component: {fileID: 135469499241064014}
   - component: {fileID: 114136985529311904}
+  - component: {fileID: 114966432206219004}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -12828,6 +12829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a766dd430974cc4e8fd488df04ea6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPoint: {fileID: 0}
 --- !u!114 &114140154567246276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14222,6 +14224,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114966432206219004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1336935984408330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8e1d778abf442e4bec449c360e9e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeColor: {r: 1, g: 1, b: 1, a: 0}
+  fadeOnStart: 0
 --- !u!114 &114967658770029194
 MonoBehaviour:
   m_ObjectHideFlags: 1

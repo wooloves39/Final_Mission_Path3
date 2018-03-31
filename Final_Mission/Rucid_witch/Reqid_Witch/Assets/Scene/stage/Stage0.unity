@@ -545,6 +545,19 @@ Prefab:
       propertyPath: m_Name
       value: stage01_detach
       objectReference: {fileID: 0}
+    - target: {fileID: 1492152186855252, guid: 701b2590cbb72e8458529df584c59dcf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852977996989348, guid: 701b2590cbb72e8458529df584c59dcf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23792159618926304, guid: 701b2590cbb72e8458529df584c59dcf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65534080560077088, guid: 701b2590cbb72e8458529df584c59dcf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 701b2590cbb72e8458529df584c59dcf, type: 2}
