@@ -44,7 +44,8 @@ public class MoveCtrl : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			//test.fade(Color.white,0,.5f,1.0f);
-			test.blinking(Color.red, 1.0f, .1f);
+			//test.fade(new Color(.3f, 0, 0), 0, .5f, .5f);
+			test.fadeSmoth(new Color(.3f, 0, 0), 0, .5f, .3f, 1.0f, 0.5f);
 		}
 		if (MyState.GetMyState()==PlayerState.State.Talk) {
 			return;
