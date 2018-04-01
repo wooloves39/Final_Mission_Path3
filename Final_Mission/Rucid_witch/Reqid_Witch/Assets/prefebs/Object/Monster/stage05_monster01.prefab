@@ -1256,11 +1256,11 @@ MonoBehaviour:
   BasicPeace: 0100000001000000
   BasicBattle: 0a0000000b000000
   Time_Nature_Stop: 2
-  Time_Nature_Move: 6
+  Time_Nature_Move: 1.5
   Time_Nomal_StopMotion: 5
   Time_Nomal_MoveWay: 6
   Time_Taget_Search: 1
-  Time_Battle_Move: 2
+  Time_Battle_Move: 1.5
   Time_Normal_Attack: 4
   Delay: 0
   Fight: 0
