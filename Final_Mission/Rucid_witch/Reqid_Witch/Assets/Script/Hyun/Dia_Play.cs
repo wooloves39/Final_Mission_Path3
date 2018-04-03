@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.IO;
 public class Dia_Play : MonoBehaviour
 {
 	private bool Play = true;
@@ -22,7 +22,12 @@ public class Dia_Play : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.P)) Play = !Play;
+		//test;
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			Debug.Log("눌림");
+			Singletone.Instance.Load("/save1.txt");
+			Play = !Play; }
 	}
 	private IEnumerator TalkCoroutine()
 	{

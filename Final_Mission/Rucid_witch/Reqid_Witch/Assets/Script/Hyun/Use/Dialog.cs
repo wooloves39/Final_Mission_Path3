@@ -22,13 +22,15 @@ public class Dialog : MonoBehaviour
 
 	public GameObject Me;
 	public GameObject Boss;
-	public Dia_Play dia_Play;
-
+	private Dia_Play dia_Play;
+	private PlayerState myState;
 	private File_parser file_parser;
 	public string fileName;
 
 	void Start()
 	{
+		dia_Play = GetComponent<Dia_Play>();
+		myState = transform.parent.GetComponent<PlayerState>();
 		file_parser = new File_parser();
 		file_parser.FileOpen(fileName);
 		file_parser.Parse();
@@ -40,19 +42,6 @@ public class Dialog : MonoBehaviour
 
 		StartCoroutine(StartDialogue());
 		file_parser.FileClose();
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		//if (Input.GetKeyDown(KeyCode.Return))
-		//{
-		//    if (!_isStringBeingRevealed)
-		//    {
-		//        _isDialoguePlaying = true;
-		//        StartCoroutine(StartDialogue());
-		//    }
-		//}
 	}
 	private IEnumerator StartDialogue()
 	{
@@ -70,14 +59,16 @@ public class Dialog : MonoBehaviour
 				if (currentDialogueIndex >= dialogueLengh || chatChar[currentDialogueIndex] == 99)
 				{
 					_isEndofDialogue = true;
-					if (currentDialogueIndex >= dialogueLengh )
-						dia_Play.setEnd(true);
+					if (currentDialogueIndex >= dialogueLengh) ;
+
 					else
 					{
 						if (chatChar.Length > currentDialogueIndex)
 						{
 							if (chatChar[currentDialogueIndex] == 99)
+							{
 								currentDialogueIndex++;
+							}
 						}
 					}
 
@@ -114,7 +105,12 @@ public class Dialog : MonoBehaviour
 		ShowIcon();
 		while (true)
 		{
-			if (InputManager_JHW.BButtonDown()) break;
+			if (InputManager_JHW.BButtonDown())
+			{
+				if (_isEndofDialogue)
+					dia_Play.setEnd(true);
+				break;
+			}
 			yield return 0;
 		}
 		HideIcons();
