@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectLife : MonoBehaviour {
-	public int Hp;
-	public int MaxHp;
+	public float Hp;
+	public float MaxHp;
 	public float Speed;
 	public float BattleSpeed;
 	public float Range;
+	public bool MomentInvincible = false;//순간무적
+	public float InvincibleTime = 0.2f;//순간무적 시간
+
 	private void OnTriggerEnter(Collider other)
 	{
 		//if (other.gameObject.CompareTag("Attacker"))
@@ -16,5 +19,19 @@ public class ObjectLife : MonoBehaviour {
 		//	attacker attacker = other.gameObject.GetComponent<attacker>();
 		//	Hp=attacker.attack(Hp);
 		//}
+	}
+	private void SendDMG(float dmg)
+	{
+		if (!MomentInvincible)
+		{
+			Hp -= dmg;
+			StartCoroutine("SetInvincible");
+		}
+	}
+	IEnumerator SetInvincible()
+	{
+		MomentInvincible = true;
+		yield return new WaitForSeconds(InvincibleTime);
+		MomentInvincible = false;
 	}
 }
