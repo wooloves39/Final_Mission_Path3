@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114759077395600648}
   - component: {fileID: 54924854604601254}
   - component: {fileID: 135515292633747748}
+  - component: {fileID: 114524318465185992}
   m_Layer: 0
   m_Name: AzuraBall
   m_TagString: Untagged
@@ -197,6 +198,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114524318465185992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1402182951922002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31f7d58f88c54049b532ff11b0ce3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OneHit: 1
+  Power: 50
+  AreaHit: 0
+  AreaDmg: 40
+  DotHit: 0
+  DotDmg: 50
+  DotTime: 5
+  Cycle: 0.5
+  HitCount: 4
 --- !u!114 &114759077395600648
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectLife : MonoBehaviour {
+	
+
 	public float Hp;
 	public float MaxHp;
 	public float Speed;
@@ -10,6 +12,13 @@ public class ObjectLife : MonoBehaviour {
 	public float Range;
 	public bool MomentInvincible = false;//순간무적
 	public float InvincibleTime = 0.2f;//순간무적 시간
+	
+
+	private Animator ani;
+
+	private void Start()
+	{
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -22,6 +31,7 @@ public class ObjectLife : MonoBehaviour {
 	}
 	private void SendDMG(float dmg)
 	{
+		Debug.Log("recv");
 		if (!MomentInvincible)
 		{
 			Hp -= dmg;
@@ -34,4 +44,5 @@ public class ObjectLife : MonoBehaviour {
 		yield return new WaitForSeconds(InvincibleTime);
 		MomentInvincible = false;
 	}
+
 }

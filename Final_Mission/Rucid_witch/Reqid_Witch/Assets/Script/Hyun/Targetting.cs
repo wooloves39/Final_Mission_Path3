@@ -19,6 +19,22 @@ public class Targetting : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		ObjectLife life;
+		for(int i = 0; i< TargetMonster.Count;++i)
+		{
+			if(TargetMonster[i].GetComponentInParent<ObjectLife>().Hp <=0)
+			{
+				if (Mytarget == TargetMonster[i])
+				{
+					targetPoint.SetActive(false);
+					Mytarget = null;
+				}
+				TargetMonster.Remove(TargetMonster[i]);
+				TargetCount--;
+				checkTarget();
+				break;
+			}
+		}
 		if (Mytarget)
 		{
 			if (!targetPoint.activeSelf)
@@ -28,7 +44,8 @@ public class Targetting : MonoBehaviour
 			targetPoint.transform.position = pos;
 			for (int i = 0; i < TargetCount; ++i)
 			{
-				TargetMonster[i].GetComponentInChildren<HPBar>().taget= false;
+				if(TargetMonster[i].GetComponentInChildren<HPBar>() != null)
+					TargetMonster[i].GetComponentInChildren<HPBar>().taget= false;
 			}
 			Mytarget.GetComponentInChildren<HPBar>().taget = true;
 		}
