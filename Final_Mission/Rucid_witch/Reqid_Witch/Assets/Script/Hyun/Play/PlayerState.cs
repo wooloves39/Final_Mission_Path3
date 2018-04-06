@@ -9,8 +9,8 @@ public class PlayerState : MonoBehaviour
 	private State MyState;
 	private float ChargingTime;
 	private bool back;
-	private float Hp = 100;
-	private float Mp = 100;
+	public float Hp = 100;
+	public float Mp = 100;
 	public Material[] HpMaterial;
 	private Color HpColor;
 	public Material[] MpMaterial;
@@ -140,8 +140,10 @@ public class PlayerState : MonoBehaviour
 	public void DamageHp(float Damage)
 	{
 		Hp -= Damage;
+		Debug.Log(Hp);
 		if (Hp <= 0)
 		{
+			
 			Hp = 0;
 			MyState = State.Die;
 		}

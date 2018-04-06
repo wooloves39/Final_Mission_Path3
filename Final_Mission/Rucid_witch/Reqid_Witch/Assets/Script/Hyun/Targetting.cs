@@ -19,7 +19,6 @@ public class Targetting : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		ObjectLife life;
 		for(int i = 0; i< TargetMonster.Count;++i)
 		{
 			if(TargetMonster[i].GetComponentInParent<ObjectLife>().Hp <=0)

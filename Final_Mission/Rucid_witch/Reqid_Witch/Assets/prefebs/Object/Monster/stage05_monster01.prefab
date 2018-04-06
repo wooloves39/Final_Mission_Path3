@@ -1039,6 +1039,14 @@ MonoBehaviour:
   Speed: 2.5
   BattleSpeed: 3.5
   Range: 5
+  Attack: 6
+  SkillDMG:
+  - 0
+  - 0
+  - 0
+  - 0
+  MomentInvincible: 0
+  InvincibleTime: 0.2
 --- !u!114 &114272224392851774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1262,8 +1270,10 @@ MonoBehaviour:
   Time_Taget_Search: 1
   Time_Battle_Move: 1.5
   Time_Normal_Attack: 4
+  Die_Time: 1
   Delay: 0
   Fight: 0
+  isRange: 0
 --- !u!114 &114523904042006356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1358,6 +1368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackFrame: 0.6
   SkillFrame: []
+  MobObj: {fileID: 0}
+  skill: []
 --- !u!114 &114750194868987210
 MonoBehaviour:
   m_ObjectHideFlags: 1
