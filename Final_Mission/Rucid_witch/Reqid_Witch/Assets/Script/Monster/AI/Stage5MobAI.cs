@@ -25,7 +25,8 @@ public class Stage5MobAI: MonoBehaviour {
 	public float Die_Time = 1.0f;
 
 	public bool Delay = false;
-	public bool Fight = false;//false;
+	public bool Fight = false;	//false;
+	public bool isRange = false;	// 근거리 false 원거리true
 
 	Queue Battle = null;
 	Queue Peace = null;
@@ -118,13 +119,13 @@ public class Stage5MobAI: MonoBehaviour {
 							num = 11;
 					}
 
-
-					//실행할 동작 - 삭제할 부분
-					Debug.Log(num);
-					string temp;
-					AITree.Instance.AIDic.TryGetValue(num, out temp);
-					Debug.Log(temp);
-					//실행할 동작 - 삭제할 부분
+				//	
+				//	//실행할 동작 - 삭제할 부분
+				//	Debug.Log(num);
+				//	string temp;
+				//	AITree.Instance.AIDic.TryGetValue(num, out temp);
+				//	Debug.Log(temp);
+				//	//실행할 동작 - 삭제할 부분
 
 					switch (num)
 					{
@@ -182,7 +183,7 @@ public class Stage5MobAI: MonoBehaviour {
 								ani.SetBool("IsMove", false);
 								ani.SetBool("IsAttack", true);
 								time = Time_Normal_Attack;
-								BCommand.Attack(time);
+								BCommand.Attack(time,isRange);
 								break;
 							}
 						default:

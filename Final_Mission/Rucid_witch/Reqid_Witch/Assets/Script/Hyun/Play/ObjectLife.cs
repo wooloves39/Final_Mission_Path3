@@ -10,6 +10,10 @@ public class ObjectLife : MonoBehaviour {
 	public float Speed;
 	public float BattleSpeed;
 	public float Range;
+
+	public float Attack;
+	public float[] SkillDMG = {0,0,0,0};
+
 	public bool MomentInvincible = false;//순간무적
 	public float InvincibleTime = 0.2f;//순간무적 시간
 	

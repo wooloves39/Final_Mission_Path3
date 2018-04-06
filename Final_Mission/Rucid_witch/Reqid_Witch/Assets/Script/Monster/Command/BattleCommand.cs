@@ -11,10 +11,21 @@ public class BattleCommand : MonoBehaviour {
 	public float AttackFrame = 0.4f;
 	public float[] SkillFrame;
 	private NavMeshAgent agent;
-	Animator ani;
+	private PlayerState Player;
+	private ObjectLife MobInfo;
+	private Animator ani;
+
+	public GameObject MobObj;
+	public GameObject[] skill;
+	private float DMG;
+
 
 	void Start()
 	{
+		MobInfo = GetComponentInChildren<ObjectLife>();
+		GameObject temp = GameObject.FindGameObjectWithTag("Player");
+		Player = temp.GetComponent<PlayerState>();
+		Debug.Log(Player);
 		ani = GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
 	}
@@ -27,13 +38,16 @@ public class BattleCommand : MonoBehaviour {
 
 		StartCoroutine("BMove");
 	}
-	public void Attack(float T)
+	public void Attack(float T, bool b)
 	{
+		DMG = MobInfo.Attack;
 		agent.speed = 0;
 		TimeLimit = T;
 		time = 0.0f;
-
-		StartCoroutine("Att");
+		if(b)
+			StartCoroutine("RangeAtt");
+		else
+			StartCoroutine("MeleeAtt");
 	}
 	public void Skill(float T,int n)
 	{
@@ -41,8 +55,14 @@ public class BattleCommand : MonoBehaviour {
 		TimeLimit = T;
 		time = 0.0f;
 		skill_index = n;
+		DMG = MobInfo.SkillDMG[skill_index];
 		StartCoroutine("SkillCoroutine");
 	}
+
+
+
+
+
 	IEnumerator SkillCoroutine()
 	{
 		float temp = Time.deltaTime;
@@ -81,7 +101,28 @@ public class BattleCommand : MonoBehaviour {
 		}
 	}
 		
-	IEnumerator Att()
+	IEnumerator MeleeAtt()
+	{
+		float temp = Time.deltaTime;
+		while (true)
+		{
+			if (time >= AttackFrame)
+			{
+				Player.DamageHp(DMG);
+				ani.SetBool("IsAttack", false);
+			}
+			if (time >= TimeLimit)
+			{
+				break;
+			}
+			else
+			{
+				time += temp;
+			}
+			yield return new WaitForSeconds(temp);
+		}
+	}
+	IEnumerator RangeAtt()
 	{
 		float temp = Time.deltaTime;
 		while (true)
