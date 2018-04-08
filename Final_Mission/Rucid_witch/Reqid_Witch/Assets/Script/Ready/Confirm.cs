@@ -18,7 +18,7 @@ public class Confirm : MonoBehaviour
 		{
 			if (choice)
 			{
-				SceneManager.LoadScene("Stage0");
+				SceneManager.LoadScene(Singletone.Instance.stage+2);
 			}
 			else
 			{
