@@ -8,9 +8,9 @@ public class SkillChange : MonoBehaviour
 	public Material[] MpMaterial;
 	private Color Color;
 	public GameObject ChangeParticle;
-	public GameObject Hand;
+	public GameObject[] Hand;
 	public GameObject Seikwan;
-	public GameObject Dell;
+	public GameObject[] Dell;
 	private Color[] HandColor;
 	// Use this for initialization
 	private void Awake()
@@ -49,20 +49,24 @@ public class SkillChange : MonoBehaviour
 	IEnumerator ChangeObject()
 	{
 		yield return new WaitForSeconds(1.0f);
-		Dell.SetActive(false);
+		Dell[0].SetActive(false);
+		Dell[1].SetActive(false);
 		Seikwan.SetActive(false);
-		Hand.SetActive(false);
+		Hand[0].SetActive(false);
 		if (input_mouse.curType == 1)
 		{
 			Seikwan.SetActive(true);
 		}
 		else if(input_mouse.curType == 4)
 		{
-			Dell.SetActive(true);
+			Hand[1].SetActive(false);
+			Dell[0].SetActive(true);
+			Dell[1].SetActive(true);
 		}
 		else
 		{
-			Hand.SetActive(true);
+			Hand[0].SetActive(true);
+			Hand[1].SetActive(true);
 		}
 	}
 }

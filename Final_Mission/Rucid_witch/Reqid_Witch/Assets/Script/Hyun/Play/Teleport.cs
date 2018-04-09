@@ -9,8 +9,6 @@ public class Teleport : MonoBehaviour
 
 
 	//#2번 공격
-	public GameObject Violin;
-	public GameObject Fiddle_Bow;
 	public DellHeadTracker HeadTracker;
 	private int Dellcount = 0;
 	private bool DellTouch = false;
@@ -411,8 +409,6 @@ public class Teleport : MonoBehaviour
 		{
 			if (!instance)
 			{
-				Violin.SetActive(true);
-				Fiddle_Bow.SetActive(true);
 				instance = true;
 			}
 			else
@@ -518,8 +514,6 @@ public class Teleport : MonoBehaviour
 				{
 					DellTouch = false;
 					Dellcount = 0;
-					Violin.SetActive(false);
-					Fiddle_Bow.SetActive(false);
 				}
 				break;
 		}
