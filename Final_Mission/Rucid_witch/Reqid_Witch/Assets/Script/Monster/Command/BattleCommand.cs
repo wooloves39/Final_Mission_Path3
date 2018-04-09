@@ -125,6 +125,12 @@ public class BattleCommand : MonoBehaviour {
 	IEnumerator RangeAtt()
 	{
 		float temp = Time.deltaTime;
+
+		RangedAttack Ranged = MobObj.GetComponent<RangedAttack>();
+		Ranged.damage = DMG;
+		Ranged.PlayerPos = Player.transform.position;
+		MobObj.SetActive(true);
+
 		while (true)
 		{
 			if(time >= AttackFrame)
