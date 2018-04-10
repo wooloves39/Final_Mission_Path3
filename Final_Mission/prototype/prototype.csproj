@@ -96,9 +96,12 @@
     <Compile Include="Assets\GrowerTree.cs" />
     <Compile Include="Assets\Hyun\360 VR Resources\SkyboxPanoramicShader-master\SkyboxPanoramicBetaShaderGUI.cs" />
     <Compile Include="Assets\Hyun\test_Script\Billboards.cs" />
+    <Compile Include="Assets\Hyun\test_Script\CallofGod.cs" />
     <Compile Include="Assets\Hyun\test_Script\CameraFade.cs" />
     <Compile Include="Assets\Hyun\test_Script\CameraTest.cs" />
+    <Compile Include="Assets\Hyun\test_Script\LastBlast.cs" />
     <Compile Include="Assets\Hyun\test_Script\ThrowSimulatir.cs" />
+    <Compile Include="Assets\Hyun\test_Script\WitchAging.cs" />
     <Compile Include="Assets\Hyun\Use\Dia_Play.cs" />
     <Compile Include="Assets\Hyun\Use\Dialog.cs" />
     <Compile Include="Assets\Hyun\Use\File_parser.cs" />
