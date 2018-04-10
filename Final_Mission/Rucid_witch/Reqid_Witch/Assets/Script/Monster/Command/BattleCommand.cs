@@ -22,10 +22,9 @@ public class BattleCommand : MonoBehaviour {
 
 	void Start()
 	{
-		MobInfo = GetComponentInChildren<ObjectLife>();
-		GameObject temp = GameObject.FindGameObjectWithTag("Player");
+		GameObject temp = FindObjectOfType<PlayerState>().gameObject;
 		Player = temp.GetComponent<PlayerState>();
-		Debug.Log(Player);
+		MobInfo = GetComponentInChildren<ObjectLife>();
 		ani = GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
 	}
@@ -124,7 +123,14 @@ public class BattleCommand : MonoBehaviour {
 	}
 	IEnumerator RangeAtt()
 	{
+		this.transform.LookAt(Player.transform.position);
 		float temp = Time.deltaTime;
+
+		RangedAttack Ranged = MobObj.GetComponent<RangedAttack>();
+		Ranged.damage = DMG;
+		Ranged.PlayerPos = Player.transform.position;
+		MobObj.SetActive(true);
+
 		while (true)
 		{
 			if(time >= AttackFrame)

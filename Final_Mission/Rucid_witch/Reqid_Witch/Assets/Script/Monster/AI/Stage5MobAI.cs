@@ -33,6 +33,8 @@ public class Stage5MobAI: MonoBehaviour {
 	private Transform Player;
 	void Start()
 	{
+		Time_Nature_Move = getRandom(1, 5);
+		Time_Battle_Move = getRandom(1, 5);
 		Stage5Pos = FindObjectOfType<StagePosition>().GetComponent<StagePosition>();
 		ObjLife = GetComponent<ObjectLife>();
 		ani = GetComponent<Animator>();
@@ -119,19 +121,19 @@ public class Stage5MobAI: MonoBehaviour {
 							num = 11;
 					}
 
-				//	
-				//	//실행할 동작 - 삭제할 부분
-				//	Debug.Log(num);
-				//	string temp;
-				//	AITree.Instance.AIDic.TryGetValue(num, out temp);
-				//	Debug.Log(temp);
-				//	//실행할 동작 - 삭제할 부분
+			//	//	
+			//	//실행할 동작 - 삭제할 부분
+			//	Debug.Log(num);
+			//	string temp;
+			//	AITree.Instance.AIDic.TryGetValue(num, out temp);
+			//	Debug.Log(temp);
+			//	//실행할 동작 - 삭제할 부분
 
 					switch (num)
 					{
 						case 0:
 							{
-								ani.SetBool("Stop", true);
+								//ani.SetBool("Stop", true);
 								ani.SetBool("IsMove", false);
 								time = Time_Nature_Stop;
 								break;

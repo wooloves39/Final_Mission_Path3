@@ -140,7 +140,6 @@ public class PlayerState : MonoBehaviour
 	public void DamageHp(float Damage)
 	{
 		Hp -= Damage;
-		Debug.Log(Hp);
 		if (Hp <= 0)
 		{
 			
