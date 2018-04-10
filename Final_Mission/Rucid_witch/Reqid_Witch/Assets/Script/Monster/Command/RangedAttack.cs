@@ -7,17 +7,21 @@ public class RangedAttack : MonoBehaviour {
 	public float DelTime = 4.0f;
 	public float Speed = 2.0f;
 	public float damage = 0.0f;
-	private float LimitTime = 4.0f;
-	private float MyTime = 0.0f;
 	private Vector3 Direction = Vector3.zero;
 	public Vector3 PlayerPos;
+
+	private Rigidbody Rigi;
+	private float LimitTime = 4.0f;
+	private float MyTime = 0.0f;
 
 
 	// Use this for initialization
 	void OnEnable()
 	{
+		Rigi = GetComponent<Rigidbody>();
 		this.transform.position = StartPlace.transform.position;
-		Direction =  new Vector3(PlayerPos.x, 0.0f, PlayerPos.z) - new Vector3(this.transform.position.x, 0.0f, this.transform.position.z);
+		Direction =  Vector3.Normalize(new Vector3(PlayerPos.x, 0.0f, PlayerPos.z) - new Vector3(this.transform.position.x, 0.0f, this.transform.position.z));
+		Debug.Log(Direction);
 		MyTime = 0.0f;
 		LimitTime = DelTime;
 		StartCoroutine("ThrowOBJ");
@@ -27,7 +31,7 @@ public class RangedAttack : MonoBehaviour {
 		float temp = Time.deltaTime;
 		while (MyTime < LimitTime)
 		{
-			this.transform.Translate(Direction * Speed * temp,Space.Self);
+			Rigi.MovePosition(this.transform.position + Direction * temp * Speed);
 			MyTime += temp;
 			yield return new WaitForSeconds(temp);
 		}

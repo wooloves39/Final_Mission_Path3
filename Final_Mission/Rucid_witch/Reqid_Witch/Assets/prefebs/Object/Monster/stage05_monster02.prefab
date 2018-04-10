@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartPlace: {fileID: 1380443986513368}
   DelTime: 2
-  Speed: 5
+  Speed: 20
   damage: 0
   PlayerPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114140105888838924
@@ -1091,11 +1091,11 @@ MonoBehaviour:
   BasicPeace: 0100000001000000
   BasicBattle: 0a0000000b000000
   Time_Nature_Stop: 0.5
-  Time_Nature_Move: 1.5
+  Time_Nature_Move: 3
   Time_Nomal_StopMotion: 5
   Time_Nomal_MoveWay: 6
   Time_Taget_Search: 1
-  Time_Battle_Move: 1.5
+  Time_Battle_Move: 1
   Time_Normal_Attack: 4
   Die_Time: 1
   Delay: 0
