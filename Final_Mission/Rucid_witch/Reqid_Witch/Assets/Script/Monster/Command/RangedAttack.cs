@@ -17,8 +17,7 @@ public class RangedAttack : MonoBehaviour {
 	void OnEnable()
 	{
 		this.transform.position = StartPlace.transform.position;
-		Direction = new Vector3(PlayerPos.x, 0.0f, PlayerPos.z);
-		Debug.Log(Direction);
+		Direction =  new Vector3(PlayerPos.x, 0.0f, PlayerPos.z) - new Vector3(this.transform.position.x, 0.0f, this.transform.position.z);
 		MyTime = 0.0f;
 		LimitTime = DelTime;
 		StartCoroutine("ThrowOBJ");
@@ -28,7 +27,7 @@ public class RangedAttack : MonoBehaviour {
 		float temp = Time.deltaTime;
 		while (MyTime < LimitTime)
 		{
-			this.transform.Translate(Direction * Speed * temp);
+			this.transform.Translate(Direction * Speed * temp,Space.Self);
 			MyTime += temp;
 			yield return new WaitForSeconds(temp);
 		}
@@ -38,7 +37,6 @@ public class RangedAttack : MonoBehaviour {
 	{
 		if (other.tag == "Player")
 		{
-			Debug.Log("Range ATT");
 			PlayerState Player = other.GetComponentInParent<PlayerState>();
 			if (Player != null)
 			{

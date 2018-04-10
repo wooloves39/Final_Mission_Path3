@@ -125,7 +125,7 @@ public class Stage5Boss: MonoBehaviour {
 				{
 					case 0:
 						{
-							ani.SetBool("Stop", true);
+							//ani.SetBool("Stop", true);
 							ani.SetBool("IsMove", false);
 							time = Time_Nature_Stop;
 							break;
