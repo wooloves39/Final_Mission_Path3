@@ -21,7 +21,6 @@ public class RangedAttack : MonoBehaviour {
 		Rigi = GetComponent<Rigidbody>();
 		this.transform.position = StartPlace.transform.position;
 		Direction =  Vector3.Normalize(new Vector3(PlayerPos.x, 0.0f, PlayerPos.z) - new Vector3(this.transform.position.x, 0.0f, this.transform.position.z));
-		Debug.Log(Direction);
 		MyTime = 0.0f;
 		LimitTime = DelTime;
 		StartCoroutine("ThrowOBJ");

@@ -19,6 +19,7 @@ public class PlayerState : MonoBehaviour
 	private float MaxChargingTime;
 	//이게 최선일까...
 	public SkillChange skillChange;
+	private OVRScreenFade fade;
 	// Use this for initialization
 	void Awake()
 	{
@@ -28,6 +29,8 @@ public class PlayerState : MonoBehaviour
 		StartCoroutine(HpRecovery());
 		StartCoroutine(MpRecovery());
 		PlayerViberation = gameObject.transform.GetComponent<Viberation>();
+		fade = FindObjectOfType<OVRScreenFade>();
+		Debug.Log(fade);
 	}
 	private void Update()
 	{
@@ -139,6 +142,7 @@ public class PlayerState : MonoBehaviour
 	}
 	public void DamageHp(float Damage)
 	{
+		fade.fadeSmoth(new Color(.3f, 0, 0), 0, .5f, .3f, 1.0f, 0.5f);
 		Hp -= Damage;
 		if (Hp <= 0)
 		{
