@@ -43,7 +43,7 @@ public class RangedAttack : MonoBehaviour {
 			PlayerState Player = other.GetComponentInParent<PlayerState>();
 			if (Player != null)
 			{
-				Player.Hp -= damage;
+				Player.DamageHp(damage);
 				this.gameObject.SetActive(false);
 				LimitTime = 0.0f;
 			}

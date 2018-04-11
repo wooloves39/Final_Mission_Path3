@@ -72,7 +72,7 @@ public class Stage5MobAI: MonoBehaviour {
 			{
 				ani.SetBool("Die", true);
 				yield return new WaitForSeconds(Die_Time);
-				Destroy(this.gameObject);
+				this.gameObject.SetActive(false);
 			}
 			{
 				if (Fight)

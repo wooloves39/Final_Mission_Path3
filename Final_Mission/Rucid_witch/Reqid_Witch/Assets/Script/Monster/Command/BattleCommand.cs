@@ -103,10 +103,12 @@ public class BattleCommand : MonoBehaviour {
 	IEnumerator MeleeAtt()
 	{
 		float temp = Time.deltaTime;
+		bool once = false;
 		while (true)
 		{
-			if (time >= AttackFrame)
+			if (time >= AttackFrame && !once)
 			{
+				once = true;
 				Player.DamageHp(DMG);
 				ani.SetBool("IsAttack", false);
 			}

@@ -29,6 +29,9 @@ public class PlayerState : MonoBehaviour
 		StartCoroutine(HpRecovery());
 		StartCoroutine(MpRecovery());
 		PlayerViberation = gameObject.transform.GetComponent<Viberation>();
+	}
+	void Start()
+	{
 		fade = FindObjectOfType<OVRScreenFade>();
 		Debug.Log(fade);
 	}
@@ -142,8 +145,14 @@ public class PlayerState : MonoBehaviour
 	}
 	public void DamageHp(float Damage)
 	{
-		fade.fadeSmoth(new Color(.3f, 0, 0), 0, .5f, .3f, 1.0f, 0.5f);
+		if (!fade.fadeOnStart)
+		{
+			fade.fadeSmoth(new Color(.3f, 0, 0), 0, .5f, .3f, 1.0f, 0.5f);
+		}
+
 		Hp -= Damage;
+		if (Hp < 0)
+			Hp = 0;
 		if (Hp <= 0)
 		{
 			
