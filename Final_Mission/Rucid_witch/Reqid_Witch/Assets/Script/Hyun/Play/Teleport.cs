@@ -36,6 +36,7 @@ public class Teleport : MonoBehaviour
 	private PlayerState MyState;
 	private Viberation PlayerViberation;
 	public Targetting PlayerTarget;
+	private input_mouse typecheck;
 	// Use this for initialization
 	private void Awake()
 	{
@@ -46,7 +47,7 @@ public class Teleport : MonoBehaviour
 		AzuraHands = new TouchCollision[2];
 		AzuraHands[0] = Hands[0].GetComponent<TouchCollision>();
 		AzuraHands[1] = Hands[1].GetComponent<TouchCollision>();
-		input_mouse typecheck = GetComponentInChildren<input_mouse>();
+		typecheck = GetComponentInChildren<input_mouse>();
 		if (typecheck.IsHaveSkill(0))
 		{
 			int poolCount = 5;
@@ -332,8 +333,8 @@ public class Teleport : MonoBehaviour
 						Vector3 TargettingDir = Vector3.zero;
 						if (myTarget != null)
 							TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
-																																		//Debug.Log(Vector3.Dot(TargettingDir, Arrowforward));
-						if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f||TargettingDir==Vector3.zero)
+																																//Debug.Log(Vector3.Dot(TargettingDir, Arrowforward));
+						if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f || TargettingDir == Vector3.zero)
 						{
 							r.velocity = Arrowforward * 15f * handDis;
 						}
@@ -341,7 +342,7 @@ public class Teleport : MonoBehaviour
 						{
 							TargettingDir += Arrowforward;
 							r.velocity = TargettingDir * 15f * handDis;
-							
+
 						}
 						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
@@ -384,9 +385,9 @@ public class Teleport : MonoBehaviour
 						//{
 						//	LookAtpos.z += 0.06f;
 						//}
-					
+
 					}
-					
+
 					ArrowPos += Hands[0].transform.forward * 0.05f;
 					Arrow[ArrowNum].transform.LookAt(LookAtpos);
 					Arrow[ArrowNum].transform.position = ArrowPos;
