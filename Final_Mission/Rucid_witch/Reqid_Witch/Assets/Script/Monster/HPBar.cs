@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HPBar : MonoBehaviour {
 	private ObjectLife life;
+	public GameObject TargetFrame;
 	public GameObject BarFrame;
 	public GameObject[] Level;
 	public float here;
@@ -49,9 +50,15 @@ public class HPBar : MonoBehaviour {
 	void Tageting()
 	{
 		if (taget == true)
+		{
+			TargetFrame.SetActive(true);
 			check = true;
+		}
 		else
+		{
 			check = false;
+			TargetFrame.SetActive(false);
+		}
 		if (life.Hp != life.MaxHp)
 		{
 			check = true;

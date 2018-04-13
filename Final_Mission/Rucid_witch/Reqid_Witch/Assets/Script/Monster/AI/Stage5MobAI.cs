@@ -70,6 +70,9 @@ public class Stage5MobAI: MonoBehaviour {
 		{
 			if (ObjLife.Hp <= 0)
 			{
+				Targetting T;
+				T = FindObjectOfType<Targetting>().GetComponent<Targetting>();
+				Debug.Log(T);
 				ani.SetBool("Die", true);
 				yield return new WaitForSeconds(Die_Time);
 				this.gameObject.SetActive(false);

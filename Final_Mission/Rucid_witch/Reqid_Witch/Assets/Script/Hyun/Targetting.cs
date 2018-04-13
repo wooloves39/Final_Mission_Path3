@@ -21,7 +21,7 @@ public class Targetting : MonoBehaviour
 	{
 		for(int i = 0; i< TargetMonster.Count;++i)
 		{
-			if(TargetMonster[i].GetComponentInParent<ObjectLife>().Hp <=0)
+			if (TargetMonster[i].GetComponentInParent<ObjectLife>().Hp <= 0)
 			{
 				if (Mytarget == TargetMonster[i])
 				{
@@ -89,7 +89,7 @@ public class Targetting : MonoBehaviour
 		}
 
 	}
-	private void checkTarget()
+	public void checkTarget()
 	{
 		GameObject target = null;
 		Vector3 mypos = transform.position;
