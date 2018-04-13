@@ -21,7 +21,7 @@ public class input_non_instant : MonoBehaviour
 	private float completeTimer;
 	private float skillSoundTimer;
 
-	private int currentSkill;
+	private int currentSkill=1;
 	public GameObject Complete;
 	public LineRenderer line;
 	private Coroutine SkillCorutine;
@@ -264,4 +264,9 @@ public class input_non_instant : MonoBehaviour
 
 	}
 	public int getCurrentSkill() { return currentSkill; }
+	public void resetSkill()
+	{
+		currentSkill = 1;
+
+	}
 }

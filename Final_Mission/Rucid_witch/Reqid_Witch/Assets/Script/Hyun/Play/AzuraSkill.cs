@@ -9,7 +9,8 @@ public class AzuraSkill : MonoBehaviour
 	private float handDis;
 	float deltaTime;
 	public GameObject Blast;
-	public GameObject[] WitchsHones;
+	public GameObject witchsHone;
+	public GameObject SoulExp;
 	private void Awake()
 	{
 		deltaTime = Time.deltaTime;
@@ -37,29 +38,32 @@ public class AzuraSkill : MonoBehaviour
 				witchAging(2.0f, 10f);
 				break;
 			case 4:
-				callofGad(10f, 3f, 5f);
+				callofGad(target.transform.position,10f, 3f, 5f);
 				break;
 			case 5:
 				LastBlast();
 				break;
 		}
+		GetComponent<Arrow>().Shooting(true);
 		target = null;
 	}
 	private void WitchsHone()
 	{
 		Rigidbody r = GetComponent<Rigidbody>();
-		if (target != null)
-		{
-			Vector3 TargettingDir = Vector3.Normalize((target.transform.position) - transform.position);//;
-			r.velocity = TargettingDir * 15f * handDis;
-			GetComponent<Arrow>().Shooting(true);
-		}
+		Vector3 TargettingDir = Vector3.Normalize((target.transform.position) - transform.position);//;
+		r.velocity = TargettingDir * 15f * handDis;
+		
 	}
 	void SoulExplosion(Vector3 target)//12개의 스킬 날리기
 	{
-		StartCoroutine(SoulExplosionCor(target));
+		GameObject[] souls = new GameObject[12];
+		for (int i = 0; i < souls.Length; ++i)
+		{
+			souls[i] = Instantiate(SoulExp, transform);
+			StartCoroutine(SoulExplosionCor(souls[i], target));
+		}
 	}
-	IEnumerator SoulExplosionCor(Vector3 target)
+	IEnumerator SoulExplosionCor(GameObject soul, Vector3 target)
 	{
 		Vector3 dir = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
 		float speed = Random.Range(10, 15);
@@ -85,28 +89,30 @@ public class AzuraSkill : MonoBehaviour
 	}
 	void witchAging(float speed, float deltime)//12개
 	{
-		for (int i = 1; i < childHone.Length; ++i)
+		GameObject[] witchsHones = new GameObject[8];
+		for (int i = 0; i < witchsHones.Length; ++i)
 		{
-			childHone[i].Rotate(0, i * 15, 0);
-			StartCoroutine(witchAgingCour(i, speed, deltime));
+			witchsHones[i] = Instantiate(witchsHone, transform);
+			witchsHones[i].transform.Rotate(0, i * 15, 0);
+			StartCoroutine(witchAgingCour(witchsHones[i], speed, deltime));
 		}
 	}
-	IEnumerator witchAgingCour(int indexNum, float speed, float deltime)
+	IEnumerator witchAgingCour(GameObject hone, float speed, float deltime)
 	{
 		float timer = 0.0f;
 		while (true)
 		{
 			if (timer > deltime) break;
 			timer += deltaTime;
-			childHone[indexNum].transform.Translate(childHone[indexNum].transform.forward * speed * Time.deltaTime);
+			hone.transform.Translate(hone.transform.forward * speed * Time.deltaTime);
 			yield return null;
 		}
 	}
-	void callofGad(float speed, float scale, float time)
+	void callofGad(Vector3 targetPos,float speed, float scale, float time)
 	{
-		StartCoroutine(callofGadCor(speed, scale, time));
+		StartCoroutine(callofGadCor(targetPos, speed, scale, time));
 	}
-	IEnumerator callofGadCor(float speed, float scale, float time)
+	IEnumerator callofGadCor(Vector3 targetPos, float speed, float scale, float time)
 	{
 		float timer = 0.0f;
 		float cur_Scale = 1.0f;
@@ -116,26 +122,27 @@ public class AzuraSkill : MonoBehaviour
 			cur_Scale = scale * (timer / time);
 			Vector3 scaleVector = Vector3.one;
 			if (cur_Scale < 1.0f) cur_Scale = 1.0f;
-			transform.localScale = scaleVector * cur_Scale;
-			transform.Translate(transform.forward * deltaTime * speed);
+			SoulExp.transform.localScale = scaleVector * cur_Scale;
+			SoulExp.transform.Translate(Vector3.Normalize(targetPos-transform.position) * deltaTime * speed);
 			if (timer > time) break;
 			yield return null;
 		}
 	}
 	private void LastBlast()
 	{
+	//	Blast.SetActive(true);
 		StartCoroutine(LastBlastCor());
 	}
 	IEnumerator LastBlastCor()
 	{
 		float timer = 0.0f;
 		timer += deltaTime;
-		transform.Rotate(0, 10 * timer, 0);
+		Blast.transform.Rotate(0, 10 * timer, 0);
 		if (timer >= 2.0f)
 		{
 			timer = 0;
-			transform.rotation = Quaternion.identity;
-			gameObject.SetActive(false);
+			Blast.transform.rotation = Quaternion.identity;
+			Blast.gameObject.SetActive(false);
 			//내위치 변경
 		}
 		yield return null;

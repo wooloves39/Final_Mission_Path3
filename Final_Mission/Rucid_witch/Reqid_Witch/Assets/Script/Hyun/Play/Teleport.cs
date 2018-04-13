@@ -448,14 +448,10 @@ public class Teleport : MonoBehaviour
 					{
 						if (!AzuraBall[AzuraBallNum].GetComponent<Arrow>().IsShooting())
 						{
-							Rigidbody r = AzuraBall[AzuraBallNum].GetComponent<Rigidbody>();
-							//Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
 							GameObject myTarget = PlayerTarget.getMytarget();
 							if (myTarget != null)
 							{
-								Vector3 TargettingDir = Vector3.Normalize((myTarget.transform.position) - AzuraBall[AzuraBallNum].transform.position);//;
-								r.velocity = TargettingDir * 15f * handDis;
-								AzuraBall[AzuraBallNum].GetComponent<Arrow>().Shooting(true);
+								AzuraBall[AzuraBallNum].GetComponent<AzuraSkill>().shoot(typecheck.Skills[0].getCurrentSkill(), myTarget, handDis);
 							}
 						}
 					}
