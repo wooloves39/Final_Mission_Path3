@@ -220,7 +220,7 @@ public class OVRScreenFade : MonoBehaviour
 	}
 	IEnumerator Fade(Color newScreenOverlayColor, float startAlpha, float endAlpha, float fadeTime)
 	{
-		Color currentColor = fadeColor;
+		Color currentColor = new Color(0, 0, 0, 0);
 		fadeColor = newScreenOverlayColor;
 		float elapsedTime = 0.0f;
 		while (elapsedTime < fadeTime)
@@ -234,7 +234,7 @@ public class OVRScreenFade : MonoBehaviour
 	}
 	IEnumerator Fade(Color newScreenOverlayColor, float startAlpha, float endAlpha, float fadeTime, float fadeDelay)
 	{
-		Color currentColor = fadeColor;
+		Color currentColor = new Color(0, 0, 0, 0);
 		fadeColor = newScreenOverlayColor;
 		float elapsedTime = 0.0f;
 		float delay = 0.0f;
@@ -254,7 +254,7 @@ public class OVRScreenFade : MonoBehaviour
 	}
 	IEnumerator FadeSmoth(Color newScreenOverlayColor, float startAlpha, float endAlpha, float firstFadeTime, float secondFadeTime, float fadeDelay)
 	{
-		Color currentColor = fadeColor;
+		Color currentColor = new Color(0, 0, 0, 0);
 		fadeColor = newScreenOverlayColor;
 		float firstTimer = 0.0f;
 		float DelayTimer = 0.0f;

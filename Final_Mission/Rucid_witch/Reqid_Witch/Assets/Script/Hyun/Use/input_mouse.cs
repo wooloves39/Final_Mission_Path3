@@ -91,6 +91,7 @@ public class input_mouse : MonoBehaviour
 		if (mytype > 2) mytype = 0;
 		if (mySkills[mytype] == -1) --mytype;
 		curType = mySkills[mytype];
+		Skills[curType].resetSkill();
 	}
 	public bool IsHaveSkill(int type)
 	{

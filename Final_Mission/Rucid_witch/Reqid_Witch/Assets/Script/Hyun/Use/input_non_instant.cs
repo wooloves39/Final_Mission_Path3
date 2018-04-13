@@ -20,6 +20,8 @@ public class input_non_instant : MonoBehaviour
 	private bool TimerOn = false;
 	private float completeTimer;
 	private float skillSoundTimer;
+
+	private int currentSkill=1;
 	public GameObject Complete;
 	public LineRenderer line;
 	private Coroutine SkillCorutine;
@@ -190,6 +192,7 @@ public class input_non_instant : MonoBehaviour
 		lineReset();
 		if (SkillCheck(skill1))
 		{
+			currentSkill = 1;
 			Debug.Log("마법1");
 			TimerOn = true;
 			Complete.SetActive(true);
@@ -199,6 +202,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill2))
 		{
+			currentSkill = 2;
 			Debug.Log("마법2");
 			TimerOn = true;
 			Complete.SetActive(true);
@@ -208,6 +212,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill3))
 		{
+			currentSkill = 3;
 			Debug.Log("마법3");
 			TimerOn = true;
 			Complete.SetActive(true);
@@ -217,6 +222,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill4))
 		{
+			currentSkill = 4;
 			Debug.Log("마법4");
 			TimerOn = true;
 			Complete.SetActive(true);
@@ -226,6 +232,7 @@ public class input_non_instant : MonoBehaviour
 		}
 		else if (SkillCheck(skill5))
 		{
+			currentSkill = 5;
 			Debug.Log("마법5");
 			TimerOn = true;
 			Complete.SetActive(true);
@@ -254,6 +261,12 @@ public class input_non_instant : MonoBehaviour
 			SkillTime();
 			yield return null;
 		}
+
+	}
+	public int getCurrentSkill() { return currentSkill; }
+	public void resetSkill()
+	{
+		currentSkill = 1;
 
 	}
 }
