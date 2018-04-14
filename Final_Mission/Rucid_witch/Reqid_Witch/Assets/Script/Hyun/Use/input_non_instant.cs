@@ -27,6 +27,10 @@ public class input_non_instant : MonoBehaviour
 	private Coroutine SkillCorutine;
 	private AudioSource CompleteSound;
 	private Viberation PlayerViberation;
+
+	private Transform Player;
+	private Vector3 initPos;
+	private List<Vector3> PointsVec = new List<Vector3>();
 	// Use this for initialization
 	void Start()
 	{
@@ -37,11 +41,17 @@ public class input_non_instant : MonoBehaviour
 	}
 	private void Awake()
 	{
+		Player = transform.parent.parent.GetComponent<Transform>();
 		PlayerViberation = gameObject.transform.parent.parent.GetComponent<Viberation>();
 		MainPoint = Points[0];
 		touchPoints = new int[skill5.Length];
 		line.positionCount = 1;
 		line.SetPosition(0, gameObject.transform.position);
+		PointsVec.Add(gameObject.transform.position);
+	}
+	private void OnEnable()
+	{
+		initPos = Player.position;
 	}
 	public bool getTimerOn() { return TimerOn; }
 	public int UpCount()
@@ -54,6 +64,7 @@ public class input_non_instant : MonoBehaviour
 		if (MainPoint)
 			MainPoint.turnon();
 		count = -1;
+		PointsVec.Clear();
 		MyPoint = MainPoint;
 		completeTimer = 0.0f;
 		TimerOn = false;
@@ -74,6 +85,7 @@ public class input_non_instant : MonoBehaviour
 		MyPoint = touchPoint;
 		line.positionCount = count + 1;
 		line.SetPosition(count, MyPoint.transform.position);
+		PointsVec.Add(MyPoint.transform.position);
 		if (count >= 0)
 		{
 			for (int i = 0; i < Points.Length; ++i)
@@ -119,6 +131,7 @@ public class input_non_instant : MonoBehaviour
 	private void lineReset()
 	{
 		line.positionCount = 1;
+		PointsVec.Clear();
 	}
 	private void PointCheck(int[] skill)
 	{
@@ -250,6 +263,10 @@ public class input_non_instant : MonoBehaviour
 	void Update()
 	{
 		//SkillTime();
+		for(int i = 0; i < PointsVec.Count; ++i)
+		{
+			line.SetPosition(i, PointsVec[i] + (Player.position - initPos));
+		}
 		PointChecks();
 	}
 	private IEnumerator SkillComplete()
