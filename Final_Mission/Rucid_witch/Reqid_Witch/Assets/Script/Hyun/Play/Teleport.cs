@@ -150,16 +150,14 @@ public class Teleport : MonoBehaviour
 			{
 				if (AzuraBall[i])
 				{
-					if (AzuraBall[i].GetComponent<Arrow>())
+
+					if (AzuraBall[i].GetComponent<AzuraSkill>().IsDelete())
 					{
-						if (AzuraBall[i].GetComponent<Arrow>().IsDelete())
-						{
-							AzuraBall[i].GetComponent<Arrow>().resetArrow();
-							Azurapool.RemoveItem(AzuraBall[i]);
-							AzuraBall[i] = null;
-						}
-						//어떤 조건에 의거 AzuraBall삭제
+						AzuraBall[i].GetComponent<AzuraSkill>().resetDelete();
+						Azurapool.RemoveItem(AzuraBall[i]);
+						AzuraBall[i] = null;
 					}
+					//어떤 조건에 의거 AzuraBall삭제
 				}
 			}
 		}
@@ -228,7 +226,6 @@ public class Teleport : MonoBehaviour
 						AzuraBall[i] = Azurapool.NewItem();
 						Debug.Log(AzuraBall[AzuraBallNum]);
 						AzuraBall[i].transform.position = AttackPoint;
-						AzuraBall[i].GetComponent<Arrow>().setDelTime(5.0f);
 						Rigidbody r = AzuraBall[i].GetComponent<Rigidbody>();
 						r.useGravity = false;
 						r.velocity = new Vector3(0, 0, 0);
@@ -446,7 +443,7 @@ public class Teleport : MonoBehaviour
 					float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
 					if (AzuraBall[AzuraBallNum])
 					{
-						if (!AzuraBall[AzuraBallNum].GetComponent<Arrow>().IsShooting())
+						if (!AzuraBall[AzuraBallNum].GetComponent<AzuraSkill>().IsShoot())
 						{
 							GameObject myTarget = PlayerTarget.getMytarget();
 							if (myTarget != null)
@@ -459,16 +456,13 @@ public class Teleport : MonoBehaviour
 					{
 						if (AzuraBall[i])
 						{
-							if (AzuraBall[i].GetComponent<Arrow>())
+							if (!AzuraBall[i].GetComponent<AzuraSkill>().IsShoot())
 							{
-								if (!AzuraBall[i].GetComponent<Arrow>().IsShooting())
-								{
-									AzuraBall[i].GetComponent<Arrow>().resetArrow();
-									Azurapool.RemoveItem(AzuraBall[i]);
-									AzuraBall[i] = null;
-								}
-								//어떤 조건에 의거 Arrow삭제
+								AzuraBall[i].GetComponent<AzuraSkill>().resetDelete();
+								Azurapool.RemoveItem(AzuraBall[i]);
+								AzuraBall[i] = null;
 							}
+							//어떤 조건에 의거 Arrow삭제
 						}
 					}
 				}
