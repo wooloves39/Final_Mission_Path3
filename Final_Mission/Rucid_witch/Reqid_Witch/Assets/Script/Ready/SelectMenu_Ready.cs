@@ -6,6 +6,7 @@ public class SelectMenu_Ready : MonoBehaviour {
 	public GameObject GameStart;
 	public GameObject[] ui_arr;
 	public GameObject[] Menus;
+	public GameObject selMenu;
 	public Vector2[] posit_arr;
 	public int index = 0;
 	public Vector2 myposit = new Vector2(0,1);
@@ -111,6 +112,7 @@ public class SelectMenu_Ready : MonoBehaviour {
 					ui_arr[i].SetActive(false);
 					if (i == index)
 					{
+						selMenu = Menus[i];
 						ui_arr[i].SetActive(true);
 						continue;
 					}
