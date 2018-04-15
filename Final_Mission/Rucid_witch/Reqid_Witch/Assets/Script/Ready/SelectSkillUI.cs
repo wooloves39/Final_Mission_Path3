@@ -168,4 +168,5 @@ public class SelectSkillUI : MonoBehaviour
 		++lastChange;
 		if (lastChange == 3) lastChange = 0;
 	}
+	public int GetRotationSkill() { return RotationSkill; }
 }
