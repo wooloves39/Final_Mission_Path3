@@ -10,6 +10,7 @@ public class MobGenerater : MonoBehaviour {
 	public List<GameObject> Prefab;
 	public List<int> Prefab_Count;
 
+	public bool Wave_Start = false;
 	public List<int> GenTime;	
 	public MemoryPool pool = new MemoryPool();
 
@@ -17,7 +18,7 @@ public class MobGenerater : MonoBehaviour {
 
 
 
-	void Start () {
+	void Start() {
 		myTime = 0;
 		for(int i = 0 ; i < Prefab.Count;++i)
 		{
@@ -33,34 +34,38 @@ public class MobGenerater : MonoBehaviour {
 		int num = 0;
 		while (true)
 		{
-			if (num < Prefab_Count.Count)
+			if (Wave_Start)
 			{
-				if (myTime >= GenTime[num])
+				if (num < Prefab_Count.Count)
 				{
-
-					for (int i = 0; i < Prefab_Count[num]; ++i)
+					if (myTime >= GenTime[num])
 					{
-						if (i % 3 == 0)
+
+						for (int i = 0; i < Prefab_Count[num]; ++i)
 						{
-							pool.NewItem(Position[0].transform.position);
+							if (i % 3 == 0)
+							{
+								pool.NewItem(Position[0].transform.position);
+							}
+							if (i % 3 == 1)
+							{
+								pool.NewItem(Position[1].transform.position);
+							}
+							if (i % 3 == 2)
+							{
+								pool.NewItem(Position[2].transform.position);
+							}
 						}
-						if (i % 3 == 1)
-						{
-							pool.NewItem(Position[1].transform.position);
-						}
-						if (i % 3 == 2)
-						{
-							pool.NewItem(Position[2].transform.position);
-						}
+						num++;
 					}
-					num++;
 				}
+				myTime++;
+				if (myTime >= 1200)
+					break;
+				else
+					yield return new WaitForSeconds(1);
 			}
-			myTime++;
-			if (myTime >= 1200)
-				break;
-			else
-				yield return new WaitForSeconds(1);
+			yield return new WaitForSeconds(1);
 		}
 	}
 
