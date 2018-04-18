@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class NextStage : MonoBehaviour {
+	private SceneChange sceneChange;
 	private bool NextOn = false;
 
 	public void setNextOn(bool val) { NextOn = val; }
 	public bool getNextOn() { return NextOn; }
+	private void Awake()
+	{
+		sceneChange = FindObjectOfType<SceneChange>();
+	}
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Player")&&NextOn)
@@ -19,7 +23,7 @@ public class NextStage : MonoBehaviour {
 
 			//ReadyScene으로!
 			Debug.Log("다음 씬");
-			SceneManager.LoadScene("Ready");
+			sceneChange.sceneChange("Ready");
 		}
 	}
 

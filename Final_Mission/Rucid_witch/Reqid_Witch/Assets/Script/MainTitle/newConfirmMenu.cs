@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class newConfirmMenu : MonoBehaviour {
+
+	private SceneChange sceneChange;
 	int index = 1;
 	public GameObject[] Select;
 	public GameObject main;
+	private void Awake()
+	{
+		sceneChange = FindObjectOfType<SceneChange>();
+	}
 	void OnEnable()
 	{
 		index = 1;
@@ -17,7 +22,7 @@ public class newConfirmMenu : MonoBehaviour {
 		if (InputManager_JHW.AButtonDown())
 		{
 			if (index == 1)
-				SceneManager.LoadScene("Stage0");
+				sceneChange.sceneChange("StartNew");
 			if (index == 0)
 			{
 				main.GetComponent<MainMenu>().confirm = false;

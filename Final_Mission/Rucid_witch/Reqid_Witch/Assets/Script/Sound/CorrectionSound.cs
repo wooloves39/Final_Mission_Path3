@@ -17,13 +17,5 @@ public class CorrectionSound : MonoBehaviour {
 	}
 	void Awake()
 	{
-		DontDestroyOnLoad (this);
-	}
-	private void Update()
-	{
-		if (Application.loadedLevel>=2)
-		{
-			Destroy(gameObject);
-		}
 	}
 }

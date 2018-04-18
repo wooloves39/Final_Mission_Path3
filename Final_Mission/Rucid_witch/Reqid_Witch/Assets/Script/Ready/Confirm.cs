@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Confirm : MonoBehaviour
 {
+	private SceneChange sceneChange;
 	public GameObject[] ui_arr;
 	private bool choice = false;
+	private void Awake()
+	{
+		sceneChange = FindObjectOfType<SceneChange>();
+	}
 	private void OnEnable()
 	{
 		StartCoroutine(KeyPad());
@@ -18,7 +22,7 @@ public class Confirm : MonoBehaviour
 		{
 			if (choice)
 			{
-				SceneManager.LoadScene(Singletone.Instance.stage+2);
+				sceneChange.sceneChange(Singletone.Instance.stage + 3);
 			}
 			else
 			{
