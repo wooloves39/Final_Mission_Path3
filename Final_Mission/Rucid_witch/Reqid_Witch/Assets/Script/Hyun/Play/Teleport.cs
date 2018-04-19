@@ -233,7 +233,7 @@ public class Teleport : MonoBehaviour
 					}
 					//5발 다쏘고 난다음도 생각해야함
 				}
-				MyState.SetMyState(PlayerState.State.Charging, 5.0f);
+				MyState.SetMyState(PlayerState.State.Charging, typecheck.Skills[0].GetSkillChargingTime());
 			}
 			else if (instance)
 			{
@@ -315,7 +315,7 @@ public class Teleport : MonoBehaviour
 					}
 					//5발 다쏘고 난다음도 생각해야함
 				}
-				MyState.SetMyState(PlayerState.State.Charging, 5.0f);
+				MyState.SetMyState(PlayerState.State.Charging, typecheck.Skills[1].GetSkillChargingTime());
 			}
 			else if (instance)
 			{
@@ -374,14 +374,6 @@ public class Teleport : MonoBehaviour
 						{
 							LookAtpos.z -= 0.06f;
 						}
-						//if (Hands[0].transform.position.x < 0)
-						//{
-						//	LookAtpos.z -= 0.06f;
-						//}
-						//else
-						//{
-						//	LookAtpos.z += 0.06f;
-						//}
 
 					}
 

@@ -15,6 +15,7 @@ public class input_non_instant : MonoBehaviour
 	public int[] skill3;
 	public int[] skill4;
 	public int[] skill5;
+	public float[] MaxChargingTimes;
 	private int[] touchPoints;
 	//완료 타이머
 	private bool TimerOn = false;
@@ -286,4 +287,5 @@ public class input_non_instant : MonoBehaviour
 		currentSkill = 1;
 
 	}
+	public float GetSkillChargingTime() { return MaxChargingTimes[currentSkill]; }
 }

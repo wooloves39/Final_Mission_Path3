@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1441,10 +1441,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 1672597136059964, guid: d06c184cebac8c0449f1bc393a77aa18, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d06c184cebac8c0449f1bc393a77aa18, type: 2}
   m_IsPrefabParent: 0
@@ -1455,6 +1451,31 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114046886991052030, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375159217910340, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936715095375240, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437512056739278, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826929255470582, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4751355359674346, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.28
@@ -1492,6 +1513,121 @@ Prefab:
       propertyPath: targetPoint
       value: 
       objectReference: {fileID: 10371363}
+    - target: {fileID: 114046886991052030, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046886991052030, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046886991052030, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[2]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046886991052030, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114046886991052030, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[4]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826929255470582, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826929255470582, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826929255470582, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826929255470582, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826929255470582, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[4]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936715095375240, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936715095375240, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936715095375240, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936715095375240, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114936715095375240, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[4]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437512056739278, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437512056739278, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437512056739278, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437512056739278, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114437512056739278, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375159217910340, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375159217910340, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114375159217910340, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+        type: 2}
+      propertyPath: MaxChargingTimes.Array.data[4]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
   m_IsPrefabParent: 0
