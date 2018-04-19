@@ -26,9 +26,9 @@ public class Singletone
 	public int Charnumber = -1;
 	public float Sound = 1.0f;
 	public string name;
-	public int stage = 5;
+	public int stage = 1;
 	public string saveTime;
-	public int[] Myskill = { 0, 1, 4 };
+	public int[] Myskill = { 0, -1, -1 };
 	public void Save()
 	{
 		string saveTime = System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");

@@ -22,7 +22,11 @@ public class newConfirmMenu : MonoBehaviour {
 		if (InputManager_JHW.AButtonDown())
 		{
 			if (index == 1)
+			{
+				Singletone.Instance.stage = -1;
+				Singletone.Instance.Myskill=new int[]{ 0,-1,-1};
 				sceneChange.sceneChange("StartNew");
+			}
 			if (index == 0)
 			{
 				main.GetComponent<MainMenu>().confirm = false;

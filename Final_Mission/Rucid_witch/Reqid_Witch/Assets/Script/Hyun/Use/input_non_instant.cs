@@ -30,7 +30,7 @@ public class input_non_instant : MonoBehaviour
 	private Viberation PlayerViberation;
 
 	private Transform Player;
-	private Vector3 initPos;
+	private List<Vector3> initPos = new List<Vector3>();
 	private List<Vector3> PointsVec = new List<Vector3>();
 	// Use this for initialization
 	void Start()
@@ -52,7 +52,7 @@ public class input_non_instant : MonoBehaviour
 	}
 	private void OnEnable()
 	{
-		initPos = Player.position;
+		//initPos.Add( Player.position);
 	}
 	public bool getTimerOn() { return TimerOn; }
 	public int UpCount()
@@ -66,6 +66,7 @@ public class input_non_instant : MonoBehaviour
 			MainPoint.turnon();
 		count = -1;
 		PointsVec.Clear();
+		initPos.Clear();
 		MyPoint = MainPoint;
 		completeTimer = 0.0f;
 		TimerOn = false;
@@ -87,6 +88,7 @@ public class input_non_instant : MonoBehaviour
 		line.positionCount = count + 1;
 		line.SetPosition(count, MyPoint.transform.position);
 		PointsVec.Add(MyPoint.transform.position);
+		initPos.Add(Player.position);
 		if (count >= 0)
 		{
 			for (int i = 0; i < Points.Length; ++i)
@@ -133,6 +135,7 @@ public class input_non_instant : MonoBehaviour
 	{
 		line.positionCount = 1;
 		PointsVec.Clear();
+		initPos.Clear();
 	}
 	private void PointCheck(int[] skill)
 	{
@@ -264,9 +267,11 @@ public class input_non_instant : MonoBehaviour
 	void Update()
 	{
 		//SkillTime();
+		Debug.Log(initPos.Count);
 		for(int i = 0; i < PointsVec.Count; ++i)
 		{
-			line.SetPosition(i, PointsVec[i] + (Player.position - initPos));
+			Debug.Log((Player.position - initPos[i]));
+			line.SetPosition(i, PointsVec[i] + (Player.position - initPos[i]));
 		}
 		PointChecks();
 	}
@@ -287,5 +292,5 @@ public class input_non_instant : MonoBehaviour
 		currentSkill = 1;
 
 	}
-	public float GetSkillChargingTime() { return MaxChargingTimes[currentSkill]; }
+	public float GetSkillChargingTime() { return MaxChargingTimes[currentSkill-1]; }
 }
