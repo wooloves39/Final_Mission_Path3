@@ -20,16 +20,17 @@ public class input_non_instant : MonoBehaviour
 	//완료 타이머
 	private bool TimerOn = false;
 	private float completeTimer;
-	private float skillSoundTimer;
 
 	private int currentSkill=1;
 	public GameObject Complete;
 	public LineRenderer line;
 	private Coroutine SkillCorutine;
 	private AudioSource CompleteSound;
+	private bool CompleteSoundCheck = false;
 	private Viberation PlayerViberation;
 
 	private Transform Player;
+	private PlayerSoundSetting playerSound;
 	private List<Vector3> initPos = new List<Vector3>();
 	private List<Vector3> PointsVec = new List<Vector3>();
 	// Use this for initialization
@@ -42,6 +43,7 @@ public class input_non_instant : MonoBehaviour
 	}
 	private void Awake()
 	{
+		playerSound= transform.parent.parent.GetComponent<PlayerSoundSetting>();
 		Player = transform.parent.parent.GetComponent<Transform>();
 		PlayerViberation = gameObject.transform.parent.parent.GetComponent<Viberation>();
 		MainPoint = Points[0];
@@ -58,6 +60,7 @@ public class input_non_instant : MonoBehaviour
 	public int UpCount()
 	{
 		++count;
+		CompleteSoundCheck = false;
 		return count;
 	}
 	public void reset()
@@ -74,6 +77,7 @@ public class input_non_instant : MonoBehaviour
 		{
 			touchPoints[i] = 0;
 		}
+		CompleteSoundCheck = false;
 	}
 	public void PointRestart()
 	{
@@ -169,10 +173,9 @@ public class input_non_instant : MonoBehaviour
 	}
 	private void PlayingSound()
 	{
-		skillSoundTimer += Time.deltaTime;
-		if (!CompleteSound.isPlaying&&skillSoundTimer>0.0f)
+		if (!CompleteSound.isPlaying&&!CompleteSoundCheck)
 		{
-			skillSoundTimer = -4.0f;
+			CompleteSoundCheck = true;
 			CompleteSound.Play();
 		}
 	}
@@ -211,6 +214,7 @@ public class input_non_instant : MonoBehaviour
 		{
 			currentSkill = 1;
 			Debug.Log("마법1");
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.DrawComplete);
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -221,6 +225,7 @@ public class input_non_instant : MonoBehaviour
 		{
 			currentSkill = 2;
 			Debug.Log("마법2");
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.DrawComplete);
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -231,6 +236,7 @@ public class input_non_instant : MonoBehaviour
 		{
 			currentSkill = 3;
 			Debug.Log("마법3");
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.DrawComplete);
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -241,6 +247,7 @@ public class input_non_instant : MonoBehaviour
 		{
 			currentSkill = 4;
 			Debug.Log("마법4");
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.DrawComplete);
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));
@@ -251,6 +258,7 @@ public class input_non_instant : MonoBehaviour
 		{
 			currentSkill = 5;
 			Debug.Log("마법5");
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.DrawComplete);
 			TimerOn = true;
 			Complete.SetActive(true);
 			PlayerViberation.StartCoroutine(Viberation.ViberationCoroutine(.3f, .3f, OVRInput.Controller.LTouch));

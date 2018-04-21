@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-	public enum State { Nomal, Drawing, Charging, Attack, Damage, Talk, Die ,ChargingOver}
+	public enum State { Nomal, Drawing, Charging, Attack, Damage, Talk, Die, ChargingOver }
 
 	private State MyState;
 	private float ChargingTime;
@@ -21,10 +21,12 @@ public class PlayerState : MonoBehaviour
 	public SkillChange skillChange;
 	private OVRScreenFade fade;
 
+	private PlayerSoundSetting playerSound;
 	public bool LightningBolt;
 	// Use this for initialization
 	void Awake()
 	{
+		playerSound = GetComponent<PlayerSoundSetting>();
 		LightningBolt = false;
 		HpColor = Color.red;
 		MyState = State.Nomal;
@@ -46,7 +48,7 @@ public class PlayerState : MonoBehaviour
 		{
 			ChargingTime += Time.deltaTime;
 		}
-		if (ChargingTime >MaxChargingTime)
+		if (ChargingTime > MaxChargingTime)
 		{
 			Debug.Log("챠징오버");
 			//스킬 실패 기초안
@@ -74,7 +76,7 @@ public class PlayerState : MonoBehaviour
 		if (state != State.Charging) ChargingTime = 0.0f;
 
 	}
-	public void SetMyState(State state,float time)
+	public void SetMyState(State state, float time)
 	{
 		MyState = state;
 		MaxChargingTime = time;
@@ -152,13 +154,13 @@ public class PlayerState : MonoBehaviour
 		{
 			fade.fadeSmoth(new Color(.3f, 0, 0), 0, .5f, .3f, 1.0f, 0.5f);
 		}
-
+		playerSound.PlayerSound(PlayerSoundSetting.soundPack.Defance);
 		Hp -= Damage;
 		if (Hp < 0)
 			Hp = 0;
 		if (Hp <= 0)
 		{
-			
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.Die);
 			Hp = 0;
 			MyState = State.Die;
 		}
@@ -166,7 +168,11 @@ public class PlayerState : MonoBehaviour
 	public void ConsumeMp(float Consume)
 	{
 		if (Mp < Consume)
+		{
 			Debug.Log("스킬 실패, MP부족");
+			playerSound.PlayerSound(PlayerSoundSetting.soundPack.MPmiss);
+		}
+
 		else
 			Mp -= Consume;
 	}

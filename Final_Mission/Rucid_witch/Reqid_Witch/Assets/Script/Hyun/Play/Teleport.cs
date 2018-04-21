@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
+	private PlayerSoundSetting playerSound;
 	//0이 왼손 1이 오른손
 	public GameObject[] Hands;
 
@@ -43,6 +44,7 @@ public class Teleport : MonoBehaviour
 	// Use this for initialization
 	private void Awake()
 	{
+		playerSound = GetComponent<PlayerSoundSetting>();
 		MyState = GetComponent<PlayerState>();
 		PlayerViberation = GetComponent<Viberation>();
 		camTr = Camera.main.transform;
@@ -444,6 +446,7 @@ public class Teleport : MonoBehaviour
 							GameObject myTarget = PlayerTarget.getMytarget();
 							if (myTarget != null)
 							{
+								playerSound.PlayerSound(PlayerSoundSetting.soundPack.AttackSkill);
 								AzuraBall[AzuraBallNum].GetComponent<AzuraSkill>().shoot(typecheck.Skills[0].getCurrentSkill(), myTarget, handDis);
 							}
 						}
