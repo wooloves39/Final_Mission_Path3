@@ -27,6 +27,9 @@ public class Teleport : MonoBehaviour
 	MemoryPool Arrowpool = new MemoryPool();
 	GameObject[] Arrow;
 
+	public GameObject BeejaePrefab;
+	MemoryPool Beejaepool = new MemoryPool();
+	GameObject[] Thunder;
 
 	public float RayLength = 50f;
 	private Coroutine currentCorutine;
@@ -36,7 +39,7 @@ public class Teleport : MonoBehaviour
 	private PlayerState MyState;
 	private Viberation PlayerViberation;
 	public Targetting PlayerTarget;
-	private input_mouse typecheck;
+	public input_mouse typecheck;
 	// Use this for initialization
 	private void Awake()
 	{
@@ -69,6 +72,7 @@ public class Teleport : MonoBehaviour
 	{
 		Azurapool.Dispose();
 		Arrowpool.Dispose();
+		Beejaepool.Dispose();
 	}
 	// Update is called once per frame
 	void Update()

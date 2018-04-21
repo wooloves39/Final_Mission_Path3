@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SkillAttack1 : MonoBehaviour
 {
+
+	public GameObject berbash;
+	public GameObject beejae;
+
 	private Image PointImage;
 	private Color cur_Color;//평소
 	private Color touch_Color;//점끼리 마주쳤을때
-	public static bool isTouch = false;
+	public bool isTouch = false;
 	// Use this for initialization
 	private void Awake()
 	{
@@ -38,6 +42,7 @@ public class SkillAttack1 : MonoBehaviour
 				{
 					if (other.gameObject.CompareTag("Monster"))
 					{
+						FindObjectOfType<BeejaeSkill>().handle2 = true;
 						isTouch = true;
 					}
 				}
@@ -61,6 +66,7 @@ public class SkillAttack1 : MonoBehaviour
 				{
 					if (other.gameObject.CompareTag("Monster"))
 					{
+						FindObjectOfType<BeejaeSkill>().handle2 = false;
 						isTouch = false;
 					}
 				}

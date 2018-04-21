@@ -20,9 +20,12 @@ public class PlayerState : MonoBehaviour
 	//이게 최선일까...
 	public SkillChange skillChange;
 	private OVRScreenFade fade;
+
+	public bool LightningBolt;
 	// Use this for initialization
 	void Awake()
 	{
+		LightningBolt = false;
 		HpColor = Color.red;
 		MyState = State.Nomal;
 		ChargingTime = 0.0f;
