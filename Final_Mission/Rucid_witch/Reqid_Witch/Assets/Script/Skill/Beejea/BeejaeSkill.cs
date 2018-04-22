@@ -5,7 +5,9 @@ using UnityEngine;
 public class BeejaeSkill : MonoBehaviour
 {
 	public GameObject[] magic;
-	public bool buff = false;
+	public int[] CoolTime = {8,80,10,20,120};
+
+	private bool[] CoolDown = {false,false,false,false,false};
 
 	private bool WorkON = false;
 	private int skill;
@@ -21,7 +23,6 @@ public class BeejaeSkill : MonoBehaviour
 
 	private Teleport handle;
 	public bool handle2 = false;
-
 	private void Awake()
 	{
 		handle = FindObjectOfType<Teleport>();
@@ -47,19 +48,56 @@ public class BeejaeSkill : MonoBehaviour
 		switch (skill)
 		{
 			case 0:
-				StartCoroutine("SkyThunder");
-				break;
 			case 1:
-				StartCoroutine("SkyThunder");
+				if (Player.Mp >= 20)
+				{
+					if (!CoolDown[0])
+					{
+						StartCoroutine("SkyThunder");
+						Player.Mp -= 20;
+					}
+				}
 				break;
 			case 2:
-				StartCoroutine("Buff");
+				if (Player.Mp >= 40)
+				{
+					if (!CoolDown[1])
+					{
+						StartCoroutine("Buff");
+						Player.Mp -= 40;
+					}
+				}
 				break;
 			case 3:
+				if (Player.Mp >= 25)
+				{
+					if (!CoolDown[2])
+					{
+						StartCoroutine("ThunderShock");
+						Player.Mp -= 25;
+					}
+				}
 				break;
 			case 4:
+				if (Player.Mp >= 40)
+				{
+					if (!CoolDown[3])
+					{
+						StartCoroutine("ThunderBall");
+						Player.Mp -= 40;
+					}
+				}
 				break;
 			case 5:
+				if (Player.Mp >= 110)
+				{
+					if (!CoolDown[4])
+					{
+						StartCoroutine("BlackThunder");
+
+						Player.Mp -= 110;
+					}
+				}
 				break;
 		}
 		if (skill > 1)
@@ -70,6 +108,7 @@ public class BeejaeSkill : MonoBehaviour
 	{
 		magic[0].transform.position = target.transform.position;
 		magic[0].SetActive(true);
+		CoolDown[0] = true;
 		yield return new WaitForSeconds(0.45f);
 		if (Player.LightningBolt)
 		{
@@ -78,15 +117,44 @@ public class BeejaeSkill : MonoBehaviour
 		handle.PlayerTarget.getMytarget().GetComponentInParent<ObjectLife>().SendMessage("SendDMG", 30.0f);
 		yield return new WaitForSeconds(0.30f);
 		magic[0].SetActive(false);
+
+		yield return new WaitForSeconds(CoolTime[0]-1);
+		CoolDown[0] = true;
 	}
 
 	IEnumerator Buff()
 	{
+		CoolDown[1] = true;
 		Player.LightningBolt = true;
 		yield return new WaitForSeconds(60.0f);
 		Player.LightningBolt = false;
+		yield return new WaitForSeconds(20.0f);
+		CoolDown[1] = false;
 	}
-
+	IEnumerator ThunderShock()
+	{
+		magic[2].transform.position = target.transform.position;
+		magic[2].SetActive(true);
+		CoolDown[2] = true;
+		yield return new WaitForSeconds(CoolTime[2]);
+		CoolDown[2] = false;
+	}
+	IEnumerator ThunderBall()
+	{
+		magic[3].transform.position = target.transform.position;
+		magic[3].SetActive(true);
+		CoolDown[3] = true;
+		yield return new WaitForSeconds(CoolTime[3]);
+		CoolDown[3] = false;
+	}
+	IEnumerator BlackThunder()
+	{
+		magic[4].transform.position = target.transform.position;
+		magic[4].SetActive(true);
+		CoolDown[4] = true;
+		yield return new WaitForSeconds(CoolTime[3]);
+		CoolDown[4] = false;
+	}
 	private void UseOtherObject()
 	{
 		collider.enabled = false;
