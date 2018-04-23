@@ -52,7 +52,7 @@ public class OVRScreenFade : MonoBehaviour
 		fadeMesh = gameObject.AddComponent<MeshFilter>();
 		fadeRenderer = gameObject.AddComponent<MeshRenderer>();
 
-		var mesh = new Mesh();
+		Mesh mesh = new Mesh();
 		fadeMesh.mesh = mesh;
 
 		Vector3[] vertices = new Vector3[4];

@@ -24,7 +24,6 @@ public class input_mouse : MonoBehaviour
 		mySkills = Singletone.Instance.Myskill;
 		curType = mySkills[mytype];
 		raser.gameObject.SetActive(false);
-		raser.gameObject.SetActive(false);
 		Mystate = gameObject.transform.parent.parent.GetComponent<PlayerState>();
 	}
 

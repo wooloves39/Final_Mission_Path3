@@ -439,7 +439,7 @@ public class Teleport : MonoBehaviour
 			case 0://아즈라 공격 형태 기를 모으는 형태, 오큘러스 터치의 충돌에서 출발하여 양손을 벌릴때 점차 커지며 방출
 				{
 					float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
-					if (AzuraBall[AzuraBallNum])
+					if (AzuraBall[AzuraBallNum]&& MyState.GetMyState() != PlayerState.State.ChargingOver)
 					{
 						if (!AzuraBall[AzuraBallNum].GetComponent<AzuraSkill>().IsShoot())
 						{
