@@ -21,6 +21,8 @@ public class Skill_Info : MonoBehaviour {
 
 	public float[] PowerMemory = { 0,0,0 };
 
+	public bool ElecShock = false;
+	public float ShockTime = 2.0f;
 	private void OnEnable()
 	{
 
@@ -46,8 +48,9 @@ public class Skill_Info : MonoBehaviour {
 			{
 				if (!temp.MomentInvincible)
 				{
-					Debug.Log("send");
 					temp.SendMessage("SendDMG", PowerMemory[0]);
+					if(ElecShock)
+						temp.SendMessage("Shock",ShockTime);
 					PowerMemory[0] -= Minus[0];
 					if (PowerMemory[0] <= 0.0f)
 						this.gameObject.SetActive(false);
@@ -86,6 +89,9 @@ public class Skill_Info : MonoBehaviour {
 		{
 			temp = ObjList[j].GetComponentInParent<ObjectLife>();
 			temp.SendMessage("SendDMG", PowerMemory[0]);
+			if(ElecShock)
+				temp.SendMessage("Shock",ShockTime);
+
 		}
 		PowerMemory[1] = 0;
 		this.gameObject.SetActive(false);
@@ -94,12 +100,19 @@ public class Skill_Info : MonoBehaviour {
 	{
 		float Dmg = PowerMemory[2] / DotTime;
 		float time = 0.0f;
+		bool b = false;
 		PowerMemory[2] -= Minus[2];
 		if (PowerMemory[2] <= 0.0f)
 			this.gameObject.SetActive(false);
 		while (time <= DotTime)
 		{
 			obj.SendMessage("SendDMG", Dmg);
+			if (!b)
+			{
+				b = true;
+				if (ElecShock)
+					obj.SendMessage("Shock",ShockTime);
+			}
 			time += Cycle;
 			yield return new WaitForSeconds(Cycle);
 		}

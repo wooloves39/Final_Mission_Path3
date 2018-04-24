@@ -24,6 +24,14 @@ public class BeejaeSkill : MonoBehaviour
 	private AttackMethod handle;
 	public bool handle2 = false;
 
+	private void OnDisable()
+	{
+		for (int i = 0; i < 5; ++i)
+			CoolDown[i] = false;
+
+		Player.LightningBolt = false;
+	}
+
 	private void Awake()
 	{
 		handle = FindObjectOfType<AttackMethod>();
