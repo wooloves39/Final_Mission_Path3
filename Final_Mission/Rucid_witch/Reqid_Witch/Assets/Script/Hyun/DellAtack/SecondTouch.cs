@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SecondTouch : MonoBehaviour {
-	private Teleport teleport;
+	private AttackMethod attackMethod;
 	// Use this for initialization
 	private void Awake()
 	{
-		teleport = gameObject.transform.parent.parent.parent.parent.GetComponent<Teleport>();
+		attackMethod = gameObject.transform.parent.parent.parent.parent.GetComponent<AttackMethod>();
 	}
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("DellAttack"))
 		{
-			if (teleport.getDelltouch())
+			if (attackMethod.getDelltouch())
 			{
 				Debug.Log("활 뒷대가리 맞음");
-				teleport.setDelltouch(false);
-				teleport.setDellcount();
+				attackMethod.setDelltouch(false);
+				attackMethod.setDellcount();
 			}
 		}
 	}

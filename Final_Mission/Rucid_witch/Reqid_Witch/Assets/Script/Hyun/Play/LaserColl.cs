@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserColl : MonoBehaviour {
-	public input_mouse Rtouch;
+	public LinePointChecker Rtouch;
 	private void OnTriggerEnter(Collider other)
 	{
 		PointCheck col;
@@ -13,7 +13,7 @@ public class LaserColl : MonoBehaviour {
 			if (!col.Getcheck())
 			{
 				col.touchon();
-				Rtouch.Upcount(col);
+				Rtouch.UpCount();
 			}
 		}
 	}

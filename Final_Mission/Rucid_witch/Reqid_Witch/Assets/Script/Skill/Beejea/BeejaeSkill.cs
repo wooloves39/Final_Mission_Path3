@@ -21,12 +21,12 @@ public class BeejaeSkill : MonoBehaviour
 	private Collider collider;
 	private PlayerState Player;
 
-	private Teleport handle;
+	private AttackMethod handle;
 	public bool handle2 = false;
 	private void Awake()
 	{
-		handle = FindObjectOfType<Teleport>();
-		handle2 = FindObjectOfType<SkillAttack1>();
+		handle = FindObjectOfType<AttackMethod>();
+		handle2 = FindObjectOfType<Beejea_Verbase_Setting>();
 		Player = FindObjectOfType<PlayerState>();
 		deltaTime = Time.deltaTime;
 		collider = GetComponent<Collider>();

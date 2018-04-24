@@ -343,8 +343,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4498228746727986}
   - component: {fileID: 65027962740155456}
-  - component: {fileID: 114200779849673838}
   - component: {fileID: 54956127380530788}
+  - component: {fileID: 114636250781020650}
   m_Layer: 0
   m_Name: VerbaseObjectL
   m_TagString: Point
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 4751355359674346}
   - component: {fileID: 143614488774149758}
   - component: {fileID: 114012829491516262}
-  - component: {fileID: 114482268410314458}
+  - component: {fileID: 114389319886559842}
   - component: {fileID: 114909036163574718}
   - component: {fileID: 114241106249811784}
   - component: {fileID: 114860832784138446}
@@ -1879,7 +1879,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4911750713959186}
-  - component: {fileID: 114046886991052030}
+  - component: {fileID: 114555785761869224}
   - component: {fileID: 82228177466183348}
   m_Layer: 0
   m_Name: Azura_Skill
@@ -1917,8 +1917,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4464593902900454}
   - component: {fileID: 65455511468335314}
-  - component: {fileID: 114827573848684518}
   - component: {fileID: 54333779137998982}
+  - component: {fileID: 114113320594042546}
   m_Layer: 0
   m_Name: BeejaeObjectL
   m_TagString: Point
@@ -2007,8 +2007,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4124491894810258}
   - component: {fileID: 65042631234894610}
-  - component: {fileID: 114797899292814878}
   - component: {fileID: 54697634830946218}
+  - component: {fileID: 114394292514611250}
   m_Layer: 0
   m_Name: 'VerbaseObjectR '
   m_TagString: Point
@@ -2274,7 +2274,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4735017007609902}
-  - component: {fileID: 114936715095375240}
+  - component: {fileID: 114695895641003858}
   - component: {fileID: 82324878740412324}
   m_Layer: 0
   m_Name: Dell_Skill
@@ -2916,7 +2916,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4532348415776496}
-  - component: {fileID: 114375159217910340}
+  - component: {fileID: 114842851148552876}
   - component: {fileID: 82181476878260876}
   m_Layer: 0
   m_Name: Beejea_Skill
@@ -3159,7 +3159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4354348936816774}
   - component: {fileID: 114972891179054794}
-  - component: {fileID: 114906276677922464}
+  - component: {fileID: 114728514616503982}
   - component: {fileID: 65791384533476614}
   - component: {fileID: 114245568856551718}
   - component: {fileID: 54997720952739096}
@@ -3199,8 +3199,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4750581561296002}
   - component: {fileID: 65921182144812538}
-  - component: {fileID: 114577188744251414}
   - component: {fileID: 54322744841631954}
+  - component: {fileID: 114030010299177362}
   m_Layer: 0
   m_Name: BeejaeObjectR
   m_TagString: Point
@@ -3216,7 +3216,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4253121719398008}
-  - component: {fileID: 114826929255470582}
+  - component: {fileID: 114960612398332522}
   - component: {fileID: 82431228186947382}
   m_Layer: 0
   m_Name: Verbese_Skill
@@ -3581,7 +3581,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4866019884571640}
-  - component: {fileID: 114437512056739278}
+  - component: {fileID: 114158244457927442}
   - component: {fileID: 82706241909530208}
   m_Layer: 0
   m_Name: Seikwan_Skill
@@ -6161,7 +6161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147484443579816}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 4.79, z: 53.94}
+  m_LocalPosition: {x: 0.28, y: 5, z: 39.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4693475038177952}
@@ -12979,6 +12979,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94bf76d8eb752cf42b4ca3804d431618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114030010299177362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1800644647272598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e6763f73d41fc4186278654c12eb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berbash: {fileID: 0}
+  beejae: {fileID: 0}
+  isTouch: 0
 --- !u!114 &114031861059746780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13028,40 +13042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114046886991052030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1447149216583760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f39097dc6e632d49827e6c64cc51e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Points:
-  - {fileID: 114090209532921886}
-  - {fileID: 114038979487461190}
-  - {fileID: 114140154567246276}
-  - {fileID: 114449892874131898}
-  - {fileID: 114591505967092722}
-  - {fileID: 114570617844176850}
-  - {fileID: 114559747528159434}
-  - {fileID: 114192912597834596}
-  - {fileID: 114213376131024084}
-  skill1: 000000000200000003000000
-  skill2: 00000000010000000300000004000000
-  skill3: 000000000200000003000000040000000600000008000000
-  skill4: 000000000200000003000000040000000500000006000000
-  skill5: 0000000001000000030000000400000005000000070000000800000006000000
-  MaxChargingTimes:
-  - 4
-  - 4
-  - 8
-  - 6
-  - 10
-  Complete: {fileID: 1494494354912474}
-  line: {fileID: 120802327680486006}
 --- !u!114 &114065681570460550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13121,6 +13101,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114113320594042546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458118937905696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e6763f73d41fc4186278654c12eb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berbash: {fileID: 0}
+  beejae: {fileID: 0}
+  isTouch: 0
 --- !u!114 &114118597532442960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13166,6 +13160,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114158244457927442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1895701145834416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1b490ff61abdb4c80df8421fb4e08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {fileID: 114952644330052884}
+  - {fileID: 114551607549149936}
+  - {fileID: 114967658770029194}
+  - {fileID: 114035093500094166}
+  - {fileID: 114900875125520912}
+  - {fileID: 114585457694866774}
+  - {fileID: 114725563204105572}
+  - {fileID: 114356062063434402}
+  - {fileID: 114624156775613528}
+  skill1: 000000000100000004000000
+  skill2: 0000000001000000030000000500000006000000
+  skill3: 000000000100000002000000080000000700000003000000
+  skill4: 00000000010000000300000007000000080000000200000006000000
+  skill5: 0000000001000000020000000600000005000000030000000700000008000000
+  MaxChargingTimes:
+  - 4
+  - 2
+  - 2
+  - 3
+  - 6
+  Complete: {fileID: 1558440538852072}
+  line: {fileID: 120412639814554380}
 --- !u!114 &114186295695770276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13237,21 +13265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1125d06d5b485440be4f858547e4bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rtouch: {fileID: 114906276677922464}
---- !u!114 &114200779849673838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1096747378429658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f5c65caea4ba44d992aac1671579bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  berbash: {fileID: 0}
-  beejae: {fileID: 0}
-  isTouch: 0
+  Rtouch: {fileID: 0}
 --- !u!114 &114200925832995568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13601,40 +13615,49 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114375159217910340
+--- !u!114 &114389319886559842
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1720034606953074}
+  m_GameObject: {fileID: 1147484443579816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f39097dc6e632d49827e6c64cc51e54, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c61c54a056faf442b8af9d8f4e10d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
-  - {fileID: 114996816886748400}
-  - {fileID: 114489429664864052}
-  - {fileID: 114556287545395164}
-  - {fileID: 114206556293127070}
-  - {fileID: 114757631484634862}
-  - {fileID: 114346742273303432}
-  - {fileID: 114084756998026400}
-  - {fileID: 114323189459641054}
-  - {fileID: 114579006662825272}
-  skill1: 00000000010000000300000005000000
-  skill2: 00000000020000000400000003000000
-  skill3: 000000000200000004000000030000000100000006000000
-  skill4: 00000000020000000400000006000000010000000300000005000000
-  skill5: 0000000001000000030000000400000002000000050000000700000008000000
-  MaxChargingTimes:
-  - 2
-  - 2
-  - 4
-  - 3
-  - 10
-  Complete: {fileID: 1487331848761664}
-  line: {fileID: 120211133130822230}
+  Hands:
+  - {fileID: 1463344759898758}
+  - {fileID: 1791477801388858}
+  HeadTracker: {fileID: 114303405151076664}
+  Beejae_Marker:
+  - {fileID: 1458118937905696}
+  - {fileID: 1800644647272598}
+  Verbase_Marker:
+  - {fileID: 1096747378429658}
+  - {fileID: 1484478718415966}
+  AzuraBallPrefab: {fileID: 1672597136059964, guid: d06c184cebac8c0449f1bc393a77aa18,
+    type: 2}
+  ArrowPrefab: {fileID: 1902216250298378, guid: 7032b9c40bc7e7d48953518710c780f3,
+    type: 2}
+  BeejaePrefab: {fileID: 0}
+  RayLength: 50
+  PlayerTarget: {fileID: 114136985529311904}
+  typecheck: {fileID: 114728514616503982}
+--- !u!114 &114394292514611250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484478718415966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e6763f73d41fc4186278654c12eb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berbash: {fileID: 0}
+  beejae: {fileID: 0}
+  isTouch: 0
 --- !u!114 &114411363937411424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13657,40 +13680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02df6ee1de61eee4a895903b2be90518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114437512056739278
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1895701145834416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f39097dc6e632d49827e6c64cc51e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Points:
-  - {fileID: 114952644330052884}
-  - {fileID: 114551607549149936}
-  - {fileID: 114967658770029194}
-  - {fileID: 114035093500094166}
-  - {fileID: 114900875125520912}
-  - {fileID: 114585457694866774}
-  - {fileID: 114725563204105572}
-  - {fileID: 114356062063434402}
-  - {fileID: 114624156775613528}
-  skill1: 000000000100000004000000
-  skill2: 0000000001000000030000000500000006000000
-  skill3: 000000000100000002000000080000000700000003000000
-  skill4: 00000000010000000300000007000000080000000200000006000000
-  skill5: 0000000001000000020000000600000005000000030000000700000008000000
-  MaxChargingTimes:
-  - 4
-  - 2
-  - 2
-  - 3
-  - 6
-  Complete: {fileID: 1558440538852072}
-  line: {fileID: 120412639814554380}
 --- !u!114 &114438664992387576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13879,35 +13868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114482268410314458
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147484443579816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3475e321953cfbd4fad11b66fdf8aa5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hands:
-  - {fileID: 1463344759898758}
-  - {fileID: 1791477801388858}
-  HeadTracker: {fileID: 114303405151076664}
-  Beejae_Marker:
-  - {fileID: 1458118937905696}
-  - {fileID: 1800644647272598}
-  Verbase_Marker:
-  - {fileID: 1096747378429658}
-  - {fileID: 1484478718415966}
-  AzuraBallPrefab: {fileID: 1672597136059964, guid: d06c184cebac8c0449f1bc393a77aa18,
-    type: 2}
-  ArrowPrefab: {fileID: 1902216250298378, guid: 7032b9c40bc7e7d48953518710c780f3,
-    type: 2}
-  BeejaePrefab: {fileID: 0}
-  RayLength: 50
-  PlayerTarget: {fileID: 114136985529311904}
-  typecheck: {fileID: 114906276677922464}
 --- !u!114 &114489429664864052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13986,6 +13946,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 1
+--- !u!114 &114555785761869224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447149216583760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1b490ff61abdb4c80df8421fb4e08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {fileID: 114090209532921886}
+  - {fileID: 114038979487461190}
+  - {fileID: 114140154567246276}
+  - {fileID: 114449892874131898}
+  - {fileID: 114591505967092722}
+  - {fileID: 114570617844176850}
+  - {fileID: 114559747528159434}
+  - {fileID: 114192912597834596}
+  - {fileID: 114213376131024084}
+  skill1: 000000000200000003000000
+  skill2: 00000000010000000300000004000000
+  skill3: 000000000200000003000000040000000600000008000000
+  skill4: 000000000200000003000000040000000500000006000000
+  skill5: 0000000001000000030000000400000005000000070000000800000006000000
+  MaxChargingTimes:
+  - 4
+  - 4
+  - 8
+  - 6
+  - 10
+  Complete: {fileID: 1494494354912474}
+  line: {fileID: 120802327680486006}
 --- !u!114 &114556287545395164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14019,20 +14013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114577188744251414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1800644647272598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f5c65caea4ba44d992aac1671579bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  berbash: {fileID: 0}
-  beejae: {fileID: 0}
-  isTouch: 0
 --- !u!114 &114578150347343264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14141,6 +14121,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114636250781020650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096747378429658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e6763f73d41fc4186278654c12eb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berbash: {fileID: 0}
+  beejae: {fileID: 0}
+  isTouch: 0
 --- !u!114 &114659565870245048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14238,6 +14232,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114695895641003858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565098173918500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1b490ff61abdb4c80df8421fb4e08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {fileID: 114794373622432834}
+  - {fileID: 114606570574290292}
+  - {fileID: 114750891698674358}
+  - {fileID: 114411363937411424}
+  - {fileID: 114343377863648360}
+  - {fileID: 114151498630116638}
+  - {fileID: 114772858993465952}
+  - {fileID: 114200925832995568}
+  - {fileID: 114366168616502138}
+  skill1: 000000000100000003000000
+  skill2: 0000000002000000040000000500000003000000
+  skill3: 0000000002000000010000000300000005000000
+  skill4: 000000000200000006000000040000000300000007000000
+  skill5: 000000000100000007000000030000000400000002000000060000000500000008000000
+  MaxChargingTimes:
+  - 8
+  - 4
+  - 4
+  - 6
+  - 20
+  Complete: {fileID: 1728025920443878}
+  line: {fileID: 120687412368038016}
 --- !u!114 &114725563204105572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14249,6 +14277,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114728514616503982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791477801388858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4beb8b6cb6b5941b682f2569775b1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skills:
+  - {fileID: 114555785761869224}
+  - {fileID: 114158244457927442}
+  - {fileID: 114842851148552876}
+  - {fileID: 114695895641003858}
+  - {fileID: 114960612398332522}
 --- !u!114 &114738717189413616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14304,20 +14349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114797899292814878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1484478718415966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f5c65caea4ba44d992aac1671579bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  berbash: {fileID: 0}
-  beejae: {fileID: 0}
-  isTouch: 0
 --- !u!114 &114798474627135780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14329,7 +14360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa32644d4a362a647a35615221c71c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Draw_Rtouch: {fileID: 114906276677922464}
+  Draw_Rtouch: {fileID: 114728514616503982}
   MpMaterial:
   - {fileID: 2100000, guid: b97464cfa3d795a4996295ad716be9ac, type: 2}
   - {fileID: 2100000, guid: 873795fc4390ea547bd3b1981f38f6f6, type: 2}
@@ -14344,54 +14375,6 @@ MonoBehaviour:
   Dell:
   - {fileID: 1140856494651126}
   - {fileID: 1748030415068898}
---- !u!114 &114826929255470582
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1801676722605522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f39097dc6e632d49827e6c64cc51e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Points:
-  - {fileID: 114914209630246154}
-  - {fileID: 114935352884987116}
-  - {fileID: 114695768335640472}
-  - {fileID: 114118597532442960}
-  - {fileID: 114942529222546956}
-  - {fileID: 114533017935544280}
-  - {fileID: 114195738328661982}
-  - {fileID: 114738717189413616}
-  - {fileID: 114224344804917282}
-  skill1: 000000000100000003000000
-  skill2: 0000000002000000040000000300000001000000
-  skill3: 000000000100000003000000040000000500000006000000
-  skill4: 000000000100000003000000040000000500000007000000
-  skill5: 00000000020000000400000003000000060000000700000008000000
-  MaxChargingTimes:
-  - 4
-  - 1
-  - 4
-  - 6
-  - 10
-  Complete: {fileID: 1258198433889138}
-  line: {fileID: 120808836441495450}
---- !u!114 &114827573848684518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1458118937905696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f5c65caea4ba44d992aac1671579bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  berbash: {fileID: 0}
-  beejae: {fileID: 0}
-  isTouch: 0
 --- !u!114 &114834190244547586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14410,6 +14393,40 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 39245139476b9427ab5d40ac04f08305, type: 3}
   - {fileID: 8300000, guid: 0dac35a0466ff4cb9a3d2c006dc956af, type: 3}
   - {fileID: 8300000, guid: 4c83c48917ba64a0596defd48992603c, type: 3}
+--- !u!114 &114842851148552876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720034606953074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1b490ff61abdb4c80df8421fb4e08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {fileID: 114996816886748400}
+  - {fileID: 114489429664864052}
+  - {fileID: 114556287545395164}
+  - {fileID: 114206556293127070}
+  - {fileID: 114757631484634862}
+  - {fileID: 114346742273303432}
+  - {fileID: 114084756998026400}
+  - {fileID: 114323189459641054}
+  - {fileID: 114579006662825272}
+  skill1: 00000000010000000300000005000000
+  skill2: 00000000020000000400000003000000
+  skill3: 000000000200000004000000030000000100000006000000
+  skill4: 00000000020000000400000006000000010000000300000005000000
+  skill5: 0000000001000000030000000400000002000000050000000700000008000000
+  MaxChargingTimes:
+  - 2
+  - 2
+  - 4
+  - 3
+  - 10
+  Complete: {fileID: 1487331848761664}
+  line: {fileID: 120211133130822230}
 --- !u!114 &114860832784138446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14489,23 +14506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114906276677922464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1791477801388858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c017cd59dd5fd847ab45b36b48a583f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Skills:
-  - {fileID: 114046886991052030}
-  - {fileID: 114437512056739278}
-  - {fileID: 114375159217910340}
-  - {fileID: 114826929255470582}
-  - {fileID: 114936715095375240}
 --- !u!114 &114909036163574718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14555,40 +14555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114936715095375240
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565098173918500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f39097dc6e632d49827e6c64cc51e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Points:
-  - {fileID: 114794373622432834}
-  - {fileID: 114606570574290292}
-  - {fileID: 114750891698674358}
-  - {fileID: 114411363937411424}
-  - {fileID: 114343377863648360}
-  - {fileID: 114151498630116638}
-  - {fileID: 114772858993465952}
-  - {fileID: 114200925832995568}
-  - {fileID: 114366168616502138}
-  skill1: 000000000100000003000000
-  skill2: 0000000002000000040000000500000003000000
-  skill3: 0000000002000000010000000300000005000000
-  skill4: 000000000200000006000000040000000300000007000000
-  skill5: 000000000100000007000000030000000400000002000000060000000500000008000000
-  MaxChargingTimes:
-  - 8
-  - 4
-  - 4
-  - 6
-  - 20
-  Complete: {fileID: 1728025920443878}
-  line: {fileID: 120687412368038016}
 --- !u!114 &114942529222546956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14624,6 +14590,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a17e0908b4e165b44900db33f8755611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114960612398332522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801676722605522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1b490ff61abdb4c80df8421fb4e08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {fileID: 114914209630246154}
+  - {fileID: 114935352884987116}
+  - {fileID: 114695768335640472}
+  - {fileID: 114118597532442960}
+  - {fileID: 114942529222546956}
+  - {fileID: 114533017935544280}
+  - {fileID: 114195738328661982}
+  - {fileID: 114738717189413616}
+  - {fileID: 114224344804917282}
+  skill1: 000000000100000003000000
+  skill2: 0000000002000000040000000300000001000000
+  skill3: 000000000100000003000000040000000500000006000000
+  skill4: 000000000100000003000000040000000500000007000000
+  skill5: 00000000020000000400000003000000060000000700000008000000
+  MaxChargingTimes:
+  - 4
+  - 1
+  - 4
+  - 6
+  - 10
+  Complete: {fileID: 1258198433889138}
+  line: {fileID: 120808836441495450}
 --- !u!114 &114966432206219004
 MonoBehaviour:
   m_ObjectHideFlags: 1

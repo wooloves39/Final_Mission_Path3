@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillChange : MonoBehaviour
 {
-	public input_mouse Draw_Rtouch;
+	public LineDraw Draw_Rtouch;
 	public Material[] MpMaterial;
 	private Color Color;
 	public GameObject ChangeParticle;
@@ -24,7 +24,7 @@ public class SkillChange : MonoBehaviour
 		HandColor[2] = new Color(0, 1, 0);
 		HandColor[3]= new Color(1, 0, 0);
 		HandColor[4] = new Color(0, 1, 1);
-		Color = HandColor[input_mouse.curType];
+		Color = HandColor[LineDraw.curType];
 		for (int i = 0; i < MpMaterial.Length; ++i)
 			MpMaterial[i].SetColor("_EmissionColor", Color);
 	}
@@ -35,7 +35,7 @@ public class SkillChange : MonoBehaviour
 		if (InputManager_JHW.XButtonDown())
 		{
 			Draw_Rtouch.myType();
-			Color = HandColor[input_mouse.curType];
+			Color = HandColor[LineDraw.curType];
 			for (int i = 0; i < MpMaterial.Length; ++i)
 				MpMaterial[i].SetColor("_EmissionColor", Color);
 			ChangeParticle.SetActive(true);
@@ -53,11 +53,11 @@ public class SkillChange : MonoBehaviour
 		Dell[1].SetActive(false);
 		Seikwan.SetActive(false);
 		Hand[0].SetActive(false);
-		if (input_mouse.curType == 1)
+		if (LineDraw.curType == 1)
 		{
 			Seikwan.SetActive(true);
 		}
-		else if(input_mouse.curType == 4)
+		else if(LineDraw.curType == 4)
 		{
 			Hand[1].SetActive(false);
 			Dell[0].SetActive(true);
