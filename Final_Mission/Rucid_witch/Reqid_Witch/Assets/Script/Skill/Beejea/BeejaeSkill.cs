@@ -23,6 +23,7 @@ public class BeejaeSkill : MonoBehaviour
 
 	private AttackMethod handle;
 	public bool handle2 = false;
+
 	private void Awake()
 	{
 		handle = FindObjectOfType<AttackMethod>();
@@ -33,7 +34,7 @@ public class BeejaeSkill : MonoBehaviour
 	}
 	private void Update()
 	{
-		if(handle.Beejae_Marker[0].gameObject.activeInHierarchy == false && handle.Beejae_Marker[1].gameObject.activeInHierarchy == false && handle2 == true)
+		if(LineDraw.curType == 2 &&handle.Beejae_Marker[0].gameObject.activeInHierarchy == false && handle.Beejae_Marker[1].gameObject.activeInHierarchy == false && handle2 == true)
 		{
 			handle2 = false;
 			shoot(handle.typecheck.Skills[0].getCurrentSkill(), handle.PlayerTarget.getMytarget(), 0.0f);
@@ -45,6 +46,8 @@ public class BeejaeSkill : MonoBehaviour
 		target = targets;
 		skill = skillIndex;
 		handDis = handDistance;
+		bool fail = false;
+		bool NoMp = false;
 		switch (skill)
 		{
 			case 0:
@@ -56,6 +59,14 @@ public class BeejaeSkill : MonoBehaviour
 						StartCoroutine("SkyThunder");
 						Player.Mp -= 20;
 					}
+					else
+					{
+						fail = true;
+					}
+				}
+				else
+				{
+					NoMp = true;
 				}
 				break;
 			case 2:
@@ -66,6 +77,14 @@ public class BeejaeSkill : MonoBehaviour
 						StartCoroutine("Buff");
 						Player.Mp -= 40;
 					}
+					else
+					{
+						fail = true;
+					}
+				}
+				else
+				{
+					NoMp = true;
 				}
 				break;
 			case 3:
@@ -76,6 +95,14 @@ public class BeejaeSkill : MonoBehaviour
 						StartCoroutine("ThunderShock");
 						Player.Mp -= 25;
 					}
+					else
+					{
+						fail = true;
+					}
+				}
+				else
+				{
+					NoMp = true;
 				}
 				break;
 			case 4:
@@ -86,6 +113,14 @@ public class BeejaeSkill : MonoBehaviour
 						StartCoroutine("ThunderBall");
 						Player.Mp -= 40;
 					}
+					else
+					{
+						fail = true;
+					}
+				}
+				else
+				{
+					NoMp = true;
 				}
 				break;
 			case 5:
@@ -97,9 +132,26 @@ public class BeejaeSkill : MonoBehaviour
 
 						Player.Mp -= 110;
 					}
+					else
+					{
+						fail = true;
+					}
+				}
+				else
+				{
+					NoMp = true;
 				}
 				break;
 		}
+		if (fail)
+		{
+			Debug.Log("쿨타임 처리");
+		}
+		if (NoMp)
+		{
+			Debug.Log("엠피가 부족");
+		}
+
 		if (skill > 1)
 			UseOtherObject();
 		target = null;
