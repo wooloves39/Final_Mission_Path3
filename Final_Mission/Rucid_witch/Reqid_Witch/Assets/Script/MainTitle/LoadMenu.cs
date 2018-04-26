@@ -11,8 +11,13 @@ public class LoadMenu : MonoBehaviour
 	public bool confirm = false;
 	int index = 0;
 	// Use this for initialization
-
+	public AudioClip[] clips;
+	private AudioSource source;
 	// Update is called once per frame
+	private void Awake()
+	{
+		source = GetComponent<AudioSource>();
+	}
 	void OnEnable()
 	{
 		confirm = false;
@@ -23,6 +28,8 @@ public class LoadMenu : MonoBehaviour
 	{
 		if (InputManager_JHW.AButtonDown())
 		{
+			source.clip = clips[0];
+			source.Play();
 			if (index == 0)
 			{
 				confirm = true;
@@ -46,6 +53,8 @@ public class LoadMenu : MonoBehaviour
 		}
 		if (InputManager_JHW.BButtonDown())
 		{
+			source.clip = clips[1];
+			source.Play();
 			if (index == 0)
 			{
 				index = 3;
@@ -78,12 +87,19 @@ public class LoadMenu : MonoBehaviour
 
 				if (Stick.x > 0)
 					if (index != 2 && index != 3)
+					{
 						index++;
+						source.clip = clips[2];
+						source.Play();
+					}
 
 				if (Stick.x < 0)
 					if (index != 0 && index != 3)
+					{
 						index--;
-
+						source.clip = clips[2];
+						source.Play();
+					}
 				for (int i = 0; i < Select.Length; ++i)
 				{
 					Select[i].SetActive(false);

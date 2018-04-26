@@ -8,9 +8,12 @@ public class newConfirmMenu : MonoBehaviour {
 	int index = 1;
 	public GameObject[] Select;
 	public GameObject main;
+	public AudioClip[] clips;
+	private AudioSource source;
 	private void Awake()
 	{
 		sceneChange = FindObjectOfType<SceneChange>();
+		source = GetComponent<AudioSource>();
 	}
 	void OnEnable()
 	{
@@ -23,6 +26,7 @@ public class newConfirmMenu : MonoBehaviour {
 		{
 			if (index == 1)
 			{
+				source.Play();
 				Singletone.Instance.stage = -1;
 				Singletone.Instance.Myskill=new int[]{ 0,-1,-1};
 				sceneChange.sceneChange("StartNew");

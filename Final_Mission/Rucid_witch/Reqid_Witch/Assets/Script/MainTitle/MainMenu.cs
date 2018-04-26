@@ -11,7 +11,11 @@ public class MainMenu : MonoBehaviour
 	public GameObject newConfirm;
 	public bool confirm = false;
 	int index = 0;
-
+	private AudioSource source;
+	private void Awake()
+	{
+		source = GetComponent<AudioSource>();
+	}
 	void OnEnable()
 	{
 		confirm = false;
@@ -21,6 +25,7 @@ public class MainMenu : MonoBehaviour
 	{
 		if (InputManager_JHW.AButtonDown())
 		{
+			source.Play();
 			if (index == 0)
 			{
 				confirm = true;
@@ -54,11 +59,16 @@ public class MainMenu : MonoBehaviour
 
 				if (Stick.z < 0)
 					if (index != 3)
+					{
 						index++;
-
+						source.Play();
+					}
 				if (Stick.z > 0)
 					if (index != 0)
+					{
 						index--;
+						source.Play();
+					}
 
 				for (int i = 0; i < Select.Length; ++i)
 				{
