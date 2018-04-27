@@ -10,6 +10,7 @@ public class ObjectLife : MonoBehaviour {
 	public float Speed;
 	public float BattleSpeed;
 	public float Range;
+	MonsterSoundSetting MobSound;
 
 	public float Attack;
 	public float[] SkillDMG = {0,0,0,0};
@@ -22,6 +23,7 @@ public class ObjectLife : MonoBehaviour {
 
 	private void Start()
 	{
+		MobSound = GetComponentInChildren<MonsterSoundSetting>();
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -39,6 +41,7 @@ public class ObjectLife : MonoBehaviour {
 		if (!MomentInvincible)
 		{
 			Hp -= dmg;
+			MobSound.PlaySound(1);
 			StartCoroutine("SetInvincible");
 		}
 	}

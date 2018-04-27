@@ -7,7 +7,7 @@ public class PlayerSoundSetting : MonoBehaviour {
 	private soundPack sound;
 	public AudioClip[] sounds;
 	private AudioSource audio;
-	private void Awake()
+	private void Start()
 	{
 		sound = soundPack.AttackSkill;
 		audio = GetComponent<AudioSource>();

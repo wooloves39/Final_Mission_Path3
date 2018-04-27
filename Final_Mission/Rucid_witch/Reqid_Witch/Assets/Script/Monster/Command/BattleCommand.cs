@@ -14,6 +14,7 @@ public class BattleCommand : MonoBehaviour {
 	private PlayerState Player;
 	private ObjectLife MobInfo;
 	private Animator ani;
+	MonsterSoundSetting MobSound;
 
 	public GameObject MobObj;
 	public GameObject[] skill;
@@ -22,6 +23,7 @@ public class BattleCommand : MonoBehaviour {
 
 	void Start()
 	{
+		MobSound = GetComponentInChildren<MonsterSoundSetting>();
 		GameObject temp = FindObjectOfType<PlayerState>().gameObject;
 		Player = temp.GetComponent<PlayerState>();
 		MobInfo = GetComponentInChildren<ObjectLife>();
@@ -43,6 +45,7 @@ public class BattleCommand : MonoBehaviour {
 		agent.speed = 0;
 		TimeLimit = T;
 		time = 0.0f;
+		MobSound.PlaySound(2);
 		if(b)
 			StartCoroutine("RangeAtt");
 		else
