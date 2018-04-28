@@ -7,9 +7,11 @@ public class Logic_AniControll : MonoBehaviour {
 	private SkillFollower skillFollower;
 	private int selectSkill;
 	private bool cor = false;
+	private AudioSource source;
 	// Use this for initialization
 	private void Awake()
 	{
+		source = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
 		skillFollower = transform.parent.GetComponent<SkillFollower>();
 	}
@@ -51,7 +53,8 @@ public class Logic_AniControll : MonoBehaviour {
 			Stick = InputManager_JHW.MainJoystick();
 			if (Stick.z > 0.3f|| Stick.x > 0.3f)
 			{
-				++selectSkill;
+				source.Play();
+				   ++selectSkill;
 				if (selectSkill >= 5)
 				{
 					selectSkill = 0;
@@ -60,6 +63,7 @@ public class Logic_AniControll : MonoBehaviour {
 			}
 			else if (Stick.z < -0.3f|| Stick.x < -0.3f)
 			{
+				source.Play();
 				--selectSkill;
 				if (selectSkill <= -1)
 				{
