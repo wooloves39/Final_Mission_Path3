@@ -6,6 +6,7 @@ public class MonsterSoundSetting : MonoBehaviour {
 
 	public AudioClip[] sounds;
 	public float AttackDelay = 0.0f;
+	public float PlusSound = 1.0f;
 	private AudioSource[] audio;
 	private float sound = Singletone.Instance.Sound;
 	// Use this for initialization
@@ -37,7 +38,7 @@ public class MonsterSoundSetting : MonoBehaviour {
 				audio[0].volume = sound;
 				if (num == 0)
 				{
-					audio[0].volume = sound*0.5f;
+					audio[0].volume = sound*PlusSound;
 					audio[0].loop = true;
 				}
 				else
