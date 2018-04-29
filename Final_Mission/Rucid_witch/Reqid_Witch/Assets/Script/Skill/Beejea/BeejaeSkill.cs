@@ -18,6 +18,7 @@ public class BeejaeSkill : MonoBehaviour
 
 	private Collider collider;
 	private PlayerState Player;
+	private LineDraw L;
 
 	private AttackMethod handle;
 	public bool handle2 = false;
@@ -38,13 +39,15 @@ public class BeejaeSkill : MonoBehaviour
 		Player = FindObjectOfType<PlayerState>();
 		deltaTime = Time.deltaTime;
 		collider = GetComponent<Collider>();
+		 L = FindObjectOfType<LineDraw>();
 	}
 	private void Update()
 	{
 		if(LineDraw.curType == 2 &&handle.Beejae_Marker[0].gameObject.activeInHierarchy == false && handle.Beejae_Marker[1].gameObject.activeInHierarchy == false && handle2 == true)
 		{
 			handle2 = false;
-			shoot(handle.typecheck.Skills[0].getCurrentSkill(), handle.PlayerTarget.getMytarget(), 0.0f);
+			Debug.Log(L.Skills[2].getCurrentSkill());
+			shoot(L.Skills[2].getCurrentSkill(), handle.PlayerTarget.getMytarget(), 0.0f);
 		}
 	}
 
@@ -57,14 +60,13 @@ public class BeejaeSkill : MonoBehaviour
 		bool NoMp = false;
 		switch (skill)
 		{
-			case 0:
 			case 1:
-				if (Player.Mp >= 20)
+				if (Player.Mp >= 8)
 				{
 					if (!CoolDown[0])
 					{
 						StartCoroutine("SkyThunder");
-						Player.Mp -= 20;
+						Player.Mp -= 8;
 					}
 					else
 					{
@@ -77,12 +79,12 @@ public class BeejaeSkill : MonoBehaviour
 				}
 				break;
 			case 2:
-				if (Player.Mp >= 40)
+				if (Player.Mp >= 20)
 				{
 					if (!CoolDown[1])
 					{
 						StartCoroutine("Buff");
-						Player.Mp -= 40;
+						Player.Mp -= 20;
 					}
 					else
 					{
@@ -95,12 +97,12 @@ public class BeejaeSkill : MonoBehaviour
 				}
 				break;
 			case 3:
-				if (Player.Mp >= 25)
+				if (Player.Mp >= 15)
 				{
 					if (!CoolDown[2])
 					{
 						StartCoroutine("ThunderShock");
-						Player.Mp -= 25;
+						Player.Mp -= 15;
 					}
 					else
 					{
@@ -113,12 +115,12 @@ public class BeejaeSkill : MonoBehaviour
 				}
 				break;
 			case 4:
-				if (Player.Mp >= 40)
+				if (Player.Mp >= 20)
 				{
 					if (!CoolDown[3])
 					{
 						StartCoroutine("ThunderBall");
-						Player.Mp -= 40;
+						Player.Mp -=20;
 					}
 					else
 					{
@@ -131,13 +133,13 @@ public class BeejaeSkill : MonoBehaviour
 				}
 				break;
 			case 5:
-				if (Player.Mp >= 110)
+				if (Player.Mp >= 50)
 				{
 					if (!CoolDown[4])
 					{
 						StartCoroutine("BlackThunder");
 
-						Player.Mp -= 110;
+						Player.Mp -= 50;
 					}
 					else
 					{
@@ -158,9 +160,6 @@ public class BeejaeSkill : MonoBehaviour
 		{
 			Debug.Log("엠피가 부족");
 		}
-
-		if (skill > 1)
-			UseOtherObject();
 		target = null;
 	}
 	IEnumerator SkyThunder()
@@ -178,7 +177,7 @@ public class BeejaeSkill : MonoBehaviour
 		magic[0].SetActive(false);
 
 		yield return new WaitForSeconds(CoolTime[0]-1);
-		CoolDown[0] = true;
+		CoolDown[0] = false;
 	}
 
 	IEnumerator Buff()
@@ -195,7 +194,9 @@ public class BeejaeSkill : MonoBehaviour
 		magic[2].transform.position = target.transform.position;
 		magic[2].SetActive(true);
 		CoolDown[2] = true;
-		yield return new WaitForSeconds(CoolTime[2]);
+		yield return new WaitForSeconds(2.0f);
+		magic[2].SetActive(false);
+		yield return new WaitForSeconds(CoolTime[2] - 2);
 		CoolDown[2] = false;
 	}
 	IEnumerator ThunderBall()
@@ -203,7 +204,9 @@ public class BeejaeSkill : MonoBehaviour
 		magic[3].transform.position = target.transform.position;
 		magic[3].SetActive(true);
 		CoolDown[3] = true;
-		yield return new WaitForSeconds(CoolTime[3]);
+		yield return new WaitForSeconds(3.0f);
+		magic[3].SetActive(false);
+		yield return new WaitForSeconds(CoolTime[3]-3);
 		CoolDown[3] = false;
 	}
 	IEnumerator BlackThunder()
@@ -211,12 +214,10 @@ public class BeejaeSkill : MonoBehaviour
 		magic[4].transform.position = target.transform.position;
 		magic[4].SetActive(true);
 		CoolDown[4] = true;
-		yield return new WaitForSeconds(CoolTime[3]);
+		yield return new WaitForSeconds(2.0f);
+		magic[4].SetActive(false);
+		yield return new WaitForSeconds(CoolTime[4]-2);
 		CoolDown[4] = false;
-	}
-	private void UseOtherObject()
-	{
-		collider.enabled = false;
 	}
 	IEnumerator SkillSound(int num,float delay)
 	{

@@ -46,12 +46,12 @@ public class Targetting : MonoBehaviour
 				if(TargetMonster[i].GetComponentInChildren<HPBar>() != null)
 					TargetMonster[i].GetComponentInChildren<HPBar>().taget= false;
 			}
-			//Mytarget.GetComponentInChildren<HPBar>().taget = true;
+			Mytarget.GetComponentInChildren<HPBar>().taget = true;
 		}
-		//else
-		//{
-		//	targetPoint.SetActive(false);
-		//}
+		else
+		{
+			targetPoint.SetActive(false);
+		}
 	}
 	private void OnTriggerEnter(Collider other)
 	{
