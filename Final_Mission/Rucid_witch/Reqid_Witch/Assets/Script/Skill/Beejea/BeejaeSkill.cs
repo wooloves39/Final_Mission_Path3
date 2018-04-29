@@ -6,17 +6,15 @@ public class BeejaeSkill : MonoBehaviour
 {
 	public GameObject[] magic;
 	public int[] CoolTime = {8,80,10,20,120};
-
+	public AudioSource audio;
+	public AudioClip[] sound;
 	private bool[] CoolDown = {false,false,false,false,false};
 
-	private bool WorkON = false;
 	private int skill;
 	private GameObject target;
 	private float handDis;
 	float deltaTime;
 
-	private bool Shoot = false;
-	private bool del_timer = false;
 
 	private Collider collider;
 	private PlayerState Player;
@@ -34,6 +32,7 @@ public class BeejaeSkill : MonoBehaviour
 
 	private void Awake()
 	{
+		audio = GetComponent<AudioSource>();
 		handle = FindObjectOfType<AttackMethod>();
 		handle2 = FindObjectOfType<Beejea_Verbase_Setting>();
 		Player = FindObjectOfType<PlayerState>();
@@ -218,5 +217,12 @@ public class BeejaeSkill : MonoBehaviour
 	private void UseOtherObject()
 	{
 		collider.enabled = false;
+	}
+	IEnumerator SkillSound(int num,float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		audio.clip = sound[num];
+		audio.volume = Singletone.Instance.Sound;
+		audio.Play();
 	}
 }

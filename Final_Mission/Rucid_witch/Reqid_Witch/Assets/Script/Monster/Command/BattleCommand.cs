@@ -168,4 +168,5 @@ public class BattleCommand : MonoBehaviour {
 			yield return new WaitForSeconds(temp);
 		}
 	}
+
 }

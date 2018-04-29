@@ -18,7 +18,7 @@ public class ObjectLife : MonoBehaviour {
 	public bool MomentInvincible = false;//순간무적
 	public float InvincibleTime = 0.2f;//순간무적 시간
 	
-
+	public GameObject ElecShock;
 	private Animator ani;
 
 	private void Start()
@@ -51,5 +51,24 @@ public class ObjectLife : MonoBehaviour {
 		yield return new WaitForSeconds(InvincibleTime);
 		MomentInvincible = false;
 	}
+	void Shock(float t)
+	{
+		StartCoroutine("ShockSound",t);
+	}
+	IEnumerator ShockSound(float t)
+	{
+		float time = 0;
+		float Cycle1 = 0.15f;
+		float Cycle2 = 0.10f;
+		while (time < t)
+		{
+			yield return new WaitForSeconds(Cycle1);
 
+			ElecShock.SetActive(true);
+			MobSound.PlaySound(4);
+			yield return new WaitForSeconds(Cycle2);
+			time += (Cycle1 + Cycle2);
+			ElecShock.SetActive(false);
+		}
+	}
 }
