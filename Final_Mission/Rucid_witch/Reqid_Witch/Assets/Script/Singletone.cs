@@ -28,7 +28,11 @@ public class Singletone
 	public string name;
 	public int stage = 1;
 	public string saveTime;
+<<<<<<< HEAD
 	public int[] Myskill = { 0 , 1, -1};
+=======
+	public int[] Myskill = { 0 , 2, 3};
+>>>>>>> 0ea61c148cd5b468e5a3118ff6f06e1c0ff34bd2
 	public void Save()
 	{
 		string saveTime = System.DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
