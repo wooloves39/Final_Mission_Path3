@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackMethod : MonoBehaviour {
+public class AttackMethod : MonoBehaviour
+{
 
 	private PlayerSoundSetting playerSound;
 	//0이 왼손 1이 오른손
@@ -137,16 +138,13 @@ public class AttackMethod : MonoBehaviour {
 			{
 				if (Arrow[i])
 				{
-					if (Arrow[i].GetComponent<Arrow>())
+					if (Arrow[i].GetComponent<SeiKwanSkill>().IsDelete())
 					{
-						if (Arrow[i].GetComponent<Arrow>().IsDelete())
-						{
-							Arrow[i].GetComponent<Arrow>().resetArrow();
-							Arrowpool.RemoveItem(Arrow[i]);
-							Arrow[i] = null;
-						}
-						//어떤 조건에 의거 Arrow삭제
+						Arrow[i].GetComponent<SeiKwanSkill>().resetDelete();
+						Arrowpool.RemoveItem(Arrow[i]);
+						Arrow[i] = null;
 					}
+					//어떤 조건에 의거 Arrow삭제
 				}
 			}
 		}
@@ -314,7 +312,6 @@ public class AttackMethod : MonoBehaviour {
 						Arrow[i] = Arrowpool.NewItem();
 						Arrow[i].transform.position = Hands[0].transform.position;
 						Rigidbody r = Arrow[i].GetComponent<Rigidbody>();
-						Arrow[i].GetComponent<Arrow>().setDelTime(2.0f);
 						r.useGravity = false;
 						r.velocity = new Vector3(0, 0, 0);
 						break;
@@ -328,26 +325,31 @@ public class AttackMethod : MonoBehaviour {
 				float handDis = Vector3.Distance(Hands[0].transform.position, Hands[1].transform.position);
 				if ((!InputManager_JHW.RTriggerOn() && InputManager_JHW.LTriggerOn()))
 				{
-					if (!Arrow[ArrowNum].GetComponent<Arrow>().IsShooting())
+					if (!Arrow[ArrowNum].GetComponent<SeiKwanSkill>().IsShoot())
 					{
-						Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
-						Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
+						//Rigidbody r = Arrow[ArrowNum].GetComponent<Rigidbody>();
+						//Vector3 Arrowforward = Arrow[ArrowNum].transform.forward;
 						GameObject myTarget = PlayerTarget.getMytarget();
-						Vector3 TargettingDir = Vector3.zero;
+						//Vector3 TargettingDir = Vector3.zero;
 						if (myTarget != null)
-							TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
-																																//Debug.Log(Vector3.Dot(TargettingDir, Arrowforward));
-						if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f || TargettingDir == Vector3.zero)
 						{
-							r.velocity = Arrowforward * 15f * handDis;
-						}
-						else
-						{
-							TargettingDir += Arrowforward;
-							r.velocity = TargettingDir * 15f * handDis;
+							playerSound.PlayerSound(PlayerSoundSetting.soundPack.AttackSkill);
+							Arrow[ArrowNum].GetComponent<SeiKwanSkill>().shoot(typecheck.Skills[1].getCurrentSkill(), myTarget, handDis);
 
 						}
-						Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
+						//	TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
+						//Debug.Log(Vector3.Dot(TargettingDir, Arrowforward));
+						//if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f || TargettingDir == Vector3.zero)
+						//{
+						//	r.velocity = Arrowforward * 15f * handDis;
+						//}
+						//else
+						//{
+						//	TargettingDir += Arrowforward;
+						//	r.velocity = TargettingDir * 15f * handDis;
+
+						//}
+						//Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
 						instance = false;
 						distance = 0.0f;
 						MyState.CharginTimeReset();
@@ -472,16 +474,13 @@ public class AttackMethod : MonoBehaviour {
 					{
 						if (Arrow[i])
 						{
-							if (Arrow[i].GetComponent<Arrow>())
+							if (!Arrow[i].GetComponent<SeiKwanSkill>().IsShoot())
 							{
-								if (!Arrow[i].GetComponent<Arrow>().IsShooting())
-								{
-									Arrow[i].GetComponent<Arrow>().resetArrow();
-									Arrowpool.RemoveItem(Arrow[i]);
-									Arrow[i] = null;
-								}
-								//어떤 조건에 의거 Arrow삭제
+								Arrow[i].GetComponent<SeiKwanSkill>().resetDelete();
+								Arrowpool.RemoveItem(Arrow[i]);
+								Arrow[i] = null;
 							}
+							//어떤 조건에 의거 Arrow삭제
 						}
 					}
 				}
