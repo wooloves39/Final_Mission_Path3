@@ -13265,7 +13265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1125d06d5b485440be4f858547e4bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rtouch: {fileID: 114728514616503982}
+  Rtouch: {fileID: 0}
 --- !u!114 &114200925832995568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14292,8 +14292,8 @@ MonoBehaviour:
   - {fileID: 114555785761869224}
   - {fileID: 114158244457927442}
   - {fileID: 114842851148552876}
-  - {fileID: 114960612398332522}
   - {fileID: 114695895641003858}
+  - {fileID: 114960612398332522}
 --- !u!114 &114738717189413616
 MonoBehaviour:
   m_ObjectHideFlags: 1
