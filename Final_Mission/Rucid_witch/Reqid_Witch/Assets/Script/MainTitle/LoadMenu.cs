@@ -11,7 +11,7 @@ public class LoadMenu : MonoBehaviour
 	public bool confirm = false;
 	int index = 0;
 	// Use this for initialization
-	public AudioClip[] clips;
+	public AudioClip[] clips;//0 OK 1 NO 2 Move 
 	private AudioSource source;
 	// Update is called once per frame
 	private void Awake()
