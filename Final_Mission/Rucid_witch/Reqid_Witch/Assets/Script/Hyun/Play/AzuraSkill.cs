@@ -22,7 +22,13 @@ public class AzuraSkill : MonoBehaviour
 		deltaTime = Time.deltaTime;
 		collider = GetComponent<Collider>();	 
 	}
-	public void shoot(int skillIndex, GameObject targets, float handDistance,float del_time=5.0f)
+
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
+	public void shoot(int skillIndex, GameObject targets, float handDistance)
 	{
 		transform.localScale = transform.localScale * 3;
 		target = targets;
@@ -48,7 +54,7 @@ public class AzuraSkill : MonoBehaviour
 		}
 		if (skill > 1) UseOtherObject();
 		 Shoot = true;
-		StartCoroutine(Shooting(del_time));
+		StartCoroutine(Shooting());
 		target = null;
 	}
 	private void WitchsHone()
@@ -164,7 +170,7 @@ public class AzuraSkill : MonoBehaviour
 			yield return null;
 		}
 	}
-	IEnumerator Shooting(float delTime)
+	IEnumerator Shooting(float delTime=5.0f)
 	{
 		yield return new WaitForSeconds(delTime);
 		del_timer = true;
