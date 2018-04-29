@@ -55,6 +55,7 @@ public class LineDraw : MonoBehaviour {
 					raser.gameObject.SetActive(true);
 
 					Vector3 pos = raser.transform.position;
+					pos += raser.transform.forward*.1f;
 					Skills[mySkills[mytype]].transform.position = pos;
 
 					//Skills[mySkills[mytype]].transform.rotation = transform.rotation;
