@@ -18,7 +18,6 @@ public class StageInfo : MonoBehaviour {
 	{
 		textArea = GetComponent<Text>();
 		stage = Singletone.Instance.stage;
-		stage = 0;
 		file_parser = new File_parser();
 		file_parser.FileOpen(FileName[stage]);
 		file_parser.Reading();
@@ -43,8 +42,10 @@ public class StageInfo : MonoBehaviour {
 				textArea.color = new Color(0, 1, 1);
 				break;
 			case 5:
+				textArea.color = new Color(1, 0, 1);
 				break;
 			case 6:
+				textArea.color = new Color(1, 0, 1);
 				break;
 		}
 	}
