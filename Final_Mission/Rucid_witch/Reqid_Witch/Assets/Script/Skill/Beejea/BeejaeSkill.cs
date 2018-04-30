@@ -20,6 +20,7 @@ public class BeejaeSkill : MonoBehaviour
 	private PlayerState Player;
 
 	private AttackMethod handle;
+	private LineDraw line;
 	public bool handle2 = false;
 
 	private void OnDisable()
@@ -32,6 +33,7 @@ public class BeejaeSkill : MonoBehaviour
 
 	private void Awake()
 	{
+		line = GetComponent<LineDraw>();
 		audio = GetComponent<AudioSource>();
 		handle = FindObjectOfType<AttackMethod>();
 		handle2 = FindObjectOfType<Beejea_Verbase_Setting>();
@@ -44,7 +46,7 @@ public class BeejaeSkill : MonoBehaviour
 		if(LineDraw.curType == 2 &&handle.Beejae_Marker[0].gameObject.activeInHierarchy == false && handle.Beejae_Marker[1].gameObject.activeInHierarchy == false && handle2 == true)
 		{
 			handle2 = false;
-			shoot(handle.typecheck.Skills[0].getCurrentSkill(), handle.PlayerTarget.getMytarget(), 0.0f);
+			shoot(line.Skills[2].getCurrentSkill(), handle.PlayerTarget.getMytarget(), 0.0f);
 		}
 	}
 
