@@ -8,6 +8,7 @@ public class BattleCommand : MonoBehaviour {
 	float TimeLimit;
 	float time = 0.0f;
 	int skill_index = 0;
+	public float MAttdelay = 0.0f;
 	public float AttackFrame = 0.4f;
 	public float[] SkillFrame;
 	private NavMeshAgent agent;
@@ -105,6 +106,7 @@ public class BattleCommand : MonoBehaviour {
 		
 	IEnumerator MeleeAtt()
 	{
+		yield return new WaitForSeconds(MAttdelay);
 		float temp = Time.deltaTime;
 		bool once = false;
 		while (true)

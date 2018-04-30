@@ -39,7 +39,6 @@ public class LinePointChecker : MonoBehaviour {
 		CompleteSound = GetComponent<AudioSource>();
 		CompleteSound.volume = Singletone.Instance.Sound;
 		reset();
-		gameObject.SetActive(false);
 	}
 	private void Awake()
 	{
@@ -107,6 +106,7 @@ public class LinePointChecker : MonoBehaviour {
 				}
 			}
 		}
+		
 	}
 	private void SkillTime()
 	{
@@ -274,11 +274,8 @@ public class LinePointChecker : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		//SkillTime();
-		Debug.Log(initPos.Count);
 		for (int i = 0; i < PointsVec.Count; ++i)
 		{
-			Debug.Log((Player.position - initPos[i]));
 			line.SetPosition(i, PointsVec[i] + (Player.position - initPos[i]));
 		}
 		PointChecks();

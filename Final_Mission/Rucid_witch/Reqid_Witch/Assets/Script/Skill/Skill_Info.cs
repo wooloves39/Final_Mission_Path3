@@ -30,12 +30,15 @@ public class Skill_Info : MonoBehaviour {
 		PowerMemory[1] = AreaDmg;
 		PowerMemory[2] = DotDmg;
 	}
+	private void OnDisable()
+	{
+		ObjList = new List<GameObject>();
+	}
 	void Start () {
 		Minus[0] = (float)(Power / HitCount);
 		Minus[1] = (float)(AreaDmg/ HitCount);
 		Minus[2] = (float)(DotDmg / HitCount);
 	}
-
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Monster")
