@@ -27,6 +27,9 @@ public class Dialog : MonoBehaviour
 	private File_parser file_parser;
 	public string fileName;
 
+	public GameObject[] WaveStart;
+	static int wavecnt = 0;
+
 	void Start()
 	{
 		dia_Play = GetComponent<Dia_Play>();
@@ -77,7 +80,18 @@ public class Dialog : MonoBehaviour
 			}
 			yield return new WaitWhile(() => dia_Play.getPlay());
 		}
+
 		HideIcons();
+		if (WaveStart[wavecnt] != null)
+		{
+			Debug.Log(WaveStart[wavecnt]);
+			WaveStart[wavecnt].GetComponent<MobGenerater>().Wave_Start = true;
+			wavecnt++;
+		}
+		else
+		{
+			Debug.Log(WaveStart[wavecnt]);
+		}
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)
 	{

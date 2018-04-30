@@ -476,6 +476,7 @@ MonoBehaviour:
   - 0
   MomentInvincible: 0
   InvincibleTime: 0.2
+  ElecShock: {fileID: 0}
 --- !u!1001 &1269789446
 Prefab:
   m_ObjectHideFlags: 0
@@ -582,6 +583,10 @@ Prefab:
     - target: {fileID: 1147484443579816, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1182652138424312, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
