@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LinePointChecker : MonoBehaviour {
+public class LinePointChecker : MonoBehaviour
+{
 
 	private PointCheck MainPoint;
 	public PointCheck[] Points;
@@ -34,12 +35,6 @@ public class LinePointChecker : MonoBehaviour {
 	private List<Vector3> initPos = new List<Vector3>();
 	private List<Vector3> PointsVec = new List<Vector3>();
 	// Use this for initialization
-	void Start()
-	{
-		CompleteSound = GetComponent<AudioSource>();
-		CompleteSound.volume = Singletone.Instance.Sound;
-		reset();
-	}
 	private void Awake()
 	{
 		playerSound = transform.parent.parent.GetComponent<PlayerSoundSetting>();
@@ -50,10 +45,10 @@ public class LinePointChecker : MonoBehaviour {
 		line.positionCount = 1;
 		line.SetPosition(0, gameObject.transform.position);
 		PointsVec.Add(gameObject.transform.position);
-	}
-	private void OnEnable()
-	{
-		//initPos.Add( Player.position);
+		CompleteSound = GetComponent<AudioSource>();
+		CompleteSound.volume = Singletone.Instance.Sound;
+		reset();
+		gameObject.SetActive(false);
 	}
 	public bool getTimerOn() { return TimerOn; }
 	public int UpCount()
@@ -64,19 +59,19 @@ public class LinePointChecker : MonoBehaviour {
 	}
 	public void reset()
 	{
-		if (MainPoint)
-			MainPoint.turnon();
-		count = -1;
-		PointsVec.Clear();
-		initPos.Clear();
-		MyPoint = MainPoint;
-		completeTimer = 0.0f;
-		TimerOn = false;
+
 		for (int i = 0; i < touchPoints.Length; ++i)
 		{
 			touchPoints[i] = 0;
 		}
-		CompleteSoundCheck = false;
+		count = -1;
+		PointsVec.Clear();
+		initPos.Clear();
+		completeTimer = 0.0f;
+		TimerOn = false;
+		if (MainPoint)
+			MainPoint.turnon();
+		MyPoint = MainPoint;
 	}
 	public void PointRestart()
 	{
@@ -87,6 +82,7 @@ public class LinePointChecker : MonoBehaviour {
 	}
 	public void TouchPoint(PointCheck touchPoint)
 	{
+		UpCount();
 		MyPoint = touchPoint;
 		line.positionCount = count + 1;
 		line.SetPosition(count, MyPoint.transform.position);
@@ -106,7 +102,7 @@ public class LinePointChecker : MonoBehaviour {
 				}
 			}
 		}
-		
+		PointChecks();
 	}
 	private void SkillTime()
 	{
@@ -278,7 +274,6 @@ public class LinePointChecker : MonoBehaviour {
 		{
 			line.SetPosition(i, PointsVec[i] + (Player.position - initPos[i]));
 		}
-		PointChecks();
 	}
 	private IEnumerator SkillComplete()
 	{
@@ -289,13 +284,8 @@ public class LinePointChecker : MonoBehaviour {
 			SkillTime();
 			yield return null;
 		}
-
 	}
 	public int getCurrentSkill() { return currentSkill; }
-	public void resetSkill()
-	{
-		currentSkill = 1;
-
-	}
+	public void resetSkill() { currentSkill = 1; }
 	public float GetSkillChargingTime() { return MaxChargingTimes[currentSkill - 1]; }
 }

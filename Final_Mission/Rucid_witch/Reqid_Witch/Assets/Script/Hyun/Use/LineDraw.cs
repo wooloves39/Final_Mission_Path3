@@ -82,7 +82,7 @@ public class LineDraw : MonoBehaviour {
 	}
 	public void Upcount(PointCheck col)
 	{
-		Skills[mySkills[mytype]].UpCount();
+		//Skills[mySkills[mytype]].UpCount();
 		Skills[mySkills[mytype]].TouchPoint(col);
 	}
 	public void myType()

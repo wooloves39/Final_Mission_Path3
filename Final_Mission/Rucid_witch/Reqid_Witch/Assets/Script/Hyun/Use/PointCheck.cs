@@ -14,7 +14,6 @@ public class PointCheck : MonoBehaviour
 	void Start()
 	{
 		check = false;
-		gameObject.SetActive(false);
 	}
 	public void touchon()
 	{

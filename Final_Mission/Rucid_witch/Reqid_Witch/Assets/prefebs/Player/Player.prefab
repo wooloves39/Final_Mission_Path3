@@ -1887,7 +1887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1457575619784238
 GameObject:
   m_ObjectHideFlags: 1
@@ -2282,7 +2282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1567104427429158
 GameObject:
   m_ObjectHideFlags: 1
@@ -2924,7 +2924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1728025920443878
 GameObject:
   m_ObjectHideFlags: 1
@@ -3224,7 +3224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1810325860497174
 GameObject:
   m_ObjectHideFlags: 1
@@ -3589,7 +3589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1900785439048282
 GameObject:
   m_ObjectHideFlags: 1
@@ -11843,7 +11843,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.50938624, z: 3}
+  m_Size: {x: 0.3, y: 0.50938624, z: 2}
   m_Center: {x: 0, y: 0, z: 1.33}
 --- !u!65 &65791384533476614
 BoxCollider:
@@ -13355,6 +13355,7 @@ MonoBehaviour:
   Me: {fileID: 1145206711958980}
   Boss: {fileID: 1287670369623862}
   fileName: /Text/Episode5.txt
+  WaveStart: []
 --- !u!114 &114241106249811784
 MonoBehaviour:
   m_ObjectHideFlags: 1
