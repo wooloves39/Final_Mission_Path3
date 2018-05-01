@@ -26,21 +26,30 @@ public class MobGenerater : MonoBehaviour {
 		}
 		StartCoroutine("MobGen");
 	}
-	
-	// Update is called once per frame
 
+	IEnumerator MobDie()
+	{
+		while(pool.AllDie() == true)
+		{
+			yield return new WaitForSeconds(1);
+		}
+		Debug.Log("다음 다이어로그 시작 부분");
+	}
+	// Update is called once per frame
 	IEnumerator MobGen()
 	{
 		int num = 0;
+		bool check = false;
 		while (true)
 		{
 			if (Wave_Start)
 			{
+				
 				if (num < Prefab_Count.Count)
 				{
 					if (myTime >= GenTime[num])
 					{
-
+						
 						for (int i = 0; i < Prefab_Count[num]; ++i)
 						{
 							if (i % 3 == 0)
@@ -56,8 +65,14 @@ public class MobGenerater : MonoBehaviour {
 								pool.NewItem(Position[2].transform.position);
 							}
 						}
+						if (!check)
+						{
+							StartCoroutine("MobDie");
+							check = true;
+						}
 						num++;
 					}
+
 				}
 				myTime++;
 				if (myTime >= 1200)

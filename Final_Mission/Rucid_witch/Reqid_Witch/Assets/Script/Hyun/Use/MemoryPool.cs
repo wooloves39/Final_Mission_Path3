@@ -126,4 +126,18 @@ public class MemoryPool : IEnumerable, System.IDisposable {
 		}
 		table = null;
 	}
+	public bool AllDie()
+	{
+		bool check = false;
+		for (int i = 0; i < table.Length; ++i)
+		{
+			Item item = table[i];
+			if (item.gameObject.activeInHierarchy == true)
+			{
+				check = true;
+				break;
+			}
+		}
+		return check;
+	}
 }

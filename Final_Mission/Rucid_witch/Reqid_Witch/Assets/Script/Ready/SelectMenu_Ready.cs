@@ -93,7 +93,7 @@ public class SelectMenu_Ready : MonoBehaviour
 
 				if (Stick.x < 0)
 				{
-					if (myposit.x > -1)
+					if (myposit.x > 0)
 					{
 						source.clip = clips[2];
 						source.Play();
@@ -128,7 +128,7 @@ public class SelectMenu_Ready : MonoBehaviour
 				else if (Vector2.Distance(myposit, new Vector2(-1, -1)) < 0.1f)
 					index = 3;
 				else if (Vector2.Distance(myposit, new Vector2(0, -1)) < 0.1f)
-					index = 4;
+					index = 3;
 				else if (Vector2.Distance(myposit, new Vector2(1, -1)) < 0.1f)
 					index = 5;
 				else if (Vector2.Distance(myposit, new Vector2(2, -1)) < 0.1f)
