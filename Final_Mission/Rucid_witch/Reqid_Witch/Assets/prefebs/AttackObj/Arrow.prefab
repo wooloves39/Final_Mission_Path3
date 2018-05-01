@@ -85,9 +85,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4631446917289568}
-  - component: {fileID: 114742501198510340}
   - component: {fileID: 54168237442081744}
   - component: {fileID: 136505311151004404}
+  - component: {fileID: 114029551733662380}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -377,22 +377,28 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 3
+  m_Time: 2
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0
-        value: 0.53260803
+        time: 0.002439499
+        value: 0.33111572
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
+        time: 0.511363
+        value: 0.77453464
+        inSlope: -0.7876754
+        outSlope: -0.7876754
+        tangentMode: 0
+      - serializedVersion: 2
         time: 1
-        value: 1
+        value: 0.007463455
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -401,9 +407,9 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.93103456, b: 0, a: 1}
+      key0: {r: 1, g: 0.93103456, b: 0, a: 0}
       key1: {r: 1, g: 0.93103456, b: 0, a: 1}
-      key2: {r: 1, g: 0.93103456, b: 0, a: 1}
+      key2: {r: 1, g: 0.93103456, b: 0, a: 0}
       key3: {r: 1, g: 0.93103456, b: 0, a: 0}
       key4: {r: 1, g: 0.93103456, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -418,7 +424,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 32382
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -427,15 +433,15 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 5
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
     textureMode: 0
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.5
   m_Autodestruct: 0
---- !u!114 &114742501198510340
+--- !u!114 &114029551733662380
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -443,9 +449,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902216250298378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31aea09d86f34c242b3e14a8a40540b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 94c5f2747c1666747bd5e5ea8eddf7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Gate: {fileID: 1902216250298378}
+  Guard: {fileID: 1902216250298378}
+  sky_Arraws:
+  - {fileID: 1902216250298378}
+  arrow_trab_particle: {fileID: 1902216250298378}
+  SeiKwanArrow: {fileID: 1902216250298378}
 --- !u!136 &136505311151004404
 CapsuleCollider:
   m_ObjectHideFlags: 1

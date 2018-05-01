@@ -82,15 +82,18 @@ public class Dialog : MonoBehaviour
 		}
 
 		HideIcons();
-		if (WaveStart[wavecnt] != null)
+		if (WaveStart.Length>0)
 		{
-			Debug.Log(WaveStart[wavecnt]);
-			WaveStart[wavecnt].GetComponent<MobGenerater>().Wave_Start = true;
-			wavecnt++;
-		}
-		else
-		{
-			Debug.Log(WaveStart[wavecnt]);
+			if (WaveStart[wavecnt] != null)
+			{
+				Debug.Log(WaveStart[wavecnt]);
+				WaveStart[wavecnt].GetComponent<MobGenerater>().Wave_Start = true;
+				wavecnt++;
+			}
+			else
+			{
+				Debug.Log(WaveStart[wavecnt]);
+			}
 		}
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)

@@ -39,6 +39,7 @@ public class TalkPoint : MonoBehaviour
 
 				MyState.SetMyState(PlayerState.State.Nomal);
 				player.setPlay(true);
+				gameObject.SetActive(false);
 			}
 		}
 	}

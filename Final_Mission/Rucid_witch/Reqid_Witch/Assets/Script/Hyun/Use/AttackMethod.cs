@@ -337,19 +337,21 @@ public class AttackMethod : MonoBehaviour
 							Arrow[ArrowNum].GetComponent<SeiKwanSkill>().shoot(typecheck.Skills[1].getCurrentSkill(), myTarget, handDis);
 
 						}
-						//	TargettingDir = Vector3.Normalize(myTarget.transform.position - Arrow[ArrowNum].transform.position);//;
-						//Debug.Log(Vector3.Dot(TargettingDir, Arrowforward));
-						//if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f || TargettingDir == Vector3.zero)
-						//{
-						//	r.velocity = Arrowforward * 15f * handDis;
-						//}
-						//else
-						//{
-						//	TargettingDir += Arrowforward;
-						//	r.velocity = TargettingDir * 15f * handDis;
-
-						//}
-						//Arrow[ArrowNum].GetComponent<Arrow>().Shooting(true);
+						else
+						{
+							if (typecheck.Skills[1].getCurrentSkill() == 1)
+							{
+								playerSound.PlayerSound(PlayerSoundSetting.soundPack.AttackSkill);
+								Arrow[ArrowNum].GetComponent<SeiKwanSkill>().shoot(typecheck.Skills[1].getCurrentSkill(), myTarget, handDis);
+							}
+							else
+							{
+								Arrow[ArrowNum].GetComponent<SeiKwanSkill>().resetDelete();
+								Arrowpool.RemoveItem(Arrow[ArrowNum]);
+								Arrow[ArrowNum] = null;
+							}
+						}
+						
 						instance = false;
 						distance = 0.0f;
 						MyState.CharginTimeReset();

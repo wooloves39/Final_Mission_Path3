@@ -61,7 +61,11 @@ public class SeiKwanSkill : MonoBehaviour
 	{
 		Rigidbody r = GetComponent<Rigidbody>();
 		Vector3 Arrowforward = transform.forward;
-		Vector3 TargettingDir = Vector3.Normalize(target.transform.position - transform.position);
+		Vector3 TargettingDir=Vector3.zero;
+		if (target)
+		{
+			TargettingDir = Vector3.Normalize(target.transform.position - transform.position);
+		}
 		if (Vector3.Dot(TargettingDir, Arrowforward) < 0.8f || TargettingDir == Vector3.zero)
 		{
 			r.velocity = Arrowforward * 15f * handDis;

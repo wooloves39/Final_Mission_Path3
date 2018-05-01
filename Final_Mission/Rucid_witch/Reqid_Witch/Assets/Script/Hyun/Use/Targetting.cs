@@ -8,7 +8,7 @@ public class Targetting : MonoBehaviour
 	private int TargetCount;
 	private GameObject Mytarget;
 	private bool firstCheck = false;
-	public GameObject targetPoint;
+	//public GameObject targetPoint;
 	// Use this for initialization
 	void Start()
 	{
@@ -25,7 +25,7 @@ public class Targetting : MonoBehaviour
 			{
 				if (Mytarget == TargetMonster[i])
 				{
-					targetPoint.SetActive(false);
+					//targetPoint.SetActive(false);
 					Mytarget = null;
 				}
 				TargetMonster.Remove(TargetMonster[i]);
@@ -36,11 +36,11 @@ public class Targetting : MonoBehaviour
 		}
 		if (Mytarget)
 		{
-			if (!targetPoint.activeSelf)
-				targetPoint.SetActive(true);
+			//if (!targetPoint.activeSelf)
+			//	targetPoint.SetActive(true);
 			Vector3 pos = Mytarget.transform.position;
 			pos.y += 4;
-			targetPoint.transform.position = pos;
+			//targetPoint.transform.position = pos;
 			for (int i = 0; i < TargetCount; ++i)
 			{
 				if(TargetMonster[i].GetComponentInChildren<HPBar>() != null)
