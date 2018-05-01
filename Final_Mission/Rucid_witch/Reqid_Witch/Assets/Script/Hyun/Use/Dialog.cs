@@ -29,7 +29,6 @@ public class Dialog : MonoBehaviour
 
 	public GameObject[] WaveStart;
 	private int wavecnt = 0;
-
 	void Start()
 	{
 		dia_Play = GetComponent<Dia_Play>();
@@ -82,7 +81,7 @@ public class Dialog : MonoBehaviour
 		}
 
 		HideIcons();
-		
+
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)
 	{
@@ -117,6 +116,8 @@ public class Dialog : MonoBehaviour
 					dia_Play.setEnd(true);
 					if (WaveStart.Length > 0)
 					{
+						myState.SetMyState(PlayerState.State.Nomal);
+						dia_Play.setPlay(true);
 						if (WaveStart[wavecnt] != null)
 						{
 							Debug.Log(WaveStart[wavecnt]);

@@ -16,9 +16,13 @@ public class MobGenerater : MonoBehaviour {
 
 	int myTime = 0;
 
+	public Dia_Play player;
+	private PlayerState MyState;
 
 
-	void Start() {
+	void Start()
+	{
+		MyState = player.transform.parent.GetComponent<PlayerState>();
 		myTime = 0;
 		for(int i = 0 ; i < Prefab.Count;++i)
 		{
@@ -34,6 +38,12 @@ public class MobGenerater : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 		}
 		Debug.Log("다음 다이어로그 시작 부분");
+		if (player.getPlay())
+		{
+			MyState.SetMyState(PlayerState.State.Talk);
+			player.setPlay(false);
+
+		}
 	}
 	// Update is called once per frame
 	IEnumerator MobGen()

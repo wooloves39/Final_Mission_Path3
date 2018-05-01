@@ -11557,6 +11557,21 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114313204129265000, guid: 480b50d78952ea745b85c674444a6d87,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 708137150}
+    - target: {fileID: 114311249443307544, guid: 480b50d78952ea745b85c674444a6d87,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 708137150}
+    - target: {fileID: 114787334104458518, guid: 480b50d78952ea745b85c674444a6d87,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 708137150}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 480b50d78952ea745b85c674444a6d87, type: 2}
   m_IsPrefabParent: 0
