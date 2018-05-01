@@ -28,7 +28,7 @@ public class Dialog : MonoBehaviour
 	public string fileName;
 
 	public GameObject[] WaveStart;
-	static int wavecnt = 0;
+	private int wavecnt = 0;
 
 	void Start()
 	{
@@ -82,19 +82,7 @@ public class Dialog : MonoBehaviour
 		}
 
 		HideIcons();
-		if (WaveStart.Length>0)
-		{
-			if (WaveStart[wavecnt] != null)
-			{
-				Debug.Log(WaveStart[wavecnt]);
-				WaveStart[wavecnt].GetComponent<MobGenerater>().Wave_Start = true;
-				wavecnt++;
-			}
-			else
-			{
-				Debug.Log(WaveStart[wavecnt]);
-			}
-		}
+		
 	}
 	private IEnumerator DisplatStrings(string stringToDisplay)
 	{
@@ -125,7 +113,22 @@ public class Dialog : MonoBehaviour
 			if (InputManager_JHW.BButtonDown())
 			{
 				if (_isEndofDialogue)
+				{
 					dia_Play.setEnd(true);
+					if (WaveStart.Length > 0)
+					{
+						if (WaveStart[wavecnt] != null)
+						{
+							Debug.Log(WaveStart[wavecnt]);
+							WaveStart[wavecnt].GetComponent<MobGenerater>().Wave_Start = true;
+							wavecnt++;
+						}
+						else
+						{
+							Debug.Log(WaveStart[wavecnt]);
+						}
+					}
+				}
 				break;
 			}
 			yield return 0;
