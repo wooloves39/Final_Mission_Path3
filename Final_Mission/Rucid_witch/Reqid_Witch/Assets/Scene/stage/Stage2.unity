@@ -747,6 +747,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd4184ba12fefda4ebe20adef91f5ab8, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1332942993 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114884443809680100, guid: cd4184ba12fefda4ebe20adef91f5ab8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1082714646}
+  m_Script: {fileID: 11500000, guid: 34a9476b46f325b4886932a827c7111c, type: 3}
 --- !u!1001 &1423096011
 Prefab:
   m_ObjectHideFlags: 0
@@ -1066,6 +1072,16 @@ Prefab:
       propertyPath: Wave_Start
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114311249443307544, guid: 480b50d78952ea745b85c674444a6d87,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1332942993}
+    - target: {fileID: 114787334104458518, guid: 480b50d78952ea745b85c674444a6d87,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1332942993}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 480b50d78952ea745b85c674444a6d87, type: 2}
   m_IsPrefabParent: 0

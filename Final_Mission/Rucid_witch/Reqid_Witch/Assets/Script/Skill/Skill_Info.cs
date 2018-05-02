@@ -31,7 +31,6 @@ public class Skill_Info : MonoBehaviour {
 	public float ShockTime = 2.0f;
 	private void OnEnable()
 	{
-
 		PowerMemory[0] = Power;
 		PowerMemory[1] = AreaDmg;
 		PowerMemory[2] = DotDmg;
