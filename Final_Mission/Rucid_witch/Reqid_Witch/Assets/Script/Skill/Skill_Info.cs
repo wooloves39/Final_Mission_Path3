@@ -15,11 +15,17 @@ public class Skill_Info : MonoBehaviour {
 	public float DotTime = 5.0f;
 	public float Cycle = 0.3f;
 
+
+	public bool AreaDotHit = false;
+	public float AreaDotDmg = 50.0f;
+	public float AreaDotTime = 5.0f;
+	public float AreaCycle = 0.3f;
+
 	public int HitCount = 4;
-	private float[] Minus  = { 0,0,0};
+	private float[] Minus  = { 0,0,0,0};
 	private List<GameObject> ObjList = new List<GameObject>();
 
-	public float[] PowerMemory = { 0,0,0 };
+	public float[] PowerMemory = { 0,0,0,0 };
 
 	public bool ElecShock = false;
 	public float ShockTime = 2.0f;
@@ -29,6 +35,7 @@ public class Skill_Info : MonoBehaviour {
 		PowerMemory[0] = Power;
 		PowerMemory[1] = AreaDmg;
 		PowerMemory[2] = DotDmg;
+		PowerMemory[3] = AreaDotDmg;
 	}
 	private void OnDisable()
 	{
@@ -38,6 +45,7 @@ public class Skill_Info : MonoBehaviour {
 		Minus[0] = (float)(Power / HitCount);
 		Minus[1] = (float)(AreaDmg/ HitCount);
 		Minus[2] = (float)(DotDmg / HitCount);
+		Minus[3] = (float)(AreaDotDmg / HitCount);
 	}
 	void OnTriggerEnter(Collider other)
 	{
@@ -72,6 +80,10 @@ public class Skill_Info : MonoBehaviour {
 				{
 					StartCoroutine("DotSkill", temp);
 				}
+			}
+			if (AreaDotHit)
+			{
+				StartCoroutine("AreaDotSkill", temp);
 			}
 			
 				
